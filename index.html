@@ -4758,6 +4758,129 @@
       }
     }
 
+
+
+    /* HEADER ACTION POLISH — dimensional Quick Start + consistent action rail */
+    .quick-start-accordion,
+    .custom-defaults-accordion {
+      border-color: rgba(104, 215, 210, .30);
+      box-shadow:
+        0 22px 70px rgba(0,0,0,.36),
+        0 0 0 1px rgba(104,215,210,.07),
+        inset 0 1px 0 rgba(243,241,234,.055);
+    }
+
+    .quick-start-summary,
+    .custom-defaults-summary {
+      outline: none;
+    }
+
+    .quick-start-summary:focus-visible,
+    .custom-defaults-summary:focus-visible {
+      outline: none;
+      box-shadow:
+        inset 0 0 0 1px rgba(104,215,210,.44),
+        inset 0 1px 0 rgba(243,241,234,.075);
+    }
+
+    .quick-start-summary {
+      min-height: 128px;
+      grid-template-columns: 112px minmax(0, 1fr) auto;
+      align-items: center;
+      padding: 18px 20px;
+    }
+
+    .quick-start-summary::before {
+      background:
+        radial-gradient(circle at 12% 18%, rgba(82,240,255,.36), transparent 28%),
+        radial-gradient(circle at 84% 18%, rgba(255,49,93,.34), transparent 30%),
+        linear-gradient(180deg, #17394a 0%, #1d747d 48%, #0b1b22 100%);
+      filter: saturate(1.08);
+    }
+
+    .quick-start-summary::after {
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.58), rgba(0,0,0,.20) 42%, rgba(0,0,0,.52)),
+        linear-gradient(to top, rgba(0,0,0,.34), transparent 58%),
+        linear-gradient(90deg, rgba(82,240,255,.36), rgba(255,49,93,.20)) top left / 100% 1px no-repeat;
+      opacity: 1;
+    }
+
+    .quick-summary-index {
+      display: grid;
+      place-items: center;
+      width: 88px;
+      min-height: 72px;
+      border: 1px solid rgba(82,240,255,.46);
+      border-radius: 12px;
+      background: rgba(0,0,0,.26);
+      color: var(--cyan-hot);
+      font-family: var(--mono);
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      text-align: center;
+      box-shadow:
+        inset 0 0 22px rgba(82,240,255,.10),
+        0 0 24px rgba(82,240,255,.055);
+    }
+
+    .level-status {
+      min-width: 126px;
+      justify-items: end;
+      align-self: center;
+    }
+
+    .level-status__state,
+    .level-status__source-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 32px;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .level-status__open,
+    .quick-start-summary-status,
+    .custom-summary-status {
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-end;
+      min-height: 28px;
+      line-height: 1;
+      text-align: right;
+    }
+
+    .quick-start-summary-status,
+    .custom-summary-status {
+      min-width: 108px;
+      justify-self: end;
+      align-self: center;
+    }
+
+    @media (max-width: 640px) {
+      .quick-summary-index,
+      .custom-summary-index {
+        width: 100%;
+        min-height: 48px;
+      }
+
+      .level-status {
+        justify-self: end;
+        justify-items: end;
+        text-align: right;
+        display: grid;
+      }
+
+      .quick-start-summary-status,
+      .custom-summary-status {
+        justify-self: end;
+        text-align: right;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -4810,6 +4933,7 @@
     <section id="quick-start" class="quick-start-wrap page" aria-labelledby="quick-start-title">
       <details class="quick-start-accordion">
         <summary class="quick-start-summary">
+          <span class="quick-summary-index">Run</span>
           <span class="quick-start-summary-copy">
             <p class="section-kicker">Quick Start</p>
             <h2 id="quick-start-title" class="section-title">Daily Run</h2>
