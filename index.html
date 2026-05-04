@@ -4913,6 +4913,44 @@
     .custom-defaults-accordion[open] .custom-summary-status::before { content: "CLOSE"; }
     .custom-defaults-accordion:not([open]) .custom-summary-status::before { content: "OPEN"; }
 
+
+    /* CLOSED ACCORDION COPY + MOBILE BADGE REFINEMENT */
+    .quick-start-summary-desc,
+    .level-summary .level-desc,
+    .custom-defaults-summary .level-desc {
+      color: rgba(243,241,234,.88) !important;
+      font-size: .90rem !important;
+      font-weight: 400 !important;
+      line-height: 1.35 !important;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    @media (max-width: 640px) {
+      .quick-start-summary,
+      .custom-defaults-summary {
+        grid-template-columns: 64px minmax(0, 1fr) !important;
+        gap: 12px !important;
+      }
+
+      .quick-summary-index,
+      .custom-summary-index {
+        width: 56px !important;
+        min-height: 56px !important;
+        height: 56px !important;
+        font-size: .62rem !important;
+        justify-self: start !important;
+      }
+
+      .quick-start-summary-status,
+      .custom-summary-status {
+        grid-column: 1 / -1 !important;
+        justify-self: end !important;
+        text-align: right !important;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -4969,7 +5007,7 @@
           <span class="quick-start-summary-copy">
             <p class="section-kicker">Quick Start</p>
             <h2 id="quick-start-title" class="section-title">Daily Run</h2>
-            <p class="quick-start-summary-desc">Core daily moves.</p>
+            <p class="quick-start-summary-desc">Core daily moves gathered in one place.</p>
           </span>
           <span class="quick-start-summary-status">Run</span>
         </summary>
@@ -5030,8 +5068,7 @@
             <span class="level-index">01</span>
             <span class="level-title-block">
               <span class="level-meta">Level 01 / Gateway</span>
-              <h2 class="level-title">The Installation</h2>
-              <p class="level-desc">Enter the system.</p>
+              <h2 class="level-title">The Installation</h2><p class="level-desc">Enter the Protocol.</p>
             </span>
             <span class="level-status"><a class="level-status__state level-status__source-link" href="https://www.instagram.com/p/DXhAWMcDFtQ/" target="_blank" rel="noopener noreferrer">Source Link ↗</a><span class="level-status__open">Level</span></span>
           </summary>
@@ -5127,8 +5164,7 @@
             <span class="level-index">02</span>
             <span class="level-title-block">
               <span class="level-meta">Level 02 / Daily Operation</span>
-              <h2 class="level-title">Daily Operation</h2>
-              <p class="level-desc">Run the daily sequence.</p>
+              <h2 class="level-title">Daily Operation</h2><p class="level-desc">Run the daily transmission.</p>
             </span>
             <span class="level-status"><span class="level-status__state">Level 02 Active</span><span class="level-status__open">Level</span></span>
           </summary>
@@ -5205,7 +5241,7 @@
         <details class="level-chamber" id="level-03">
           <summary class="level-summary">
             <span class="level-index">03</span>
-            <span class="level-title-block"><span class="level-meta">Level 03 / Firewall</span><h2 class="level-title">Firewall Protocol</h2><p class="level-desc">Run this the moment you feel the breach landing.</p></span>
+            <span class="level-title-block"><span class="level-meta">Level 03 / Firewall</span><h2 class="level-title">Firewall Protocol</h2><p class="level-desc">Run this the moment you feel the breach.</p></span>
             <span class="level-status"><a class="level-status__state level-status__source-link" href="https://www.instagram.com/p/DXlyEa_E4LE/" target="_blank" rel="noopener noreferrer">Source Link ↗</a><span class="level-status__open">Level</span></span>
           </summary>
 
@@ -5277,7 +5313,7 @@
 <details class="level-chamber" id="level-04">
           <summary class="level-summary">
             <span class="level-index">04</span>
-            <span class="level-title-block"><span class="level-meta">Level 04 / Switchboard</span><h2 class="level-title">The Switchboard</h2><p class="level-desc">Every area of reality has a switch. The position is the instruction.</p></span>
+            <span class="level-title-block"><span class="level-meta">Level 04 / Switchboard</span><h2 class="level-title">The Switchboard</h2><p class="level-desc">Every area of reality has a switch. Toggle ON.</p></span>
             <span class="level-status"><a class="level-status__state level-status__source-link" href="https://www.instagram.com/p/DXobtmlk6lC/" target="_blank" rel="noopener noreferrer">Source Link ↗</a><span class="level-status__open">Level</span></span>
           </summary>
 
@@ -5353,7 +5389,7 @@
         <details class="level-chamber" id="level-05">
           <summary class="level-summary">
             <span class="level-index">05</span>
-            <span class="level-title-block"><span class="level-meta">Level 05 / Command Line</span><h2 class="level-title">Command Line</h2><p class="level-desc">A command executes an instruction at the resolution of the specific.</p></span>
+            <span class="level-title-block"><span class="level-meta">Level 05 / Command Line</span><h2 class="level-title">Command Line</h2><p class="level-desc">A command executes at the resolution of the specific.</p></span>
             <span class="level-status"><a class="level-status__state level-status__source-link" href="https://www.instagram.com/p/DXq1UPQgJqf/" target="_blank" rel="noopener noreferrer">Source Link ↗</a><span class="level-status__open">Level</span></span>
           </summary>
 
@@ -5434,7 +5470,7 @@
         <details class="level-chamber" id="level-06">
           <summary class="level-summary">
             <span class="level-index">06</span>
-            <span class="level-title-block"><span class="level-meta">Level 06 / Save State</span><h2 class="level-title">The Save Protocol</h2><p class="level-desc">Save the peak as the new return point when the new render is fully live.</p></span>
+            <span class="level-title-block"><span class="level-meta">Level 06 / Save State</span><h2 class="level-title">The Save Protocol</h2><p class="level-desc">Save the peak and raise the floor.</p></span>
             <span class="level-status"><a class="level-status__state level-status__source-link" href="https://www.instagram.com/p/DXttDu5Tmj1/" target="_blank" rel="noopener noreferrer">Source Link ↗</a><span class="level-status__open">Level</span></span>
           </summary>
 
@@ -5590,7 +5626,7 @@
         <details class="level-chamber" id="level-08">
           <summary class="level-summary">
             <span class="level-index">08</span>
-            <span class="level-title-block"><span class="level-meta">Level 08 / Sovereign Codex</span><h2 class="level-title">The Laws</h2><p class="level-desc">The seat above the seat writes the laws the system runs underneath.</p></span>
+            <span class="level-title-block"><span class="level-meta">Level 08 / Sovereign Codex</span><h2 class="level-title">The Laws</h2><p class="level-desc">The seat above the seat writes the laws above the operator.</p></span>
             <span class="level-status"><a class="level-status__state level-status__source-link" href="https://www.instagram.com/p/DXyvhbOTg-G/" target="_blank" rel="noopener noreferrer">Source Link ↗</a><span class="level-status__open">Level</span></span>
           </summary>
 
@@ -5683,7 +5719,7 @@
         <details class="level-chamber" id="level-09">
           <summary class="level-summary">
             <span class="level-index">09</span>
-            <span class="level-title-block"><span class="level-meta">Level 09 / Render Confirmation</span><h2 class="level-title">Render Confirmation</h2><p class="level-desc">A confirmation is a receipt. Notice it, acknowledge it, and continue.</p></span>
+            <span class="level-title-block"><span class="level-meta">Level 09 / Render Confirmation</span><h2 class="level-title">Render Confirmation</h2><p class="level-desc">The field registers your transmission.</p></span>
             <span class="level-status"><a class="level-status__state level-status__source-link" href="https://www.instagram.com/p/DX054hygkmg/" target="_blank" rel="noopener noreferrer">Source Link ↗</a><span class="level-status__open">Level</span></span>
           </summary>
 
@@ -5853,7 +5889,7 @@
           <span class="custom-summary-copy">
             <span class="level-meta">Personal Configuration</span>
             <h2 id="custom-defaults-title" class="level-title">Custom Daily Defaults</h2>
-            <p class="level-desc">One personal control panel for the switches, commands, laws, and confirmations you actually use.</p>
+            <p class="level-desc">Switches, commands, laws, confirmations.</p>
           </span>
           <span class="custom-summary-status">Panel</span>
         </summary>
