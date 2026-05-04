@@ -4881,6 +4881,25 @@
       }
     }
 
+
+    /* ACTION LABEL SPACING FIX — keep generated OPEN/CLOSE prefixes readable */
+    .level-chamber[open] .level-status__open::before,
+    .level-chamber:not([open]) .level-status__open::before,
+    .quick-start-accordion[open] .quick-start-summary-status::before,
+    .quick-start-accordion:not([open]) .quick-start-summary-status::before,
+    .custom-defaults-accordion[open] .custom-summary-status::before,
+    .custom-defaults-accordion:not([open]) .custom-summary-status::before {
+      display: inline-block;
+      margin-right: .38em;
+    }
+
+    .level-chamber[open] .level-status__open::before { content: "CLOSE"; }
+    .level-chamber:not([open]) .level-status__open::before { content: "OPEN"; }
+    .quick-start-accordion[open] .quick-start-summary-status::before { content: "CLOSE"; }
+    .quick-start-accordion:not([open]) .quick-start-summary-status::before { content: "OPEN"; }
+    .custom-defaults-accordion[open] .custom-summary-status::before { content: "CLOSE"; }
+    .custom-defaults-accordion:not([open]) .custom-summary-status::before { content: "OPEN"; }
+
   </style>
 </head>
 <body>
