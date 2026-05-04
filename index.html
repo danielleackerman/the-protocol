@@ -427,7 +427,8 @@
       margin: 0 0 10px;
       color: var(--red-signal);
       font-family: var(--mono);
-      font-size: .74rem;
+      font-size: .68rem;
+      font-weight: 700;
       letter-spacing: .16em;
       text-transform: uppercase;
     }
@@ -596,6 +597,13 @@
       outline: none;
       border-color: rgba(82,240,255,.78);
       background: rgba(82,240,255,.11);
+    }
+
+    #level-02 .level-status__state {
+      border-color: rgba(82,240,255,.52);
+      background: rgba(82,240,255,.075);
+      color: var(--bone);
+      box-shadow: inset 0 0 18px rgba(82,240,255,.08);
     }
 
     .level-status__open {
@@ -4116,18 +4124,92 @@
       scroll-margin-top: 92px;
     }
 
-    .quick-start-shell {
-      position: relative;
+    .quick-start-accordion {
       overflow: hidden;
       border: 1px solid rgba(104,215,210,.24);
       border-radius: var(--radius);
-      padding: clamp(18px, 3vw, 30px);
+      background: rgba(5, 14, 18, .72);
+      box-shadow: 0 20px 58px rgba(0,0,0,.34);
+    }
+
+    .quick-start-summary {
+      position: relative;
+      min-height: 120px;
+      list-style: none;
+      cursor: pointer;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 18px;
+      align-items: end;
+      padding: 18px 20px;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .quick-start-summary::-webkit-details-marker { display: none; }
+
+    .quick-start-summary::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
       background:
         radial-gradient(circle at 8% 0%, rgba(82,240,255,.20), transparent 20rem),
         radial-gradient(circle at 88% 12%, rgba(255,49,93,.22), transparent 24rem),
         linear-gradient(145deg, rgba(255,255,255,.060), rgba(255,255,255,.018)),
         rgba(4, 12, 18, .72);
-      box-shadow: 0 20px 58px rgba(0,0,0,.34), inset 0 1px 0 rgba(243,241,234,.06);
+    }
+
+    .quick-start-summary::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(90deg, rgba(82,240,255,.42), rgba(255,49,93,.24)) top left / 100% 1px no-repeat,
+        radial-gradient(circle, rgba(82,240,255,.24) 1px, transparent 1.6px);
+      background-size: 100% 1px, 126px 126px;
+      opacity: .40;
+      pointer-events: none;
+    }
+
+    .quick-start-summary-copy {
+      min-width: 0;
+    }
+
+    .quick-start-summary-desc {
+      margin: 8px 0 0;
+      max-width: 56ch;
+      color: rgba(231,238,239,.70);
+      font-size: .96rem;
+      line-height: 1.42;
+    }
+
+    .quick-start-summary-status {
+      justify-self: end;
+      color: var(--cyan-hot);
+      font-family: var(--mono);
+      font-size: .74rem;
+      font-weight: 800;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .quick-start-accordion[open] .quick-start-summary-status::before { content: "CLOSE "; }
+    .quick-start-accordion:not([open]) .quick-start-summary-status::before { content: "OPEN "; }
+
+    .quick-start-shell {
+      position: relative;
+      overflow: hidden;
+      border-top: 1px solid rgba(104,215,210,.18);
+      padding: clamp(18px, 3vw, 30px);
+      background:
+        radial-gradient(circle at 8% 0%, rgba(82,240,255,.14), transparent 20rem),
+        radial-gradient(circle at 88% 12%, rgba(255,49,93,.16), transparent 24rem),
+        linear-gradient(145deg, rgba(255,255,255,.040), rgba(255,255,255,.012)),
+        rgba(4, 12, 18, .62);
+      box-shadow: inset 0 1px 0 rgba(243,241,234,.04);
     }
 
     .quick-start-shell::before {
@@ -4153,6 +4235,14 @@
       gap: 18px;
       align-items: end;
       margin-bottom: 16px;
+    }
+
+    .quick-start-intro {
+      margin: 0;
+      max-width: 56ch;
+      color: rgba(231,238,239,.78);
+      font-size: .96rem;
+      line-height: 1.42;
     }
 
     .quick-start-grid {
@@ -4398,9 +4488,9 @@
       margin-bottom: 5px;
       color: #a32952;
       font-family: var(--mono);
-      font-size: .60rem;
-      font-weight: 800;
-      letter-spacing: .13em;
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .16em;
       text-transform: uppercase;
     }
 
@@ -4647,6 +4737,7 @@
         grid-template-columns: 1fr;
       }
 
+      .quick-start-summary,
       .quick-switches,
       .custom-defaults-summary,
       .custom-switch-row,
@@ -4654,6 +4745,7 @@
         grid-template-columns: 1fr;
       }
 
+      .quick-start-summary-status,
       .custom-summary-status,
       .custom-switch-row,
       .custom-saved-item {
@@ -4716,54 +4808,62 @@
     </section>
 
     <section id="quick-start" class="quick-start-wrap page" aria-labelledby="quick-start-title">
-      <div class="quick-start-shell">
-        <div class="quick-start-head">
-          <div>
+      <details class="quick-start-accordion">
+        <summary class="quick-start-summary">
+          <span class="quick-start-summary-copy">
             <p class="section-kicker">Quick Start</p>
             <h2 id="quick-start-title" class="section-title">Daily Run</h2>
+            <p class="quick-start-summary-desc">Core daily moves gathered in one place so you can run the system without opening every chamber.</p>
+          </span>
+          <span class="quick-start-summary-status">Run</span>
+        </summary>
+
+        <div class="quick-start-shell">
+          <div class="quick-start-head">
+            <p class="quick-start-intro">Run the core sequence, then move on. Open the full chambers only when you need the deeper install language.</p>
+            <button class="l1-button l1-button--cyan" id="copyQuickStart" type="button">Copy Daily Run</button>
           </div>
-          <button class="l1-button l1-button--cyan" id="copyQuickStart" type="button">Copy Daily Run</button>
+
+          <div class="quick-start-grid" aria-label="Quick Start daily moves">
+            <section class="quick-card">
+              <span class="quick-label">01 / Seat</span>
+              <h3>Declare the Seat</h3>
+              <div class="quick-lines"><span>I am the operator.</span></div>
+            </section>
+
+            <section class="quick-card">
+              <span class="quick-label">02 / Defaults</span>
+              <h3>Run Defaults</h3>
+              <div class="quick-lines"><span>My default is overflow.</span><span>My default is magnetism.</span><span>My default is sovereign pace.</span></div>
+            </section>
+
+            <section class="quick-card">
+              <span class="quick-label">04 / Switchboard</span>
+              <h3>Set Switches</h3>
+              <div class="quick-switches"><span>Abundance: ON</span><span>Magnetism: ON</span><span>Overflow: ON</span><span>Recognition: ON</span><span>Love: ON</span><span>Creative Flow: ON</span></div>
+            </section>
+
+            <section class="quick-card quick-card--wide">
+              <span class="quick-label">05 / Command Line</span>
+              <h3>Issue One Command</h3>
+              <div class="quick-command"><span>EXECUTE: [specific outcome as already done]</span></div>
+            </section>
+
+            <section class="quick-card quick-card--wide">
+              <span class="quick-label">09 / Confirmation</span>
+              <h3>Log the Receipt</h3>
+              <div class="quick-lines"><span>Confirmation received.</span><span>Notice. Acknowledge. Continue.</span></div>
+            </section>
+
+            <section class="quick-breach">
+              <span class="quick-label">Conditional / Firewall</span>
+              <h3>If Breached</h3>
+              <div class="quick-lines"><span>Access denied. This is not authorized code.</span><span>I am the operator. The Protocol holds.</span><span>Breach sealed. Render protected.</span></div>
+            </section>
+          </div>
+          <div class="quick-start-status" id="quickStartStatus">// quick start ready.</div>
         </div>
-
-        <div class="quick-start-grid" aria-label="Quick Start daily moves">
-          <section class="quick-card">
-            <span class="quick-label">01 / Seat</span>
-            <h3>Declare the Seat</h3>
-            <div class="quick-lines"><span>I am the operator.</span></div>
-          </section>
-
-          <section class="quick-card">
-            <span class="quick-label">02 / Defaults</span>
-            <h3>Run Defaults</h3>
-            <div class="quick-lines"><span>My default is overflow.</span><span>My default is magnetism.</span><span>My default is sovereign pace.</span></div>
-          </section>
-
-          <section class="quick-card">
-            <span class="quick-label">04 / Switchboard</span>
-            <h3>Set Switches</h3>
-            <div class="quick-switches"><span>Abundance: ON</span><span>Magnetism: ON</span><span>Overflow: ON</span><span>Recognition: ON</span><span>Love: ON</span><span>Creative Flow: ON</span></div>
-          </section>
-
-          <section class="quick-card quick-card--wide">
-            <span class="quick-label">05 / Command Line</span>
-            <h3>Issue One Command</h3>
-            <div class="quick-command"><span>EXECUTE: [specific outcome as already done]</span></div>
-          </section>
-
-          <section class="quick-card quick-card--wide">
-            <span class="quick-label">09 / Confirmation</span>
-            <h3>Log the Receipt</h3>
-            <div class="quick-lines"><span>Confirmation received.</span><span>Notice. Acknowledge. Continue.</span></div>
-          </section>
-
-          <section class="quick-breach">
-            <span class="quick-label">Conditional / Firewall</span>
-            <h3>If Breached</h3>
-            <div class="quick-lines"><span>Access denied. This is not authorized code.</span><span>I am the operator. The Protocol holds.</span><span>Breach sealed. Render protected.</span></div>
-          </section>
-        </div>
-        <div class="quick-start-status" id="quickStartStatus">// quick start ready.</div>
-      </div>
+      </details>
     </section>
 
     <section id="levels" class="levels-wrap page" aria-label="Level chambers">
