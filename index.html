@@ -565,6 +565,14 @@
       line-height: 1.45;
     }
 
+    .level-summary .level-desc {
+      color: var(--bone);
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
     .level-status {
       justify-self: end;
       display: grid;
@@ -4181,9 +4189,13 @@
     .quick-start-summary-desc {
       margin: 8px 0 0;
       max-width: 56ch;
-      color: rgba(231,238,239,.70);
+      color: var(--bone);
       font-size: .96rem;
+      font-weight: 500;
       line-height: 1.42;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .quick-start-summary-status {
@@ -4957,7 +4969,7 @@
           <span class="quick-start-summary-copy">
             <p class="section-kicker">Quick Start</p>
             <h2 id="quick-start-title" class="section-title">Daily Run</h2>
-            <p class="quick-start-summary-desc">Core daily moves gathered in one place so you can run the system without opening every chamber.</p>
+            <p class="quick-start-summary-desc">Core daily moves.</p>
           </span>
           <span class="quick-start-summary-status">Run</span>
         </summary>
@@ -5019,6 +5031,7 @@
             <span class="level-title-block">
               <span class="level-meta">Level 01 / Gateway</span>
               <h2 class="level-title">The Installation</h2>
+              <p class="level-desc">Enter the system.</p>
             </span>
             <span class="level-status"><a class="level-status__state level-status__source-link" href="https://www.instagram.com/p/DXhAWMcDFtQ/" target="_blank" rel="noopener noreferrer">Source Link ↗</a><span class="level-status__open">Level</span></span>
           </summary>
@@ -5115,6 +5128,7 @@
             <span class="level-title-block">
               <span class="level-meta">Level 02 / Daily Operation</span>
               <h2 class="level-title">Daily Operation</h2>
+              <p class="level-desc">Run the daily sequence.</p>
             </span>
             <span class="level-status"><span class="level-status__state">Level 02 Active</span><span class="level-status__open">Level</span></span>
           </summary>
