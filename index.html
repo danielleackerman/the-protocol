@@ -4109,6 +4109,563 @@
   }
 }
 
+
+    /* QUICK START + CUSTOM DAILY DEFAULTS */
+    .quick-start-wrap {
+      margin-top: 28px;
+      scroll-margin-top: 92px;
+    }
+
+    .quick-start-shell {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(104,215,210,.24);
+      border-radius: var(--radius);
+      padding: clamp(18px, 3vw, 30px);
+      background:
+        radial-gradient(circle at 8% 0%, rgba(82,240,255,.20), transparent 20rem),
+        radial-gradient(circle at 88% 12%, rgba(255,49,93,.22), transparent 24rem),
+        linear-gradient(145deg, rgba(255,255,255,.060), rgba(255,255,255,.018)),
+        rgba(4, 12, 18, .72);
+      box-shadow: 0 20px 58px rgba(0,0,0,.34), inset 0 1px 0 rgba(243,241,234,.06);
+    }
+
+    .quick-start-shell::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(90deg, rgba(82,240,255,.42), rgba(255,49,93,.24)) top left / 100% 1px no-repeat,
+        radial-gradient(circle, rgba(82,240,255,.26) 1px, transparent 1.6px);
+      background-size: 100% 1px, 126px 126px;
+      opacity: .46;
+    }
+
+    .quick-start-shell > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .quick-start-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 18px;
+      align-items: end;
+      margin-bottom: 16px;
+    }
+
+    .quick-start-grid {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .quick-card,
+    .quick-breach {
+      min-width: 0;
+      border: 1px solid rgba(104,215,210,.20);
+      border-radius: 15px;
+      padding: 14px 15px;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(82,240,255,.10), transparent 12rem),
+        radial-gradient(circle at 100% 0%, rgba(255,49,93,.08), transparent 12rem),
+        rgba(0,5,8,.36);
+      box-shadow: inset 0 1px 0 rgba(243,241,234,.045);
+    }
+
+    .quick-card {
+      grid-column: span 4;
+    }
+
+    .quick-card--wide,
+    .quick-breach {
+      grid-column: span 6;
+    }
+
+    .quick-label {
+      display: inline-flex;
+      margin-bottom: 8px;
+      color: var(--cyan-haze);
+      font-family: var(--mono);
+      font-size: .62rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .quick-card h3,
+    .quick-breach h3 {
+      margin: 0 0 8px;
+      color: var(--bone);
+      font-family: var(--display);
+      font-size: clamp(.92rem, 1.45vw, 1.18rem);
+      line-height: 1.13;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-weight: 400;
+    }
+
+    .quick-lines,
+    .quick-switches,
+    .quick-command {
+      display: grid;
+      gap: 6px;
+      margin: 0;
+      color: rgba(243,241,234,.88);
+      font-family: var(--mono);
+      font-size: .78rem;
+      line-height: 1.38;
+    }
+
+    .quick-switches {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .quick-switches span,
+    .quick-command span,
+    .quick-lines span {
+      min-width: 0;
+      border: 1px solid rgba(177,189,205,.14);
+      border-radius: 9px;
+      padding: 7px 9px;
+      background: rgba(255,255,255,.035);
+      overflow-wrap: anywhere;
+    }
+
+    .quick-breach {
+      border-color: rgba(255,49,93,.28);
+      background:
+        radial-gradient(circle at 0% 0%, rgba(255,49,93,.12), transparent 12rem),
+        rgba(0,5,8,.36);
+    }
+
+    .quick-start-status {
+      margin-top: 12px;
+      color: rgba(243,241,234,.68);
+      font-family: var(--mono);
+      font-size: .70rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .custom-defaults-wrap {
+      margin: 0 auto 70px;
+      scroll-margin-top: 92px;
+    }
+
+    .custom-defaults-accordion {
+      overflow: hidden;
+      border: 1px solid rgba(104,215,210,.26);
+      border-radius: var(--radius);
+      background: rgba(5, 14, 18, .72);
+      box-shadow: 0 22px 70px rgba(0,0,0,.34);
+    }
+
+    .custom-defaults-summary {
+      position: relative;
+      min-height: 120px;
+      list-style: none;
+      cursor: pointer;
+      display: grid;
+      grid-template-columns: 112px minmax(0, 1fr) auto;
+      gap: 18px;
+      align-items: center;
+      padding: 18px 20px;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .custom-defaults-summary::-webkit-details-marker { display: none; }
+
+    .custom-defaults-summary::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(82,240,255,.36), transparent 28%),
+        radial-gradient(circle at 84% 18%, rgba(255,49,93,.38), transparent 28%),
+        linear-gradient(180deg, #17394a 0%, #1d747d 48%, #0b1b22 100%);
+    }
+
+    .custom-defaults-summary::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(90deg, rgba(0,0,0,.58), rgba(0,0,0,.20) 42%, rgba(0,0,0,.52));
+    }
+
+    .custom-summary-index {
+      display: grid;
+      place-items: center;
+      width: 88px;
+      min-height: 72px;
+      border: 1px solid rgba(82,240,255,.46);
+      border-radius: 12px;
+      background: rgba(0,0,0,.26);
+      color: var(--cyan-hot);
+      font-family: var(--mono);
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      text-align: center;
+      box-shadow: inset 0 0 22px rgba(82,240,255,.10);
+    }
+
+    .custom-summary-copy {
+      min-width: 0;
+    }
+
+    .custom-summary-status {
+      justify-self: end;
+      color: var(--cyan-hot);
+      font-family: var(--mono);
+      font-size: .74rem;
+      font-weight: 800;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .custom-defaults-accordion[open] .custom-summary-status::before { content: "CLOSE "; }
+    .custom-defaults-accordion:not([open]) .custom-summary-status::before { content: "OPEN "; }
+
+    .custom-defaults-panel {
+      padding: clamp(16px, 3vw, 28px);
+      background:
+        radial-gradient(circle at 0% 0%, rgba(82,240,255,.32), transparent 22rem),
+        radial-gradient(circle at 100% 0%, rgba(255,77,135,.22), transparent 24rem),
+        linear-gradient(135deg, rgba(238, 252, 248, .95), rgba(244, 231, 241, .92) 48%, rgba(224, 247, 248, .93));
+      color: #14343a;
+    }
+
+    .custom-app-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 18px;
+      align-items: end;
+      margin-bottom: 16px;
+    }
+
+    .custom-defaults-panel .section-kicker {
+      color: #a32952;
+    }
+
+    .custom-defaults-panel .section-title,
+    .custom-defaults-panel .section-intro {
+      color: #14343a;
+    }
+
+    .custom-defaults-panel .section-intro {
+      color: rgba(20,52,58,.76);
+    }
+
+    .custom-app-grid {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .custom-module {
+      grid-column: span 6;
+      min-width: 0;
+      border: 1px solid rgba(15,61,68,.18);
+      border-radius: 18px;
+      padding: clamp(14px, 2.2vw, 20px);
+      background: rgba(255,255,255,.58);
+      box-shadow: 0 18px 42px rgba(10, 35, 42, .12), inset 0 1px 0 rgba(255,255,255,.62);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .custom-module--wide {
+      grid-column: 1 / -1;
+    }
+
+    .custom-module__head {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .custom-module__label {
+      display: block;
+      margin-bottom: 5px;
+      color: #a32952;
+      font-family: var(--mono);
+      font-size: .60rem;
+      font-weight: 800;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    .custom-module h3 {
+      margin: 0;
+      color: #14343a;
+      font-family: var(--display);
+      font-size: clamp(1rem, 1.65vw, 1.28rem);
+      line-height: 1.14;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-weight: 400;
+    }
+
+    .custom-module p {
+      margin: 0;
+      color: rgba(20,52,58,.76);
+      font-size: .88rem;
+      line-height: 1.42;
+    }
+
+    .custom-form-grid,
+    .custom-form-stack {
+      display: grid;
+      gap: 9px;
+      margin-top: 12px;
+    }
+
+    .custom-form-grid {
+      grid-template-columns: minmax(132px, .32fr) minmax(0, 1fr) auto;
+      align-items: end;
+    }
+
+    .custom-input,
+    .custom-select,
+    .custom-textarea {
+      width: 100%;
+      min-width: 0;
+      border: 1px solid rgba(15,61,68,.20);
+      border-radius: 11px;
+      background: rgba(255,255,255,.72);
+      color: #14343a;
+      padding: 10px 11px;
+      font: 700 .78rem/1.32 var(--mono);
+      outline: none;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.65);
+    }
+
+    .custom-textarea {
+      min-height: 88px;
+      resize: vertical;
+      font-family: var(--sans);
+      font-weight: 650;
+    }
+
+    .custom-input::placeholder,
+    .custom-textarea::placeholder {
+      color: rgba(20,52,58,.46);
+    }
+
+    .custom-input:focus,
+    .custom-select:focus,
+    .custom-textarea:focus {
+      border-color: rgba(0,128,140,.46);
+      box-shadow: 0 0 0 3px rgba(82,240,255,.16), inset 0 1px 0 rgba(255,255,255,.74);
+    }
+
+    .custom-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 39px;
+      border: 1px solid rgba(15,61,68,.24);
+      border-radius: 11px;
+      padding: 9px 12px;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(82,240,255,.30), transparent 5rem),
+        rgba(20,52,58,.08);
+      color: #14343a;
+      font-family: var(--mono);
+      font-size: .66rem;
+      font-weight: 800;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .custom-button--hot {
+      border-color: rgba(163,41,82,.28);
+      background:
+        radial-gradient(circle at 20% 0%, rgba(255,77,135,.22), transparent 5rem),
+        rgba(163,41,82,.08);
+    }
+
+    .custom-button:hover,
+    .custom-button:focus-visible {
+      outline: none;
+      border-color: rgba(0,128,140,.55);
+      box-shadow: 0 0 0 3px rgba(82,240,255,.14);
+    }
+
+    .custom-list,
+    .custom-switch-groups {
+      display: grid;
+      gap: 9px;
+      margin-top: 12px;
+    }
+
+    .custom-switch-group {
+      border: 1px solid rgba(15,61,68,.15);
+      border-radius: 13px;
+      overflow: hidden;
+      background: rgba(255,255,255,.38);
+    }
+
+    .custom-switch-group__title {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 9px 11px;
+      background: rgba(20,52,58,.08);
+      color: #14343a;
+      font-family: var(--mono);
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+    }
+
+    .custom-switch-row,
+    .custom-saved-item {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto auto;
+      gap: 8px;
+      align-items: center;
+      padding: 9px 11px;
+      border-top: 1px solid rgba(15,61,68,.10);
+      color: #14343a;
+      font-size: .84rem;
+      line-height: 1.35;
+    }
+
+    .custom-saved-item {
+      grid-template-columns: minmax(0, 1fr) auto;
+      border: 1px solid rgba(15,61,68,.14);
+      border-radius: 13px;
+      background: rgba(255,255,255,.42);
+    }
+
+    .custom-saved-item__text,
+    .custom-switch-row__name {
+      min-width: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .custom-saved-item time {
+      display: block;
+      margin-bottom: 4px;
+      color: rgba(20,52,58,.58);
+      font-family: var(--mono);
+      font-size: .62rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .custom-pill,
+    .custom-delete,
+    .custom-copy {
+      border: 1px solid rgba(15,61,68,.18);
+      border-radius: 999px;
+      background: rgba(255,255,255,.50);
+      color: #14343a;
+      padding: 5px 8px;
+      font-family: var(--mono);
+      font-size: .58rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .custom-pill.is-on {
+      border-color: rgba(0,128,140,.36);
+      color: #0f5d64;
+      background: rgba(82,240,255,.18);
+    }
+
+    .custom-pill:not(.is-on) {
+      border-color: rgba(163,41,82,.30);
+      color: #8a2448;
+      background: rgba(255,77,135,.12);
+    }
+
+    .custom-delete:hover,
+    .custom-copy:hover,
+    .custom-pill:hover {
+      border-color: rgba(0,128,140,.48);
+    }
+
+    .custom-empty {
+      margin: 0;
+      border: 1px dashed rgba(15,61,68,.18);
+      border-radius: 13px;
+      padding: 10px 11px;
+      color: rgba(20,52,58,.58);
+      background: rgba(255,255,255,.32);
+      font-family: var(--mono);
+      font-size: .68rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .custom-status-line {
+      min-height: 1.35em;
+      margin-top: 12px;
+      color: rgba(20,52,58,.66);
+      font-family: var(--mono);
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 980px) {
+      .quick-card,
+      .quick-card--wide,
+      .quick-breach,
+      .custom-module,
+      .custom-module--wide {
+        grid-column: 1 / -1;
+      }
+
+      .custom-form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .quick-start-head,
+      .custom-app-hero {
+        grid-template-columns: 1fr;
+      }
+
+      .quick-switches,
+      .custom-defaults-summary,
+      .custom-switch-row,
+      .custom-saved-item {
+        grid-template-columns: 1fr;
+      }
+
+      .custom-summary-status,
+      .custom-switch-row,
+      .custom-saved-item {
+        justify-items: start;
+      }
+
+      .custom-summary-index {
+        width: 100%;
+        min-height: 48px;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -4149,12 +4706,63 @@
             Live the life. Make reality your money and money your bitch.
           </p>
           <div class="entry-actions" aria-label="Primary actions">
-            <a class="command-link" href="#level-01">Open Level 01</a>
-            <a class="command-link command-link--red" href="#levels">View All Chambers</a>
+            <a class="command-link" href="#quick-start">Run Quick Start</a>
+            <a class="command-link command-link--red" href="#custom-defaults">Custom Daily Defaults</a>
           </div>
         </div>
 
         <div class="entry-foot entry-foot--reserved" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <section id="quick-start" class="quick-start-wrap page" aria-labelledby="quick-start-title">
+      <div class="quick-start-shell">
+        <div class="quick-start-head">
+          <div>
+            <p class="section-kicker">Quick Start</p>
+            <h2 id="quick-start-title" class="section-title">Daily Run</h2>
+          </div>
+          <button class="l1-button l1-button--cyan" id="copyQuickStart" type="button">Copy Daily Run</button>
+        </div>
+
+        <div class="quick-start-grid" aria-label="Quick Start daily moves">
+          <section class="quick-card">
+            <span class="quick-label">01 / Seat</span>
+            <h3>Declare the Seat</h3>
+            <div class="quick-lines"><span>I am the operator.</span></div>
+          </section>
+
+          <section class="quick-card">
+            <span class="quick-label">02 / Defaults</span>
+            <h3>Run Defaults</h3>
+            <div class="quick-lines"><span>My default is overflow.</span><span>My default is magnetism.</span><span>My default is sovereign pace.</span></div>
+          </section>
+
+          <section class="quick-card">
+            <span class="quick-label">04 / Switchboard</span>
+            <h3>Set Switches</h3>
+            <div class="quick-switches"><span>Abundance: ON</span><span>Magnetism: ON</span><span>Overflow: ON</span><span>Recognition: ON</span><span>Love: ON</span><span>Creative Flow: ON</span></div>
+          </section>
+
+          <section class="quick-card quick-card--wide">
+            <span class="quick-label">05 / Command Line</span>
+            <h3>Issue One Command</h3>
+            <div class="quick-command"><span>EXECUTE: [specific outcome as already done]</span></div>
+          </section>
+
+          <section class="quick-card quick-card--wide">
+            <span class="quick-label">09 / Confirmation</span>
+            <h3>Log the Receipt</h3>
+            <div class="quick-lines"><span>Confirmation received.</span><span>Notice. Acknowledge. Continue.</span></div>
+          </section>
+
+          <section class="quick-breach">
+            <span class="quick-label">Conditional / Firewall</span>
+            <h3>If Breached</h3>
+            <div class="quick-lines"><span>Access denied. This is not authorized code.</span><span>I am the operator. The Protocol holds.</span><span>Breach sealed. Render protected.</span></div>
+          </section>
+        </div>
+        <div class="quick-start-status" id="quickStartStatus">// quick start ready.</div>
       </div>
     </section>
 
@@ -4979,6 +5587,102 @@
       <h2 class="section-title">The Protocol Is Live</h2>
       <p>The ten-level installation is sealed. The reality control panel is yours. The field awaits your execution.</p>
     </section>
+
+    <section id="custom-defaults" class="custom-defaults-wrap page" aria-labelledby="custom-defaults-title">
+      <details class="custom-defaults-accordion">
+        <summary class="custom-defaults-summary">
+          <span class="custom-summary-index">Custom</span>
+          <span class="custom-summary-copy">
+            <span class="level-meta">Personal Configuration</span>
+            <h2 id="custom-defaults-title" class="level-title">Custom Daily Defaults</h2>
+            <p class="level-desc">One personal control panel for the switches, commands, laws, and confirmations you actually use.</p>
+          </span>
+          <span class="custom-summary-status">Panel</span>
+        </summary>
+
+        <div class="custom-defaults-panel">
+          <div class="custom-app-hero">
+            <div>
+              <p class="section-kicker">Reality OS Settings</p>
+              <h2 class="section-title">Your Daily Control Panel</h2>
+            </div>
+            <button class="custom-button custom-button--hot" id="copyCustomDefaults" type="button">Copy Current Defaults</button>
+          </div>
+
+          <div class="custom-app-grid">
+            <section class="custom-module custom-module--wide" aria-labelledby="custom-switchboard-title">
+              <div class="custom-module__head">
+                <div>
+                  <span class="custom-module__label">Custom Switchboard</span>
+                  <h3 id="custom-switchboard-title">Grouped Switches</h3>
+                </div>
+                <p>Group the ON states by area of life.</p>
+              </div>
+              <div class="custom-form-grid">
+                <select class="custom-select" id="customSwitchGroup" aria-label="Switch group">
+                  <option>Money</option>
+                  <option>Body</option>
+                  <option>Love</option>
+                  <option>Work</option>
+                  <option>Creative Output</option>
+                  <option>Home</option>
+                  <option>Visibility</option>
+                  <option>Peace</option>
+                </select>
+                <input class="custom-input" id="customSwitchName" type="text" placeholder="Add a switch, e.g. Paid quickly" />
+                <button class="custom-button" id="addCustomSwitch" type="button">Add Switch</button>
+              </div>
+              <div class="custom-switch-groups" id="customSwitchGroups" aria-live="polite"></div>
+            </section>
+
+            <section class="custom-module" aria-labelledby="custom-command-title">
+              <div class="custom-module__head">
+                <div>
+                  <span class="custom-module__label">Custom Command Line</span>
+                  <h3 id="custom-command-title">Repeat Commands</h3>
+                </div>
+              </div>
+              <div class="custom-form-stack">
+                <input class="custom-input" id="customCommandInput" type="text" placeholder="EXECUTE: outcome as already done…" />
+                <button class="custom-button" id="addCustomCommand" type="button">Save Command</button>
+              </div>
+              <div class="custom-list" id="customCommandList" aria-live="polite"></div>
+            </section>
+
+            <section class="custom-module" aria-labelledby="custom-laws-title">
+              <div class="custom-module__head">
+                <div>
+                  <span class="custom-module__label">Custom Laws</span>
+                  <h3 id="custom-laws-title">Standing Codex Lines</h3>
+                </div>
+              </div>
+              <div class="custom-form-stack">
+                <textarea class="custom-textarea" id="customLawInput" placeholder="Write a law as a decree, not a request…"></textarea>
+                <button class="custom-button" id="addCustomLaw" type="button">Save Law</button>
+              </div>
+              <div class="custom-list" id="customLawList" aria-live="polite"></div>
+            </section>
+
+            <section class="custom-module custom-module--wide" aria-labelledby="custom-confirm-title">
+              <div class="custom-module__head">
+                <div>
+                  <span class="custom-module__label">Render Confirmation Log</span>
+                  <h3 id="custom-confirm-title">Receipts + Signals</h3>
+                </div>
+                <p>Log the field response. No over-decoding required.</p>
+              </div>
+              <div class="custom-form-stack">
+                <textarea class="custom-textarea" id="customConfirmationInput" placeholder="Sentence, number, door, protective no, payment, shifted feeling…"></textarea>
+                <button class="custom-button" id="addCustomConfirmation" type="button">Log Confirmation</button>
+              </div>
+              <div class="custom-list" id="customConfirmationList" aria-live="polite"></div>
+            </section>
+          </div>
+          <div class="custom-status-line" id="customDefaultsStatus">// custom defaults ready.</div>
+        </div>
+      </details>
+    </section>
+
   </main>
 
   <footer class="footer">
@@ -5881,6 +6585,315 @@ A STRUCTURE BUILT TO BEND TIME AROUND YOU`;
     applyLevel10SealState();
 
 
+
+
+    // Quick Start + Custom Daily Defaults functionality
+    const quickStartText = `QUICK START / DAILY RUN
+
+01 / DECLARE THE SEAT
+I am the operator.
+
+02 / RUN DEFAULTS
+My default is overflow.
+My default is magnetism.
+My default is sovereign pace.
+
+04 / SET SWITCHES
+Abundance: ON
+Magnetism: ON
+Overflow: ON
+Recognition: ON
+Love: ON
+Creative Flow: ON
+
+05 / ISSUE ONE COMMAND
+EXECUTE: [specific outcome as already done]
+
+09 / LOG CONFIRMATION
+Confirmation received.
+Notice. Acknowledge. Continue.
+
+IF BREACHED
+Access denied. This is not authorized code.
+I am the operator. The Protocol holds.
+Breach sealed. Render protected.`;
+
+    const copyQuickStart = document.querySelector('#copyQuickStart');
+    const quickStartStatus = document.querySelector('#quickStartStatus');
+
+    async function copyUtilityText(text) {
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch (error) {
+        const helper = document.createElement('textarea');
+        helper.value = text;
+        helper.setAttribute('readonly', '');
+        helper.style.position = 'fixed';
+        helper.style.opacity = '0';
+        document.body.appendChild(helper);
+        helper.select();
+        document.execCommand('copy');
+        document.body.removeChild(helper);
+      }
+    }
+
+    copyQuickStart?.addEventListener('click', async () => {
+      await copyUtilityText(quickStartText);
+      if (quickStartStatus) quickStartStatus.textContent = 'DAILY RUN COPIED. OPERATOR ONLINE.';
+    });
+
+    const customDefaultsRoot = document.querySelector('#custom-defaults');
+
+    if (customDefaultsRoot) {
+      const customKeys = {
+        switches: 'the-protocol.custom.switches',
+        commands: 'the-protocol.custom.commands',
+        laws: 'the-protocol.custom.laws',
+        confirmations: 'the-protocol.custom.confirmations'
+      };
+
+      const customGroups = ['Money', 'Body', 'Love', 'Work', 'Creative Output', 'Home', 'Visibility', 'Peace'];
+
+      const customEls = {
+        switchGroup: document.querySelector('#customSwitchGroup'),
+        switchName: document.querySelector('#customSwitchName'),
+        addSwitch: document.querySelector('#addCustomSwitch'),
+        switchGroups: document.querySelector('#customSwitchGroups'),
+        commandInput: document.querySelector('#customCommandInput'),
+        addCommand: document.querySelector('#addCustomCommand'),
+        commandList: document.querySelector('#customCommandList'),
+        lawInput: document.querySelector('#customLawInput'),
+        addLaw: document.querySelector('#addCustomLaw'),
+        lawList: document.querySelector('#customLawList'),
+        confirmationInput: document.querySelector('#customConfirmationInput'),
+        addConfirmation: document.querySelector('#addCustomConfirmation'),
+        confirmationList: document.querySelector('#customConfirmationList'),
+        copyAll: document.querySelector('#copyCustomDefaults'),
+        status: document.querySelector('#customDefaultsStatus')
+      };
+
+      function readCustom(key, fallback = []) {
+        try {
+          const value = JSON.parse(localStorage.getItem(key));
+          return Array.isArray(value) ? value : fallback;
+        } catch (error) {
+          return fallback;
+        }
+      }
+
+      function writeCustom(key, value) {
+        localStorage.setItem(key, JSON.stringify(value));
+      }
+
+      function customId() {
+        return `${Date.now()}-${Math.random().toString(16).slice(2)}`;
+      }
+
+      function escapeCustomHTML(value) {
+        return String(value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#039;');
+      }
+
+      function setCustomStatus(message) {
+        if (!customEls.status) return;
+        customEls.status.textContent = message;
+      }
+
+      function formatCustomTime(value) {
+        return new Intl.DateTimeFormat(undefined, {
+          month: 'short',
+          day: 'numeric',
+          hour: 'numeric',
+          minute: '2-digit'
+        }).format(new Date(value));
+      }
+
+      function renderCustomSwitches() {
+        const switches = readCustom(customKeys.switches);
+        if (!customEls.switchGroups) return;
+
+        const groups = customGroups
+          .map(group => ({ group, items: switches.filter(item => item.group === group) }))
+          .filter(section => section.items.length);
+
+        if (!groups.length) {
+          customEls.switchGroups.innerHTML = '<p class="custom-empty">No custom switches saved yet.</p>';
+          return;
+        }
+
+        customEls.switchGroups.innerHTML = groups.map(({ group, items }) => `
+          <section class="custom-switch-group">
+            <div class="custom-switch-group__title"><span>${escapeCustomHTML(group)}</span><span>${items.length} switch${items.length === 1 ? '' : 'es'}</span></div>
+            ${items.map(item => `
+              <div class="custom-switch-row">
+                <span class="custom-switch-row__name">${escapeCustomHTML(item.name)}</span>
+                <button class="custom-pill ${item.on ? 'is-on' : ''}" type="button" data-custom-toggle-switch="${item.id}">${item.on ? 'ON' : 'OFF'}</button>
+                <button class="custom-delete" type="button" data-custom-delete-switch="${item.id}">Delete</button>
+              </div>
+            `).join('')}
+          </section>
+        `).join('');
+      }
+
+      function renderCustomList(container, items, type, emptyText) {
+        if (!container) return;
+        if (!items.length) {
+          container.innerHTML = `<p class="custom-empty">${emptyText}</p>`;
+          return;
+        }
+
+        container.innerHTML = items.map(item => `
+          <div class="custom-saved-item">
+            <span class="custom-saved-item__text">${item.createdAt ? `<time>${formatCustomTime(item.createdAt)}</time>` : ''}${escapeCustomHTML(item.text)}</span>
+            <span>
+              <button class="custom-copy" type="button" data-custom-copy-${type}="${item.id}">Copy</button>
+              <button class="custom-delete" type="button" data-custom-delete-${type}="${item.id}">Delete</button>
+            </span>
+          </div>
+        `).join('');
+      }
+
+      function renderCustomCommands() {
+        renderCustomList(customEls.commandList, readCustom(customKeys.commands), 'command', 'No saved commands yet.');
+      }
+
+      function renderCustomLaws() {
+        renderCustomList(customEls.lawList, readCustom(customKeys.laws), 'law', 'No custom laws saved yet.');
+      }
+
+      function renderCustomConfirmations() {
+        renderCustomList(customEls.confirmationList, readCustom(customKeys.confirmations), 'confirmation', 'No confirmations logged yet.');
+      }
+
+      function addCustomItem(key, input, prefix = '') {
+        const raw = input?.value.trim();
+        if (!raw) return false;
+        const items = readCustom(key);
+        const text = prefix && !raw.toUpperCase().startsWith(prefix) ? `${prefix} ${raw}` : raw;
+        items.unshift({ id: customId(), text, createdAt: new Date().toISOString() });
+        writeCustom(key, items);
+        input.value = '';
+        return true;
+      }
+
+      customEls.addSwitch?.addEventListener('click', () => {
+        const name = customEls.switchName?.value.trim();
+        const group = customEls.switchGroup?.value || 'Money';
+        if (!name) return;
+        const switches = readCustom(customKeys.switches);
+        switches.unshift({ id: customId(), group, name, on: true, createdAt: new Date().toISOString() });
+        writeCustom(customKeys.switches, switches);
+        customEls.switchName.value = '';
+        renderCustomSwitches();
+        setCustomStatus('SWITCH SAVED. POSITION: ON.');
+      });
+
+      customEls.switchName?.addEventListener('keydown', event => {
+        if (event.key === 'Enter') customEls.addSwitch?.click();
+      });
+
+      customEls.addCommand?.addEventListener('click', () => {
+        if (!addCustomItem(customKeys.commands, customEls.commandInput, 'EXECUTE:')) return;
+        renderCustomCommands();
+        setCustomStatus('COMMAND SAVED.');
+      });
+
+      customEls.commandInput?.addEventListener('keydown', event => {
+        if (event.key === 'Enter') customEls.addCommand?.click();
+      });
+
+      customEls.addLaw?.addEventListener('click', () => {
+        if (!addCustomItem(customKeys.laws, customEls.lawInput)) return;
+        renderCustomLaws();
+        setCustomStatus('LAW SAVED.');
+      });
+
+      customEls.addConfirmation?.addEventListener('click', () => {
+        if (!addCustomItem(customKeys.confirmations, customEls.confirmationInput)) return;
+        renderCustomConfirmations();
+        setCustomStatus('CONFIRMATION LOGGED.');
+      });
+
+      customDefaultsRoot.addEventListener('click', async event => {
+        const target = event.target.closest('button');
+        if (!target) return;
+
+        const switchToggle = target.dataset.customToggleSwitch;
+        const switchDelete = target.dataset.customDeleteSwitch;
+        const deleteCommand = target.dataset.customDeleteCommand;
+        const deleteLaw = target.dataset.customDeleteLaw;
+        const deleteConfirmation = target.dataset.customDeleteConfirmation;
+        const copyCommand = target.dataset.customCopyCommand;
+        const copyLaw = target.dataset.customCopyLaw;
+        const copyConfirmation = target.dataset.customCopyConfirmation;
+
+        if (switchToggle) {
+          const switches = readCustom(customKeys.switches).map(item => item.id === switchToggle ? { ...item, on: !item.on } : item);
+          writeCustom(customKeys.switches, switches);
+          renderCustomSwitches();
+          setCustomStatus('SWITCH POSITION UPDATED.');
+        }
+
+        if (switchDelete) {
+          writeCustom(customKeys.switches, readCustom(customKeys.switches).filter(item => item.id !== switchDelete));
+          renderCustomSwitches();
+          setCustomStatus('SWITCH DELETED.');
+        }
+
+        const deleteMap = [
+          [deleteCommand, customKeys.commands, renderCustomCommands, 'COMMAND DELETED.'],
+          [deleteLaw, customKeys.laws, renderCustomLaws, 'LAW DELETED.'],
+          [deleteConfirmation, customKeys.confirmations, renderCustomConfirmations, 'CONFIRMATION DELETED.']
+        ];
+
+        deleteMap.forEach(([id, key, render, message]) => {
+          if (!id) return;
+          writeCustom(key, readCustom(key).filter(item => item.id !== id));
+          render();
+          setCustomStatus(message);
+        });
+
+        const copyMap = [
+          [copyCommand, customKeys.commands, 'COMMAND COPIED.'],
+          [copyLaw, customKeys.laws, 'LAW COPIED.'],
+          [copyConfirmation, customKeys.confirmations, 'CONFIRMATION COPIED.']
+        ];
+
+        for (const [id, key, message] of copyMap) {
+          if (!id) continue;
+          const item = readCustom(key).find(entry => entry.id === id);
+          if (!item) continue;
+          await copyUtilityText(item.text);
+          setCustomStatus(message);
+        }
+      });
+
+      customEls.copyAll?.addEventListener('click', async () => {
+        const switches = readCustom(customKeys.switches);
+        const commands = readCustom(customKeys.commands);
+        const laws = readCustom(customKeys.laws);
+        const confirmations = readCustom(customKeys.confirmations);
+
+        const switchLines = switches.length
+          ? switches.map(item => `${item.group}: ${item.name} ${item.on ? 'ON' : 'OFF'}`).join('\n')
+          : 'No custom switches saved.';
+        const commandLines = commands.length ? commands.map(item => item.text).join('\n') : 'No commands saved.';
+        const lawLines = laws.length ? laws.map(item => item.text).join('\n') : 'No laws saved.';
+        const confirmationLines = confirmations.length ? confirmations.map(item => `- ${item.text}`).join('\n') : 'No confirmations logged.';
+
+        await copyUtilityText(`CUSTOM DAILY DEFAULTS\n\nSWITCHBOARD\n${switchLines}\n\nCOMMAND LINE\n${commandLines}\n\nLAWS\n${lawLines}\n\nRENDER CONFIRMATIONS\n${confirmationLines}`);
+        setCustomStatus('CUSTOM DEFAULTS COPIED.');
+      });
+
+      renderCustomSwitches();
+      renderCustomCommands();
+      renderCustomLaws();
+      renderCustomConfirmations();
+    }
 
 </script>
 </body>
