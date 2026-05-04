@@ -4067,41 +4067,45 @@
     .level10-final-line span {
       color: var(--cyan-hot);
     }
+/* LEVEL 06 MOBILE OVERRIDE — keep Save Protocol cards stacked on phones.
+   This must stay late in the CSS because the earlier Level 06 format rescue
+   reassigns the final three cards to span 4 columns. */
 @media (max-width: 760px) {
-  .save-protocol-grid,
-  .level-06-grid,
-  .protocol-output-grid {
+  #level-06 .level06-save-deck {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
+    grid-template-columns: 1fr !important;
+    gap: 12px;
   }
 
-  .save-protocol-grid > *,
-  .level-06-grid > *,
-  .protocol-output-grid > * {
-    min-width: 0;
+  #level-06 .level06-card,
+  #level-06 .level06-card--sequence,
+  #level-06 .level06-card--anchor,
+  #level-06 .level06-card--release,
+  #level-06 .level06-card--log,
+  #level-06 .level06-card--output {
+    grid-column: 1 / -1 !important;
     width: 100%;
     max-width: 100%;
+    min-width: 0;
   }
 
-  .save-protocol-grid pre,
-  .save-protocol-grid code,
-  .level-06-grid pre,
-  .level-06-grid code,
-  .protocol-output-grid pre,
-  .protocol-output-grid code {
-    white-space: pre-wrap;
-    overflow-wrap: anywhere;
-    word-break: break-word;
+  #level-06 .level06-mini-row,
+  #level-06 .level06-step,
+  #level-06 .level06-rule,
+  #level-06 .level06-log__item {
+    grid-template-columns: 1fr !important;
   }
 
-  .save-protocol-grid .cell,
-  .level-06-grid .cell,
-  .protocol-output-grid .cell,
-  .save-protocol-grid .card,
-  .level-06-grid .card,
-  .protocol-output-grid .card {
-    overflow: hidden;
+  #level-06 .level06-step em {
+    grid-column: 1 !important;
+  }
+
+  #level-06 .level06-log__time {
+    white-space: normal;
+  }
+
+  #level-06 .level06-log__actions {
+    justify-content: start;
   }
 }
 
