@@ -4084,6 +4084,51 @@
     .level10-final-line span {
       color: var(--cyan-hot);
     }
+
+    /* LEVEL 10 MOBILE OVERRIDE — keep The Seal cards stacked on phones. */
+    @media (max-width: 760px) {
+      #level-10 .level-10-workspace {
+        padding: 14px;
+      }
+
+      #level-10 .level10-seal-deck {
+        display: grid;
+        grid-template-columns: 1fr !important;
+        gap: 12px;
+      }
+
+      #level-10 .level10-card,
+      #level-10 .level10-card--seal,
+      #level-10 .level10-card--status,
+      #level-10 .level10-card--permission,
+      #level-10 .level10-card--return,
+      #level-10 .level10-card--paths,
+      #level-10 .level10-card--wormhole,
+      #level-10 .level10-card--final {
+        grid-column: 1 / -1 !important;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+      }
+
+      #level-10 .level10-card--final {
+        grid-template-columns: 1fr;
+        align-items: start;
+      }
+
+      #level-10 .level10-seal-line,
+      #level-10 .level10-permission,
+      #level-10 .level10-path,
+      #level-10 .level10-wormhole-line {
+        grid-template-columns: 1fr !important;
+        gap: 0;
+      }
+
+      #level-10 .level10-seal-line strong,
+      #level-10 .level10-seal-line span {
+        padding: 8px 10px;
+      }
+    }
 /* LEVEL 06 MOBILE OVERRIDE — keep Save Protocol cards stacked on phones.
    This must stay late in the CSS because the earlier Level 06 format rescue
    reassigns the final three cards to span 4 columns. */
