@@ -1041,3 +1041,25 @@ textarea { min-height: 96px; resize: vertical; }
 .standing-decree-list strong {
   font-weight: 850;
 }
+
+
+/* V28 — group architectural laws into readable sets */
+.architectural-law-set {
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line-soft);
+}
+
+.architectural-law-set h4 {
+  margin: 0 0 6px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 850;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.architectural-law-set .flat-list {
+  margin-top: 0;
+}
