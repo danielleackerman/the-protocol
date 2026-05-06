@@ -50,3 +50,12 @@ Do not delete the existing font files when applying this patch.
 - Added structured command, key/value, switch, and status row styling.
 - Reasserted the display font for H1 and brand use.
 - Preserved the multi-page architecture while tightening public page copy.
+
+
+## V5 corrective pass
+
+- Brand display typography now uses green for H1, H2, and brand text.
+- Red is reserved for semantic danger/breach states.
+- Added row grammar for remaining collapsed rule/step blocks.
+- Command blocks now separate mono system labels from readable command body text.
+- Level reference sections no longer pair `Explication` with `Explanation` headings.

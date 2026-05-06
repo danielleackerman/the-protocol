@@ -50,3 +50,13 @@
 - Applied the display font to H1 and brand typography.
 - Added structured command sequence rows, switchboard rows, key/value rows, and status rows.
 - Rewrote Overview and Levels copy toward public protocol language instead of project/change language.
+
+
+## v5 corrective pass — semantic color and row hierarchy
+
+- Changed brand/display typography color from red to green for H1, H2, and the header brand.
+- Restricted red to semantic danger/breach usage instead of general hierarchy.
+- Neutralized non-semantic labels, row terms, buttons, borders, and panel rules.
+- Reworked command sequence typography so step labels stay mono while spoken command text uses the readable UI font.
+- Added structured grid rules for remaining collapsed rows in Command Line, Save State, Location, and Render Confirmation.
+- Removed duplicated `Explication` / `Explanation` wording from level reference sections.

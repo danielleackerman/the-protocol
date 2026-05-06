@@ -900,3 +900,383 @@ code,
   .control-row,
   .switchboard-toolbar { grid-template-columns: 1fr !important; }
 }
+
+
+/* V5 correction: semantic color + terminal hierarchy */
+:root {
+  --color-brand: #236b4a;
+  --color-brand-dark: #174735;
+  --color-danger: #9a1e28;
+  --color-warning: #9a6a1e;
+  --color-success: #2f7d52;
+  --color-accent: var(--color-brand);
+  --color-accent-dark: var(--color-brand-dark);
+  --color-accent-soft: rgba(35, 107, 74, 0.08);
+  --panel-line: rgba(31, 31, 29, 0.22);
+}
+
+[data-theme="dark"] {
+  --color-brand: #8fc9a8;
+  --color-brand-dark: #6dad88;
+  --color-danger: #d06b73;
+  --color-warning: #d1a25d;
+  --color-success: #8ac69f;
+  --color-accent: var(--color-brand);
+  --color-accent-dark: var(--color-brand-dark);
+  --color-accent-soft: rgba(143, 201, 168, 0.14);
+  --panel-line: rgba(255, 255, 255, 0.18);
+}
+
+.brand,
+h1,
+h2 {
+  font-family: var(--font-display) !important;
+  font-weight: 400 !important;
+  font-synthesis: none;
+  text-transform: uppercase;
+  color: var(--color-brand) !important;
+}
+
+.brand { letter-spacing: .12em !important; }
+h1 { letter-spacing: .075em !important; }
+h2 {
+  letter-spacing: .018em !important;
+  line-height: .98;
+  font-size: clamp(1.85rem, 4.4vw, 3.55rem);
+}
+
+h3,
+h4,
+.action-card strong,
+.level-card strong,
+.level10-punch,
+.level09-punch,
+.level08-punch,
+.level07-punch,
+.level06-punch,
+.level05-punch,
+.l1-strong {
+  color: var(--color-text) !important;
+}
+
+.kicker,
+.breadcrumb,
+.eyebrow,
+.level-meta,
+.quick-label,
+.console-topline,
+.status-bar,
+.console-instruction,
+.custom-module__label,
+.custom-label {
+  color: var(--color-muted) !important;
+}
+
+.page-hero,
+.daily-run-console,
+.section-card,
+.action-card,
+.level-card,
+.reference-section,
+.legacy-content,
+.custom-content,
+.callout,
+.protocol-console,
+.level-action-panel {
+  border-color: var(--panel-line) !important;
+  border-radius: 10px !important;
+}
+
+.protocol-console--primary {
+  border-top-color: var(--panel-line) !important;
+}
+
+.button,
+.page-actions a,
+.prev-next-nav a,
+.action-link,
+.level-card__link,
+.theme-toggle,
+.mobile-menu-toggle,
+button {
+  color: var(--color-text) !important;
+  border-color: var(--panel-line) !important;
+  background: color-mix(in srgb, var(--color-surface), var(--color-surface-2) 34%) !important;
+}
+
+.button:hover,
+.page-actions a:hover,
+.prev-next-nav a:hover,
+.action-link:hover,
+.level-card__link:hover,
+button:hover,
+.site-nav a:hover,
+.site-nav a.is-active,
+.mobile-nav a.is-active {
+  color: var(--color-brand) !important;
+  border-color: color-mix(in srgb, var(--color-brand), transparent 55%) !important;
+}
+
+.callout {
+  border-color: color-mix(in srgb, var(--color-danger), transparent 55%) !important;
+}
+.callout h2,
+.callout .kicker,
+.callout .page-actions a {
+  color: var(--color-danger) !important;
+}
+
+.action-card__number,
+.level-card__number {
+  color: var(--color-brand) !important;
+}
+
+.action-card strong,
+.level-card strong {
+  letter-spacing: -.03em !important;
+}
+
+.chip-list span::after,
+.quick-switches span::after,
+.switch-row__state {
+  color: var(--color-success) !important;
+}
+
+/* Command grammar: mono labels, readable command body */
+.cli-sequence,
+.l2-sequence {
+  font-family: var(--font-ui) !important;
+  background: color-mix(in srgb, var(--color-surface-2), transparent 60%) !important;
+}
+
+.cli-prompt,
+.cli-command,
+.l2-sequence__step {
+  color: var(--color-brand) !important;
+  font-family: var(--font-mono) !important;
+  font-weight: 900 !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase;
+}
+
+.cli-line,
+.l2-sequence__lines,
+.l2-sequence__lines span {
+  color: var(--color-text) !important;
+  font-family: var(--font-ui) !important;
+  font-weight: 500 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  line-height: 1.45;
+}
+
+.console-instruction,
+.level-action-panel > p,
+.protocol-console > p {
+  color: var(--color-text) !important;
+  font-family: var(--font-ui) !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  font-weight: 500 !important;
+}
+
+.cli-status,
+.l2-sequence__status,
+.level07-output-stack,
+.level08-output-stack,
+.level09-output-stack,
+.level10-output-stack,
+.custom-status-line,
+.command-line-message,
+.level06-message,
+.level07-message,
+.level08-message,
+.level09-message,
+.level10-message {
+  background: color-mix(in srgb, var(--color-success), transparent 88%) !important;
+  color: var(--color-success) !important;
+  border-color: color-mix(in srgb, var(--color-success), transparent 68%) !important;
+  font-family: var(--font-mono) !important;
+}
+
+.kv-term,
+.l1-operator-list strong,
+.l1-capabilities b,
+.level05-mini-row strong,
+.level06-mini-row strong,
+.level07-seat-row strong,
+.level08-mini-row strong,
+.level09-mini-row strong,
+.level10-seal-line strong,
+.level10-permission b,
+.level10-path b,
+.level10-wormhole-line b {
+  color: var(--color-text) !important;
+}
+
+/* Structured rows for the cards that were still collapsing into blob text */
+.level05-rule-stack,
+.level06-step-stack,
+.level06-rule-stack,
+.level07-step-stack,
+.level08-seal-stack,
+.level09-step-stack,
+.level09-failure-stack {
+  display: grid !important;
+  gap: 0 !important;
+  border: 1px solid var(--panel-line);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 12px;
+}
+
+.level05-rule,
+.level06-step,
+.level06-rule,
+.level07-step,
+.level08-seal-row,
+.level09-step,
+.level09-failure {
+  display: grid !important;
+  grid-template-columns: 3rem minmax(9rem, .34fr) minmax(0, 1fr) !important;
+  gap: 12px !important;
+  align-items: start;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--panel-line);
+}
+
+.level05-rule:last-child,
+.level06-step:last-child,
+.level06-rule:last-child,
+.level07-step:last-child,
+.level08-seal-row:last-child,
+.level09-step:last-child,
+.level09-failure:last-child {
+  border-bottom: 0;
+}
+
+.level06-step {
+  grid-template-columns: 3rem minmax(0, 1fr) !important;
+}
+
+.level06-step__copy {
+  display: grid !important;
+  gap: 3px;
+}
+
+.level05-rule b,
+.level06-step b,
+.level06-rule b,
+.level07-step b,
+.level08-seal-row b,
+.level09-step b {
+  color: var(--color-brand) !important;
+  font-family: var(--font-mono) !important;
+  font-weight: 900 !important;
+}
+
+.level05-rule strong,
+.level06-step strong,
+.level06-rule strong,
+.level07-step strong,
+.level09-step strong,
+.level09-failure strong {
+  color: var(--color-text) !important;
+  font-weight: 900 !important;
+}
+
+.level05-rule span,
+.level06-step span,
+.level06-rule span,
+.level07-step span,
+.level08-seal-row span,
+.level09-step span,
+.level09-failure span,
+.level06-step em,
+.level07-step em,
+.level09-step em {
+  color: var(--color-text) !important;
+  font-family: var(--font-ui) !important;
+  font-style: normal !important;
+  letter-spacing: 0 !important;
+}
+
+.level06-step em,
+.level07-step em,
+.level09-step em {
+  color: var(--color-muted) !important;
+  font-size: .92rem;
+}
+
+.level07-step em,
+.level09-step em {
+  grid-column: 3 / -1;
+}
+
+.level05-use-grid,
+.command-chip-row,
+.level08-template-row,
+.level10-button-row {
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: 8px !important;
+  margin-top: 10px;
+}
+
+.level05-use-grid span {
+  display: inline-flex;
+  border: 1px solid var(--panel-line);
+  border-radius: 999px;
+  padding: 5px 9px;
+  font-family: var(--font-mono);
+  color: var(--color-muted);
+}
+
+.command-line-shell,
+.level06-anchor-grid {
+  display: grid !important;
+  grid-template-columns: auto minmax(0, 1fr) auto !important;
+  gap: 8px !important;
+  align-items: center !important;
+}
+
+.level06-anchor-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+.level06-anchor-grid label {
+  display: grid !important;
+  gap: 4px;
+}
+.level06-anchor-grid label span {
+  font-family: var(--font-mono);
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-size: .72rem;
+}
+
+.level05-card--authority,
+.level06-card--release,
+.level07-card--principle,
+.level09-card--failure {
+  border-color: var(--panel-line) !important;
+}
+
+@media (max-width: 720px) {
+  .level05-rule,
+  .level06-step,
+  .level06-rule,
+  .level07-step,
+  .level08-seal-row,
+  .level09-step,
+  .level09-failure,
+  .cli-row,
+  .l2-sequence__row {
+    grid-template-columns: 1fr !important;
+    gap: 4px !important;
+  }
+  .level07-step em,
+  .level09-step em { grid-column: auto; }
+  .command-line-shell,
+  .level06-anchor-grid { grid-template-columns: 1fr !important; }
+}
