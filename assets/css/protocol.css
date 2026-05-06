@@ -1063,3 +1063,20 @@ textarea { min-height: 96px; resize: vertical; }
 .architectural-law-set .flat-list {
   margin-top: 0;
 }
+
+/* V29 — outlined page H1 treatment */
+@supports (-webkit-text-stroke: 1px black) {
+  h1 {
+    color: color-mix(in srgb, var(--text), transparent 88%);
+    -webkit-text-stroke: 1.15px var(--text);
+    text-shadow: none;
+    letter-spacing: -0.045em;
+  }
+
+  @media (max-width: 640px) {
+    h1 {
+      -webkit-text-stroke-width: 1px;
+      color: color-mix(in srgb, var(--text), transparent 92%);
+    }
+  }
+}
