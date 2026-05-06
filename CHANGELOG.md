@@ -145,3 +145,9 @@
 - Removed the redundant `Chambers` heading from the Levels page.
 - Made each level title/link text clickable with no underline treatment.
 - Added a stronger graphite action treatment to the `Open` buttons.
+
+## V14 — Overview / Gateway Content Restore (2026-05-05)
+
+- Added the Reality Control Panel section to the Overview page in the flat utility design language.
+- Restored the Level 01 gate-level instruction: “Gate level: complete the install by speaking the commands out loud.”
+- Restored the Level 01 Render Confirmations section as flat rows, without bringing back nested cards.

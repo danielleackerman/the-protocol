@@ -123,3 +123,17 @@ Custom now acts as a configuration workbench for switches, defaults, commands, l
 ## V13 corrective pass - Levels page polish
 
 The Levels page now treats the level label itself as the primary link to its page, while the `Open` control receives a stronger action color. The extra `Chambers` subheading was removed to reduce redundant hierarchy.
+
+## V14 — Overview / Gateway Content Restore (2026-05-05)
+
+Scope:
+- `overview.html`
+- `levels/level-01-gateway.html`
+
+Design rule:
+- Restore missing content as flat utility reference sections.
+- Do not reintroduce nested cards or the old visual-heavy one-page styling.
+
+Content restored:
+- Overview: Reality Control Panel, Switches, Commands, Codex, Clearance.
+- Gateway: gate-level spoken install instruction and Render Confirmations.
