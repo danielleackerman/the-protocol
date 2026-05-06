@@ -1009,3 +1009,16 @@ textarea { min-height: 96px; resize: vertical; }
     font-size: 0.64rem;
   }
 }
+
+/* V24 — soften Command Line reference table dividers */
+.reference-card .reference-table {
+  border-top-color: var(--line-soft) !important;
+}
+
+.reference-card .reference-row {
+  border-bottom-color: var(--line-soft) !important;
+}
+
+.reference-card > h3 {
+  border-top-color: var(--line-soft) !important;
+}
