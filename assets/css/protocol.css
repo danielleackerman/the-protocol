@@ -1105,3 +1105,8 @@ textarea { min-height: 96px; resize: vertical; }
 .reference-card .flat-row {
   border-color: var(--line-soft) !important;
 }
+
+/* V32 — remove redundant breadcrumbs on level pages */
+.level-page .breadcrumb {
+  display: none;
+}
