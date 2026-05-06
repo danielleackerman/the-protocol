@@ -1,0 +1,1430 @@
+@font-face {
+  font-family: "Space Age";
+  src:
+    url("./font/space age.otf") format("opentype"),
+    url("./font/space age.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Signal Mode typography system */
+:root {
+  --font-display: "Space Age", "Michroma", "Orbitron", "Eurostile", "Bank Gothic", system-ui, sans-serif;
+  --font-heading: "Michroma", "Orbitron", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "Space Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+/*
+  Signal Mode Lab — Dark Skin + Shared Experimental Structure
+  Scope fence: every selector is rooted in html[data-skin="signal"].
+  Production Utility files are not imported or modified here.
+*/
+
+html[data-skin="signal"] {
+  --font-display: "Space Age", "Michroma", "Orbitron", "Eurostile", "Bank Gothic", system-ui, sans-serif;
+  --font-mono: "Space Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --signal-radius: 18px;
+  --signal-radius-sm: 12px;
+  --signal-page: min(1120px, calc(100vw - 28px));
+  --signal-header-height: 76px;
+  scroll-behavior: smooth;
+  background: var(--signal-void);
+}
+
+html[data-skin="signal"] *,
+html[data-skin="signal"] *::before,
+html[data-skin="signal"] *::after {
+  box-sizing: border-box;
+}
+
+html[data-skin="signal"] body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--signal-text);
+  font-family: var(--font-sans);
+  line-height: 1.55;
+  overflow-x: hidden;
+  background: var(--signal-page-bg);
+}
+
+html[data-skin="signal"] body::before,
+html[data-skin="signal"] body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+html[data-skin="signal"] body::before {
+  z-index: -2;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, .028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, .022) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255, 255, 255, .14) 1px, transparent 1px);
+  background-size: 72px 72px, 72px 72px, 210px 210px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, .86), rgba(0, 0, 0, .16) 74%, transparent);
+  opacity: var(--signal-grid-opacity);
+}
+
+html[data-skin="signal"] body::after {
+  z-index: -1;
+  background:
+    linear-gradient(to bottom, transparent 0%, rgba(255, 255, 255, .035) 50%, transparent 52%),
+    linear-gradient(90deg, rgba(255, 49, 93, .08), transparent 16%, transparent 76%, rgba(104, 215, 210, .08));
+  background-size: 100% 5px, 100% 100%;
+  mix-blend-mode: screen;
+  opacity: var(--signal-scan-opacity);
+}
+
+html[data-skin="signal"] a {
+  color: inherit;
+  text-decoration: none;
+}
+
+html[data-skin="signal"] button,
+html[data-skin="signal"] input,
+html[data-skin="signal"] select {
+  font: inherit;
+}
+
+html[data-skin="signal"] ::selection {
+  background: rgba(104, 215, 210, .28);
+  color: var(--signal-bone);
+}
+
+html[data-skin="signal"] .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  border-bottom: 1px solid var(--signal-header-border);
+  background: var(--signal-header-bg);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+html[data-skin="signal"] .site-header__inner {
+  width: var(--signal-page);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(150px, 250px) 1fr auto;
+  gap: 14px;
+  align-items: center;
+  padding: 10px 0;
+}
+
+html[data-skin="signal"] .brand {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+html[data-skin="signal"] .brand__title,
+html[data-skin="signal"] .brand {
+  font-family: var(--font-display);
+  font-size: clamp(.82rem, 1.5vw, 1.02rem);
+  letter-spacing: .22em;
+  line-height: 1.05;
+  text-transform: uppercase;
+  color: var(--signal-brand);
+  white-space: nowrap;
+}
+
+html[data-skin="signal"] .brand__sub {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: .62rem;
+  font-weight: 800;
+  letter-spacing: .13em;
+  color: var(--signal-cyan-hot);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+html[data-skin="signal"] .site-nav {
+  display: flex;
+  gap: 7px;
+  overflow-x: auto;
+  padding: 3px 0;
+  scrollbar-width: none;
+}
+
+html[data-skin="signal"] .site-nav::-webkit-scrollbar {
+  display: none;
+}
+
+html[data-skin="signal"] .site-nav a,
+html[data-skin="signal"] .theme-toggle,
+html[data-skin="signal"] .mobile-menu-toggle {
+  min-height: 34px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: var(--signal-nav-bg);
+  color: var(--signal-nav-text);
+  font-family: var(--font-mono);
+  font-size: .71rem;
+  font-weight: 800;
+  letter-spacing: .09em;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: border-color .18s ease, background .18s ease, color .18s ease, box-shadow .18s ease, transform .18s ease;
+}
+
+html[data-skin="signal"] .site-nav a {
+  display: inline-flex;
+  align-items: center;
+  padding: 9px 13px;
+}
+
+html[data-skin="signal"] .site-nav a:hover,
+html[data-skin="signal"] .site-nav a:focus-visible,
+html[data-skin="signal"] .site-nav a.is-active,
+html[data-skin="signal"] .theme-toggle:hover,
+html[data-skin="signal"] .theme-toggle:focus-visible,
+html[data-skin="signal"] .theme-toggle.is-active,
+html[data-skin="signal"] .mobile-menu-toggle:hover,
+html[data-skin="signal"] .mobile-menu-toggle:focus-visible {
+  border-color: var(--signal-border-active);
+  background: var(--signal-nav-active-bg);
+  color: var(--signal-nav-active-text);
+  box-shadow: var(--signal-small-glow);
+}
+
+html[data-skin="signal"] .header-actions,
+html[data-skin="signal"] .signal-lab-actions {
+  display: flex;
+  gap: 7px;
+  justify-content: end;
+  align-items: center;
+}
+
+html[data-skin="signal"] .theme-toggle,
+html[data-skin="signal"] .mobile-menu-toggle {
+  cursor: pointer;
+  padding: 0 11px;
+}
+
+html[data-skin="signal"] .mobile-menu-toggle {
+  display: none;
+}
+
+html[data-skin="signal"] .mobile-nav {
+  display: none;
+  width: var(--signal-page);
+  margin: 0 auto;
+  padding: 0 0 12px;
+  gap: 7px;
+  overflow-x: auto;
+}
+
+html[data-skin="signal"] .mobile-nav a {
+  flex: 0 0 auto;
+  min-height: 34px;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  background: var(--signal-nav-bg);
+  color: var(--signal-nav-text);
+  padding: 9px 13px;
+  font-family: var(--font-mono);
+  font-size: .71rem;
+  font-weight: 800;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+html[data-skin="signal"] .mobile-nav a.is-active,
+html[data-skin="signal"] .mobile-nav a:hover,
+html[data-skin="signal"] .mobile-nav a:focus-visible {
+  border-color: var(--signal-border-active);
+  background: var(--signal-nav-active-bg);
+  color: var(--signal-nav-active-text);
+}
+
+html[data-skin="signal"] .shell,
+html[data-skin="signal"] .page-shell {
+  width: var(--signal-page);
+  margin: 0 auto;
+  padding: clamp(20px, 4vw, 42px) 0 56px;
+  display: grid;
+  gap: 26px;
+}
+
+html[data-skin="signal"] .breadcrumb {
+  margin: 0;
+  color: var(--signal-muted);
+  font-family: var(--font-mono);
+  font-size: .74rem;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+html[data-skin="signal"] .identity,
+html[data-skin="signal"] .panel,
+html[data-skin="signal"] .reference-section {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--signal-border-default);
+  border-radius: var(--signal-radius);
+  background: var(--signal-panel-bg);
+  box-shadow: var(--signal-panel-shadow);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+html[data-skin="signal"] .identity,
+html[data-skin="signal"] .panel {
+  padding: clamp(22px, 4vw, 38px);
+}
+
+html[data-skin="signal"] .reference-section {
+  padding: clamp(22px, 4vw, 36px);
+}
+
+html[data-skin="signal"] .identity::before,
+html[data-skin="signal"] .panel::before,
+html[data-skin="signal"] .reference-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: var(--signal-panel-atmosphere);
+  opacity: var(--signal-panel-atmosphere-opacity);
+}
+
+html[data-skin="signal"] .identity > *,
+html[data-skin="signal"] .panel > *,
+html[data-skin="signal"] .reference-section > * {
+  position: relative;
+  z-index: 1;
+}
+
+html[data-skin="signal"] .signal-hero {
+  min-height: clamp(430px, 68vh, 680px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-color: var(--signal-hero-border);
+  background: var(--signal-hero-bg);
+  box-shadow: var(--signal-hero-shadow);
+}
+
+html[data-skin="signal"] .signal-hero::before {
+  background:
+    radial-gradient(circle at 9% 22%, rgba(255, 49, 93, .38), transparent 15rem),
+    radial-gradient(circle at 61% 45%, rgba(82, 240, 255, .34), transparent 23rem),
+    linear-gradient(135deg, rgba(255, 255, 255, .06), transparent 45%);
+  opacity: .95;
+}
+
+html[data-skin="signal"] .kicker,
+html[data-skin="signal"] .panel-kicker,
+html[data-skin="signal"] .status-label,
+html[data-skin="signal"] label > span {
+  margin: 0 0 8px;
+  color: var(--signal-kicker);
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  font-weight: 900;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+html[data-skin="signal"] .panel-kicker.is-danger,
+html[data-skin="signal"] .is-danger {
+  color: var(--signal-danger);
+}
+
+html[data-skin="signal"] h1,
+html[data-skin="signal"] h2,
+html[data-skin="signal"] h3,
+html[data-skin="signal"] p {
+  margin-top: 0;
+}
+
+html[data-skin="signal"] h1 {
+  max-width: 820px;
+  margin-bottom: 18px;
+  color: var(--signal-h1-fill);
+  font-family: var(--font-display);
+  font-size: clamp(3.55rem, 13vw, 8.9rem);
+  font-weight: 400;
+  letter-spacing: .045em;
+  line-height: .92;
+  text-transform: uppercase;
+  -webkit-text-stroke: 1.15px var(--signal-h1-stroke);
+  text-shadow: var(--signal-h1-shadow);
+}
+
+html[data-skin="signal"] h2 {
+  margin-bottom: 18px;
+  color: var(--signal-heading);
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 4.2vw, 2.52rem);
+  font-weight: 400;
+  letter-spacing: .105em;
+  line-height: 1.08;
+  text-transform: uppercase;
+}
+
+html[data-skin="signal"] h3 {
+  margin-bottom: 10px;
+  color: var(--signal-heading);
+  font-family: var(--font-mono);
+  font-size: .91rem;
+  font-weight: 900;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+}
+
+html[data-skin="signal"] .lede {
+  max-width: 720px;
+  margin-bottom: 32px;
+  color: var(--signal-lede);
+  font-family: var(--font-mono);
+  font-size: clamp(.94rem, 2.2vw, 1.2rem);
+  font-weight: 800;
+  letter-spacing: .075em;
+  line-height: 1.55;
+  text-transform: uppercase;
+}
+
+html[data-skin="signal"] p,
+html[data-skin="signal"] .support-copy,
+html[data-skin="signal"] .reference-value,
+html[data-skin="signal"] .flat-row span {
+  color: var(--signal-copy);
+}
+
+html[data-skin="signal"] .controls,
+html[data-skin="signal"] .page-actions,
+html[data-skin="signal"] .template-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+html[data-skin="signal"] .button,
+html[data-skin="signal"] .page-actions a,
+html[data-skin="signal"] .command-chip,
+html[data-skin="signal"] .switch-add-row button,
+html[data-skin="signal"] .command-input-row button {
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--signal-button-border);
+  border-radius: 11px;
+  background: var(--signal-button-bg);
+  color: var(--signal-button-text);
+  padding: 11px 17px;
+  font-family: var(--font-mono);
+  font-size: .75rem;
+  font-weight: 900;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform .18s ease, border-color .18s ease, background .18s ease, box-shadow .18s ease;
+}
+
+html[data-skin="signal"] .button:hover,
+html[data-skin="signal"] .button:focus-visible,
+html[data-skin="signal"] .page-actions a:hover,
+html[data-skin="signal"] .page-actions a:focus-visible,
+html[data-skin="signal"] .command-chip:hover,
+html[data-skin="signal"] .command-chip:focus-visible,
+html[data-skin="signal"] .switch-add-row button:hover,
+html[data-skin="signal"] .switch-add-row button:focus-visible,
+html[data-skin="signal"] .command-input-row button:hover,
+html[data-skin="signal"] .command-input-row button:focus-visible {
+  border-color: var(--signal-border-active);
+  box-shadow: var(--signal-small-glow);
+  transform: translateY(-1px);
+}
+
+html[data-skin="signal"] .button--hot,
+html[data-skin="signal"] .danger-card .page-actions a,
+html[data-skin="signal"] .command-input-row button,
+html[data-skin="signal"] .switch-add-row button {
+  border-color: var(--signal-border-alert);
+  background: var(--signal-hot-button-bg);
+}
+
+html[data-skin="signal"] .sequence,
+html[data-skin="signal"] .state-table,
+html[data-skin="signal"] .reference-table,
+html[data-skin="signal"] .flat-list {
+  display: grid;
+  gap: 10px;
+}
+
+html[data-skin="signal"] .seq-row,
+html[data-skin="signal"] .state-row,
+html[data-skin="signal"] .reference-row,
+html[data-skin="signal"] .flat-row,
+html[data-skin="signal"] .status-row {
+  display: grid;
+  grid-template-columns: 54px minmax(96px, 160px) minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+  min-height: 46px;
+  padding: 12px 14px;
+  border: 1px solid var(--signal-inner-border);
+  border-radius: var(--signal-radius-sm);
+  background: var(--signal-inner-bg);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .035);
+}
+
+html[data-skin="signal"] .state-row,
+html[data-skin="signal"] .reference-row,
+html[data-skin="signal"] .flat-row,
+html[data-skin="signal"] .status-row {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+}
+
+html[data-skin="signal"] .seq-index,
+html[data-skin="signal"] .seq-label,
+html[data-skin="signal"] .state-value,
+html[data-skin="signal"] .status-value,
+html[data-skin="signal"] .reference-key,
+html[data-skin="signal"] .flat-row strong,
+html[data-skin="signal"] code,
+html[data-skin="signal"] .utility-link {
+  font-family: var(--font-mono);
+  font-size: .8rem;
+  font-weight: 900;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+html[data-skin="signal"] .seq-index {
+  color: var(--signal-cyan-hot);
+  text-shadow: 0 0 10px rgba(82, 240, 255, .24);
+}
+
+html[data-skin="signal"] .seq-index--blank {
+  opacity: .22;
+}
+
+html[data-skin="signal"] .seq-label,
+html[data-skin="signal"] .status-label,
+html[data-skin="signal"] .reference-key,
+html[data-skin="signal"] .flat-row strong {
+  color: var(--signal-label);
+}
+
+html[data-skin="signal"] .seq-body,
+html[data-skin="signal"] .state-label,
+html[data-skin="signal"] .reference-value {
+  color: var(--signal-copy-strong);
+}
+
+html[data-skin="signal"] .seq-body {
+  display: grid;
+  gap: 2px;
+}
+
+html[data-skin="signal"] .mini-state-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+html[data-skin="signal"] .mini-state,
+html[data-skin="signal"] .inline-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: max-content;
+  max-width: 100%;
+  border: 1px solid var(--signal-inner-border);
+  border-radius: 999px;
+  background: var(--signal-chip-bg);
+  color: var(--signal-copy-strong);
+  padding: 6px 10px;
+  font-family: var(--font-mono);
+  font-size: .73rem;
+  font-weight: 800;
+  letter-spacing: .05em;
+}
+
+html[data-skin="signal"] .state-on,
+html[data-skin="signal"] .status-active,
+html[data-skin="signal"] .status-ready,
+html[data-skin="signal"] .status-complete,
+html[data-skin="signal"] .utility-link {
+  color: var(--signal-cyan-hot);
+}
+
+html[data-skin="signal"] .status-denied,
+html[data-skin="signal"] .status-breach,
+html[data-skin="signal"] .status-firewall {
+  color: var(--signal-danger);
+}
+
+html[data-skin="signal"] code {
+  display: inline-flex;
+  width: fit-content;
+  max-width: 100%;
+  border: 1px solid var(--signal-inner-border);
+  border-radius: 9px;
+  background: var(--signal-code-bg);
+  color: var(--signal-code-text);
+  padding: .22rem .48rem;
+  white-space: normal;
+}
+
+html[data-skin="signal"] .status-strip {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--signal-divider);
+}
+
+html[data-skin="signal"] .layout-two,
+html[data-skin="signal"] .signal-panel-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 18px;
+}
+
+html[data-skin="signal"] .danger-card {
+  border-color: var(--signal-border-alert);
+}
+
+html[data-skin="signal"] .navigation-card {
+  border-color: var(--signal-border-default);
+}
+
+html[data-skin="signal"] .ref-block,
+html[data-skin="signal"] .signal-form-block {
+  padding: 18px;
+  border: 1px solid var(--signal-inner-border);
+  border-radius: var(--signal-radius-sm);
+  background: var(--signal-inner-bg);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .04);
+}
+
+html[data-skin="signal"] .ref-block + .ref-block {
+  margin-top: 14px;
+}
+
+html[data-skin="signal"] .flat-row {
+  padding: 14px;
+}
+
+html[data-skin="signal"] .state-label--link:hover,
+html[data-skin="signal"] .utility-link:hover,
+html[data-skin="signal"] .plain-link:hover {
+  color: var(--signal-cyan-hot);
+  text-shadow: 0 0 10px rgba(82, 240, 255, .22);
+}
+
+html[data-skin="signal"] .switch-add-row,
+html[data-skin="signal"] .command-input-row,
+html[data-skin="signal"] .bank-filter-grid {
+  display: grid;
+  grid-template-columns: minmax(100px, 150px) minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: end;
+  margin-top: 14px;
+}
+
+html[data-skin="signal"] .bank-filter-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+}
+
+html[data-skin="signal"] label {
+  display: grid;
+  gap: 8px;
+}
+
+html[data-skin="signal"] input,
+html[data-skin="signal"] select {
+  width: 100%;
+  min-height: 42px;
+  border: 1px solid var(--signal-input-border);
+  border-radius: 10px;
+  background: var(--signal-input-bg);
+  color: var(--signal-input-text);
+  padding: 10px 12px;
+  outline: none;
+  font-family: var(--font-mono);
+  font-size: .82rem;
+  font-weight: 800;
+  letter-spacing: .04em;
+}
+
+html[data-skin="signal"] input::placeholder {
+  color: var(--signal-placeholder);
+}
+
+html[data-skin="signal"] input:focus,
+html[data-skin="signal"] select:focus {
+  border-color: var(--signal-border-active);
+  box-shadow: 0 0 0 2px rgba(104, 215, 210, .12);
+}
+
+html[data-skin="signal"] .inline-chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 14px;
+}
+
+html[data-skin="signal"] .template-list {
+  margin-top: 12px;
+}
+
+html[data-skin="signal"] .footer {
+  width: var(--signal-page);
+  margin: 0 auto;
+  padding: 0 0 34px;
+  color: var(--signal-muted);
+  font-family: var(--font-mono);
+  font-size: .68rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+html[data-skin="signal"][data-theme="dark"] {
+  --signal-void: #030609;
+  --signal-black-blue: #061014;
+  --signal-night: #0a1720;
+  --signal-deep-teal: #0f3d44;
+  --signal-teal: #1f747b;
+  --signal-cyan-haze: #68d7d2;
+  --signal-cyan-hot: #52f0ff;
+  --signal-danger: #ff315d;
+  --signal-magenta: #ff4d87;
+  --signal-bone: #f3f1ea;
+  --signal-text: #f3f1ea;
+  --signal-brand: #f3f1ea;
+  --signal-heading: #f3f1ea;
+  --signal-muted: rgba(243, 241, 234, .66);
+  --signal-copy: rgba(243, 241, 234, .78);
+  --signal-copy-strong: rgba(243, 241, 234, .9);
+  --signal-label: rgba(104, 215, 210, .88);
+  --signal-kicker: #52f0ff;
+  --signal-lede: rgba(243, 241, 234, .92);
+  --signal-page-bg:
+    radial-gradient(circle at 12% 0%, rgba(255, 49, 93, .18), transparent 26rem),
+    radial-gradient(circle at 84% 10%, rgba(104, 215, 210, .18), transparent 30rem),
+    linear-gradient(180deg, #071116 0%, #04080b 58%, #020406 100%);
+  --signal-grid-opacity: .34;
+  --signal-scan-opacity: .28;
+  --signal-header-bg: rgba(3, 6, 9, .76);
+  --signal-header-border: rgba(210, 244, 246, .12);
+  --signal-nav-bg: rgba(255, 255, 255, .025);
+  --signal-nav-text: rgba(243, 241, 234, .86);
+  --signal-nav-active-bg: rgba(104, 215, 210, .07);
+  --signal-nav-active-text: #f3f1ea;
+  --signal-border-default: rgba(210, 244, 246, .16);
+  --signal-border-active: rgba(104, 215, 210, .42);
+  --signal-border-alert: rgba(255, 49, 93, .44);
+  --signal-hero-border: rgba(104, 215, 210, .34);
+  --signal-panel-bg: rgba(5, 14, 18, .72);
+  --signal-hero-bg: rgba(5, 14, 18, .72);
+  --signal-panel-atmosphere:
+    radial-gradient(circle at 0% 0%, rgba(255, 49, 93, .10), transparent 18rem),
+    radial-gradient(circle at 100% 0%, rgba(82, 240, 255, .10), transparent 20rem);
+  --signal-panel-atmosphere-opacity: .9;
+  --signal-panel-shadow: 0 18px 56px rgba(0, 0, 0, .32);
+  --signal-hero-shadow: 0 24px 80px rgba(0, 0, 0, .58);
+  --signal-small-glow: 0 0 0 1px rgba(104, 215, 210, .10), 0 0 18px rgba(82, 240, 255, .10);
+  --signal-h1-fill: rgba(82, 240, 255, .08);
+  --signal-h1-stroke: rgba(243, 241, 234, .9);
+  --signal-h1-shadow: 0 0 34px rgba(104, 215, 210, .18), 0 0 3px rgba(255, 255, 255, .22);
+  --signal-inner-bg: rgba(1, 5, 8, .38);
+  --signal-inner-border: rgba(210, 244, 246, .14);
+  --signal-divider: rgba(210, 244, 246, .14);
+  --signal-chip-bg: rgba(104, 215, 210, .06);
+  --signal-code-bg: rgba(0, 0, 0, .25);
+  --signal-code-text: #f3f1ea;
+  --signal-button-border: rgba(104, 215, 210, .42);
+  --signal-button-bg: rgba(104, 215, 210, .08);
+  --signal-hot-button-bg: rgba(255, 49, 93, .07);
+  --signal-button-text: #f3f1ea;
+  --signal-input-border: rgba(104, 215, 210, .22);
+  --signal-input-bg: rgba(0, 5, 8, .44);
+  --signal-input-text: #f3f1ea;
+  --signal-placeholder: rgba(243, 241, 234, .42);
+}
+
+@media (max-width: 860px) {
+  html[data-skin="signal"] .site-header__inner {
+    grid-template-columns: minmax(145px, 1fr) auto;
+  }
+
+  html[data-skin="signal"] .site-nav {
+    display: none;
+  }
+
+  html[data-skin="signal"] .mobile-menu-toggle {
+    display: inline-flex;
+  }
+
+  html[data-skin="signal"] .mobile-nav.is-open {
+    display: flex;
+  }
+
+  html[data-skin="signal"] .layout-two,
+  html[data-skin="signal"] .signal-panel-grid,
+  html[data-skin="signal"] .bank-filter-grid {
+    grid-template-columns: 1fr;
+  }
+
+  html[data-skin="signal"] .seq-row {
+    grid-template-columns: 44px minmax(0, 1fr);
+  }
+
+  html[data-skin="signal"] .seq-body {
+    grid-column: 2;
+  }
+
+  html[data-skin="signal"] .switch-add-row,
+  html[data-skin="signal"] .command-input-row {
+    grid-template-columns: 1fr;
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 560px) {
+  html[data-skin="signal"] {
+    --signal-page: min(100vw - 20px, 1120px);
+  }
+
+  html[data-skin="signal"] .site-header__inner {
+    gap: 8px;
+  }
+
+  html[data-skin="signal"] .signal-lab-actions {
+    gap: 5px;
+  }
+
+  html[data-skin="signal"] .theme-toggle,
+  html[data-skin="signal"] .mobile-menu-toggle {
+    min-height: 31px;
+    padding: 0 8px;
+    font-size: .64rem;
+  }
+
+  html[data-skin="signal"] .brand__title,
+  html[data-skin="signal"] .brand {
+    font-size: .76rem;
+    letter-spacing: .19em;
+  }
+
+  html[data-skin="signal"] .brand__sub {
+    font-size: .56rem;
+  }
+
+  html[data-skin="signal"] .shell,
+  html[data-skin="signal"] .page-shell {
+    padding-top: 20px;
+    gap: 22px;
+  }
+
+  html[data-skin="signal"] .identity,
+  html[data-skin="signal"] .panel,
+  html[data-skin="signal"] .reference-section {
+    padding: 20px;
+    border-radius: 15px;
+  }
+
+  html[data-skin="signal"] .signal-hero {
+    min-height: 520px;
+  }
+
+  html[data-skin="signal"] h1 {
+    font-size: clamp(3.2rem, 16vw, 5.4rem);
+    line-height: 1.05;
+    overflow-wrap: anywhere;
+  }
+
+  html[data-skin="signal"] h2 {
+    font-size: clamp(1.2rem, 7vw, 2rem);
+  }
+
+  html[data-skin="signal"] .controls,
+  html[data-skin="signal"] .page-actions,
+  html[data-skin="signal"] .template-list {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  html[data-skin="signal"] .button,
+  html[data-skin="signal"] .page-actions a,
+  html[data-skin="signal"] .command-chip {
+    width: 100%;
+  }
+
+  html[data-skin="signal"] .state-row,
+  html[data-skin="signal"] .reference-row,
+  html[data-skin="signal"] .flat-row,
+  html[data-skin="signal"] .status-row {
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   V9.37 VISUAL EXTRACTION PASS
+   Source mapped from uploaded v9.37 scaffold visual system onto Utility-derived
+   Signal lab selectors. This remains experimental and scoped to data-skin=signal.
+   -------------------------------------------------------------------------- */
+
+html[data-skin="signal"] {
+  --signal-radius: 14px;
+  --signal-radius-sm: 10px;
+  --signal-page: min(1220px, calc(100vw - 28px));
+}
+
+html[data-skin="signal"][data-theme="dark"] {
+  --signal-void: #030609;
+  --signal-black-blue: #061014;
+  --signal-night: #0a1720;
+  --signal-deep-teal: #0f3d44;
+  --signal-teal: #1f747b;
+  --signal-cyan-haze: #68d7d2;
+  --signal-cyan-hot: #52f0ff;
+  --signal-danger: #ff315d;
+  --signal-magenta: #ff4d87;
+  --signal-bone: #f3f1ea;
+  --signal-text: #f3f1ea;
+  --signal-brand: #f3f1ea;
+  --signal-heading: #f3f1ea;
+  --signal-muted: rgba(243, 241, 234, .66);
+  --signal-copy: rgba(243, 241, 234, .82);
+  --signal-copy-strong: rgba(243, 241, 234, .92);
+  --signal-label: rgba(104, 215, 210, .92);
+  --signal-kicker: #52f0ff;
+  --signal-lede: rgba(243, 241, 234, .92);
+
+  /* v9.37 extracted body field: black-blue base, red flare, cyan atmosphere. */
+  --signal-page-bg:
+    radial-gradient(circle at 12% -4%, rgba(255, 49, 93, .30), transparent 28rem),
+    radial-gradient(circle at 86% 8%, rgba(82, 240, 255, .24), transparent 34rem),
+    radial-gradient(circle at 48% 38%, rgba(31, 116, 123, .22), transparent 34rem),
+    linear-gradient(180deg, #0b2530 0%, #0d3940 34%, #092129 64%, #050b10 100%);
+  --signal-grid-opacity: .42;
+  --signal-scan-opacity: .18;
+
+  --signal-header-bg: rgba(5, 16, 21, .66);
+  --signal-header-border: rgba(104, 215, 210, .18);
+  --signal-nav-bg: rgba(255, 255, 255, .035);
+  --signal-nav-text: rgba(243, 241, 234, .86);
+  --signal-nav-active-bg: rgba(104, 215, 210, .085);
+  --signal-nav-active-text: #f3f1ea;
+
+  --signal-border-default: rgba(210, 244, 246, .16);
+  --signal-border-active: rgba(104, 215, 210, .42);
+  --signal-border-alert: rgba(255, 49, 93, .44);
+  --signal-hero-border: rgba(104, 215, 210, .26);
+  --signal-panel-bg:
+    linear-gradient(145deg, rgba(255,255,255,.060), rgba(255,255,255,.018)),
+    rgba(3, 8, 13, .66);
+  --signal-hero-bg: #071116;
+  --signal-panel-atmosphere:
+    radial-gradient(circle at 0% 0%, rgba(82, 240, 255, .12), transparent 14rem),
+    radial-gradient(circle at 100% 0%, rgba(255, 49, 93, .13), transparent 15rem),
+    linear-gradient(90deg, rgba(82, 240, 255, .045), transparent 38%, rgba(255, 49, 93, .040));
+  --signal-panel-atmosphere-opacity: .92;
+  --signal-panel-shadow:
+    0 18px 46px rgba(0,0,0,.30),
+    inset 0 1px 0 rgba(243,241,234,.065);
+  --signal-hero-shadow: 0 24px 80px rgba(0, 0, 0, .58);
+  --signal-small-glow:
+    0 0 0 1px rgba(82,240,255,.15),
+    0 0 34px rgba(82,240,255,.12),
+    0 12px 26px rgba(0,0,0,.25);
+
+  --signal-h1-fill: #f3f1ea;
+  --signal-h1-stroke: transparent;
+  --signal-h1-shadow:
+    0 0 34px rgba(104,215,210,.18),
+    0 0 3px rgba(255,255,255,.26),
+    0 1px 18px rgba(0,0,0,.46);
+
+  --signal-inner-bg:
+    linear-gradient(145deg, rgba(255,255,255,.055), rgba(255,255,255,.015)),
+    rgba(0, 5, 8, .38);
+  --signal-inner-border: rgba(104, 215, 210, .18);
+  --signal-divider: rgba(210, 244, 246, .14);
+  --signal-chip-bg: rgba(104, 215, 210, .07);
+  --signal-code-bg: rgba(0, 5, 8, .54);
+  --signal-code-text: #f3f1ea;
+  --signal-button-border: rgba(104, 215, 210, .42);
+  --signal-button-bg:
+    radial-gradient(circle at 20% 0%, rgba(82,240,255,.18), transparent 4.5rem),
+    rgba(5,18,24,.58);
+  --signal-hot-button-bg:
+    radial-gradient(circle at 20% 0%, rgba(255,49,93,.20), transparent 5rem),
+    rgba(255,49,93,.075);
+  --signal-button-text: #f3f1ea;
+  --signal-input-border: rgba(104, 215, 210, .28);
+  --signal-input-bg: linear-gradient(180deg, rgba(7,20,27,.90), rgba(3,9,14,.90));
+  --signal-input-text: #f3f1ea;
+  --signal-placeholder: rgba(243, 241, 234, .50);
+}
+
+html[data-skin="signal"] body::before {
+  background-image:
+    linear-gradient(rgba(104, 215, 210, .070) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 49, 93, .052) 1px, transparent 1px),
+    radial-gradient(circle, rgba(82,240,255,.34) 1px, transparent 1.4px),
+    radial-gradient(circle, rgba(255,49,93,.30) 1px, transparent 1.4px),
+    radial-gradient(circle, rgba(243,241,234,.20) 1px, transparent 1.5px);
+  background-size: 60px 60px, 60px 60px, 134px 134px, 188px 188px, 210px 210px;
+  background-position: 0 0, 0 0, 18px 28px, 76px 16px, 0 0;
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,.86), rgba(0,0,0,.18) 78%, transparent);
+}
+
+html[data-skin="signal"] body::after {
+  background:
+    linear-gradient(to bottom, transparent 0%, rgba(255,255,255,.035) 50%, transparent 52%),
+    linear-gradient(90deg, rgba(255,49,93,.08), transparent 16%, transparent 76%, rgba(104,215,210,.08));
+  background-size: 100% 5px, 100% 100%;
+}
+
+html[data-skin="signal"] .site-header {
+  box-shadow: 0 12px 36px rgba(0,0,0,.22);
+}
+
+html[data-skin="signal"] .site-header__inner {
+  grid-template-columns: minmax(170px, 260px) 1fr auto;
+}
+
+html[data-skin="signal"] .brand__title,
+html[data-skin="signal"] .brand {
+  letter-spacing: .22em;
+}
+
+html[data-skin="signal"] .site-nav a,
+html[data-skin="signal"] .theme-toggle,
+html[data-skin="signal"] .mobile-menu-toggle {
+  border-radius: 8px;
+  min-height: 34px;
+}
+
+html[data-skin="signal"] .shell,
+html[data-skin="signal"] .page-shell {
+  gap: clamp(18px, 3vw, 28px);
+  padding-top: 20px;
+}
+
+/* Hero: v9.37 entry-gate atmosphere mapped onto Utility identity hero. */
+html[data-skin="signal"] .signal-hero {
+  min-height: min(740px, calc(100vh - 78px));
+  justify-content: center;
+  padding: clamp(22px, 4vw, 46px);
+  border-color: var(--signal-hero-border);
+  background: var(--signal-hero-bg);
+  box-shadow: var(--signal-hero-shadow);
+  isolation: isolate;
+}
+
+html[data-skin="signal"] .signal-hero::before {
+  z-index: -3;
+  background:
+    radial-gradient(circle at 9% 24%, rgba(255,49,93,.82), rgba(255,77,135,.36) 13%, rgba(255,49,93,.10) 28%, transparent 44%),
+    radial-gradient(circle at 28% 72%, rgba(82,240,255,.26), transparent 30%),
+    radial-gradient(circle at 82% 35%, rgba(104,215,210,.42), transparent 36%),
+    linear-gradient(180deg, #17394a 0%, #258892 42%, #1b666c 72%, #0a1d24 100%);
+  filter: saturate(1.18) contrast(1.02);
+  opacity: 1;
+}
+
+html[data-skin="signal"] .signal-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.42), rgba(0,0,0,.10) 25%, rgba(0,0,0,.08) 68%, rgba(0,0,0,.40)),
+    linear-gradient(to bottom, rgba(255,255,255,.075), transparent 24%),
+    linear-gradient(to top, rgba(0,0,0,.24), transparent 34%);
+}
+
+html[data-skin="signal"] .signal-hero .kicker {
+  color: var(--signal-cyan-hot);
+  text-shadow: 0 0 18px rgba(82,240,255,.22);
+}
+
+html[data-skin="signal"] h1 {
+  max-width: 860px;
+  color: var(--signal-h1-fill);
+  font-size: clamp(2.55rem, 8vw, 6.9rem);
+  line-height: .98;
+  letter-spacing: .14em;
+  -webkit-text-stroke: 0 transparent;
+  text-shadow: var(--signal-h1-shadow);
+  overflow-wrap: normal;
+}
+
+html[data-skin="signal"] .lede {
+  max-width: 70ch;
+  margin: 22px 0 0;
+  padding-left: 14px;
+  border-left: 2px solid rgba(82,240,255,.58);
+  color: var(--signal-lede);
+  font-size: clamp(.84rem, 1.1vw, 1.02rem);
+  line-height: 1.72;
+  letter-spacing: .075em;
+  text-shadow: 0 1px 16px rgba(0,0,0,.46), 0 0 18px rgba(82,240,255,.10);
+}
+
+html[data-skin="signal"] .signal-hero .controls {
+  margin-top: 24px;
+  transform: translateY(clamp(22px, 3vh, 40px));
+}
+
+/* Glass panels and cells: v9.37 l1-card / level-card treatment mapped to Utility cards. */
+html[data-skin="signal"] .identity:not(.signal-hero),
+html[data-skin="signal"] .panel,
+html[data-skin="signal"] .reference-section {
+  border-color: rgba(104,215,210,.22);
+  background: var(--signal-panel-bg);
+  box-shadow: var(--signal-panel-shadow);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  transition: border-color .18s ease, box-shadow .18s ease, background .18s ease, transform .18s ease;
+}
+
+html[data-skin="signal"] .panel::after,
+html[data-skin="signal"] .reference-section::after,
+html[data-skin="signal"] .identity:not(.signal-hero)::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background:
+    linear-gradient(90deg, rgba(82,240,255,.36), rgba(255,49,93,.22)) top left / 100% 1px no-repeat;
+  opacity: .72;
+}
+
+html[data-skin="signal"] .panel:hover,
+html[data-skin="signal"] .reference-section:hover,
+html[data-skin="signal"] .identity:not(.signal-hero):hover {
+  border-color: rgba(82,240,255,.34);
+  box-shadow:
+    0 20px 54px rgba(0,0,0,.38),
+    0 0 0 1px rgba(82,240,255,.13),
+    0 0 34px rgba(82,240,255,.10),
+    inset 0 1px 0 rgba(243,241,234,.085);
+}
+
+html[data-skin="signal"] .panel:hover::after,
+html[data-skin="signal"] .reference-section:hover::after,
+html[data-skin="signal"] .identity:not(.signal-hero):hover::after {
+  opacity: 1;
+  background: linear-gradient(90deg, rgba(82,240,255,.82), rgba(82,240,255,.38)) top left / 100% 1px no-repeat;
+}
+
+html[data-skin="signal"] .operation-card,
+html[data-skin="signal"] .state-card,
+html[data-skin="signal"] .bank-controls,
+html[data-skin="signal"] .signal-notes {
+  background:
+    radial-gradient(circle at 8% 4%, rgba(255,49,93,.22), transparent 20rem),
+    radial-gradient(circle at 78% 8%, rgba(104,215,210,.16), transparent 26rem),
+    linear-gradient(180deg, rgba(6,20,26,.88), rgba(4,8,13,.96));
+}
+
+html[data-skin="signal"] .danger-card {
+  background:
+    radial-gradient(circle at 8% 0%, rgba(255,49,93,.24), transparent 18rem),
+    radial-gradient(circle at 100% 10%, rgba(104,215,210,.10), transparent 18rem),
+    linear-gradient(180deg, rgba(7,14,18,.88), rgba(4,8,13,.96));
+}
+
+html[data-skin="signal"] .navigation-card {
+  background:
+    radial-gradient(circle at 88% 0%, rgba(104,215,210,.20), transparent 20rem),
+    radial-gradient(circle at 8% 8%, rgba(255,49,93,.12), transparent 18rem),
+    linear-gradient(180deg, rgba(7,18,23,.88), rgba(4,8,13,.96));
+}
+
+html[data-skin="signal"] .seq-row,
+html[data-skin="signal"] .state-row,
+html[data-skin="signal"] .reference-row,
+html[data-skin="signal"] .flat-row,
+html[data-skin="signal"] .status-row,
+html[data-skin="signal"] .ref-block,
+html[data-skin="signal"] .signal-form-block,
+html[data-skin="signal"] .mini-state,
+html[data-skin="signal"] code {
+  position: relative;
+  overflow: hidden;
+  background: var(--signal-inner-bg);
+  border-color: var(--signal-inner-border);
+  box-shadow:
+    inset 0 1px 0 rgba(243,241,234,.045),
+    0 10px 26px rgba(0,0,0,.12);
+  transition: border-color .18s ease, box-shadow .18s ease, background .18s ease, transform .18s ease;
+}
+
+html[data-skin="signal"] .seq-row::before,
+html[data-skin="signal"] .state-row::before,
+html[data-skin="signal"] .reference-row::before,
+html[data-skin="signal"] .flat-row::before,
+html[data-skin="signal"] .status-row::before,
+html[data-skin="signal"] .ref-block::before,
+html[data-skin="signal"] .signal-form-block::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(82,240,255,.12), transparent 12rem),
+    radial-gradient(circle at 100% 0%, rgba(255,49,93,.08), transparent 13rem);
+  opacity: .88;
+}
+
+html[data-skin="signal"] .seq-row > *,
+html[data-skin="signal"] .state-row > *,
+html[data-skin="signal"] .reference-row > *,
+html[data-skin="signal"] .flat-row > *,
+html[data-skin="signal"] .status-row > *,
+html[data-skin="signal"] .ref-block > *,
+html[data-skin="signal"] .signal-form-block > * {
+  position: relative;
+  z-index: 1;
+}
+
+html[data-skin="signal"] .seq-row:hover,
+html[data-skin="signal"] .state-row:hover,
+html[data-skin="signal"] .reference-row:hover,
+html[data-skin="signal"] .flat-row:hover,
+html[data-skin="signal"] .status-row:hover,
+html[data-skin="signal"] .ref-block:hover,
+html[data-skin="signal"] .signal-form-block:hover,
+html[data-skin="signal"] .mini-state:hover,
+html[data-skin="signal"] code:hover {
+  transform: translateY(-1px);
+  border-color: rgba(82,240,255,.58);
+  background:
+    linear-gradient(145deg, rgba(82,240,255,.105), rgba(255,49,93,.052)),
+    rgba(2, 9, 14, .78);
+  box-shadow:
+    0 18px 44px rgba(0,0,0,.26),
+    0 0 0 1px rgba(82,240,255,.13),
+    0 0 28px rgba(82,240,255,.10),
+    inset 0 1px 0 rgba(243,241,234,.075);
+}
+
+/* Turn the Utility level table into a v9-like chamber stack without changing markup. */
+html[data-skin="signal"] #preview-levels .state-table {
+  gap: 14px;
+}
+
+html[data-skin="signal"] #preview-levels .state-row {
+  min-height: 112px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  padding: 18px 20px;
+  border-radius: var(--signal-radius);
+  border-color: rgba(210,244,246,.16);
+  background:
+    radial-gradient(circle at 14% 22%, rgba(255,49,93,.42), rgba(255,77,135,.20) 10%, transparent 25%),
+    radial-gradient(circle at 80% 18%, rgba(104,215,210,.18), transparent 28%),
+    linear-gradient(180deg, #102532 0%, #1a676e 47%, #11252a 100%);
+  box-shadow: 0 18px 56px rgba(0,0,0,.32);
+}
+
+html[data-skin="signal"] #preview-levels .state-row::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.62), rgba(0,0,0,.26) 44%, rgba(0,0,0,.56)),
+    linear-gradient(to top, rgba(0,0,0,.38), transparent 58%);
+}
+
+html[data-skin="signal"] #preview-levels .state-row:nth-child(2n) {
+  background:
+    radial-gradient(circle at 84% 26%, rgba(255,49,93,.38), rgba(255,77,135,.22) 11%, transparent 28%),
+    radial-gradient(circle at 18% 10%, rgba(104,215,210,.20), transparent 28%),
+    linear-gradient(180deg, #0f2130 0%, #1b6567 52%, #0a151a 100%);
+}
+
+html[data-skin="signal"] #preview-levels .state-row:nth-child(3n) {
+  background:
+    radial-gradient(circle at 20% 8%, rgba(255,49,93,.34), rgba(255,77,135,.20) 10%, transparent 25%),
+    radial-gradient(circle at 78% 58%, rgba(104,215,210,.24), transparent 34%),
+    linear-gradient(180deg, #0e1827 0%, #245e66 44%, #081014 100%);
+}
+
+html[data-skin="signal"] #preview-levels .state-label--link {
+  color: var(--signal-bone);
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 3vw, 2rem);
+  line-height: 1.04;
+  letter-spacing: .10em;
+  text-transform: uppercase;
+  text-shadow: 0 0 18px rgba(82,240,255,.14);
+}
+
+html[data-skin="signal"] #preview-levels .utility-link--open {
+  border: 1px solid rgba(82,240,255,.52);
+  border-radius: 8px;
+  padding: 7px 10px;
+  background: rgba(82,240,255,.075);
+  color: var(--signal-cyan-hot);
+  white-space: nowrap;
+}
+
+html[data-skin="signal"] .button,
+html[data-skin="signal"] .page-actions a,
+html[data-skin="signal"] .command-chip,
+html[data-skin="signal"] .switch-add-row button,
+html[data-skin="signal"] .command-input-row button {
+  min-height: 39px;
+  border-radius: 10px;
+  padding: 9px 13px;
+  box-shadow: 0 10px 22px rgba(0,0,0,.20);
+}
+
+html[data-skin="signal"] .button:hover,
+html[data-skin="signal"] .button:focus-visible,
+html[data-skin="signal"] .page-actions a:hover,
+html[data-skin="signal"] .page-actions a:focus-visible,
+html[data-skin="signal"] .command-chip:hover,
+html[data-skin="signal"] .command-chip:focus-visible,
+html[data-skin="signal"] .switch-add-row button:hover,
+html[data-skin="signal"] .switch-add-row button:focus-visible,
+html[data-skin="signal"] .command-input-row button:hover,
+html[data-skin="signal"] .command-input-row button:focus-visible {
+  outline: none;
+  border-color: rgba(82,240,255,.70);
+  box-shadow:
+    0 0 0 1px rgba(82,240,255,.22),
+    0 0 22px rgba(82,240,255,.13),
+    0 12px 26px rgba(0,0,0,.25);
+}
+
+html[data-skin="signal"] input,
+html[data-skin="signal"] select {
+  box-shadow:
+    inset 0 1px 0 rgba(243,241,234,.04),
+    0 0 0 1px rgba(0,0,0,.14);
+}
+
+html[data-skin="signal"] input:hover,
+html[data-skin="signal"] input:focus,
+html[data-skin="signal"] select:hover,
+html[data-skin="signal"] select:focus {
+  border-color: rgba(82,240,255,.66);
+  box-shadow:
+    0 0 0 1px rgba(82,240,255,.36),
+    0 0 0 3px rgba(82,240,255,.09),
+    inset 0 1px 0 rgba(243,241,234,.06),
+    0 0 28px rgba(82,240,255,.14);
+  background: linear-gradient(180deg, rgba(9,25,33,.94), rgba(5,12,18,.94));
+}
+
+@media (max-width: 640px) {
+  html[data-skin="signal"] .signal-hero {
+    min-height: 680px;
+  }
+
+  html[data-skin="signal"] h1 {
+    font-size: clamp(2.1rem, 11vw, 3.6rem);
+    letter-spacing: .08em;
+  }
+
+  html[data-skin="signal"] #preview-levels .state-row {
+    min-height: 144px;
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+}
+
+/* Signal Mode type application */
+body,
+p,
+li,
+input,
+textarea,
+select {
+  font-family: var(--font-body);
+}
+
+.brand,
+.brand__title,
+.identity h1,
+.signal-hero h1,
+.signal-hero-title,
+.entry-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+}
+
+h1,
+h2,
+h3,
+.panel h2,
+.level-title,
+.state-label,
+.ref-block h3 {
+  font-family: var(--font-heading);
+}
+
+.kicker,
+.panel-kicker,
+.seq-index,
+.seq-label,
+.seq-body code,
+.status-value,
+.button,
+button,
+.site-nav,
+.mobile-nav,
+.utility-link,
+code,
+pre,
+input,
+textarea,
+select {
+  font-family: var(--font-mono);
+}
+
+
+/* Space Age display lock */
+.brand,
+.identity h1,
+.signal-hero h1,
+.signal-hero-title,
+.entry-title {
+  font-family: var(--font-display) !important;
+  font-weight: 400 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+.brand {
+  letter-spacing: 0.18em;
+}
+
+
+/* FORCE SPACE AGE DISPLAY TEST — Signal lab only */
+[data-skin="signal"] .brand,
+[data-skin="signal"] .brand *,
+[data-skin="signal"] .identity h1,
+[data-skin="signal"] .site-header .brand,
+[data-skin="signal"] main h1 {
+  font-family: "Space Age", "Michroma", "Orbitron", system-ui, sans-serif !important;
+  font-weight: 400 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.18em !important;
+}

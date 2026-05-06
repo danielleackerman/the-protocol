@@ -1,0 +1,131 @@
+<!doctype html>
+<html data-skin="signal" lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Daily Run immediate actions for The Protocol" />
+  <title>Daily Run · The Protocol</title>
+  <link rel="stylesheet" href="wormhole-dark.css" />
+  <link rel="stylesheet" href="wormhole-light.css" />
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="index.html">The Protocol</a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="overview.html" class="">Overview</a>
+      <a href="index.html" class="is-active">Daily Run</a>
+      <a href="levels.html" class="">Levels</a>
+      <a href="custom.html" class="">Custom</a>
+      <a href="bank.html" class="">Bank</a>
+    </nav>
+    <div class="header-actions">
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle theme">☼</button>
+      <button class="mobile-menu-toggle" type="button" data-mobile-menu-toggle aria-expanded="false" aria-label="Open menu">Menu</button>
+    </div>
+  </div>
+  <nav class="mobile-nav" data-mobile-nav aria-label="Mobile navigation">
+    <a href="overview.html" class="">Overview</a>
+    <a href="index.html" class="is-active">Daily Run</a>
+    <a href="levels.html" class="">Levels</a>
+    <a href="custom.html" class="">Custom</a>
+    <a href="bank.html" class="">Bank</a>
+  </nav>
+</header>
+<main class="shell" id="top">
+  <section class="identity">
+    <p class="kicker">Immediate Actions</p>
+    <h1>Daily Run</h1>
+    <p class="lede">Run the sequence. Reference stays below the action.</p>
+    <div class="controls">
+      <button id="copyQuickStart" class="button" type="button">Copy Run</button>
+      <a class="button" href="levels/level-03-firewall.html">Breach</a>
+      <a class="button" href="levels.html">Levels</a>
+    </div>
+  </section>
+
+  <section class="panel operation-card" aria-labelledby="daily-run-sequence">
+    <p class="panel-kicker">Operation</p>
+    <h2 id="daily-run-sequence">Daily Run Sequence</h2>
+    <div class="sequence" aria-label="Daily Run sequence">
+      <div class="seq-row">
+        <span class="seq-index">01</span>
+        <span class="seq-label">Seat</span>
+        <span class="seq-body">I am the operator.</span>
+      </div>
+      <div class="seq-row">
+        <span class="seq-index">02</span>
+        <span class="seq-label">Defaults</span>
+        <span class="seq-body"><span>My default is overflow.</span><span>My default is magnetism.</span><span>My default is sovereign pace.</span></span>
+      </div>
+      <div class="seq-row">
+        <span class="seq-index">03</span>
+        <span class="seq-label">Switchboard</span>
+        <span class="seq-body mini-state-list">
+          <span class="mini-state"><span>Abundance</span><b class="state-on">ON</b></span>
+          <span class="mini-state"><span>Magnetism</span><b class="state-on">ON</b></span>
+          <span class="mini-state"><span>Overflow</span><b class="state-on">ON</b></span>
+          <span class="mini-state"><span>Recognition</span><b class="state-on">ON</b></span>
+          <span class="mini-state"><span>Love</span><b class="state-on">ON</b></span>
+        </span>
+      </div>
+      <div class="seq-row">
+        <span class="seq-index">04</span>
+        <span class="seq-label">Command</span>
+        <span class="seq-body"><code>EXECUTE: [specific outcome as already done]</code></span>
+      </div>
+      <div class="seq-row">
+        <span class="seq-index">05</span>
+        <span class="seq-label">Receipt</span>
+        <span class="seq-body"><span>Confirmation received.</span><span>Notice. Acknowledge. Continue.</span></span>
+      </div>
+    </div>
+    <div class="status-strip" id="quickStartStatus">
+      <div class="seq-row seq-row--status">
+        <span class="seq-index seq-index--blank" aria-hidden="true">00</span>
+        <span class="seq-label">Status</span>
+        <span class="seq-body"><span class="status-value status-ready">Ready</span></span>
+      </div>
+    </div>
+  </section>
+
+  <div class="layout-two">
+    <section class="panel danger-card">
+      <p class="panel-kicker is-danger">Firewall</p>
+      <h2>If Breached</h2>
+      <div class="sequence">
+        <div class="seq-row seq-row--firewall">
+          <span class="seq-index seq-index--blank" aria-hidden="true">00</span>
+          <span class="seq-label">Deny</span>
+          <span class="seq-body"><span class="status-value status-denied">Access Denied</span></span>
+        </div>
+        <div class="seq-row seq-row--firewall">
+          <span class="seq-index seq-index--blank" aria-hidden="true">00</span>
+          <span class="seq-label">Restore</span>
+          <span class="seq-body">I am the operator. The Protocol holds.</span>
+        </div>
+        <div class="seq-row seq-row--firewall">
+          <span class="seq-index seq-index--blank" aria-hidden="true">00</span>
+          <span class="seq-label">Seal</span>
+          <span class="seq-body">Breach sealed. Render protected.</span>
+        </div>
+      </div>
+      <div class="page-actions"><a href="levels/level-03-firewall.html">Open Firewall</a></div>
+    </section>
+
+    <section class="panel navigation-card">
+      <p class="panel-kicker">Reference</p>
+      <h2>Open only when needed.</h2>
+      <div class="page-actions">
+        <a href="overview.html">Overview</a>
+        <a href="levels.html">Levels</a>
+        <a href="custom.html">Custom</a>
+        <a href="levels/level-10-seal.html">Seal</a>
+      </div>
+    </section>
+  </div>
+</main>
+<footer class="footer">The Protocol / Utility Console</footer>
+<script src="wormhole-lab.js"></script>
+</body>
+</html>
