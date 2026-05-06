@@ -1,109 +1,28 @@
 <!doctype html>
-<html lang="en" data-theme="light">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Custom personal configuration for The Protocol" />
-  <title>Custom Configuration · The Protocol</title>
-  <link rel="stylesheet" href="assets/css/protocol.css" />
-</head>
-<body>
+<html lang="en" data-theme="light"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>Custom · The Protocol</title><link rel="stylesheet" href="assets/css/protocol.css" /></head><body>
 <header class="site-header">
   <div class="site-header__inner">
     <a class="brand" href="index.html">The Protocol</a>
-    <nav class="site-nav" aria-label="Primary navigation"><a href="index.html" class="">Daily Run</a><a href="overview.html" class="">Overview</a><a href="levels.html" class="">Levels</a><a href="custom.html" class="is-active">Custom</a></nav>
-    <div class="header-actions"><button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle theme">☼</button><button class="mobile-menu-toggle" type="button" data-mobile-menu-toggle aria-expanded="false" aria-label="Open menu">Menu</button></div>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="index.html">Daily Run</a>
+      <a href="overview.html">Overview</a>
+      <a href="levels.html">Levels</a>
+      <a href="custom.html">Custom</a>
+    </nav>
+    <div class="header-actions">
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle theme">☼</button>
+      <button class="mobile-menu-toggle" type="button" data-mobile-menu-toggle aria-expanded="false" aria-label="Open menu">Menu</button>
+    </div>
   </div>
-  <nav class="mobile-nav" data-mobile-nav aria-label="Mobile navigation"><a href="index.html" class="">Daily Run</a><a href="overview.html" class="">Overview</a><a href="levels.html" class="">Levels</a><a href="custom.html" class="is-active">Custom</a></nav>
+  <nav class="mobile-nav" data-mobile-nav aria-label="Mobile navigation">
+    <a href="index.html">Daily Run</a>
+    <a href="overview.html">Overview</a>
+    <a href="levels.html">Levels</a>
+    <a href="custom.html">Custom</a>
+  </nav>
 </header>
-<main class="page-shell">
-  <section class="page-hero">
-    <p class="breadcrumb"><a href="index.html">Daily Run</a> / Custom</p>
-    <p class="kicker">Personal Configuration</p>
-    <h1>Custom Defaults</h1>
-    <p class="lede">Saved switches, commands, laws, and confirmations live here so the Daily Run page can stay clean and immediate.</p>
-    <div class="page-actions"><a href="index.html">Back to Daily Run</a><a href="levels.html">Open Levels</a></div>
-  </section>
-  <section class="custom-content section-stack" id="custom-defaults">
-    <div class="custom-defaults-panel">
-<div class="custom-app-hero">
-<div>
-<p class="section-kicker">Reality OS Settings</p>
-<h2 class="section-title">Your Daily Control Panel</h2>
-</div>
-<button class="custom-button custom-button--hot" id="copyCustomDefaults" type="button">Copy Current Defaults</button>
-</div>
-<div class="custom-app-grid">
-<section aria-labelledby="custom-switchboard-title" class="custom-module custom-module--wide">
-<div class="custom-module__head">
-<div>
-<span class="custom-module__label">Custom Switchboard</span>
-<h3 id="custom-switchboard-title">Grouped Switches</h3>
-</div>
-<p>Group the ON states by area of life.</p>
-</div>
-<div class="custom-form-grid">
-<select aria-label="Switch group" class="custom-select" id="customSwitchGroup">
-<option>Money</option>
-<option>Body</option>
-<option>Love</option>
-<option>Work</option>
-<option>Creative Output</option>
-<option>Home</option>
-<option>Visibility</option>
-<option>Peace</option>
-</select>
-<input class="custom-input" id="customSwitchName" placeholder="Add a switch, e.g. Paid quickly" type="text"/>
-<button class="custom-button" id="addCustomSwitch" type="button">Add Switch</button>
-</div>
-<div aria-live="polite" class="custom-switch-groups" id="customSwitchGroups"></div>
-</section>
-<section aria-labelledby="custom-command-title" class="custom-module">
-<div class="custom-module__head">
-<div>
-<span class="custom-module__label">Custom Command Line</span>
-<h3 id="custom-command-title">Repeat Commands</h3>
-</div>
-</div>
-<div class="custom-form-stack">
-<input class="custom-input" id="customCommandInput" placeholder="EXECUTE: outcome as already done…" type="text"/>
-<button class="custom-button" id="addCustomCommand" type="button">Save Command</button>
-</div>
-<div aria-live="polite" class="custom-list" id="customCommandList"></div>
-</section>
-<section aria-labelledby="custom-laws-title" class="custom-module">
-<div class="custom-module__head">
-<div>
-<span class="custom-module__label">Custom Laws</span>
-<h3 id="custom-laws-title">Standing Codex Lines</h3>
-</div>
-</div>
-<div class="custom-form-stack">
-<textarea class="custom-textarea" id="customLawInput" placeholder="Write a law as a decree, not a request…"></textarea>
-<button class="custom-button" id="addCustomLaw" type="button">Save Law</button>
-</div>
-<div aria-live="polite" class="custom-list" id="customLawList"></div>
-</section>
-<section aria-labelledby="custom-confirm-title" class="custom-module custom-module--wide">
-<div class="custom-module__head">
-<div>
-<span class="custom-module__label">Render Confirmation Log</span>
-<h3 id="custom-confirm-title">Receipts + Signals</h3>
-</div>
-<p>Log the field response. No over-decoding required.</p>
-</div>
-<div class="custom-form-stack">
-<textarea class="custom-textarea" id="customConfirmationInput" placeholder="Sentence, number, door, protective no, payment, shifted feeling…"></textarea>
-<button class="custom-button" id="addCustomConfirmation" type="button">Log Confirmation</button>
-</div>
-<div aria-live="polite" class="custom-list" id="customConfirmationList"></div>
-</section>
-</div>
-<div class="custom-status-line" id="customDefaultsStatus">// custom defaults ready.</div>
-</div>
-  </section>
-</main>
-<footer class="footer">The Protocol / Reality Control Panel</footer>
-<script src="assets/js/protocol.js"></script>
-</body>
-</html>
+<main class="shell">
+<section class="identity"><p class="kicker">Configuration</p><h1>Custom</h1><p class="lede">Keep custom defaults simple and operational.</p></section>
+<section class="panel operation-card"><p class="panel-kicker">Defaults</p><h2>Custom Defaults</h2><textarea placeholder="Write custom defaults here."></textarea><div class="page-actions"><button type="button">Save</button></div></section>
+</main><footer class="footer">The Protocol / Utility Console</footer>
+<script src="assets/js/protocol.js"></script></body></html>

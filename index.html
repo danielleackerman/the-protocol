@@ -11,91 +11,96 @@
 <header class="site-header">
   <div class="site-header__inner">
     <a class="brand" href="index.html">The Protocol</a>
-    <nav class="site-nav" aria-label="Primary navigation"><a href="index.html" class="is-active">Daily Run</a><a href="overview.html" class="">Overview</a><a href="levels.html" class="">Levels</a><a href="custom.html" class="">Custom</a></nav>
-    <div class="header-actions"><button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle theme">☼</button><button class="mobile-menu-toggle" type="button" data-mobile-menu-toggle aria-expanded="false" aria-label="Open menu">Menu</button></div>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="index.html">Daily Run</a>
+      <a href="overview.html">Overview</a>
+      <a href="levels.html">Levels</a>
+      <a href="custom.html">Custom</a>
+    </nav>
+    <div class="header-actions">
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle theme">☼</button>
+      <button class="mobile-menu-toggle" type="button" data-mobile-menu-toggle aria-expanded="false" aria-label="Open menu">Menu</button>
+    </div>
   </div>
-  <nav class="mobile-nav" data-mobile-nav aria-label="Mobile navigation"><a href="index.html" class="is-active">Daily Run</a><a href="overview.html" class="">Overview</a><a href="levels.html" class="">Levels</a><a href="custom.html" class="">Custom</a></nav>
+  <nav class="mobile-nav" data-mobile-nav aria-label="Mobile navigation">
+    <a href="index.html">Daily Run</a>
+    <a href="overview.html">Overview</a>
+    <a href="levels.html">Levels</a>
+    <a href="custom.html">Custom</a>
+  </nav>
 </header>
-<main class="page-shell" id="top">
-  <section class="daily-run-console" aria-labelledby="daily-run-title">
-    <p class="console-topline">Immediate Actions // Daily Run</p>
-    <div class="daily-run__head">
-      <div class="daily-run__title">
-        <h1 id="daily-run-title">Daily Run</h1>
-        <p class="lede">Run the sequence. Explanation follows when needed.</p>
-      </div>
-      <div class="daily-run-actions">
-        <button class="button button--primary" id="copyQuickStart" type="button">Copy Daily Run</button>
-        <a class="button" href="levels/level-03-firewall.html">Breach</a>
-        <a class="button button--subtle" href="levels.html">Levels</a>
-      </div>
+<main class="shell" id="top">
+  <section class="identity">
+    <p class="kicker">Immediate Actions</p>
+    <h1>Daily Run</h1>
+    <p class="lede">Run the sequence. Reference stays below the action.</p>
+    <div class="controls">
+      <button id="copyQuickStart" class="button" type="button">Copy Run</button>
+      <a class="button" href="levels/level-03-firewall.html">Breach</a>
+      <a class="button" href="levels.html">Levels</a>
     </div>
-    <div class="action-grid" aria-label="Daily Run sequence">
-      <article class="action-card">
-        <div class="action-card__number">01</div>
-        <div>
-          <span class="quick-label">Seat</span>
-          <strong>Declare the Seat</strong>
-          <div class="line-stack"><span>I am the operator.</span></div>
-        </div>
-      </article>
-      <article class="action-card">
-        <div class="action-card__number">02</div>
-        <div>
-          <span class="quick-label">Defaults</span>
-          <strong>Run Defaults</strong>
-          <div class="line-stack"><span>My default is overflow.</span><span>My default is magnetism.</span><span>My default is sovereign pace.</span></div>
-        </div>
-      </article>
-      <article class="action-card">
-        <div class="action-card__number">03</div>
-        <div>
-          <span class="quick-label">Switchboard</span>
-          <strong>Set Switches</strong>
-          <div class="chip-list"><span>Abundance</span><span>Magnetism</span><span>Overflow</span><span>Recognition</span><span>Love</span><span>Creative Flow</span></div>
-        </div>
-      </article>
-      <article class="action-card">
-        <div class="action-card__number">04</div>
-        <div>
-          <span class="quick-label">Command Line</span>
-          <strong>Issue One Command</strong>
-          <code class="command-line">EXECUTE: [specific outcome as already done]</code>
-        </div>
-      </article>
-      <article class="action-card">
-        <div class="action-card__number">05</div>
-        <div>
-          <span class="quick-label">Confirmation</span>
-          <strong>Log the Receipt</strong>
-          <div class="line-stack"><span>Confirmation received.</span><span>Notice. Acknowledge. Continue.</span></div>
-        </div>
-      </article>
-    </div>
-    <p class="status-bar" id="quickStartStatus">// daily run ready.</p>
   </section>
 
-  <section class="section-stack" aria-label="Daily Run support">
-    <article class="callout">
-      <p class="kicker">Conditional / Firewall</p>
+  <section class="panel operation-card" aria-labelledby="daily-run-sequence">
+    <p class="panel-kicker">Operation</p>
+    <h2 id="daily-run-sequence">Daily Run Sequence</h2>
+    <div class="sequence" aria-label="Daily Run sequence">
+      <div class="seq-row">
+        <span class="seq-index">01</span>
+        <span class="seq-label">Seat</span>
+        <span class="seq-body">I am the operator.</span>
+      </div>
+      <div class="seq-row">
+        <span class="seq-index">02</span>
+        <span class="seq-label">Defaults</span>
+        <span class="seq-body"><span>My default is overflow.</span><span>My default is magnetism.</span><span>My default is sovereign pace.</span></span>
+      </div>
+      <div class="seq-row">
+        <span class="seq-index">03</span>
+        <span class="seq-label">Switchboard</span>
+        <span class="seq-body"><span>Abundance <b class="state-on">ON</b></span><span>Magnetism <b class="state-on">ON</b></span><span>Overflow <b class="state-on">ON</b></span><span>Recognition <b class="state-on">ON</b></span><span>Love <b class="state-on">ON</b></span></span>
+      </div>
+      <div class="seq-row">
+        <span class="seq-index">04</span>
+        <span class="seq-label">Command</span>
+        <span class="seq-body"><code>EXECUTE: [specific outcome as already done]</code></span>
+      </div>
+      <div class="seq-row">
+        <span class="seq-index">05</span>
+        <span class="seq-label">Receipt</span>
+        <span class="seq-body"><span>Confirmation received.</span><span>Notice. Acknowledge. Continue.</span></span>
+      </div>
+    </div>
+    <div class="status-strip" id="quickStartStatus">
+      <div class="status-row"><span class="status-label">Status</span><span class="status-value status-ready">Ready</span></div>
+    </div>
+  </section>
+
+  <div class="layout-two">
+    <section class="panel danger-card">
+      <p class="panel-kicker is-danger">Firewall</p>
       <h2>If Breached</h2>
-      <div class="line-stack"><span>Access denied. This is not authorized code.</span><span>I am the operator. The Protocol holds.</span><span>Breach sealed. Render protected.</span></div>
-      <div class="page-actions"><a href="levels/level-03-firewall.html">Open Level 03 Firewall</a></div>
-    </article>
-    <section class="section-card">
-      <p class="kicker">Reference</p>
-      <h2>Open only what the operation requires.</h2>
-      <p class="lede">Use reference chambers only when the active run requires context, repair, or configuration.</p>
+      <div class="sequence">
+        <div class="status-row"><span class="status-label">Deny</span><span class="status-value status-denied">Access Denied</span></div>
+        <div class="status-row"><span class="status-label">Restore</span><span>I am the operator. The Protocol holds.</span></div>
+        <div class="status-row"><span class="status-label">Seal</span><span>Breach sealed. Render protected.</span></div>
+      </div>
+      <div class="page-actions"><a href="levels/level-03-firewall.html">Open Firewall</a></div>
+    </section>
+
+    <section class="panel navigation-card">
+      <p class="panel-kicker">Reference</p>
+      <h2>Open only when needed.</h2>
       <div class="page-actions">
         <a href="overview.html">Overview</a>
-        <a href="levels.html">Levels Index</a>
-        <a href="custom.html">Custom Defaults</a>
-        <a href="levels/level-10-seal.html">Level 10 Seal</a>
+        <a href="levels.html">Levels</a>
+        <a href="custom.html">Custom</a>
+        <a href="levels/level-10-seal.html">Seal</a>
       </div>
     </section>
-  </section>
+  </div>
 </main>
-<footer class="footer">The Protocol / Reality Control Panel</footer>
+<footer class="footer">The Protocol / Utility Console</footer>
 <script src="assets/js/protocol.js"></script>
 </body>
 </html>

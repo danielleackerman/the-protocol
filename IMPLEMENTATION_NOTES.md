@@ -103,3 +103,15 @@ Key intent:
 - Preserve semantic state color rules.
 - Keep Daily Run as an operation sequence.
 - Keep Switchboard as state rows, not dashboard tiles.
+
+## V11 plain utility replacement
+
+This pass replaces the visible templates instead of adding another override layer. The direction is plain, masculine, mobile-first utility: graphite/chrome structure, minimal ivory warmth, no Space Age display typography, compact controls, and flat reference blocks.
+
+The rebuilt pages use a simple pattern:
+
+1. identity
+2. operation
+3. status
+4. reference
+5. navigation

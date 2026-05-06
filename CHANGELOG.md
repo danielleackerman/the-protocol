@@ -113,3 +113,21 @@
 - Reduced card-inside-card nesting on mobile.
 - Fixed inflated mobile switch rows, button rows, hero blocks, and reference-card stacks.
 - Reduced mobile density problems without changing the v7/v6 semantic-card design direction.
+
+## v11 plain utility replacement
+
+### Changed
+
+- Replaced the patched visual system with a plain mobile-first utility interface.
+- Removed visible Space Age/display-font direction from the rebuilt UI.
+- Replaced Daily Run dashboard/card grid with a single flat operation sequence.
+- Rebuilt all level pages around simple identity, operation, status, reference, and navigation sections.
+- Rebuilt Switchboard as a flat state table.
+- Rebuilt Command Line as a simple command operation surface.
+- Flattened reference sections into blocks and rows instead of nested cards.
+
+### Fixed
+
+- Removed the old `action-grid` / `action-card` homepage structure.
+- Removed the obvious card-inside-card nesting from rebuilt level pages.
+- Reduced beige/oatmeal visual dominance in favor of graphite/chrome utility.
