@@ -1110,3 +1110,9 @@ textarea { min-height: 96px; resize: vertical; }
 .level-page .breadcrumb {
   display: none;
 }
+
+/* V33 — force-hide redundant breadcrumbs on all level pages, all breakpoints */
+body.level-page p.breadcrumb,
+.level-page .breadcrumb {
+  display: none !important;
+}
