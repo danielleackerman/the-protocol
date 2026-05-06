@@ -849,3 +849,51 @@ textarea { min-height: 96px; resize: vertical; }
     --operation-row-grid: 2rem minmax(4.8rem, .58fr) minmax(0, 1fr);
   }
 }
+
+
+/* V21 — switchboard system output callout */
+.console-callout {
+  margin-top: 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px 16px;
+  background:
+    linear-gradient(135deg, rgba(110, 150, 150, 0.10), rgba(0, 0, 0, 0.65) 38%, rgba(90, 20, 24, 0.18));
+}
+
+.console-callout__body {
+  margin-top: 8px;
+  border-left: 3px solid #9ed7e8;
+  background: rgba(0, 0, 0, 0.78);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+
+.console-callout__body p {
+  margin: 0;
+  color: #f3f5f6;
+  font-family: var(--font-mono);
+  font-size: 0.98rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.console-callout__body p + p {
+  margin-top: 6px;
+}
+
+@media (max-width: 640px) {
+  .console-callout {
+    padding: 12px 14px;
+  }
+
+  .console-callout__body {
+    padding: 10px 12px;
+  }
+
+  .console-callout__body p {
+    font-size: 0.9rem;
+    letter-spacing: 0.04em;
+  }
+}
