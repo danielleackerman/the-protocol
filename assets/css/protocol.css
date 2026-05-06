@@ -718,3 +718,41 @@ textarea { min-height: 96px; resize: vertical; }
     width: min(100%, 13rem);
   }
 }
+
+
+/* V17 Daily Run switchboard state alignment */
+.seq-body.mini-state-list {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(8.25rem, 1fr));
+  gap: 4px 16px;
+  max-width: 30rem;
+}
+
+.seq-body.mini-state-list .mini-state {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 8px;
+  min-width: 0;
+}
+
+.seq-body.mini-state-list .mini-state-name {
+  display: inline !important;
+  min-width: 0;
+}
+
+.seq-body.mini-state-list .state-on {
+  display: inline !important;
+  font-family: var(--font-mono);
+  font-size: .78rem;
+  font-weight: 900;
+  letter-spacing: .04em;
+  white-space: nowrap;
+}
+
+@media (max-width: 440px) {
+  .seq-body.mini-state-list {
+    grid-template-columns: 1fr;
+    max-width: none;
+  }
+}
