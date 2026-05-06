@@ -1619,3 +1619,441 @@ button:hover,
     grid-row: auto !important;
   }
 }
+
+/* V8 correction: mobile de-nesting and utility density
+   Goal: keep semantic cards, but remove card-inside-card inflation on mobile. */
+@media (max-width: 720px) {
+  body {
+    font-size: 15px;
+    line-height: 1.42;
+  }
+
+  .site-header__inner {
+    padding: 10px 12px !important;
+    gap: 10px !important;
+  }
+
+  .brand {
+    font-size: .72rem !important;
+    letter-spacing: .075em !important;
+    gap: 8px !important;
+  }
+
+  .brand::before {
+    width: 26px !important;
+    height: 26px !important;
+  }
+
+  .theme-toggle,
+  .mobile-menu-toggle {
+    min-height: 34px !important;
+    min-width: 34px !important;
+    padding: 7px 10px !important;
+    border-radius: 8px !important;
+    font-size: .78rem !important;
+  }
+
+  .page-shell {
+    width: min(100% - 20px, var(--max-page)) !important;
+    padding-top: 12px !important;
+    padding-bottom: 36px !important;
+  }
+
+  .breadcrumb {
+    margin: 0 0 8px !important;
+    font-size: .62rem !important;
+    letter-spacing: .11em !important;
+    line-height: 1.3 !important;
+  }
+
+  .page-hero,
+  .daily-run-console,
+  .protocol-console,
+  .level-action-panel,
+  .legacy-content,
+  .section-card,
+  .callout,
+  .custom-content {
+    padding: 14px !important;
+    border-radius: 11px !important;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.18), 0 4px 10px rgba(31,31,29,.045) !important;
+  }
+
+  .section-stack {
+    gap: 14px !important;
+    margin-top: 14px !important;
+  }
+
+  .page-hero h1,
+  .daily-run__title h1 {
+    font-size: clamp(1.55rem, 9.5vw, 2.55rem) !important;
+    letter-spacing: .035em !important;
+    line-height: .98 !important;
+    max-width: 100% !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+    word-break: normal !important;
+  }
+
+  .daily-run__title h1 {
+    font-size: clamp(1.75rem, 10vw, 2.75rem) !important;
+  }
+
+  .page-hero .kicker,
+  .level-meta,
+  .console-topline,
+  .quick-label,
+  .kicker {
+    font-size: .62rem !important;
+    letter-spacing: .12em !important;
+    line-height: 1.25 !important;
+  }
+
+  .lede,
+  .page-hero .lede,
+  .daily-run__title .lede {
+    font-size: .95rem !important;
+    line-height: 1.38 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .page-actions,
+  .prev-next-nav,
+  .daily-run-actions,
+  .hero-actions {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+    margin-top: 12px !important;
+  }
+
+  .page-actions a,
+  .prev-next-nav a,
+  .daily-run-actions .button,
+  .button,
+  .action-link,
+  .level-card__link,
+  button {
+    width: auto !important;
+    min-height: 30px !important;
+    padding: 6px 9px !important;
+    border-radius: 7px !important;
+    font-size: .66rem !important;
+    line-height: 1.15 !important;
+    letter-spacing: .055em !important;
+  }
+
+  .mobile-nav {
+    padding: 0 12px 10px !important;
+  }
+
+  .mobile-nav a {
+    padding: 8px 10px !important;
+    border-radius: 7px !important;
+    font-size: .72rem !important;
+  }
+
+  /* Daily Run remains a semantic operation card, but the mobile rows get tighter. */
+  .daily-run__head {
+    gap: 10px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .daily-run-console .action-grid {
+    border-radius: 9px !important;
+  }
+
+  .daily-run-console .action-card {
+    grid-template-columns: 2rem minmax(0, 1fr) !important;
+    gap: 8px !important;
+    padding: 10px 9px !important;
+  }
+
+  .daily-run-console .action-card__number {
+    font-size: .68rem !important;
+    letter-spacing: .06em !important;
+    padding-top: 1px !important;
+  }
+
+  .daily-run-console .action-card strong {
+    font-size: .94rem !important;
+    line-height: 1.15 !important;
+  }
+
+  .daily-run-console .line-stack,
+  .daily-run-console .line-stack span {
+    font-size: .92rem !important;
+    line-height: 1.36 !important;
+  }
+
+  .daily-run-console .chip-list {
+    gap: 5px !important;
+  }
+
+  .daily-run-console .chip-list span {
+    padding: 4px 7px !important;
+    border-radius: 7px !important;
+    font-size: .68rem !important;
+    line-height: 1.15 !important;
+  }
+
+  .daily-run-console .command-line {
+    width: 100% !important;
+    padding: 7px 8px !important;
+    font-size: .9rem !important;
+    line-height: 1.35 !important;
+  }
+
+  .status-bar,
+  .cli-status,
+  .l2-sequence__status,
+  .command-line-message,
+  .custom-status-line,
+  .level06-message,
+  .level07-message,
+  .level08-message,
+  .level09-message,
+  .level10-message {
+    padding: 8px 10px !important;
+    border-radius: 8px !important;
+    font-size: .72rem !important;
+    line-height: 1.3 !important;
+  }
+
+  /* Remove the nested-bubble feeling inside primary operation cards. */
+  .protocol-console > p,
+  .level-action-panel > p,
+  .console-instruction {
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 0 10px !important;
+    font-size: .93rem !important;
+    line-height: 1.36 !important;
+  }
+
+  .protocol-console :is(.l1-inline-action, [class*="console"], [class*="terminal"], [class*="output"]),
+  .level-action-panel :is(.l1-inline-action, [class*="console"], [class*="terminal"], [class*="output"]) {
+    border-radius: 0 !important;
+    border-left: 0 !important;
+    border-right: 0 !important;
+    border-top: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    padding: 10px 0 !important;
+    margin-top: 8px !important;
+  }
+
+  /* Switchboard becomes a compact state table on mobile, not a stack of mini-cards. */
+  .switchboard-grid {
+    display: block !important;
+    border: 1px solid var(--color-console-line) !important;
+    border-radius: 9px !important;
+    overflow: hidden !important;
+    margin-top: 10px !important;
+    background: color-mix(in srgb, var(--color-surface-2), transparent 72%) !important;
+  }
+
+  .switch-row,
+  .legacy-content .switch-row {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    gap: 10px !important;
+    min-height: 0 !important;
+    padding: 9px 10px !important;
+    border: 0 !important;
+    border-bottom: 1px solid var(--color-console-line-soft) !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .switch-row:last-child,
+  .legacy-content .switch-row:last-child {
+    border-bottom: 0 !important;
+  }
+
+  .switch-row__name {
+    font-size: .95rem !important;
+    line-height: 1.22 !important;
+  }
+
+  .switch-row__state {
+    font-size: .82rem !important;
+    letter-spacing: .10em !important;
+    line-height: 1.2 !important;
+    align-self: center !important;
+  }
+
+  .switchboard-toolbar,
+  .control-row,
+  .command-line-shell,
+  .level06-anchor-grid {
+    grid-template-columns: 1fr !important;
+    gap: 7px !important;
+    margin-top: 10px !important;
+  }
+
+  .switchboard-input,
+  .command-line-input,
+  .legacy-content input,
+  .legacy-content textarea,
+  .custom-content input,
+  .custom-content textarea {
+    min-height: 32px !important;
+    padding: 7px 9px !important;
+    border-radius: 7px !important;
+    font-size: .9rem !important;
+  }
+
+  .switchboard-note {
+    font-size: .78rem !important;
+    line-height: 1.35 !important;
+    margin-top: 8px !important;
+  }
+
+  /* Reference sections keep semantic cards on desktop; mobile flattens the inner card stack. */
+  .legacy-content :is(
+    .l1-grid,
+    .level05-command-deck,
+    .level06-save-deck,
+    .level07-location-deck,
+    .level08-codex-deck,
+    .level09-confirmation-deck,
+    .level10-seal-deck,
+    .custom-grid
+  ) {
+    display: block !important;
+  }
+
+  .legacy-content :is(
+    .l1-block,
+    .level05-card,
+    .level06-card,
+    .level07-card,
+    .level08-card,
+    .level09-card,
+    .level10-card
+  ),
+  .custom-content .custom-module {
+    width: 100% !important;
+    border: 0 !important;
+    border-top: 1px solid var(--color-console-line-soft) !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 12px 0 !important;
+    margin: 0 !important;
+  }
+
+  .legacy-content :is(.l1-block, .level05-card, .level06-card, .level07-card, .level08-card, .level09-card, .level10-card):first-child,
+  .custom-content .custom-module:first-child {
+    border-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  .legacy-content :is(.l1-block, .level05-card, .level06-card, .level07-card, .level08-card, .level09-card, .level10-card):last-child,
+  .custom-content .custom-module:last-child {
+    padding-bottom: 0 !important;
+  }
+
+  .legacy-content p,
+  .custom-content p {
+    font-size: .92rem !important;
+    line-height: 1.42 !important;
+  }
+
+  .legacy-content .level-meta,
+  .custom-content .custom-label {
+    margin-bottom: 6px !important;
+  }
+
+  .cli-sequence,
+  .l2-sequence,
+  .kv-list,
+  .l1-operator-list,
+  .l1-capabilities,
+  .level05-mini-rows,
+  .level06-mini-rows,
+  .level07-seat-stack,
+  .level08-mini-rows,
+  .level09-mini-rows,
+  .level10-seal-stack,
+  .level05-rule-stack,
+  .level06-step-stack,
+  .level06-rule-stack,
+  .level07-step-stack,
+  .level08-seal-stack,
+  .level09-step-stack,
+  .level09-failure-stack {
+    border-radius: 8px !important;
+    margin-top: 8px !important;
+  }
+
+  .cli-row,
+  .l2-sequence__row,
+  .kv-row,
+  .l1-operator-list > div,
+  .l1-capabilities > div,
+  .level05-mini-row,
+  .level06-mini-row,
+  .level07-seat-row,
+  .level08-mini-row,
+  .level09-mini-row,
+  .level10-seal-line,
+  .level05-rule,
+  .level06-step,
+  .level06-rule,
+  .level07-step,
+  .level08-seal-row,
+  .level09-step,
+  .level09-failure {
+    padding: 8px 9px !important;
+    gap: 4px !important;
+  }
+
+  .level05-use-grid,
+  .command-chip-row,
+  .level08-template-row,
+  .level10-button-row {
+    gap: 6px !important;
+  }
+
+  .level05-use-grid span,
+  .command-chip,
+  .level08-chip {
+    padding: 5px 7px !important;
+    border-radius: 7px !important;
+    font-size: .72rem !important;
+  }
+}
+
+@media (max-width: 430px) {
+  .page-hero h1,
+  .daily-run__title h1 {
+    font-size: clamp(1.45rem, 9vw, 2.15rem) !important;
+    letter-spacing: .026em !important;
+  }
+
+  .page-hero,
+  .daily-run-console,
+  .protocol-console,
+  .level-action-panel,
+  .legacy-content,
+  .section-card,
+  .callout {
+    padding: 12px !important;
+  }
+
+  .daily-run-console .action-card {
+    grid-template-columns: 1.8rem minmax(0, 1fr) !important;
+    padding: 9px 8px !important;
+  }
+
+  .switch-row,
+  .legacy-content .switch-row {
+    padding: 8px 9px !important;
+  }
+}

@@ -74,3 +74,18 @@ Rules enforced:
 - Amber is reserved for pending/warning states.
 - Daily Run uses a linear console row rhythm instead of a dashboard tile grid.
 - Reference sections do not repeat the page title as a second display heading.
+
+## V8 corrective pass — mobile de-nesting and utility density
+
+This pass does not redesign the visual direction. It keeps the semantic card utility-console system and adds a mobile-only density layer.
+
+On mobile, the rule is now: one visible shell, rows inside. Primary operation cards remain semantic modules, but nested instruction bubbles, state mini-cards, and reference-card stacks flatten into compact rows with dividers.
+
+Key intent:
+
+- Keep semantic cards on desktop.
+- Flatten nested boxes on mobile.
+- Reduce hero and button inflation.
+- Preserve semantic state color rules.
+- Keep Daily Run as an operation sequence.
+- Keep Switchboard as state rows, not dashboard tiles.

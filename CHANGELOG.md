@@ -78,3 +78,20 @@
 - Reduced the Christmas red/green collision by preventing large support-panel display headlines from using semantic colors.
 - Fixed inconsistent page-to-page hierarchy by enforcing: page identity, primary operation, status, reference.
 - Reduced card-grid/dashboard behavior on Daily Run in favor of a single executable sequence panel.
+
+## v8 corrective pass — mobile de-nesting and utility density
+
+### Changed
+
+- Added mobile-specific de-nesting rules so semantic cards remain on desktop while mobile views flatten inner cards into rows and dividers.
+- Reduced mobile hero padding, H1 scale, letter spacing, and page-shell spacing so primary operations appear sooner.
+- Converted mobile hero navigation and utility buttons from oversized full-width pills into compact console controls.
+- Tightened Daily Run mobile rows without changing the semantic operation-card direction.
+- Converted mobile Switchboard rows into a compact state table instead of large nested setting cards.
+- Flattened mobile Reference content so inner reference cards become section rows inside one visible shell.
+
+### Fixed
+
+- Reduced card-inside-card nesting on mobile.
+- Fixed inflated mobile switch rows, button rows, hero blocks, and reference-card stacks.
+- Reduced mobile density problems without changing the v7/v6 semantic-card design direction.
