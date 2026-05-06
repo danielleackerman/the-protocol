@@ -854,3 +854,480 @@ html[data-skin="signal"][data-theme="dark"] {
     gap: 5px;
   }
 }
+
+/* --------------------------------------------------------------------------
+   V9.37 VISUAL EXTRACTION PASS
+   Source mapped from uploaded v9.37 scaffold visual system onto Utility-derived
+   Signal lab selectors. This remains experimental and scoped to data-skin=signal.
+   -------------------------------------------------------------------------- */
+
+html[data-skin="signal"] {
+  --signal-radius: 14px;
+  --signal-radius-sm: 10px;
+  --signal-page: min(1220px, calc(100vw - 28px));
+}
+
+html[data-skin="signal"][data-theme="dark"] {
+  --signal-void: #030609;
+  --signal-black-blue: #061014;
+  --signal-night: #0a1720;
+  --signal-deep-teal: #0f3d44;
+  --signal-teal: #1f747b;
+  --signal-cyan-haze: #68d7d2;
+  --signal-cyan-hot: #52f0ff;
+  --signal-danger: #ff315d;
+  --signal-magenta: #ff4d87;
+  --signal-bone: #f3f1ea;
+  --signal-text: #f3f1ea;
+  --signal-brand: #f3f1ea;
+  --signal-heading: #f3f1ea;
+  --signal-muted: rgba(243, 241, 234, .66);
+  --signal-copy: rgba(243, 241, 234, .82);
+  --signal-copy-strong: rgba(243, 241, 234, .92);
+  --signal-label: rgba(104, 215, 210, .92);
+  --signal-kicker: #52f0ff;
+  --signal-lede: rgba(243, 241, 234, .92);
+
+  /* v9.37 extracted body field: black-blue base, red flare, cyan atmosphere. */
+  --signal-page-bg:
+    radial-gradient(circle at 12% -4%, rgba(255, 49, 93, .30), transparent 28rem),
+    radial-gradient(circle at 86% 8%, rgba(82, 240, 255, .24), transparent 34rem),
+    radial-gradient(circle at 48% 38%, rgba(31, 116, 123, .22), transparent 34rem),
+    linear-gradient(180deg, #0b2530 0%, #0d3940 34%, #092129 64%, #050b10 100%);
+  --signal-grid-opacity: .42;
+  --signal-scan-opacity: .18;
+
+  --signal-header-bg: rgba(5, 16, 21, .66);
+  --signal-header-border: rgba(104, 215, 210, .18);
+  --signal-nav-bg: rgba(255, 255, 255, .035);
+  --signal-nav-text: rgba(243, 241, 234, .86);
+  --signal-nav-active-bg: rgba(104, 215, 210, .085);
+  --signal-nav-active-text: #f3f1ea;
+
+  --signal-border-default: rgba(210, 244, 246, .16);
+  --signal-border-active: rgba(104, 215, 210, .42);
+  --signal-border-alert: rgba(255, 49, 93, .44);
+  --signal-hero-border: rgba(104, 215, 210, .26);
+  --signal-panel-bg:
+    linear-gradient(145deg, rgba(255,255,255,.060), rgba(255,255,255,.018)),
+    rgba(3, 8, 13, .66);
+  --signal-hero-bg: #071116;
+  --signal-panel-atmosphere:
+    radial-gradient(circle at 0% 0%, rgba(82, 240, 255, .12), transparent 14rem),
+    radial-gradient(circle at 100% 0%, rgba(255, 49, 93, .13), transparent 15rem),
+    linear-gradient(90deg, rgba(82, 240, 255, .045), transparent 38%, rgba(255, 49, 93, .040));
+  --signal-panel-atmosphere-opacity: .92;
+  --signal-panel-shadow:
+    0 18px 46px rgba(0,0,0,.30),
+    inset 0 1px 0 rgba(243,241,234,.065);
+  --signal-hero-shadow: 0 24px 80px rgba(0, 0, 0, .58);
+  --signal-small-glow:
+    0 0 0 1px rgba(82,240,255,.15),
+    0 0 34px rgba(82,240,255,.12),
+    0 12px 26px rgba(0,0,0,.25);
+
+  --signal-h1-fill: #f3f1ea;
+  --signal-h1-stroke: transparent;
+  --signal-h1-shadow:
+    0 0 34px rgba(104,215,210,.18),
+    0 0 3px rgba(255,255,255,.26),
+    0 1px 18px rgba(0,0,0,.46);
+
+  --signal-inner-bg:
+    linear-gradient(145deg, rgba(255,255,255,.055), rgba(255,255,255,.015)),
+    rgba(0, 5, 8, .38);
+  --signal-inner-border: rgba(104, 215, 210, .18);
+  --signal-divider: rgba(210, 244, 246, .14);
+  --signal-chip-bg: rgba(104, 215, 210, .07);
+  --signal-code-bg: rgba(0, 5, 8, .54);
+  --signal-code-text: #f3f1ea;
+  --signal-button-border: rgba(104, 215, 210, .42);
+  --signal-button-bg:
+    radial-gradient(circle at 20% 0%, rgba(82,240,255,.18), transparent 4.5rem),
+    rgba(5,18,24,.58);
+  --signal-hot-button-bg:
+    radial-gradient(circle at 20% 0%, rgba(255,49,93,.20), transparent 5rem),
+    rgba(255,49,93,.075);
+  --signal-button-text: #f3f1ea;
+  --signal-input-border: rgba(104, 215, 210, .28);
+  --signal-input-bg: linear-gradient(180deg, rgba(7,20,27,.90), rgba(3,9,14,.90));
+  --signal-input-text: #f3f1ea;
+  --signal-placeholder: rgba(243, 241, 234, .50);
+}
+
+html[data-skin="signal"] body::before {
+  background-image:
+    linear-gradient(rgba(104, 215, 210, .070) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 49, 93, .052) 1px, transparent 1px),
+    radial-gradient(circle, rgba(82,240,255,.34) 1px, transparent 1.4px),
+    radial-gradient(circle, rgba(255,49,93,.30) 1px, transparent 1.4px),
+    radial-gradient(circle, rgba(243,241,234,.20) 1px, transparent 1.5px);
+  background-size: 60px 60px, 60px 60px, 134px 134px, 188px 188px, 210px 210px;
+  background-position: 0 0, 0 0, 18px 28px, 76px 16px, 0 0;
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,.86), rgba(0,0,0,.18) 78%, transparent);
+}
+
+html[data-skin="signal"] body::after {
+  background:
+    linear-gradient(to bottom, transparent 0%, rgba(255,255,255,.035) 50%, transparent 52%),
+    linear-gradient(90deg, rgba(255,49,93,.08), transparent 16%, transparent 76%, rgba(104,215,210,.08));
+  background-size: 100% 5px, 100% 100%;
+}
+
+html[data-skin="signal"] .site-header {
+  box-shadow: 0 12px 36px rgba(0,0,0,.22);
+}
+
+html[data-skin="signal"] .site-header__inner {
+  grid-template-columns: minmax(170px, 260px) 1fr auto;
+}
+
+html[data-skin="signal"] .brand__title,
+html[data-skin="signal"] .brand {
+  letter-spacing: .22em;
+}
+
+html[data-skin="signal"] .site-nav a,
+html[data-skin="signal"] .theme-toggle,
+html[data-skin="signal"] .mobile-menu-toggle {
+  border-radius: 8px;
+  min-height: 34px;
+}
+
+html[data-skin="signal"] .shell,
+html[data-skin="signal"] .page-shell {
+  gap: clamp(18px, 3vw, 28px);
+  padding-top: 20px;
+}
+
+/* Hero: v9.37 entry-gate atmosphere mapped onto Utility identity hero. */
+html[data-skin="signal"] .signal-hero {
+  min-height: min(740px, calc(100vh - 78px));
+  justify-content: center;
+  padding: clamp(22px, 4vw, 46px);
+  border-color: var(--signal-hero-border);
+  background: var(--signal-hero-bg);
+  box-shadow: var(--signal-hero-shadow);
+  isolation: isolate;
+}
+
+html[data-skin="signal"] .signal-hero::before {
+  z-index: -3;
+  background:
+    radial-gradient(circle at 9% 24%, rgba(255,49,93,.82), rgba(255,77,135,.36) 13%, rgba(255,49,93,.10) 28%, transparent 44%),
+    radial-gradient(circle at 28% 72%, rgba(82,240,255,.26), transparent 30%),
+    radial-gradient(circle at 82% 35%, rgba(104,215,210,.42), transparent 36%),
+    linear-gradient(180deg, #17394a 0%, #258892 42%, #1b666c 72%, #0a1d24 100%);
+  filter: saturate(1.18) contrast(1.02);
+  opacity: 1;
+}
+
+html[data-skin="signal"] .signal-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.42), rgba(0,0,0,.10) 25%, rgba(0,0,0,.08) 68%, rgba(0,0,0,.40)),
+    linear-gradient(to bottom, rgba(255,255,255,.075), transparent 24%),
+    linear-gradient(to top, rgba(0,0,0,.24), transparent 34%);
+}
+
+html[data-skin="signal"] .signal-hero .kicker {
+  color: var(--signal-cyan-hot);
+  text-shadow: 0 0 18px rgba(82,240,255,.22);
+}
+
+html[data-skin="signal"] h1 {
+  max-width: 860px;
+  color: var(--signal-h1-fill);
+  font-size: clamp(2.55rem, 8vw, 6.9rem);
+  line-height: .98;
+  letter-spacing: .14em;
+  -webkit-text-stroke: 0 transparent;
+  text-shadow: var(--signal-h1-shadow);
+  overflow-wrap: normal;
+}
+
+html[data-skin="signal"] .lede {
+  max-width: 70ch;
+  margin: 22px 0 0;
+  padding-left: 14px;
+  border-left: 2px solid rgba(82,240,255,.58);
+  color: var(--signal-lede);
+  font-size: clamp(.84rem, 1.1vw, 1.02rem);
+  line-height: 1.72;
+  letter-spacing: .075em;
+  text-shadow: 0 1px 16px rgba(0,0,0,.46), 0 0 18px rgba(82,240,255,.10);
+}
+
+html[data-skin="signal"] .signal-hero .controls {
+  margin-top: 24px;
+  transform: translateY(clamp(22px, 3vh, 40px));
+}
+
+/* Glass panels and cells: v9.37 l1-card / level-card treatment mapped to Utility cards. */
+html[data-skin="signal"] .identity:not(.signal-hero),
+html[data-skin="signal"] .panel,
+html[data-skin="signal"] .reference-section {
+  border-color: rgba(104,215,210,.22);
+  background: var(--signal-panel-bg);
+  box-shadow: var(--signal-panel-shadow);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  transition: border-color .18s ease, box-shadow .18s ease, background .18s ease, transform .18s ease;
+}
+
+html[data-skin="signal"] .panel::after,
+html[data-skin="signal"] .reference-section::after,
+html[data-skin="signal"] .identity:not(.signal-hero)::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background:
+    linear-gradient(90deg, rgba(82,240,255,.36), rgba(255,49,93,.22)) top left / 100% 1px no-repeat;
+  opacity: .72;
+}
+
+html[data-skin="signal"] .panel:hover,
+html[data-skin="signal"] .reference-section:hover,
+html[data-skin="signal"] .identity:not(.signal-hero):hover {
+  border-color: rgba(82,240,255,.34);
+  box-shadow:
+    0 20px 54px rgba(0,0,0,.38),
+    0 0 0 1px rgba(82,240,255,.13),
+    0 0 34px rgba(82,240,255,.10),
+    inset 0 1px 0 rgba(243,241,234,.085);
+}
+
+html[data-skin="signal"] .panel:hover::after,
+html[data-skin="signal"] .reference-section:hover::after,
+html[data-skin="signal"] .identity:not(.signal-hero):hover::after {
+  opacity: 1;
+  background: linear-gradient(90deg, rgba(82,240,255,.82), rgba(82,240,255,.38)) top left / 100% 1px no-repeat;
+}
+
+html[data-skin="signal"] .operation-card,
+html[data-skin="signal"] .state-card,
+html[data-skin="signal"] .bank-controls,
+html[data-skin="signal"] .signal-notes {
+  background:
+    radial-gradient(circle at 8% 4%, rgba(255,49,93,.22), transparent 20rem),
+    radial-gradient(circle at 78% 8%, rgba(104,215,210,.16), transparent 26rem),
+    linear-gradient(180deg, rgba(6,20,26,.88), rgba(4,8,13,.96));
+}
+
+html[data-skin="signal"] .danger-card {
+  background:
+    radial-gradient(circle at 8% 0%, rgba(255,49,93,.24), transparent 18rem),
+    radial-gradient(circle at 100% 10%, rgba(104,215,210,.10), transparent 18rem),
+    linear-gradient(180deg, rgba(7,14,18,.88), rgba(4,8,13,.96));
+}
+
+html[data-skin="signal"] .navigation-card {
+  background:
+    radial-gradient(circle at 88% 0%, rgba(104,215,210,.20), transparent 20rem),
+    radial-gradient(circle at 8% 8%, rgba(255,49,93,.12), transparent 18rem),
+    linear-gradient(180deg, rgba(7,18,23,.88), rgba(4,8,13,.96));
+}
+
+html[data-skin="signal"] .seq-row,
+html[data-skin="signal"] .state-row,
+html[data-skin="signal"] .reference-row,
+html[data-skin="signal"] .flat-row,
+html[data-skin="signal"] .status-row,
+html[data-skin="signal"] .ref-block,
+html[data-skin="signal"] .signal-form-block,
+html[data-skin="signal"] .mini-state,
+html[data-skin="signal"] code {
+  position: relative;
+  overflow: hidden;
+  background: var(--signal-inner-bg);
+  border-color: var(--signal-inner-border);
+  box-shadow:
+    inset 0 1px 0 rgba(243,241,234,.045),
+    0 10px 26px rgba(0,0,0,.12);
+  transition: border-color .18s ease, box-shadow .18s ease, background .18s ease, transform .18s ease;
+}
+
+html[data-skin="signal"] .seq-row::before,
+html[data-skin="signal"] .state-row::before,
+html[data-skin="signal"] .reference-row::before,
+html[data-skin="signal"] .flat-row::before,
+html[data-skin="signal"] .status-row::before,
+html[data-skin="signal"] .ref-block::before,
+html[data-skin="signal"] .signal-form-block::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(82,240,255,.12), transparent 12rem),
+    radial-gradient(circle at 100% 0%, rgba(255,49,93,.08), transparent 13rem);
+  opacity: .88;
+}
+
+html[data-skin="signal"] .seq-row > *,
+html[data-skin="signal"] .state-row > *,
+html[data-skin="signal"] .reference-row > *,
+html[data-skin="signal"] .flat-row > *,
+html[data-skin="signal"] .status-row > *,
+html[data-skin="signal"] .ref-block > *,
+html[data-skin="signal"] .signal-form-block > * {
+  position: relative;
+  z-index: 1;
+}
+
+html[data-skin="signal"] .seq-row:hover,
+html[data-skin="signal"] .state-row:hover,
+html[data-skin="signal"] .reference-row:hover,
+html[data-skin="signal"] .flat-row:hover,
+html[data-skin="signal"] .status-row:hover,
+html[data-skin="signal"] .ref-block:hover,
+html[data-skin="signal"] .signal-form-block:hover,
+html[data-skin="signal"] .mini-state:hover,
+html[data-skin="signal"] code:hover {
+  transform: translateY(-1px);
+  border-color: rgba(82,240,255,.58);
+  background:
+    linear-gradient(145deg, rgba(82,240,255,.105), rgba(255,49,93,.052)),
+    rgba(2, 9, 14, .78);
+  box-shadow:
+    0 18px 44px rgba(0,0,0,.26),
+    0 0 0 1px rgba(82,240,255,.13),
+    0 0 28px rgba(82,240,255,.10),
+    inset 0 1px 0 rgba(243,241,234,.075);
+}
+
+/* Turn the Utility level table into a v9-like chamber stack without changing markup. */
+html[data-skin="signal"] #preview-levels .state-table {
+  gap: 14px;
+}
+
+html[data-skin="signal"] #preview-levels .state-row {
+  min-height: 112px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  padding: 18px 20px;
+  border-radius: var(--signal-radius);
+  border-color: rgba(210,244,246,.16);
+  background:
+    radial-gradient(circle at 14% 22%, rgba(255,49,93,.42), rgba(255,77,135,.20) 10%, transparent 25%),
+    radial-gradient(circle at 80% 18%, rgba(104,215,210,.18), transparent 28%),
+    linear-gradient(180deg, #102532 0%, #1a676e 47%, #11252a 100%);
+  box-shadow: 0 18px 56px rgba(0,0,0,.32);
+}
+
+html[data-skin="signal"] #preview-levels .state-row::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.62), rgba(0,0,0,.26) 44%, rgba(0,0,0,.56)),
+    linear-gradient(to top, rgba(0,0,0,.38), transparent 58%);
+}
+
+html[data-skin="signal"] #preview-levels .state-row:nth-child(2n) {
+  background:
+    radial-gradient(circle at 84% 26%, rgba(255,49,93,.38), rgba(255,77,135,.22) 11%, transparent 28%),
+    radial-gradient(circle at 18% 10%, rgba(104,215,210,.20), transparent 28%),
+    linear-gradient(180deg, #0f2130 0%, #1b6567 52%, #0a151a 100%);
+}
+
+html[data-skin="signal"] #preview-levels .state-row:nth-child(3n) {
+  background:
+    radial-gradient(circle at 20% 8%, rgba(255,49,93,.34), rgba(255,77,135,.20) 10%, transparent 25%),
+    radial-gradient(circle at 78% 58%, rgba(104,215,210,.24), transparent 34%),
+    linear-gradient(180deg, #0e1827 0%, #245e66 44%, #081014 100%);
+}
+
+html[data-skin="signal"] #preview-levels .state-label--link {
+  color: var(--signal-bone);
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 3vw, 2rem);
+  line-height: 1.04;
+  letter-spacing: .10em;
+  text-transform: uppercase;
+  text-shadow: 0 0 18px rgba(82,240,255,.14);
+}
+
+html[data-skin="signal"] #preview-levels .utility-link--open {
+  border: 1px solid rgba(82,240,255,.52);
+  border-radius: 8px;
+  padding: 7px 10px;
+  background: rgba(82,240,255,.075);
+  color: var(--signal-cyan-hot);
+  white-space: nowrap;
+}
+
+html[data-skin="signal"] .button,
+html[data-skin="signal"] .page-actions a,
+html[data-skin="signal"] .command-chip,
+html[data-skin="signal"] .switch-add-row button,
+html[data-skin="signal"] .command-input-row button {
+  min-height: 39px;
+  border-radius: 10px;
+  padding: 9px 13px;
+  box-shadow: 0 10px 22px rgba(0,0,0,.20);
+}
+
+html[data-skin="signal"] .button:hover,
+html[data-skin="signal"] .button:focus-visible,
+html[data-skin="signal"] .page-actions a:hover,
+html[data-skin="signal"] .page-actions a:focus-visible,
+html[data-skin="signal"] .command-chip:hover,
+html[data-skin="signal"] .command-chip:focus-visible,
+html[data-skin="signal"] .switch-add-row button:hover,
+html[data-skin="signal"] .switch-add-row button:focus-visible,
+html[data-skin="signal"] .command-input-row button:hover,
+html[data-skin="signal"] .command-input-row button:focus-visible {
+  outline: none;
+  border-color: rgba(82,240,255,.70);
+  box-shadow:
+    0 0 0 1px rgba(82,240,255,.22),
+    0 0 22px rgba(82,240,255,.13),
+    0 12px 26px rgba(0,0,0,.25);
+}
+
+html[data-skin="signal"] input,
+html[data-skin="signal"] select {
+  box-shadow:
+    inset 0 1px 0 rgba(243,241,234,.04),
+    0 0 0 1px rgba(0,0,0,.14);
+}
+
+html[data-skin="signal"] input:hover,
+html[data-skin="signal"] input:focus,
+html[data-skin="signal"] select:hover,
+html[data-skin="signal"] select:focus {
+  border-color: rgba(82,240,255,.66);
+  box-shadow:
+    0 0 0 1px rgba(82,240,255,.36),
+    0 0 0 3px rgba(82,240,255,.09),
+    inset 0 1px 0 rgba(243,241,234,.06),
+    0 0 28px rgba(82,240,255,.14);
+  background: linear-gradient(180deg, rgba(9,25,33,.94), rgba(5,12,18,.94));
+}
+
+@media (max-width: 640px) {
+  html[data-skin="signal"] .signal-hero {
+    min-height: 680px;
+  }
+
+  html[data-skin="signal"] h1 {
+    font-size: clamp(2.1rem, 11vw, 3.6rem);
+    letter-spacing: .08em;
+  }
+
+  html[data-skin="signal"] #preview-levels .state-row {
+    min-height: 144px;
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+}

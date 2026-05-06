@@ -60,3 +60,31 @@ The v0 source included Space Age font assets. Font files are intentionally not i
 ## Production migration note
 
 Do not wire this into the live site yet. The next safe step is visual review in `_experiments/signal-mode/signal-preview.html`, then a separate integration plan after the Signal skin is approved.
+
+## V9.37 visual extraction pass
+
+This pass maps visual rules from `v9.37-index.html` onto the existing Utility-derived preview. It does not adopt the v9 page architecture.
+
+Extracted / mapped from v9.37:
+
+- body field: layered black-blue base, cyan atmosphere, red/magenta flare
+- body pseudo-elements: grid/star texture and scanline/interference layer
+- sticky app-shell treatment mapped to `site-header`
+- v9 `entry-gate` atmosphere mapped to `.signal-hero`
+- v9 glass card treatment mapped to `.panel`, `.reference-section`, `.ref-block`, `.seq-row`, `.state-row`, and `.flat-row`
+- v9 chamber-row light bands mapped to the Utility `state-table` / `state-row` level directory
+- v9 hover/selected glow behavior mapped to buttons, rows, chips, inputs, and panels
+- Space Age-first display stack retained without bundling the font file
+
+Still Utility-derived / not v9 architecture:
+
+- header/nav vocabulary
+- preview anchors
+- Daily Run sequence rows
+- Firewall/reference panels
+- Overview reference blocks
+- Levels table pattern
+- Custom switch/command controls
+- Bank filter controls
+
+Production boundary remains unchanged: all edits stay inside `_experiments/signal-mode/`.

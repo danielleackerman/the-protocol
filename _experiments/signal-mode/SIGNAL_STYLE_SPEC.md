@@ -677,3 +677,30 @@ _experiments/signal-mode/
 ```
 
 Do not connect to production until approved.
+
+---
+
+## 10. V9.37 Extraction Pass Addendum
+
+The uploaded `v9.37-index.html` is the current visual implementation source for Signal Dark depth and atmosphere.
+
+The Signal lab should extract the following v9.37 rules literally where possible, then map them onto Utility selectors:
+
+```txt
+v9 body background stack      -> Signal `body`
+v9 body::before texture      -> Signal `body::before`
+v9 body::after scanline      -> Signal `body::after`
+v9 app-shell                 -> Utility `.site-header`
+v9 entry-gate                -> Utility `.signal-hero`
+v9 level-summary chamber row -> Utility level directory `.state-row`
+v9 l1-block / level cards    -> Utility `.panel`, `.ref-block`, `.seq-row`, `.flat-row`
+v9 buttons / inputs          -> Utility `.button`, `.page-actions a`, `input`, `select`
+```
+
+Do not copy the v9 layout architecture into production. The rule is:
+
+```txt
+v9 = visual source
+Utility = structure source
+Signal lab = isolated mapping layer
+```
