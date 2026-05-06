@@ -638,3 +638,15 @@ textarea { min-height: 96px; resize: vertical; }
   }
 }
 
+
+
+/* Plain text links for utility reference headings */
+.plain-link {
+  color: inherit;
+  text-decoration: none;
+}
+.plain-link:hover,
+.plain-link:focus-visible {
+  color: var(--text);
+  text-decoration: none;
+}
