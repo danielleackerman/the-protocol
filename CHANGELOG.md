@@ -139,3 +139,9 @@
 - Added `bank.html` as a saved ledger/archive page.
 - Added type, category, and search filters to the Bank.
 - Added localStorage-backed saving/copy/delete behavior for Custom and Bank.
+
+## V13 - Levels page polish
+
+- Removed the redundant `Chambers` heading from the Levels page.
+- Made each level title/link text clickable with no underline treatment.
+- Added a stronger graphite action treatment to the `Open` buttons.

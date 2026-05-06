@@ -119,3 +119,7 @@ The rebuilt pages use a simple pattern:
 ## V12 corrective pass — Custom configuration and Bank ledger
 
 Custom now acts as a configuration workbench for switches, defaults, commands, laws, saved peak states, and confirmations. Bank acts as the saved ledger/archive.
+
+## V13 corrective pass - Levels page polish
+
+The Levels page now treats the level label itself as the primary link to its page, while the `Open` control receives a stronger action color. The extra `Chambers` subheading was removed to reduce redundant hierarchy.
