@@ -756,3 +756,48 @@ textarea { min-height: 96px; resize: vertical; }
     max-width: none;
   }
 }
+
+/* V18 Daily Run breakpoint alignment fix */
+.operation-card .mini-state-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10.5rem, 1fr));
+  gap: 0.18rem 1.75rem;
+  max-width: 31rem;
+}
+
+.operation-card .mini-state {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  column-gap: 0.65rem;
+  min-width: 0;
+}
+
+.operation-card .mini-state > span {
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.operation-card .mini-state .state-on {
+  justify-self: end;
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+}
+
+.operation-card .seq-body code {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 700px) {
+  .operation-card .mini-state-list {
+    grid-template-columns: 1fr;
+    max-width: none;
+  }
+
+  .operation-card .mini-state > span {
+    white-space: normal;
+  }
+}
