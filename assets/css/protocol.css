@@ -650,3 +650,71 @@ textarea { min-height: 96px; resize: vertical; }
   color: var(--text);
   text-decoration: none;
 }
+
+
+/* V16 Daily Run alignment polish */
+.seq-index--blank {
+  color: transparent;
+  user-select: none;
+}
+
+.seq-row--status,
+.seq-row--firewall {
+  grid-template-columns: 2.35rem minmax(5.8rem, .65fr) minmax(0, 1.4fr);
+}
+
+.seq-row--status {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.seq-row--firewall .seq-body,
+.seq-row--status .seq-body {
+  min-width: 0;
+}
+
+.mini-state-list {
+  display: grid;
+  gap: 4px;
+  width: min(100%, 16rem);
+}
+
+.mini-state-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: baseline;
+  min-width: 0;
+}
+
+.mini-state-row > span {
+  min-width: 0;
+}
+
+.mini-state-row .state-on {
+  font-family: var(--font-mono);
+  font-size: .84em;
+  font-weight: 900;
+  letter-spacing: .04em;
+  text-align: right;
+}
+
+@media (min-width: 520px) {
+  .mini-state-list {
+    width: min(100%, 22rem);
+    grid-template-columns: repeat(2, minmax(7.5rem, 1fr));
+    column-gap: 16px;
+  }
+}
+
+@media (max-width: 420px) {
+  .seq-row,
+  .seq-row--status,
+  .seq-row--firewall {
+    grid-template-columns: 1.8rem minmax(4.6rem, .58fr) minmax(0, 1fr);
+  }
+
+  .mini-state-list {
+    width: min(100%, 13rem);
+  }
+}
