@@ -115,3 +115,7 @@ The rebuilt pages use a simple pattern:
 3. status
 4. reference
 5. navigation
+
+## V12 corrective pass — Custom configuration and Bank ledger
+
+Custom now acts as a configuration workbench for switches, defaults, commands, laws, saved peak states, and confirmations. Bank acts as the saved ledger/archive.

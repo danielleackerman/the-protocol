@@ -131,3 +131,11 @@
 - Removed the old `action-grid` / `action-card` homepage structure.
 - Removed the obvious card-inside-card nesting from rebuilt level pages.
 - Reduced beige/oatmeal visual dominance in favor of graphite/chrome utility.
+
+## V12 — Restore Custom configuration + Bank
+
+### Added
+- Restored Custom Switches, Defaults, Commands, Laws, Saved Peak States, and Confirmations as flat utility modules.
+- Added `bank.html` as a saved ledger/archive page.
+- Added type, category, and search filters to the Bank.
+- Added localStorage-backed saving/copy/delete behavior for Custom and Bank.
