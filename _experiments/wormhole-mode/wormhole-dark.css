@@ -997,3 +997,217 @@ html[data-skin="signal"] .inline-chip {
     align-items: start;
   }
 }
+/* =========================================================
+   WORMHOLE REFINEMENT PASS 01
+   CSS-only visual correction.
+   Purpose: reduce jumbo type + cool down Chamber.
+   No HTML / JS / content / behavior changes.
+   ========================================================= */
+
+html[data-skin="signal"] {
+  --wh-void: #020201;
+  --wh-black: #060504;
+  --wh-ink: #0d0c0a;
+  --wh-espresso: #14120f;
+  --wh-bronze: #7d6137;
+  --wh-gold: #a5834c;
+  --wh-gold-hot: #c99d57;
+  --wh-clay: #8b6257;
+  --wh-clay-soft: #8b6257;
+
+  --wh-ivory: #f7f1e7;
+  --wh-white: #ffffff;
+  --wh-muted: rgba(247, 241, 231, .68);
+
+  --wh-border-default: rgba(247, 241, 231, .14);
+  --wh-border-active: rgba(201, 157, 87, .34);
+  --wh-border-alert: rgba(139, 98, 87, .34);
+}
+
+/* Display scale correction: keep editorial force, remove billboard scale. */
+html[data-skin="signal"] h1,
+html[data-skin="signal"] .identity h1,
+html[data-skin="signal"] .panel h1,
+html[data-skin="signal"] .page-shell h1 {
+  font-size: clamp(2.8rem, 7.2vw, 6.2rem);
+  line-height: .9;
+  letter-spacing: -.045em;
+}
+
+html[data-skin="signal"] h2,
+html[data-skin="signal"] .panel h2,
+html[data-skin="signal"] .sequence-title,
+html[data-skin="signal"] .section-title,
+html[data-skin="signal"] .state-table h2,
+html[data-skin="signal"] .reference-section h2 {
+  font-size: clamp(2rem, 4.8vw, 3.8rem);
+  line-height: .96;
+  letter-spacing: -.035em;
+}
+
+html[data-skin="signal"] .lede,
+html[data-skin="signal"] .identity .lede,
+html[data-skin="signal"] .panel .lede {
+  max-width: 40rem;
+  font-size: clamp(1rem, 1.2vw, 1.18rem);
+  line-height: 1.5;
+}
+
+/* Chamber correction: less orange haze, cleaner black/ivory/gold. */
+html[data-skin="signal"][data-theme="dark"] {
+  --wh-page-bg:
+    radial-gradient(ellipse at 50% -8%, rgba(201, 157, 87, .10), transparent 34rem),
+    radial-gradient(circle at 12% 16%, rgba(139, 98, 87, .08), transparent 24rem),
+    radial-gradient(circle at 88% 10%, rgba(165, 131, 76, .08), transparent 26rem),
+    linear-gradient(180deg, #090705 0%, #040302 58%, #020201 100%);
+
+  --wh-portal-layer:
+    radial-gradient(ellipse at 50% -18%, transparent 0 25rem, rgba(201, 157, 87, .055) 25.2rem, transparent 25.55rem),
+    radial-gradient(ellipse at 50% -18%, transparent 0 33rem, rgba(247, 241, 231, .032) 33.2rem, transparent 33.5rem),
+    linear-gradient(90deg, transparent, rgba(247, 241, 231, .022) 50%, transparent);
+
+  --wh-vignette-layer:
+    radial-gradient(circle at 50% 0%, transparent 0 24rem, rgba(0, 0, 0, .28) 48rem),
+    linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, .46) 100%);
+
+  --wh-grid-opacity: .46;
+  --wh-scan-opacity: .42;
+
+  --wh-header-bg: rgba(5, 4, 3, .84);
+  --wh-header-border: rgba(247, 241, 231, .10);
+
+  --wh-panel-bg:
+    linear-gradient(180deg, rgba(247, 241, 231, .04), rgba(247, 241, 231, .018)),
+    rgba(6, 5, 4, .84);
+
+  --wh-hero-bg:
+    radial-gradient(ellipse at 50% -10%, rgba(201, 157, 87, .10), transparent 30rem),
+    linear-gradient(180deg, rgba(9, 7, 5, .94), rgba(4, 3, 2, .90));
+
+  --wh-panel-atmosphere:
+    radial-gradient(circle at 0% 0%, rgba(139, 98, 87, .075), transparent 18rem),
+    radial-gradient(circle at 100% 0%, rgba(201, 157, 87, .065), transparent 20rem),
+    linear-gradient(90deg, rgba(247, 241, 231, .016), transparent 40%, rgba(201, 157, 87, .020));
+
+  --wh-panel-shadow:
+    0 20px 56px rgba(0, 0, 0, .42),
+    inset 0 1px 0 rgba(247, 241, 231, .05);
+
+  --wh-hero-shadow:
+    0 26px 76px rgba(0, 0, 0, .50),
+    0 0 0 1px rgba(201, 157, 87, .07);
+
+  --wh-small-glow:
+    0 0 0 1px rgba(201, 157, 87, .14),
+    0 0 24px rgba(201, 157, 87, .08),
+    0 12px 26px rgba(0, 0, 0, .24);
+
+  --wh-button-border: rgba(201, 157, 87, .28);
+  --wh-button-bg:
+    linear-gradient(180deg, rgba(201, 157, 87, .10), rgba(201, 157, 87, .04));
+  --wh-hot-button-bg:
+    linear-gradient(180deg, rgba(139, 98, 87, .12), rgba(139, 98, 87, .045));
+}
+
+html[data-skin="signal"][data-theme="dark"] .site-header {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .28);
+}
+
+html[data-skin="signal"][data-theme="dark"] .identity::after,
+html[data-skin="signal"][data-theme="dark"] .panel::after,
+html[data-skin="signal"][data-theme="dark"] .reference-section::after {
+  background:
+    linear-gradient(90deg, transparent, rgba(201, 157, 87, .26), transparent) top left / 100% 1px no-repeat;
+  opacity: .42;
+}
+
+html[data-skin="signal"][data-theme="dark"] .signal-hero::before {
+  background:
+    radial-gradient(ellipse at 50% 12%, transparent 0 11rem, rgba(201, 157, 87, .12) 11.1rem, transparent 11.35rem),
+    radial-gradient(ellipse at 50% 12%, transparent 0 16rem, rgba(247, 241, 231, .045) 16.1rem, transparent 16.4rem),
+    radial-gradient(circle at 18% 20%, rgba(139, 98, 87, .08), transparent 16rem),
+    radial-gradient(circle at 82% 18%, rgba(201, 157, 87, .07), transparent 18rem),
+    linear-gradient(135deg, rgba(247, 241, 231, .026), transparent 48%);
+  opacity: .82;
+}
+
+html[data-skin="signal"][data-theme="dark"] .button,
+html[data-skin="signal"][data-theme="dark"] .page-actions a,
+html[data-skin="signal"][data-theme="dark"] .command-chip,
+html[data-skin="signal"][data-theme="dark"] .switch-add-row button,
+html[data-skin="signal"][data-theme="dark"] .command-input-row button,
+html[data-skin="signal"][data-theme="dark"] .ledger-item__actions button,
+html[data-skin="signal"][data-theme="dark"] .utility-link,
+html[data-skin="signal"][data-theme="dark"] .plain-link,
+html[data-skin="signal"][data-theme="dark"] .breadcrumb {
+  min-height: 2.7rem;
+  padding: .7rem 1.15rem;
+  letter-spacing: .12em;
+  border-color: rgba(201, 157, 87, .28);
+}
+
+html[data-skin="signal"][data-theme="dark"] .seq-row:hover,
+html[data-skin="signal"][data-theme="dark"] .state-row:hover,
+html[data-skin="signal"][data-theme="dark"] .reference-row:hover,
+html[data-skin="signal"][data-theme="dark"] .flat-row:hover,
+html[data-skin="signal"][data-theme="dark"] .status-row:hover,
+html[data-skin="signal"][data-theme="dark"] .ref-block:hover,
+html[data-skin="signal"][data-theme="dark"] .signal-form-block:hover,
+html[data-skin="signal"][data-theme="dark"] .mini-state:hover,
+html[data-skin="signal"][data-theme="dark"] .custom-status-row:hover,
+html[data-skin="signal"][data-theme="dark"] .ledger-item:hover,
+html[data-skin="signal"][data-theme="dark"] code:hover {
+  border-color: rgba(201, 157, 87, .28);
+  box-shadow:
+    0 0 0 1px rgba(201, 157, 87, .12),
+    0 0 22px rgba(201, 157, 87, .07),
+    0 10px 24px rgba(0, 0, 0, .20);
+}
+
+html[data-skin="signal"][data-theme="dark"] .is-active,
+html[data-skin="signal"][data-theme="dark"] .state-on,
+html[data-skin="signal"][data-theme="dark"] [aria-pressed="true"],
+html[data-skin="signal"][data-theme="dark"] [aria-selected="true"],
+html[data-skin="signal"][data-theme="dark"] .status-active,
+html[data-skin="signal"][data-theme="dark"] .status-complete,
+html[data-skin="signal"][data-theme="dark"] .status-ready {
+  border-color: rgba(201, 157, 87, .46);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(201, 157, 87, .14), transparent 7rem),
+    linear-gradient(180deg, rgba(247, 241, 231, .06), rgba(247, 241, 231, .02));
+  box-shadow:
+    0 0 0 1px rgba(201, 157, 87, .16),
+    0 0 24px rgba(201, 157, 87, .10);
+}
+
+html[data-skin="signal"][data-theme="dark"] #preview-levels .state-row {
+  background:
+    radial-gradient(circle at 12% 18%, rgba(139, 98, 87, .08), transparent 24rem),
+    radial-gradient(circle at 86% 12%, rgba(201, 157, 87, .07), transparent 22rem),
+    linear-gradient(180deg, rgba(247, 241, 231, .048), rgba(247, 241, 231, .018)),
+    rgba(6, 5, 4, .84);
+}
+
+html[data-skin="signal"][data-theme="dark"] #preview-levels .state-row:hover {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(201, 157, 87, .11), transparent 18rem),
+    linear-gradient(180deg, rgba(247, 241, 231, .058), rgba(247, 241, 231, .02)),
+    rgba(6, 5, 4, .88);
+}
+
+@media (max-width: 640px) {
+  html[data-skin="signal"] h1 {
+    font-size: clamp(2.5rem, 12vw, 4.8rem);
+    line-height: .92;
+    letter-spacing: -.045em;
+  }
+
+  html[data-skin="signal"] h2 {
+    font-size: clamp(1.8rem, 8vw, 3rem);
+    line-height: .98;
+  }
+
+  html[data-skin="signal"] .signal-hero {
+    min-height: 520px;
+  }
+}

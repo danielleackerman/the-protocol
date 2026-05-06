@@ -143,3 +143,184 @@ html[data-skin="signal"][data-theme="light"] textarea:focus {
     0 0 0 3px rgba(169, 126, 50, .10),
     inset 0 1px 0 rgba(255, 255, 255, .82);
 }
+/* =========================================================
+   WORMHOLE REFINEMENT PASS 01
+   CSS-only visual correction.
+   Purpose: brighten / clean Field.
+   No HTML / JS / content / behavior changes.
+   ========================================================= */
+
+html[data-skin="signal"][data-theme="light"] {
+  --wh-void: #f5f1e8;
+  --wh-black: #fcfaf5;
+  --wh-ink: #efe7d8;
+  --wh-espresso: #342d25;
+  --wh-bronze: #967442;
+  --wh-gold: #967442;
+  --wh-gold-hot: #765823;
+  --wh-clay: #b18474;
+  --wh-clay-soft: #b18474;
+  --wh-ivory: #14110d;
+
+  --wh-text: #14110d;
+  --wh-brand: #14110d;
+  --wh-heading: #14110d;
+  --wh-muted: rgba(20, 17, 13, .58);
+  --wh-copy: rgba(20, 17, 13, .76);
+  --wh-copy-strong: rgba(20, 17, 13, .92);
+  --wh-label: rgba(150, 116, 66, .92);
+  --wh-kicker: #765823;
+  --wh-lede: rgba(20, 17, 13, .82);
+
+  --wh-page-bg:
+    radial-gradient(ellipse at 50% -12%, rgba(214, 190, 147, .22), transparent 34rem),
+    radial-gradient(circle at 0% 0%, rgba(177, 132, 116, .08), transparent 22rem),
+    radial-gradient(circle at 100% 8%, rgba(150, 116, 66, .08), transparent 24rem),
+    linear-gradient(135deg, #fcfaf5 0%, #f5f1e8 50%, #ede5d6 100%);
+
+  --wh-portal-layer:
+    radial-gradient(ellipse at 50% -18%, transparent 0 24rem, rgba(150, 116, 66, .10) 24.2rem, transparent 24.55rem),
+    radial-gradient(ellipse at 50% -18%, transparent 0 32rem, rgba(20, 17, 13, .034) 32.2rem, transparent 32.5rem),
+    linear-gradient(90deg, transparent, rgba(20, 17, 13, .022) 50%, transparent);
+
+  --wh-vignette-layer:
+    radial-gradient(circle at 50% 0%, transparent 0 25rem, rgba(252, 250, 245, .38) 46rem),
+    linear-gradient(180deg, transparent 0%, rgba(92, 64, 32, .055) 100%);
+
+  --wh-grid-opacity: .34;
+  --wh-scan-opacity: .34;
+
+  --wh-header-bg: rgba(252, 250, 245, .84);
+  --wh-header-border: rgba(20, 17, 13, .08);
+  --wh-nav-bg: rgba(255, 255, 255, .52);
+  --wh-nav-text: rgba(20, 17, 13, .70);
+  --wh-nav-active-bg: rgba(214, 190, 147, .18);
+  --wh-nav-active-text: #14110d;
+
+  --wh-border-default: rgba(20, 17, 13, .12);
+  --wh-border-active: rgba(150, 116, 66, .32);
+  --wh-border-alert: rgba(177, 132, 116, .28);
+  --wh-hero-border: rgba(150, 116, 66, .24);
+
+  --wh-panel-bg:
+    linear-gradient(180deg, rgba(255, 255, 255, .82), rgba(252, 250, 245, .94));
+
+  --wh-hero-bg:
+    radial-gradient(ellipse at 50% -10%, rgba(214, 190, 147, .16), transparent 30rem),
+    linear-gradient(180deg, rgba(252, 250, 245, .92), rgba(245, 241, 232, .84));
+
+  --wh-panel-atmosphere:
+    radial-gradient(circle at 0% 0%, rgba(177, 132, 116, .055), transparent 18rem),
+    radial-gradient(circle at 100% 0%, rgba(150, 116, 66, .065), transparent 20rem),
+    linear-gradient(90deg, rgba(255, 255, 255, .30), transparent 40%, rgba(214, 190, 147, .065));
+
+  --wh-panel-shadow:
+    0 16px 38px rgba(64, 44, 24, .08),
+    inset 0 1px 0 rgba(255, 255, 255, .88);
+
+  --wh-hero-shadow:
+    0 22px 56px rgba(64, 44, 24, .10),
+    0 0 0 1px rgba(150, 116, 66, .08);
+
+  --wh-small-glow:
+    0 0 0 1px rgba(150, 116, 66, .12),
+    0 12px 28px rgba(150, 116, 66, .10);
+
+  --wh-inner-bg:
+    linear-gradient(180deg, rgba(255, 255, 255, .82), rgba(252, 250, 245, .92));
+  --wh-inner-border: rgba(20, 17, 13, .10);
+  --wh-chip-bg: rgba(214, 190, 147, .16);
+
+  --wh-button-border: rgba(150, 116, 66, .24);
+  --wh-button-bg:
+    linear-gradient(180deg, rgba(255, 255, 255, .78), rgba(214, 190, 147, .14));
+  --wh-hot-button-bg:
+    linear-gradient(180deg, rgba(177, 132, 116, .14), rgba(177, 132, 116, .05));
+
+  --wh-input-border: rgba(20, 17, 13, .10);
+  --wh-input-bg: rgba(255, 255, 255, .74);
+  --wh-placeholder: rgba(20, 17, 13, .36);
+}
+
+html[data-skin="signal"][data-theme="light"] .site-header {
+  box-shadow: 0 8px 24px rgba(64, 44, 24, .06);
+}
+
+html[data-skin="signal"][data-theme="light"] .identity::after,
+html[data-skin="signal"][data-theme="light"] .panel::after,
+html[data-skin="signal"][data-theme="light"] .reference-section::after {
+  background:
+    linear-gradient(90deg, transparent, rgba(150, 116, 66, .22), transparent) top left / 100% 1px no-repeat;
+  opacity: .42;
+}
+
+html[data-skin="signal"][data-theme="light"] .signal-hero::before {
+  background:
+    radial-gradient(ellipse at 50% 12%, transparent 0 11rem, rgba(150, 116, 66, .12) 11.1rem, transparent 11.35rem),
+    radial-gradient(ellipse at 50% 12%, transparent 0 16rem, rgba(20, 17, 13, .032) 16.1rem, transparent 16.4rem),
+    radial-gradient(circle at 16% 20%, rgba(177, 132, 116, .07), transparent 16rem),
+    radial-gradient(circle at 86% 12%, rgba(214, 190, 147, .13), transparent 18rem),
+    linear-gradient(135deg, rgba(255, 255, 255, .54), transparent 52%);
+  opacity: .86;
+}
+
+html[data-skin="signal"][data-theme="light"] .button,
+html[data-skin="signal"][data-theme="light"] .page-actions a,
+html[data-skin="signal"][data-theme="light"] .command-chip,
+html[data-skin="signal"][data-theme="light"] .switch-add-row button,
+html[data-skin="signal"][data-theme="light"] .command-input-row button,
+html[data-skin="signal"][data-theme="light"] .ledger-item__actions button,
+html[data-skin="signal"][data-theme="light"] .utility-link,
+html[data-skin="signal"][data-theme="light"] .plain-link,
+html[data-skin="signal"][data-theme="light"] .breadcrumb {
+  min-height: 2.7rem;
+  padding: .7rem 1.15rem;
+  letter-spacing: .12em;
+  border-color: rgba(150, 116, 66, .24);
+}
+
+html[data-skin="signal"][data-theme="light"] .seq-row:hover,
+html[data-skin="signal"][data-theme="light"] .state-row:hover,
+html[data-skin="signal"][data-theme="light"] .reference-row:hover,
+html[data-skin="signal"][data-theme="light"] .flat-row:hover,
+html[data-skin="signal"][data-theme="light"] .status-row:hover,
+html[data-skin="signal"][data-theme="light"] .ref-block:hover,
+html[data-skin="signal"][data-theme="light"] .signal-form-block:hover,
+html[data-skin="signal"][data-theme="light"] .mini-state:hover,
+html[data-skin="signal"][data-theme="light"] .custom-status-row:hover,
+html[data-skin="signal"][data-theme="light"] .ledger-item:hover,
+html[data-skin="signal"][data-theme="light"] code:hover {
+  border-color: rgba(150, 116, 66, .22);
+  box-shadow:
+    0 0 0 1px rgba(150, 116, 66, .10),
+    0 12px 24px rgba(150, 116, 66, .08);
+}
+
+html[data-skin="signal"][data-theme="light"] .is-active,
+html[data-skin="signal"][data-theme="light"] .state-on,
+html[data-skin="signal"][data-theme="light"] [aria-pressed="true"],
+html[data-skin="signal"][data-theme="light"] [aria-selected="true"],
+html[data-skin="signal"][data-theme="light"] .status-active,
+html[data-skin="signal"][data-theme="light"] .status-complete,
+html[data-skin="signal"][data-theme="light"] .status-ready {
+  border-color: rgba(150, 116, 66, .38);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(214, 190, 147, .26), transparent 7rem),
+    linear-gradient(180deg, rgba(255, 255, 255, .88), rgba(252, 250, 245, .96));
+  box-shadow:
+    0 0 0 1px rgba(150, 116, 66, .12),
+    0 14px 28px rgba(150, 116, 66, .10);
+}
+
+html[data-skin="signal"][data-theme="light"] #preview-levels .state-row {
+  background:
+    radial-gradient(circle at 12% 18%, rgba(177, 132, 116, .06), transparent 24rem),
+    radial-gradient(circle at 86% 12%, rgba(214, 190, 147, .12), transparent 22rem),
+    linear-gradient(180deg, rgba(255, 255, 255, .84), rgba(252, 250, 245, .94));
+}
+
+html[data-skin="signal"][data-theme="light"] #preview-levels .state-row:hover {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(214, 190, 147, .22), transparent 18rem),
+    linear-gradient(180deg, rgba(255, 255, 255, .94), rgba(252, 250, 245, .98));
+}
