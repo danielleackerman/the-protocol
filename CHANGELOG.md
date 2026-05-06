@@ -33,3 +33,11 @@
 - Multi-page static structure.
 - Existing level content and migrated interactive logic.
 - Existing font files in `assets/fonts/` are referenced but not bundled in the generated package.
+
+## v3 corrective pass — page order, typography, public copy
+
+- Moved primary action/command panels to the top of level pages so command sequence appears before explication.
+- Rewrote public Overview copy to remove implementation/changelog language.
+- Strengthened local display font loading and applied the display face to the brand header.
+- Added global spacing rules for migrated label/value patterns to prevent run-ons such as `Do not manifestYou execute` and `SwitchesStanding`.
+- Added level action-panel styling for command-first page rhythm.

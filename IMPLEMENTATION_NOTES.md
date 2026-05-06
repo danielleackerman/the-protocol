@@ -35,3 +35,10 @@ The generated package does **not** include font files. It references the existin
 - `assets/fonts/space age.ttf`
 
 Do not delete the existing font files when applying this patch.
+
+## V3 corrective pass
+
+- Public Overview copy cleaned so it no longer reads like implementation/changelog language.
+- Level pages now place the primary action/command panel before explication.
+- Header brand font loading strengthened and brand display font applied.
+- Migrated label/value spacing corrected to reduce inline run-ons.

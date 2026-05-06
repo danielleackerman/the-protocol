@@ -1,6 +1,8 @@
 @font-face {
   font-family: "ProtocolSpace";
-  src: url("../fonts/space age.ttf") format("truetype");
+  src: local("Space Age"),
+       url("../fonts/space%20age.ttf") format("truetype"),
+       url("../fonts/space%20age.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -99,10 +101,11 @@ button, input, textarea, select { font: inherit; }
   text-decoration: none;
   letter-spacing: .14em;
   text-transform: uppercase;
-  font-family: var(--font-mono);
-  font-size: .82rem;
-  font-weight: 900;
+  font-family: var(--font-display);
+  font-size: 1.02rem;
+  font-weight: 400;
   color: var(--color-accent);
+  font-synthesis: none;
 }
 .brand::before {
   content: "";
@@ -509,6 +512,92 @@ code {
 .legacy-content .level10-seal-deck { grid-template-columns: repeat(12, minmax(0, 1fr)); }
 .legacy-content .level10-card { grid-column: span 6; }
 .legacy-content .level10-card--seal, .legacy-content .level10-card--final { grid-column: 1 / -1; }
+
+
+/* V3 correction: action first, explanation below */
+.level-action-panel {
+  border: 1px solid color-mix(in srgb, var(--color-accent), transparent 62%);
+  border-radius: var(--radius-md);
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--color-accent-soft), transparent 12%), transparent 52%),
+    var(--color-surface);
+  box-shadow: var(--shadow-chrome);
+  padding: clamp(18px, 3vw, 28px);
+}
+.level-action-panel .level-meta,
+.level-action-panel .kicker { color: var(--color-accent); }
+.level-action-panel h2,
+.level-action-panel h3 { margin-top: 0; }
+.level-action-panel pre,
+.level-action-panel .command-line,
+.level-action-panel .quick-command {
+  margin-top: 12px;
+  border-color: color-mix(in srgb, var(--color-accent), transparent 66%);
+}
+.level-action-panel .l1-inline-action,
+.level-action-panel [class*="console"],
+.level-action-panel [class*="terminal"],
+.level-action-panel [class*="output"] {
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--color-surface-2), transparent 48%);
+  padding: 14px;
+  margin-top: 12px;
+}
+
+/* V3 correction: prevent bold-label run-ons in migrated chamber content */
+.legacy-content :is(.l1-operator-list, .l1-capabilities) {
+  display: grid;
+  gap: 9px;
+}
+.legacy-content :is(.l1-operator-list, .l1-capabilities) > div {
+  display: grid;
+  grid-template-columns: minmax(9rem, max-content) minmax(0, 1fr);
+  column-gap: .85rem;
+  row-gap: .15rem;
+  align-items: baseline;
+}
+.legacy-content :is(.l1-operator-list, .l1-capabilities) :is(strong, b) {
+  color: var(--color-text);
+  font-weight: 900;
+}
+.legacy-content :is(.l1-operator-list, .l1-capabilities) span {
+  display: block;
+  min-width: 0;
+}
+.legacy-content :where(p, li, div) > :is(strong, b) + :is(span, em) {
+  margin-left: .35em;
+}
+.legacy-content .l1-strong {
+  font-weight: 900;
+  color: var(--color-text);
+}
+.legacy-content .l1-command-block,
+.legacy-content pre[class*="command"],
+.level-action-panel pre {
+  line-height: 1.55;
+  letter-spacing: .005em;
+}
+.legacy-content .prompt { color: var(--color-accent); font-weight: 950; }
+
+/* V3 correction: public explanation blocks should read like content, not changelog cards */
+.public-principle {
+  display: grid;
+  gap: 12px;
+}
+.public-principle p { max-width: 68ch; }
+
+@media (max-width: 640px) {
+  .brand { font-size: .96rem; letter-spacing: .105em; }
+  .level-action-panel { padding: 17px 15px; }
+  .legacy-content :is(.l1-operator-list, .l1-capabilities) > div {
+    grid-template-columns: 1fr;
+    gap: 1px;
+  }
+  .legacy-content :where(p, li, div) > :is(strong, b) + :is(span, em) {
+    margin-left: 0;
+  }
+}
 
 .footer {
   width: min(var(--max-page), calc(100% - 32px));
