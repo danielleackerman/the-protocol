@@ -1080,3 +1080,28 @@ textarea { min-height: 96px; resize: vertical; }
     }
   }
 }
+
+/* V31 — clarify reference hierarchy globally on all pages */
+.reference-section .ref-block,
+.reference-card > h3 {
+  border-top: 1px solid var(--line) !important;
+  padding-top: 14px;
+  margin-top: 14px;
+}
+
+.reference-section .ref-block:first-of-type,
+.reference-card > h3:first-of-type {
+  border-top: 0 !important;
+  padding-top: 0;
+  margin-top: 10px;
+}
+
+/* Internal rows stay softer than major section breaks */
+.reference-section .flat-row,
+.reference-section .reference-row,
+.reference-section .standing-decree-list p,
+.reference-section .architectural-law-set,
+.reference-card .reference-row,
+.reference-card .flat-row {
+  border-color: var(--line-soft) !important;
+}
