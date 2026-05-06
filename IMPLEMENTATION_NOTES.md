@@ -1,5 +1,19 @@
 # The Protocol — Multi-Page Redesign Implementation Notes
 
+## V9 corrective pass — basic utility reset
+
+This pass intentionally strips down the visual system rather than adding another decorative layer.
+
+Direction:
+
+- remove Space Age from the visible UI typography
+- move to a masculine graphite/chrome utility surface
+- keep ivory only as a restrained warming layer
+- flatten nested reference content
+- reduce mobile scale and nesting
+- make buttons compact controls instead of rounded lifestyle pills
+- keep semantic colors limited to state/danger/warning meaning
+
 ## Current architecture
 
 The site now uses a multi-page static structure:

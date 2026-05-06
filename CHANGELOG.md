@@ -1,5 +1,23 @@
 # Changelog
 
+## v9 corrective pass — basic utility reset
+
+### Changed
+
+- Removed Space Age from the visible UI direction by overriding display typography to the standard UI sans stack.
+- Stripped the visual system back toward graphite/chrome utility with only a small ivory warming surface.
+- Reframed cards as plain utility panels instead of soft decorative containers.
+- Converted Daily Run action cards visually into compact rows.
+- Flattened nested reference/legacy content so mobile no longer reads as card-inside-card-inside-card.
+- Reduced pill styling and replaced buttons with compact utility controls.
+
+### Fixed
+
+- Reduced the oatmeal/beige visual wash.
+- Reduced oversized mobile hero and control scale.
+- Reduced visible nesting inside Reference sections.
+- Restored semantic color discipline: green for state/success, red for danger/firewall.
+
 ## v2 Corrective Pass — Typography, Daily Run, and CLI Recovery
 
 ### Fixed

@@ -1,0 +1,426 @@
+/* V9 basic utility reset: graphite/chrome, mobile-first, no display-font theatrics. */
+:root {
+  --font-display: var(--font-ui) !important;
+  --color-bg: #d8d9d5 !important;
+  --color-surface: #f2f0e9 !important;
+  --color-surface-2: #c9ccca !important;
+  --color-surface-3: #b6bab9 !important;
+  --color-text: #151515 !important;
+  --color-muted: #555a58 !important;
+  --color-border: rgba(21, 21, 21, 0.18) !important;
+  --color-border-strong: rgba(21, 21, 21, 0.38) !important;
+  --color-accent: #151515 !important;
+  --color-accent-dark: #000 !important;
+  --color-accent-soft: rgba(21, 21, 21, 0.06) !important;
+  --color-good: #2f6b4f !important;
+  --color-success: #2f6b4f !important;
+  --color-danger: #8b1f2b !important;
+  --color-warning: #9b6717 !important;
+  --shadow-soft: none !important;
+  --shadow-chrome: none !important;
+  --radius-lg: 12px !important;
+  --radius-md: 10px !important;
+  --radius-sm: 6px !important;
+}
+
+[data-theme="dark"] {
+  --color-bg: #101113 !important;
+  --color-surface: #181a1d !important;
+  --color-surface-2: #24272a !important;
+  --color-surface-3: #303438 !important;
+  --color-text: #eeeeea !important;
+  --color-muted: #a7aaa8 !important;
+  --color-border: rgba(238, 238, 234, 0.16) !important;
+  --color-border-strong: rgba(238, 238, 234, 0.32) !important;
+  --color-accent: #eeeeea !important;
+  --color-accent-dark: #ffffff !important;
+  --color-accent-soft: rgba(238, 238, 234, 0.06) !important;
+  --color-good: #6fb58c !important;
+  --color-success: #6fb58c !important;
+  --color-danger: #ca616d !important;
+  --color-warning: #d4a145 !important;
+}
+
+html body {
+  background: var(--color-bg) !important;
+  color: var(--color-text) !important;
+  font-family: var(--font-ui) !important;
+  line-height: 1.42 !important;
+}
+
+/* Kill the ornamental/display direction. */
+html body .brand,
+html body h1,
+html body .page-hero h1,
+html body .daily-run__title h1,
+html body .daily-run-title h1 {
+  font-family: var(--font-ui) !important;
+  color: var(--color-text) !important;
+  font-weight: 850 !important;
+  letter-spacing: -0.035em !important;
+  text-transform: none !important;
+  line-height: 0.98 !important;
+}
+html body h1,
+html body .page-hero h1,
+html body .daily-run__title h1,
+html body .daily-run-title h1 {
+  font-size: clamp(2.1rem, 8vw, 4.25rem) !important;
+  margin-bottom: 0.35em !important;
+}
+html body h2,
+html body h3,
+html body h4,
+html body .card-title,
+html body .reference-title,
+html body .action-card strong,
+html body .level-card strong {
+  font-family: var(--font-ui) !important;
+  color: var(--color-text) !important;
+  font-weight: 780 !important;
+  letter-spacing: -0.02em !important;
+  text-transform: none !important;
+}
+
+/* Header: plain utility bar. */
+html body .site-header {
+  background: color-mix(in srgb, var(--color-surface-2), var(--color-bg) 44%) !important;
+  border-bottom: 1px solid var(--color-border-strong) !important;
+  backdrop-filter: none !important;
+}
+html body .site-header__inner {
+  padding: 10px 16px !important;
+  gap: 10px !important;
+}
+html body .brand {
+  font-size: 0.9rem !important;
+  letter-spacing: 0.01em !important;
+  gap: 8px !important;
+}
+html body .brand::before {
+  width: 14px !important;
+  height: 14px !important;
+  border-radius: 2px !important;
+  background: var(--color-text) !important;
+  box-shadow: none !important;
+}
+html body .site-nav,
+html body .mobile-nav a {
+  border-radius: 4px !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+html body .site-nav a,
+html body .mobile-nav a {
+  color: var(--color-muted) !important;
+  border-radius: 4px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+}
+html body .site-nav a.is-active,
+html body .mobile-nav a.is-active {
+  color: var(--color-text) !important;
+  background: rgba(0,0,0,.05) !important;
+  box-shadow: none !important;
+}
+
+/* Panels: chrome/ivory utility, not oatmeal blobs. */
+html body .page-shell {
+  width: min(var(--max-page), calc(100% - 28px)) !important;
+  padding: 18px 0 44px !important;
+}
+html body .page-hero,
+html body .daily-run-console,
+html body .section-card,
+html body .callout,
+html body .legacy-content,
+html body .custom-content,
+html body .reference-section,
+html body .level-action-panel,
+html body .protocol-card,
+html body .operation-card,
+html body .state-card,
+html body .danger-card,
+html body .warning-card,
+html body .log-card,
+html body .navigation-card {
+  background: var(--color-surface) !important;
+  background-image: none !important;
+  border: 1px solid var(--color-border-strong) !important;
+  border-radius: 10px !important;
+  box-shadow: none !important;
+  padding: 18px !important;
+  overflow: hidden !important;
+}
+html body .page-hero::after,
+html body .daily-run-console::after { display: none !important; }
+html body .page-hero,
+html body .daily-run-console {
+  border-top: 3px solid var(--color-text) !important;
+}
+html body .section-stack { gap: 14px !important; margin-top: 14px !important; }
+html body .lede { color: var(--color-muted) !important; max-width: 62ch !important; }
+html body .kicker,
+html body .breadcrumb,
+html body .eyebrow,
+html body .level-meta,
+html body .quick-label,
+html body .console-topline,
+html body .status-label,
+html body .card-kicker {
+  color: var(--color-muted) !important;
+  font-family: var(--font-mono) !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  font-size: 0.68rem !important;
+}
+
+/* Buttons: utilitarian controls, not pills. */
+html body .button,
+html body button,
+html body .page-actions a,
+html body .prev-next-nav a,
+html body .action-link,
+html body .level-card__link {
+  width: auto !important;
+  min-height: 32px !important;
+  padding: 7px 10px !important;
+  border-radius: 4px !important;
+  background: color-mix(in srgb, var(--color-surface-2), var(--color-surface) 34%) !important;
+  border: 1px solid var(--color-border-strong) !important;
+  color: var(--color-text) !important;
+  box-shadow: none !important;
+  font-family: var(--font-mono) !important;
+  font-size: 0.72rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase !important;
+}
+html body .page-actions,
+html body .hero-actions,
+html body .prev-next-nav,
+html body .daily-run-actions {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 7px !important;
+  margin-top: 14px !important;
+  justify-content: flex-start !important;
+}
+
+/* Daily Run: rows, not tiles. */
+html body .action-grid {
+  display: block !important;
+}
+html body .action-card {
+  display: grid !important;
+  grid-template-columns: 2.35rem minmax(0, 1fr) !important;
+  gap: 10px !important;
+  padding: 11px 0 !important;
+  border: 0 !important;
+  border-top: 1px solid var(--color-border) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+html body .action-card:first-child { border-top: 0 !important; }
+html body .action-card__number,
+html body .level-card__number {
+  width: auto !important;
+  height: auto !important;
+  min-width: 0 !important;
+  place-items: start !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: var(--color-muted) !important;
+  box-shadow: none !important;
+  font-family: var(--font-mono) !important;
+}
+html body .action-card strong { display: block !important; margin-top: 2px !important; }
+html body .line-stack { gap: 2px !important; margin-top: 5px !important; }
+html body .command-line,
+html body .quick-command,
+html body pre,
+html body code {
+  border-radius: 4px !important;
+  border: 1px solid var(--color-border) !important;
+  background: color-mix(in srgb, var(--color-bg), #000 4%) !important;
+  color: var(--color-text) !important;
+  box-shadow: none !important;
+}
+
+/* State/chip semantics: only state values get color. */
+html body .chip-list span,
+html body .quick-switches span {
+  border-radius: 4px !important;
+  padding: 3px 6px !important;
+  background: transparent !important;
+  border: 1px solid var(--color-border) !important;
+  color: var(--color-text) !important;
+  font-size: 0.7rem !important;
+}
+html body .chip-list span::after,
+html body .quick-switches span::after,
+html body .state-on,
+html body .status-ready,
+html body .status-active,
+html body .status-complete,
+html body .status-confirmed,
+html body .is-success,
+html body .switch-row__state,
+html body .state-value {
+  color: var(--color-good) !important;
+  font-weight: 900 !important;
+}
+html body .danger-card,
+html body .is-danger,
+html body .status-denied,
+html body .status-breach,
+html body .status-firewall,
+html body .access-denied {
+  color: var(--color-danger) !important;
+  border-color: color-mix(in srgb, var(--color-danger), var(--color-border) 55%) !important;
+}
+
+/* De-nest reference/legacy content on every screen. */
+html body .legacy-content :is(.l1-grid,.level05-grid,.level06-grid,.level07-grid,.level08-grid,.level09-grid,.level10-seal-deck,.quick-card-grid,.custom-grid),
+html body .reference-grid {
+  display: block !important;
+}
+html body .legacy-content :where(section, article, div)[class*="card"],
+html body .legacy-content :where(section, article, div)[class*="block"],
+html body .legacy-content :where(section, article, div)[class*="module"],
+html body .legacy-content :where(section, article, div)[class*="panel"],
+html body .legacy-content :where(div)[class*="terminal"],
+html body .legacy-content :where(div)[class*="console"],
+html body .legacy-content :where(div)[class*="output"],
+html body .custom-content :where(section, article, div)[class*="module"],
+html body .custom-content :where(section, article, div)[class*="panel"],
+html body .reference-card {
+  display: block !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  border: 0 !important;
+  border-top: 1px solid var(--color-border) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 14px 0 !important;
+  margin: 0 !important;
+}
+html body .legacy-content :where(section, article, div)[class*="card"]:first-child,
+html body .legacy-content :where(section, article, div)[class*="block"]:first-child,
+html body .legacy-content :where(section, article, div)[class*="module"]:first-child,
+html body .reference-card:first-child {
+  border-top: 0 !important;
+  padding-top: 0 !important;
+}
+html body .legacy-content :is(.l1-operator-list, .l1-capabilities) > div,
+html body .kv-row,
+html body .state-row,
+html body .switch-row,
+html body .command-row {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  gap: 10px !important;
+  align-items: baseline !important;
+  padding: 8px 0 !important;
+  border: 0 !important;
+  border-top: 1px solid var(--color-border) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+html body .legacy-content :is(.l1-operator-list, .l1-capabilities) > div:first-child,
+html body .state-row:first-child,
+html body .switch-row:first-child,
+html body .command-row:first-child { border-top: 0 !important; }
+html body .l2-sequence__row,
+html body .command-row {
+  grid-template-columns: 2.5rem minmax(6rem, auto) minmax(0, 1fr) !important;
+}
+html body .l2-sequence__step,
+html body .command-index,
+html body .command-verb {
+  color: var(--color-muted) !important;
+  font-family: var(--font-mono) !important;
+  font-size: 0.72rem !important;
+  letter-spacing: 0.04em !important;
+}
+html body .l2-sequence__lines,
+html body .command-body {
+  color: var(--color-text) !important;
+  font-family: var(--font-ui) !important;
+}
+html body .status-strip,
+html body .status-bar,
+html body .l2-sequence__status {
+  border-radius: 4px !important;
+  border: 1px solid var(--color-border) !important;
+  background: color-mix(in srgb, var(--color-surface-2), transparent 30%) !important;
+  color: var(--color-muted) !important;
+  padding: 9px 10px !important;
+  box-shadow: none !important;
+}
+
+/* Mobile: strip it down harder. */
+@media (max-width: 720px) {
+  html body .page-shell {
+    width: min(100% - 20px, var(--max-page)) !important;
+    padding-top: 12px !important;
+  }
+  html body .page-hero,
+  html body .daily-run-console,
+  html body .section-card,
+  html body .callout,
+  html body .legacy-content,
+  html body .custom-content,
+  html body .reference-section,
+  html body .level-action-panel,
+  html body .protocol-card {
+    padding: 14px !important;
+    border-radius: 8px !important;
+  }
+  html body h1,
+  html body .page-hero h1,
+  html body .daily-run__title h1,
+  html body .daily-run-title h1 {
+    font-size: clamp(2rem, 11vw, 3rem) !important;
+    letter-spacing: -0.045em !important;
+    overflow-wrap: anywhere !important;
+  }
+  html body h2 { font-size: 1.25rem !important; }
+  html body h3 { font-size: 1rem !important; }
+  html body .lede,
+  html body p,
+  html body li { font-size: 0.95rem !important; }
+  html body .button,
+  html body button,
+  html body .page-actions a,
+  html body .prev-next-nav a,
+  html body .action-link,
+  html body .level-card__link {
+    min-height: 29px !important;
+    padding: 6px 8px !important;
+    font-size: 0.64rem !important;
+    border-radius: 4px !important;
+  }
+  html body .page-actions,
+  html body .prev-next-nav,
+  html body .daily-run-actions {
+    gap: 5px !important;
+  }
+  html body .action-card,
+  html body .switch-row,
+  html body .state-row,
+  html body .kv-row,
+  html body .legacy-content :is(.l1-operator-list, .l1-capabilities) > div {
+    padding: 7px 0 !important;
+  }
+  html body .l2-sequence__row,
+  html body .command-row {
+    grid-template-columns: 1fr !important;
+    gap: 3px !important;
+  }
+  html body .l2-sequence__step::before { content: none !important; }
+}
