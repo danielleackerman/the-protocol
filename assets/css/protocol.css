@@ -819,3 +819,33 @@ textarea { min-height: 96px; resize: vertical; }
     content: "";
   }
 }
+
+/* V20 — unify operation/status row grid across tablet breakpoints */
+.sequence,
+.status-strip {
+  --operation-row-grid: 2.35rem minmax(5.8rem, .65fr) minmax(0, 1.4fr);
+}
+
+.seq-row,
+.command-row,
+.status-row {
+  grid-template-columns: var(--operation-row-grid) !important;
+}
+
+.status-row::before {
+  content: "";
+}
+
+@media (max-width: 900px) {
+  .sequence,
+  .status-strip {
+    --operation-row-grid: 2rem minmax(9rem, .72fr) minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .sequence,
+  .status-strip {
+    --operation-row-grid: 2rem minmax(4.8rem, .58fr) minmax(0, 1fr);
+  }
+}
