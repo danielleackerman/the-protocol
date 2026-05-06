@@ -88,3 +88,30 @@ Still Utility-derived / not v9 architecture:
 - Bank filter controls
 
 Production boundary remains unchanged: all edits stay inside `_experiments/signal-mode/`.
+
+## Architecture Mirror Pass — 2026-05-06 12:57
+
+Copied the current Utility page architecture into this isolated Signal Mode lab.
+
+Copied from production Utility:
+- root HTML pages when present: index.html, overview.html, levels.html, custom.html, bank.html
+- level pages from `levels/*.html`
+- isolated JS copy from `assets/js/protocol.js` into `signal-lab.js`
+
+Experimental-only changes:
+- added `data-skin="signal"` to copied lab HTML
+- set copied lab HTML to `data-theme="dark"` as the Signal default
+- replaced production CSS link with `signal-dark.css` and `signal-light.css`
+- replaced production JS link with isolated `signal-lab.js`
+- kept all changes inside `_experiments/signal-mode/`
+
+Production files were not edited:
+- index.html
+- overview.html
+- levels.html
+- custom.html
+- bank.html
+- levels/*.html
+- assets/css/protocol.css
+- assets/js/protocol.js
+
