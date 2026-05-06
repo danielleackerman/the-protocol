@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "the-protocol-design-wireframe-notes.md",
+                "file": "_experiments/wormhole-mode/WORMHOLE_STYLE_SPEC_FROM_INSPO.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "the-protocol-design-wireframe-notes"
+              "title": "WORMHOLE_STYLE_SPEC_FROM_INSPO"
             }
           }
         ]
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "right": {
     "id": "ddb1e981952a57e4",
@@ -183,6 +183,12 @@
       "bases:Create new base": false
     }
   },
-  "active": "52433cebecec1b0d",
-  "lastOpenFiles": []
+  "active": "19fba4318921bafc",
+  "lastOpenFiles": [
+    "_experiments/wormhole-mode/WORMHOLE_STYLE_SPEC_FROM_INSPO.md",
+    "_experiments/wormhole-mode/V9_37_EXTRACTION_NOTES.md",
+    "_experiments/wormhole-mode/README.md",
+    "_experiments/wormhole-mode/wormhole-mode-docs-reset-command-pack.md",
+    "the-protocol-design-wireframe-notes.md"
+  ]
 }
