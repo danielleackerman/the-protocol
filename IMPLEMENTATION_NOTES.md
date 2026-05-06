@@ -59,3 +59,18 @@ Do not delete the existing font files when applying this patch.
 - Added row grammar for remaining collapsed rule/step blocks.
 - Command blocks now separate mono system labels from readable command body text.
 - Level reference sections no longer pair `Explication` with `Explanation` headings.
+
+
+## v6 corrective pass — utility console system
+
+This pass is a design-system enforcement pass, not a new aesthetic direction. The goal is to make the UI support action first and let the content support the action.
+
+Rules enforced:
+
+- Space Age is page identity only: brand and page H1.
+- Display headers are neutral black/ivory for now.
+- Green is semantic success/live state only.
+- Red is semantic breach/danger only.
+- Amber is reserved for pending/warning states.
+- Daily Run uses a linear console row rhythm instead of a dashboard tile grid.
+- Reference sections do not repeat the page title as a second display heading.

@@ -60,3 +60,21 @@
 - Reworked command sequence typography so step labels stay mono while spoken command text uses the readable UI font.
 - Added structured grid rules for remaining collapsed rows in Command Line, Save State, Location, and Render Confirmation.
 - Removed duplicated `Explication` / `Explanation` wording from level reference sections.
+
+
+## v6 corrective pass — utility console design-system enforcement
+
+### Changed
+
+- Moved Space Age/display typography back to page identity only and set display headers to neutral black/ivory instead of global green.
+- Converted the Daily Run action grid into a linear command-console rhythm with rows, dividers, and neutral labels.
+- Reworked semantic color usage so green is reserved for `ON`, `ACTIVE`, `READY`, `COMPLETE`, and confirmed/live states.
+- Reserved red for breach, denied, unauthorized, and firewall states.
+- Neutralized navigation, row numbers, labels, section headings, reference headings, and utility chips.
+- Removed duplicate reference headings that repeated the page title inside the Reference section.
+
+### Fixed
+
+- Reduced the Christmas red/green collision by preventing large support-panel display headlines from using semantic colors.
+- Fixed inconsistent page-to-page hierarchy by enforcing: page identity, primary operation, status, reference.
+- Reduced card-grid/dashboard behavior on Daily Run in favor of a single executable sequence panel.

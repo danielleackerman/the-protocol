@@ -1280,3 +1280,342 @@ button:hover,
   .command-line-shell,
   .level06-anchor-grid { grid-template-columns: 1fr !important; }
 }
+
+
+/* V6 correction: utility console design-system enforcement
+   Goal: action-first utility, neutral display headers, semantic color only. */
+:root {
+  --color-brand-text: #151513;
+  --color-console-line: rgba(31, 31, 29, 0.24);
+  --color-console-line-soft: rgba(31, 31, 29, 0.12);
+  --color-info: #53626a;
+  --color-status-success-bg: rgba(47, 125, 82, 0.10);
+  --color-status-danger-bg: rgba(154, 30, 40, 0.08);
+  --color-status-warning-bg: rgba(154, 106, 30, 0.10);
+}
+[data-theme="dark"] {
+  --color-brand-text: #f4efe4;
+  --color-console-line: rgba(255, 255, 255, 0.24);
+  --color-console-line-soft: rgba(255, 255, 255, 0.12);
+  --color-info: #9cabb2;
+  --color-status-success-bg: rgba(138, 198, 159, 0.14);
+  --color-status-danger-bg: rgba(208, 107, 115, 0.14);
+  --color-status-warning-bg: rgba(209, 162, 93, 0.14);
+}
+
+/* Space Age is identity only. It is not a generic heading font. */
+.brand,
+.page-hero h1,
+.daily-run__title h1 {
+  color: var(--color-brand-text) !important;
+  font-family: var(--font-display) !important;
+  font-weight: 400 !important;
+  text-transform: uppercase;
+  letter-spacing: .085em !important;
+}
+
+/* Non-identity headings are structural, not brand/display moments. */
+h2,
+h3,
+h4,
+.section-card h2,
+.callout h2,
+.legacy-content h2,
+.legacy-content h3,
+.custom-content h2,
+.custom-content h3 {
+  font-family: var(--font-ui) !important;
+  color: var(--color-text) !important;
+  text-transform: none !important;
+  letter-spacing: -.035em !important;
+  line-height: 1.08 !important;
+  font-weight: 900 !important;
+}
+.section-card h2,
+.callout h2 {
+  font-size: clamp(1.25rem, 2.4vw, 1.9rem) !important;
+}
+.legacy-content > h2 { display: none !important; }
+
+/* Neutral structure: navigation, rows, indexes, buttons, utility chips. */
+.site-nav a,
+.site-nav a.is-active,
+.mobile-nav a,
+.mobile-nav a.is-active,
+.button,
+.page-actions a,
+.prev-next-nav a,
+.action-link,
+.level-card__link,
+.theme-toggle,
+.mobile-menu-toggle,
+button {
+  color: var(--color-text) !important;
+  border-color: var(--color-console-line) !important;
+  background: color-mix(in srgb, var(--color-surface), var(--color-surface-2) 32%) !important;
+}
+.site-nav a.is-active,
+.mobile-nav a.is-active {
+  box-shadow: inset 0 0 0 1px var(--color-console-line-soft) !important;
+}
+.button:hover,
+.page-actions a:hover,
+.prev-next-nav a:hover,
+.action-link:hover,
+.level-card__link:hover,
+button:hover,
+.site-nav a:hover {
+  color: var(--color-text) !important;
+  border-color: var(--color-text) !important;
+  background: var(--color-surface) !important;
+}
+
+.action-card__number,
+.level-card__number,
+.cli-prompt,
+.cli-command,
+.l2-sequence__step,
+.level05-rule b,
+.level06-step b,
+.level06-rule b,
+.level07-step b,
+.level08-seal-row b,
+.level09-step b,
+.level09-failure strong:first-child {
+  color: var(--color-muted) !important;
+}
+
+.kicker,
+.breadcrumb,
+.eyebrow,
+.level-meta,
+.quick-label,
+.console-topline,
+.status-bar,
+.console-instruction,
+.custom-module__label,
+.custom-label {
+  color: var(--color-muted) !important;
+}
+
+/* Semantic color only where the state actually changes. */
+.chip-list span::after,
+.quick-switches span::after,
+.switch-row__state,
+.state-on,
+.is-on,
+.status-active,
+.status-ready,
+.status-complete,
+.status-confirmed {
+  color: var(--color-success) !important;
+}
+.cli-status,
+.l2-sequence__status,
+.level07-output-stack,
+.level08-output-stack,
+.level09-output-stack,
+.level10-output-stack {
+  background: var(--color-status-success-bg) !important;
+  color: var(--color-success) !important;
+  border-color: color-mix(in srgb, var(--color-success), transparent 68%) !important;
+}
+.command-line-message,
+.custom-status-line,
+.level06-message,
+.level07-message,
+.level08-message,
+.level09-message,
+.level10-message {
+  background: transparent !important;
+  color: var(--color-muted) !important;
+  border-color: var(--color-console-line-soft) !important;
+}
+
+.callout,
+.callout.is-danger,
+.breach-panel,
+.firewall-panel {
+  border-color: color-mix(in srgb, var(--color-danger), transparent 58%) !important;
+  background: var(--color-surface) !important;
+}
+.callout .kicker,
+.callout h2,
+.callout .page-actions a,
+.is-danger,
+.status-danger,
+.access-denied,
+.breach-state {
+  color: var(--color-danger) !important;
+}
+.status-warning,
+.is-warning {
+  color: var(--color-warning) !important;
+  background: var(--color-status-warning-bg) !important;
+}
+
+/* Primary panels should feel like utility consoles, not lifestyle cards. */
+.page-hero,
+.daily-run-console,
+.section-card,
+.action-card,
+.level-card,
+.reference-section,
+.legacy-content,
+.custom-content,
+.callout,
+.protocol-console,
+.level-action-panel {
+  border-color: var(--color-console-line) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.24), 0 8px 18px rgba(31,31,29,.055) !important;
+}
+.protocol-console--primary,
+.level-action-panel {
+  border-top-color: var(--color-console-line) !important;
+}
+
+/* Daily Run becomes an executable sequence, not a dashboard grid. */
+.daily-run-console .action-grid {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 0 !important;
+  border: 1px solid var(--color-console-line) !important;
+  border-radius: 10px !important;
+  overflow: hidden !important;
+  background: color-mix(in srgb, var(--color-surface-2), transparent 60%) !important;
+}
+.daily-run-console .action-card {
+  grid-column: 1 / -1 !important;
+  display: grid !important;
+  grid-template-columns: 3.75rem minmax(0, 1fr) !important;
+  gap: 12px !important;
+  min-height: 0 !important;
+  padding: 11px 13px !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--color-console-line) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.daily-run-console .action-card:last-child { border-bottom: 0 !important; }
+.daily-run-console .action-card__number {
+  width: auto !important;
+  height: auto !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  justify-content: start !important;
+  place-items: start !important;
+  font-family: var(--font-mono) !important;
+  font-size: .76rem !important;
+  font-weight: 900 !important;
+  letter-spacing: .08em !important;
+}
+.daily-run-console .action-card > div:not(.action-card__number) {
+  display: grid !important;
+  grid-template-columns: minmax(8rem, .28fr) minmax(0, 1fr) !important;
+  column-gap: 14px !important;
+  row-gap: 3px !important;
+  align-items: start !important;
+}
+.daily-run-console .quick-label {
+  grid-column: 1 !important;
+  grid-row: 1 / span 2 !important;
+  margin: 0 !important;
+  line-height: 1.35 !important;
+}
+.daily-run-console .action-card strong {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+  color: var(--color-text) !important;
+  font-family: var(--font-ui) !important;
+  font-size: .98rem !important;
+  font-weight: 900 !important;
+  letter-spacing: -.02em !important;
+  line-height: 1.2 !important;
+}
+.daily-run-console .line-stack,
+.daily-run-console .chip-list,
+.daily-run-console .command-line {
+  grid-column: 2 !important;
+  grid-row: 2 !important;
+  margin-top: 2px !important;
+}
+.daily-run-console .command-line {
+  display: inline-block !important;
+  width: fit-content !important;
+  max-width: 100% !important;
+  border-radius: 6px !important;
+  padding: 5px 7px !important;
+  background: color-mix(in srgb, var(--color-surface), var(--color-surface-2) 42%) !important;
+}
+.daily-run-console .chip-list span,
+.level05-use-grid span,
+.command-chip,
+.level08-chip {
+  color: var(--color-text) !important;
+  border-color: var(--color-console-line) !important;
+  background: transparent !important;
+}
+
+/* Console rows: labels are neutral, command bodies are readable. */
+.cli-sequence,
+.l2-sequence,
+.kv-list,
+.l1-operator-list,
+.l1-capabilities,
+.level05-mini-rows,
+.level06-mini-rows,
+.level07-seat-stack,
+.level08-mini-rows,
+.level09-mini-rows,
+.level10-seal-stack,
+.level05-rule-stack,
+.level06-step-stack,
+.level06-rule-stack,
+.level07-step-stack,
+.level08-seal-stack,
+.level09-step-stack,
+.level09-failure-stack {
+  border-color: var(--color-console-line) !important;
+  background: color-mix(in srgb, var(--color-surface-2), transparent 62%) !important;
+}
+.cli-row,
+.l2-sequence__row,
+.kv-row,
+.l1-operator-list > div,
+.l1-capabilities > div,
+.level05-mini-row,
+.level06-mini-row,
+.level07-seat-row,
+.level08-mini-row,
+.level09-mini-row,
+.level10-seal-line,
+.level05-rule,
+.level06-step,
+.level06-rule,
+.level07-step,
+.level08-seal-row,
+.level09-step,
+.level09-failure {
+  border-color: var(--color-console-line) !important;
+}
+
+@media (max-width: 720px) {
+  .daily-run-console .action-card {
+    grid-template-columns: 2.4rem minmax(0, 1fr) !important;
+  }
+  .daily-run-console .action-card > div:not(.action-card__number) {
+    grid-template-columns: 1fr !important;
+    gap: 4px !important;
+  }
+  .daily-run-console .quick-label,
+  .daily-run-console .action-card strong,
+  .daily-run-console .line-stack,
+  .daily-run-console .chip-list,
+  .daily-run-console .command-line {
+    grid-column: 1 !important;
+    grid-row: auto !important;
+  }
+}
