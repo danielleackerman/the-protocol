@@ -805,3 +805,17 @@ textarea { min-height: 96px; resize: vertical; }
     white-space: normal;
   }
 }
+
+/* V19 — keep status rows aligned to sequence grid on narrow screens */
+@media (max-width: 640px) {
+  .status-row {
+    display: grid;
+    grid-template-columns: 2rem minmax(4.8rem, .58fr) minmax(0, 1fr);
+    gap: 6px;
+    align-items: start;
+  }
+
+  .status-row::before {
+    content: "";
+  }
+}
