@@ -1451,3 +1451,156 @@ html[data-skin="signal"][data-theme="dark"] #preview-levels .state-row:hover {
     min-height: 2.85rem;
   }
 }
+/* =========================================================
+   WORMHOLE REFINEMENT PASS 03
+   CSS-only visual correction.
+   Purpose: calm serif headings + make italic a system.
+   No HTML / JS / content / behavior changes.
+   ========================================================= */
+
+/* Major headings: still editorial, no longer shouting over the tool. */
+html[data-skin="signal"] h1,
+html[data-skin="signal"] .identity h1,
+html[data-skin="signal"] .panel h1,
+html[data-skin="signal"] .page-shell h1 {
+  font-size: clamp(2.35rem, 5.4vw, 4.85rem);
+  line-height: .98;
+  letter-spacing: -.032em;
+  font-weight: 500;
+  text-transform: none;
+  text-shadow: none;
+}
+
+html[data-skin="signal"] h2,
+html[data-skin="signal"] .panel h2,
+html[data-skin="signal"] .sequence-title,
+html[data-skin="signal"] .section-title,
+html[data-skin="signal"] .state-table h2,
+html[data-skin="signal"] .reference-section h2 {
+  font-size: clamp(1.55rem, 3.2vw, 2.85rem);
+  line-height: 1.02;
+  letter-spacing: -.024em;
+  font-weight: 500;
+  text-transform: none;
+  text-shadow: none;
+}
+
+/* Keep operational metadata crisp; reduce the feeling of shouting. */
+html[data-skin="signal"] h3 {
+  font-size: .84rem;
+  letter-spacing: .075em;
+}
+
+html[data-skin="signal"] .kicker,
+html[data-skin="signal"] .panel-kicker,
+html[data-skin="signal"] .status-label,
+html[data-skin="signal"] label > span {
+  font-size: .66rem;
+  letter-spacing: .18em;
+}
+
+/* Italic becomes part of the ritual/editorial language, not just a button quirk. */
+html[data-skin="signal"] .breadcrumb,
+html[data-skin="signal"] .lede,
+html[data-skin="signal"] .identity .lede,
+html[data-skin="signal"] .panel > .lede,
+html[data-skin="signal"] .empty-state {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: .015em;
+}
+
+html[data-skin="signal"] .lede,
+html[data-skin="signal"] .identity .lede,
+html[data-skin="signal"] .panel > .lede {
+  max-width: 42rem;
+  font-size: clamp(1.08rem, 1.45vw, 1.32rem);
+  line-height: 1.42;
+}
+
+/* But the app's technical controls stay operational, not decorative. */
+html[data-skin="signal"] .command-chip,
+html[data-skin="signal"] .switch-add-row button,
+html[data-skin="signal"] .command-input-row button,
+html[data-skin="signal"] .ledger-item__actions button,
+html[data-skin="signal"] .utility-link,
+html[data-skin="signal"] .plain-link {
+  font-family: var(--font-mono);
+  font-size: .70rem;
+  font-style: normal;
+  font-weight: 850;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+/* Page-level CTAs keep the ceremonial italic treatment. */
+html[data-skin="signal"] .button,
+html[data-skin="signal"] .page-actions a,
+html[data-skin="signal"] .breadcrumb {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: .025em;
+  text-transform: none;
+}
+
+/* Level directory titles were still too poster-like. */
+html[data-skin="signal"] #preview-levels .state-label--link {
+  font-size: clamp(1.35rem, 3.2vw, 2.6rem);
+  line-height: .98;
+  letter-spacing: -.025em;
+  font-weight: 500;
+  text-transform: none;
+  text-shadow: none;
+}
+
+/* Row labels remain mono: operational structure, not ceremony. */
+html[data-skin="signal"] .seq-label,
+html[data-skin="signal"] .state-label,
+html[data-skin="signal"] .reference-key,
+html[data-skin="signal"] .ledger-item__meta {
+  font-family: var(--font-mono);
+  font-style: normal;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+/* Softer header identity so it does not compete with the page title. */
+html[data-skin="signal"] .brand {
+  font-size: clamp(.96rem, 1.45vw, 1.18rem);
+  letter-spacing: .055em;
+  font-weight: 500;
+}
+
+@media (max-width: 640px) {
+  html[data-skin="signal"] h1,
+  html[data-skin="signal"] .identity h1,
+  html[data-skin="signal"] .panel h1,
+  html[data-skin="signal"] .page-shell h1 {
+    font-size: clamp(2.2rem, 10.5vw, 4.05rem);
+    line-height: 1;
+    letter-spacing: -.03em;
+  }
+
+  html[data-skin="signal"] h2,
+  html[data-skin="signal"] .panel h2,
+  html[data-skin="signal"] .sequence-title,
+  html[data-skin="signal"] .section-title,
+  html[data-skin="signal"] .state-table h2,
+  html[data-skin="signal"] .reference-section h2 {
+    font-size: clamp(1.45rem, 7vw, 2.35rem);
+    line-height: 1.04;
+  }
+
+  html[data-skin="signal"] .lede,
+  html[data-skin="signal"] .identity .lede,
+  html[data-skin="signal"] .panel > .lede {
+    font-size: 1.05rem;
+  }
+
+  html[data-skin="signal"] #preview-levels .state-label--link {
+    font-size: clamp(1.3rem, 7vw, 2.2rem);
+  }
+}

@@ -461,3 +461,57 @@ html[data-skin="signal"][data-theme="light"] #preview-levels .state-row:hover {
   background:
     linear-gradient(180deg, rgba(255, 255, 255, .88), rgba(251, 250, 247, .96));
 }
+/* =========================================================
+   WORMHOLE REFINEMENT PASS 03
+   CSS-only visual correction.
+   Purpose: keep light-mode typography aligned with dark.
+   No HTML / JS / content / behavior changes.
+   ========================================================= */
+
+html[data-skin="signal"][data-theme="light"] h1,
+html[data-skin="signal"][data-theme="light"] .identity h1,
+html[data-skin="signal"][data-theme="light"] .panel h1,
+html[data-skin="signal"][data-theme="light"] .page-shell h1,
+html[data-skin="signal"][data-theme="light"] h2,
+html[data-skin="signal"][data-theme="light"] .panel h2,
+html[data-skin="signal"][data-theme="light"] .sequence-title,
+html[data-skin="signal"][data-theme="light"] .section-title,
+html[data-skin="signal"][data-theme="light"] .state-table h2,
+html[data-skin="signal"][data-theme="light"] .reference-section h2,
+html[data-skin="signal"][data-theme="light"] #preview-levels .state-label--link {
+  text-shadow: none;
+}
+
+/* Light mode can hold a little more black; keep headings calm and readable. */
+html[data-skin="signal"][data-theme="light"] .lede,
+html[data-skin="signal"][data-theme="light"] .identity .lede,
+html[data-skin="signal"][data-theme="light"] .panel > .lede {
+  color: rgba(20, 17, 13, .74);
+}
+
+/* Keep technical light-mode controls from inheriting the ceremonial button feel. */
+html[data-skin="signal"][data-theme="light"] .command-chip,
+html[data-skin="signal"][data-theme="light"] .switch-add-row button,
+html[data-skin="signal"][data-theme="light"] .command-input-row button,
+html[data-skin="signal"][data-theme="light"] .ledger-item__actions button,
+html[data-skin="signal"][data-theme="light"] .utility-link,
+html[data-skin="signal"][data-theme="light"] .plain-link {
+  font-family: var(--font-mono);
+  font-size: .70rem;
+  font-style: normal;
+  font-weight: 850;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+/* Keep page-level light-mode CTAs editorial. */
+html[data-skin="signal"][data-theme="light"] .button,
+html[data-skin="signal"][data-theme="light"] .page-actions a,
+html[data-skin="signal"][data-theme="light"] .breadcrumb {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: .025em;
+  text-transform: none;
+}
