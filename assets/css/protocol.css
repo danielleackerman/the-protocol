@@ -1022,3 +1022,22 @@ textarea { min-height: 96px; resize: vertical; }
 .reference-card > h3 {
   border-top-color: var(--line-soft) !important;
 }
+
+
+/* V27 — standing decree law lines */
+.standing-decree-list {
+  display: grid;
+  border-top: 1px solid var(--line-soft);
+  margin-top: 10px;
+}
+
+.standing-decree-list p {
+  margin: 0;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--line-soft);
+  color: var(--text);
+}
+
+.standing-decree-list strong {
+  font-weight: 850;
+}
