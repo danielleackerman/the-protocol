@@ -1,25 +1,37 @@
-# The Protocol — Multi-Page Redesign Implementation
+# The Protocol — Multi-Page Redesign Implementation Notes
 
-Generated static site from the prior single-page accordion build.
+## Current architecture
 
-## Changed structure
+The site now uses a multi-page static structure:
 
-- `index.html` is now Daily Run / Immediate Actions.
-- `overview.html` explains the system at a high level.
-- `levels.html` replaces the old accordion stack with a level index.
-- `levels/level-01-gateway.html` through `levels/level-10-seal.html` hold full level content.
-- `custom.html` holds Custom Personal Configuration.
-- `assets/css/protocol.css` contains the chrome / ivory / red visual system.
-- `assets/js/protocol.js` contains theme toggle, mobile menu, and migrated interaction logic.
+- `index.html` — Daily Run / Immediate Actions
+- `overview.html` — System overview
+- `levels.html` — Levels index
+- `levels/level-01-gateway.html` through `levels/level-10-seal.html` — individual level pages
+- `custom.html` — Custom configuration
+- `assets/css/protocol.css` — shared design system and responsive layout
+- `assets/js/protocol.js` — theme toggle, mobile navigation, and migrated interactive behavior
 
-## Design notes
+## Corrective pass summary
 
-- No giant accordion stack remains as the main information architecture.
-- Every deeper page has a Back to Daily Run path.
-- Level pages have previous / next navigation.
-- Light/dark theme is persisted with `localStorage`.
-- Font assets from the source archive were intentionally not bundled in this generated download.
+This v2 corrective pass keeps the multi-page architecture but repairs the design flattening from the first redesign pass.
 
-## Suggested commit message
+Corrections made:
 
-`feat: redesign protocol as multi-page daily-run system`
+- Rewired the local Space Age font through `@font-face`.
+- Added a real mono/terminal typography layer using a system mono stack.
+- Compressed the Daily Run homepage so the sequence starts immediately.
+- Removed the duplicate migrated Quick Start block from the homepage.
+- Rebalanced accent usage so red primarily lives in text, labels, headings, and numerals rather than heavy filled buttons.
+- Changed the dark-mode accent away from bright tomato red toward a deeper oxblood/garnet tone.
+- Restored formatting for command lines, switch chips, status lines, quick labels, and switchboard rows.
+- Reduced mobile card height and oversized spacing.
+- Added a CHANGELOG, correction brief, file-by-file fix list, and prioritized commit punch list.
+
+## Notes
+
+The generated package does **not** include font files. It references the existing repo fonts at:
+
+- `assets/fonts/space age.ttf`
+
+Do not delete the existing font files when applying this patch.
