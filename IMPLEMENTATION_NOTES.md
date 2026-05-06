@@ -42,3 +42,11 @@ Do not delete the existing font files when applying this patch.
 - Level pages now place the primary action/command panel before explication.
 - Header brand font loading strengthened and brand display font applied.
 - Migrated label/value spacing corrected to reduce inline run-ons.
+
+## V4 corrective pass
+
+- Converted remaining soft/editorial presentation into a CLI/control-panel grammar.
+- Removed repeated Quick Use boilerplate from public level pages.
+- Added structured command, key/value, switch, and status row styling.
+- Reasserted the display font for H1 and brand use.
+- Preserved the multi-page architecture while tightening public page copy.

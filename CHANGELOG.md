@@ -41,3 +41,12 @@
 - Strengthened local display font loading and applied the display face to the brand header.
 - Added global spacing rules for migrated label/value patterns to prevent run-ons such as `Do not manifestYou execute` and `SwitchesStanding`.
 - Added level action-panel styling for command-first page rhythm.
+
+## v4 corrective pass — CLI/control-panel grammar
+
+- Removed repeated Quick Use boilerplate from level pages.
+- Recast primary action panels as console/control surfaces instead of soft editorial cards.
+- Removed red gradient cell interiors and flattened panels into a cleaner CLI-style surface.
+- Applied the display font to H1 and brand typography.
+- Added structured command sequence rows, switchboard rows, key/value rows, and status rows.
+- Rewrote Overview and Levels copy toward public protocol language instead of project/change language.
