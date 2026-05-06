@@ -346,8 +346,12 @@ pre {
   padding-top: 8px;
 }
 .status-row {
-  grid-template-columns: minmax(7rem, .5fr) minmax(0, 1fr);
+  grid-template-columns: 2.35rem minmax(5.8rem, .65fr) minmax(0, 1.4fr);
   padding: 6px 0;
+}
+
+.status-row::before {
+  content: "";
 }
 .status-value,
 .state-value {
