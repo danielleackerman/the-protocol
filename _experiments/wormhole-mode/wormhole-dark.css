@@ -3653,3 +3653,265 @@ html[data-skin="signal"] nav[aria-label="Breadcrumb"],
 html[data-skin="signal"] nav[aria-label="breadcrumb"] {
   display: none !important;
 }
+
+/* =========================================================
+   WORMHOLE REFINEMENT PASS 17
+   CSS-only visual correction.
+   Purpose: restore breathing room + calm command/reference hierarchy.
+   No HTML / JS / content / behavior / font-family changes.
+   ========================================================= */
+
+/* Gateway hero: give the title stack room without changing Wormhole typography. */
+html[data-skin="signal"] .signal-hero {
+  min-height: clamp(340px, 52vh, 640px);
+  padding-block: clamp(28px, 5vw, 58px);
+}
+
+html[data-skin="signal"] .signal-hero > .kicker,
+html[data-skin="signal"] .signal-hero > .panel-kicker {
+  margin-bottom: clamp(12px, 1.8vw, 18px);
+}
+
+html[data-skin="signal"] .signal-hero h1 {
+  margin-bottom: clamp(16px, 2.2vw, 24px);
+}
+
+html[data-skin="signal"] .signal-hero > .lede {
+  max-width: 40rem;
+  margin-bottom: clamp(22px, 3vw, 34px);
+  font-weight: 560;
+  line-height: 1.46;
+}
+
+html[data-skin="signal"] .signal-hero > .page-actions,
+html[data-skin="signal"] .signal-hero > .controls {
+  margin-top: 0;
+}
+
+/* Operation card: make the card read as a deliberate command table, not a compressed block. */
+html[data-skin="signal"] .panel:has(.sequence) {
+  padding-block: clamp(22px, 3.2vw, 38px);
+}
+
+html[data-skin="signal"] .panel:has(.sequence) > .panel-kicker,
+html[data-skin="signal"] .panel:has(.sequence) > .kicker {
+  margin-bottom: 11px;
+}
+
+html[data-skin="signal"] .panel:has(.sequence) h2,
+html[data-skin="signal"] .panel:has(.sequence) .sequence-title,
+html[data-skin="signal"] .panel:has(.sequence) .section-title {
+  margin-bottom: 15px;
+}
+
+/* Gate level line: support copy, not a heading. */
+html[data-skin="signal"] .panel:has(.sequence) > .lede,
+html[data-skin="signal"] .panel:has(.sequence) > .support-copy {
+  max-width: 42rem;
+  margin-bottom: 24px;
+  color: var(--wh-copy);
+  font-size: clamp(.90rem, 1.1vw, .98rem);
+  font-weight: 430;
+  line-height: 1.44;
+}
+
+html[data-skin="signal"] .panel:has(.sequence) .sequence {
+  border-top: 1px solid rgba(214, 209, 198, .18);
+  border-bottom: 1px solid rgba(214, 209, 198, .14);
+}
+
+/* Command rows: clean table structure. */
+html[data-skin="signal"] .panel:has(.sequence) .seq-row {
+  grid-template-columns: 2.2ch minmax(5.9rem, 7rem) minmax(0, 1fr) !important;
+  column-gap: 14px !important;
+  row-gap: 4px !important;
+  align-items: baseline !important;
+  padding: 11px 0 !important;
+  border-color: rgba(214, 209, 198, .15);
+}
+
+html[data-skin="signal"] .panel:has(.sequence) .seq-row > :nth-child(n+3) {
+  grid-column: 3 !important;
+  min-width: 0;
+}
+
+/* Row numbers: quiet indices, not badges. */
+html[data-skin="signal"] .panel:has(.sequence) .seq-index {
+  width: auto !important;
+  height: auto !important;
+  min-width: 0;
+  min-height: 0;
+  margin-top: 0;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: var(--wh-muted);
+  font-size: .62rem !important;
+  font-weight: 760;
+  line-height: 1.2;
+  opacity: .78;
+  font-variant-numeric: tabular-nums;
+}
+
+/* EXECUTE label: still metadata, but readable. */
+html[data-skin="signal"] .panel:has(.sequence) .seq-label {
+  min-height: 0;
+  color: var(--wh-label);
+  font-size: .64rem !important;
+  font-weight: 850;
+  letter-spacing: .12em !important;
+  line-height: 1.18;
+}
+
+/* Command text: authoritative, but not oversized/bold. */
+html[data-skin="signal"] .panel:has(.sequence) .seq-body,
+html[data-skin="signal"] .panel:has(.sequence) .seq-row > :nth-child(n+3) {
+  color: var(--wh-copy-strong);
+  font-size: clamp(.92rem, 1.18vw, 1rem);
+  font-weight: 470;
+  line-height: 1.38;
+}
+
+html[data-skin="signal"] .panel:has(.sequence) .seq-row > :nth-child(3) {
+  font-weight: 520;
+}
+
+/* Status block: clear values, secondary visual weight. */
+html[data-skin="signal"] .panel:has(.sequence) .status-strip {
+  margin-top: 16px;
+  border-top: 1px solid rgba(214, 209, 198, .11);
+}
+
+html[data-skin="signal"] .panel:has(.sequence) .status-row,
+html[data-skin="signal"] .panel:has(.sequence) .state-row:not(#preview-levels .state-row) {
+  grid-template-columns: calc(2.2ch + 14px + 7rem) minmax(0, 1fr) !important;
+  column-gap: 14px !important;
+  align-items: baseline !important;
+  padding: 8px 0 !important;
+  border-color: rgba(214, 209, 198, .09);
+}
+
+html[data-skin="signal"] .panel:has(.sequence) .status-label,
+html[data-skin="signal"] .panel:has(.sequence) .state-label {
+  color: var(--wh-muted);
+  font-size: .58rem !important;
+  font-weight: 760;
+  letter-spacing: .12em !important;
+  line-height: 1.15;
+}
+
+html[data-skin="signal"] .panel:has(.sequence) .status-value,
+html[data-skin="signal"] .panel:has(.sequence) .state-value {
+  min-height: 0;
+  padding: 0;
+  color: var(--wh-copy);
+  font-size: .90rem;
+  font-weight: 480;
+  line-height: 1.34;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+html[data-skin="signal"] .panel:has(.sequence) .status-value strong,
+html[data-skin="signal"] .panel:has(.sequence) .state-value strong {
+  color: var(--wh-copy-strong);
+  font-weight: 620;
+}
+
+/* Reference: restore H2 authority and documentation spacing. */
+html[data-skin="signal"] .reference-section {
+  padding-block: clamp(24px, 3.4vw, 40px);
+}
+
+html[data-skin="signal"] .reference-section h2 {
+  margin-bottom: clamp(20px, 2.8vw, 30px);
+  color: var(--wh-heading);
+  font-size: clamp(1.58rem, 3vw, 2.25rem);
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -.014em;
+}
+
+html[data-skin="signal"] .reference-section h2 + * {
+  margin-top: 0;
+}
+
+html[data-skin="signal"] .reference-section .flat-list,
+html[data-skin="signal"] .reference-section .reference-table,
+html[data-skin="signal"] .reference-section .state-table,
+html[data-skin="signal"] .reference-section .ref-block:first-of-type {
+  margin-top: 14px;
+}
+
+html[data-skin="signal"] .reference-section h3:first-of-type {
+  margin-top: 4px;
+}
+
+html[data-skin="signal"] .reference-section p,
+html[data-skin="signal"] .reference-section li,
+html[data-skin="signal"] .reference-section .support-copy {
+  line-height: 1.44;
+}
+
+@media (max-width: 640px) {
+  html[data-skin="signal"] .signal-hero {
+    min-height: 310px;
+    padding-block: 24px;
+  }
+
+  html[data-skin="signal"] .signal-hero > .kicker,
+  html[data-skin="signal"] .signal-hero > .panel-kicker {
+    margin-bottom: 10px;
+  }
+
+  html[data-skin="signal"] .signal-hero h1 {
+    margin-bottom: 14px;
+  }
+
+  html[data-skin="signal"] .signal-hero > .lede {
+    margin-bottom: 22px;
+  }
+
+  html[data-skin="signal"] .panel:has(.sequence) {
+    padding-block: 20px;
+  }
+
+  html[data-skin="signal"] .panel:has(.sequence) > .lede,
+  html[data-skin="signal"] .panel:has(.sequence) > .support-copy {
+    margin-bottom: 20px;
+  }
+
+  html[data-skin="signal"] .panel:has(.sequence) .seq-row {
+    grid-template-columns: 2ch minmax(4.9rem, 5.7rem) minmax(0, 1fr) !important;
+    column-gap: 8px !important;
+    padding: 10px 0 !important;
+  }
+
+  html[data-skin="signal"] .panel:has(.sequence) .seq-label {
+    font-size: .58rem !important;
+    letter-spacing: .105em !important;
+  }
+
+  html[data-skin="signal"] .panel:has(.sequence) .seq-body,
+  html[data-skin="signal"] .panel:has(.sequence) .seq-row > :nth-child(n+3) {
+    font-size: .90rem;
+    line-height: 1.34;
+  }
+
+  html[data-skin="signal"] .panel:has(.sequence) .status-row,
+  html[data-skin="signal"] .panel:has(.sequence) .state-row:not(#preview-levels .state-row) {
+    grid-template-columns: calc(2ch + 8px + 5.7rem) minmax(0, 1fr) !important;
+    column-gap: 8px !important;
+  }
+
+  html[data-skin="signal"] .reference-section {
+    padding-block: 22px;
+  }
+
+  html[data-skin="signal"] .reference-section h2 {
+    margin-bottom: 20px;
+    font-size: clamp(1.42rem, 6.2vw, 2rem);
+  }
+}
