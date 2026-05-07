@@ -411,3 +411,48 @@ html[data-skin="signal"] .plain-link {
   text-transform: uppercase;
 }
 
+
+/* =========================================================
+   WORMHOLE H1 STACK RHYTHM
+   Purpose: tighten H1-to-support-copy spacing globally.
+   No page-specific selectors.
+   ========================================================= */
+
+html[data-skin="signal"] h1 {
+  margin-bottom: 10px;
+}
+
+html[data-skin="signal"] h1 + .lede,
+html[data-skin="signal"] h1 + .support-copy,
+html[data-skin="signal"] h1 + p {
+  margin-top: 0;
+}
+
+html[data-skin="signal"] .identity h1,
+html[data-skin="signal"] .panel h1,
+html[data-skin="signal"] .signal-hero h1 {
+  margin-bottom: 10px;
+}
+
+html[data-skin="signal"] .identity h1 + .lede,
+html[data-skin="signal"] .identity h1 + .support-copy,
+html[data-skin="signal"] .identity h1 + p,
+html[data-skin="signal"] .panel h1 + .lede,
+html[data-skin="signal"] .panel h1 + .support-copy,
+html[data-skin="signal"] .panel h1 + p,
+html[data-skin="signal"] .signal-hero h1 + .lede,
+html[data-skin="signal"] .signal-hero h1 + .support-copy,
+html[data-skin="signal"] .signal-hero h1 + p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+@media (max-width: 640px) {
+  html[data-skin="signal"] h1,
+  html[data-skin="signal"] .identity h1,
+  html[data-skin="signal"] .panel h1,
+  html[data-skin="signal"] .signal-hero h1 {
+    margin-bottom: 8px;
+  }
+}
+
