@@ -1658,3 +1658,132 @@ html[data-skin="signal"][data-theme="light"] nav[aria-label="Breadcrumb"],
 html[data-skin="signal"][data-theme="light"] nav[aria-label="breadcrumb"] {
   display: none !important;
 }
+
+/* =========================================================
+   WORMHOLE REFINEMENT PASS 16
+   CSS-only visual correction.
+   Purpose: light-mode hierarchy parity for operation modules
+   and Reference H2.
+   No HTML / JS / content / behavior changes.
+   ========================================================= */
+
+html[data-skin="signal"][data-theme="light"] {
+  --wh-status-good: #1f6f4a;
+}
+
+/* Operation card: Utility-style hierarchy in light mode. */
+html[data-skin="signal"][data-theme="light"] .panel:has(.sequence) {
+  border-color: rgba(20, 17, 13, .16);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, .88), rgba(251, 250, 247, .96));
+}
+
+html[data-skin="signal"][data-theme="light"] .panel:has(.sequence) > .panel-kicker:first-child {
+  color: rgba(20, 17, 13, .54) !important;
+}
+
+html[data-skin="signal"][data-theme="light"] .panel:has(.sequence) h2,
+html[data-skin="signal"][data-theme="light"] .panel:has(.sequence) .sequence-title,
+html[data-skin="signal"][data-theme="light"] .panel:has(.sequence) .section-title {
+  color: rgba(20, 17, 13, .96) !important;
+  font-family: var(--font-heading) !important;
+  font-style: normal !important;
+  font-size: clamp(1.55rem, 4.2vw, 2.35rem) !important;
+  font-weight: 950 !important;
+  letter-spacing: -.045em !important;
+  line-height: .98 !important;
+}
+
+html[data-skin="signal"][data-theme="light"] .panel:has(.sequence) > .lede,
+html[data-skin="signal"][data-theme="light"] .panel:has(.sequence) .lede {
+  color: rgba(20, 17, 13, .82) !important;
+}
+
+html[data-skin="signal"][data-theme="light"] .panel:has(.sequence) .sequence {
+  border-top-color: rgba(20, 17, 13, .16);
+  border-bottom-color: rgba(20, 17, 13, .14);
+}
+
+html[data-skin="signal"][data-theme="light"] .panel:has(.sequence) .seq-row {
+  border-color: rgba(20, 17, 13, .13) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html[data-skin="signal"][data-theme="light"] .panel:has(.sequence) .seq-index {
+  color: rgba(20, 17, 13, .58) !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html[data-skin="signal"][data-theme="light"] .panel:has(.sequence) .seq-label {
+  color: rgba(20, 17, 13, .62) !important;
+  opacity: 1;
+}
+
+html[data-skin="signal"][data-theme="light"] .panel:has(.sequence) .seq-body,
+html[data-skin="signal"][data-theme="light"] .panel:has(.sequence) .seq-row > :nth-child(n+3) {
+  color: rgba(20, 17, 13, .84) !important;
+}
+
+html[data-skin="signal"][data-theme="light"] .panel:has(.sequence) .status-strip {
+  border-top-color: rgba(20, 17, 13, .14);
+}
+
+html[data-skin="signal"][data-theme="light"] .panel:has(.sequence) .status-row,
+html[data-skin="signal"][data-theme="light"] .panel:has(.sequence) .state-row:not(#preview-levels .state-row) {
+  border-color: rgba(20, 17, 13, .12) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html[data-skin="signal"][data-theme="light"] .panel:has(.sequence) .status-label,
+html[data-skin="signal"][data-theme="light"] .panel:has(.sequence) .state-label {
+  color: rgba(20, 17, 13, .52) !important;
+}
+
+html[data-skin="signal"][data-theme="light"] .panel:has(.sequence) .status-value,
+html[data-skin="signal"][data-theme="light"] .panel:has(.sequence) .state-value {
+  color: var(--wh-status-good) !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Reference: make it a real H2 in light mode too. */
+html[data-skin="signal"][data-theme="light"] .reference-section h2 {
+  margin: 0 0 .95rem !important;
+  max-width: none;
+  color: rgba(20, 17, 13, .94) !important;
+  font-family: var(--font-display) !important;
+  font-style: italic !important;
+  font-size: clamp(1.55rem, 3.4vw, 2.20rem) !important;
+  font-weight: 600 !important;
+  letter-spacing: -.025em !important;
+  line-height: 1.03 !important;
+  text-transform: none !important;
+}
+
+html[data-skin="signal"][data-theme="light"] .reference-section h3 {
+  color: rgba(20, 17, 13, .84) !important;
+}
+
+html[data-skin="signal"][data-theme="light"] .reference-section p,
+html[data-skin="signal"][data-theme="light"] .reference-section li {
+  color: rgba(20, 17, 13, .70) !important;
+}
+
+@media (max-width: 640px) {
+  html[data-skin="signal"][data-theme="light"] .panel:has(.sequence) h2,
+  html[data-skin="signal"][data-theme="light"] .panel:has(.sequence) .sequence-title,
+  html[data-skin="signal"][data-theme="light"] .panel:has(.sequence) .section-title {
+    font-size: clamp(1.45rem, 6.6vw, 2.05rem) !important;
+    line-height: 1 !important;
+  }
+
+  html[data-skin="signal"][data-theme="light"] .reference-section h2 {
+    font-size: clamp(1.42rem, 6.2vw, 1.95rem) !important;
+  }
+}
+
