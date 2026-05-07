@@ -821,3 +821,125 @@ html[data-skin="signal"][data-theme="light"] #preview-levels .state-row {
     padding: 9px 0;
   }
 }
+/* =========================================================
+   WORMHOLE REFINEMENT PASS 08
+   CSS-only visual correction.
+   Purpose: light-mode hard density override.
+   No HTML / JS / content / behavior changes.
+   ========================================================= */
+
+html[data-skin="signal"][data-theme="light"] .identity,
+html[data-skin="signal"][data-theme="light"] .panel,
+html[data-skin="signal"][data-theme="light"] .reference-section {
+  padding: 16px 18px;
+}
+
+html[data-skin="signal"][data-theme="light"] .button,
+html[data-skin="signal"][data-theme="light"] .page-actions a,
+html[data-skin="signal"][data-theme="light"] .command-chip,
+html[data-skin="signal"][data-theme="light"] .switch-add-row button,
+html[data-skin="signal"][data-theme="light"] .command-input-row button,
+html[data-skin="signal"][data-theme="light"] .ledger-item__actions button,
+html[data-skin="signal"][data-theme="light"] .utility-link,
+html[data-skin="signal"][data-theme="light"] .plain-link,
+html[data-skin="signal"][data-theme="light"] .breadcrumb,
+html[data-skin="signal"][data-theme="light"] .prev-next-nav a,
+html[data-skin="signal"][data-theme="light"] .prev-next-nav .utility-link,
+html[data-skin="signal"][data-theme="light"] .prev-next-nav .plain-link {
+  min-height: 2rem;
+  padding: .42rem .78rem;
+}
+
+html[data-skin="signal"][data-theme="light"] .seq-row,
+html[data-skin="signal"][data-theme="light"] .state-row,
+html[data-skin="signal"][data-theme="light"] .reference-row,
+html[data-skin="signal"][data-theme="light"] .flat-row,
+html[data-skin="signal"][data-theme="light"] .status-row,
+html[data-skin="signal"][data-theme="light"] .ref-block,
+html[data-skin="signal"][data-theme="light"] .mini-state,
+html[data-skin="signal"][data-theme="light"] .custom-status-row {
+  padding: 7px 0;
+}
+
+html[data-skin="signal"][data-theme="light"] #preview-levels .state-row {
+  min-height: 56px;
+  padding: 9px 11px;
+}
+
+@media (max-width: 640px) {
+  html[data-skin="signal"][data-theme="light"] .identity,
+  html[data-skin="signal"][data-theme="light"] .panel,
+  html[data-skin="signal"][data-theme="light"] .reference-section {
+    padding: 13px;
+  }
+
+  html[data-skin="signal"][data-theme="light"] .button,
+  html[data-skin="signal"][data-theme="light"] .page-actions a,
+  html[data-skin="signal"][data-theme="light"] .command-chip,
+  html[data-skin="signal"][data-theme="light"] .prev-next-nav a,
+  html[data-skin="signal"][data-theme="light"] .prev-next-nav .utility-link,
+  html[data-skin="signal"][data-theme="light"] .prev-next-nav .plain-link {
+    min-height: 2.05rem;
+    padding: .44rem .7rem;
+  }
+
+  html[data-skin="signal"][data-theme="light"] .seq-row,
+  html[data-skin="signal"][data-theme="light"] .state-row,
+  html[data-skin="signal"][data-theme="light"] .reference-row,
+  html[data-skin="signal"][data-theme="light"] .flat-row,
+  html[data-skin="signal"][data-theme="light"] .status-row,
+  html[data-skin="signal"][data-theme="light"] .ref-block,
+  html[data-skin="signal"][data-theme="light"] .mini-state,
+  html[data-skin="signal"][data-theme="light"] .custom-status-row {
+    padding: 7px 0;
+  }
+
+  html[data-skin="signal"][data-theme="light"] #preview-levels .state-row {
+    min-height: 60px;
+    padding: 9px 10px;
+  }
+}
+/* =========================================================
+   WORMHOLE REFINEMENT PASS 09
+   CSS-only visual correction.
+   Purpose: light-mode compact sequence rows through breakpoints.
+   No HTML / JS / content / behavior changes.
+   ========================================================= */
+
+@media (max-width: 860px) {
+  html[data-skin="signal"][data-theme="light"] .seq-row {
+    grid-template-columns: 24px 58px minmax(0, 1fr) !important;
+    gap: 6px !important;
+    align-items: center !important;
+    padding: 5px 0 !important;
+  }
+
+  html[data-skin="signal"][data-theme="light"] .seq-body {
+    grid-column: auto !important;
+  }
+
+  html[data-skin="signal"][data-theme="light"] .seq-index {
+    width: 20px !important;
+    height: 20px !important;
+    font-size: .52rem !important;
+  }
+}
+
+@media (max-width: 640px) {
+  html[data-skin="signal"][data-theme="light"] .seq-row {
+    grid-template-columns: 22px 54px minmax(0, 1fr) !important;
+    gap: 5px !important;
+    align-items: center !important;
+    padding: 5px 0 !important;
+  }
+
+  html[data-skin="signal"][data-theme="light"] .seq-body {
+    grid-column: auto !important;
+  }
+
+  html[data-skin="signal"][data-theme="light"] .identity,
+  html[data-skin="signal"][data-theme="light"] .panel,
+  html[data-skin="signal"][data-theme="light"] .reference-section {
+    padding: 11px !important;
+  }
+}

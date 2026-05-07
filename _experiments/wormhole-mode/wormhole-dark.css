@@ -2264,3 +2264,350 @@ html[data-skin="signal"] .footer {
     padding: 11px 12px;
   }
 }
+/* =========================================================
+   WORMHOLE REFINEMENT PASS 08
+   CSS-only visual correction.
+   Purpose: hard density override; visible reduction in vertical real estate.
+   No HTML / JS / content / behavior changes.
+   ========================================================= */
+
+/* Hard page density: noticeably reduce vertical travel. */
+html[data-skin="signal"] .shell,
+html[data-skin="signal"] .page-shell {
+  gap: 14px;
+  padding: 16px 0 26px;
+}
+
+/* Hard panel density: keep architecture, remove ceremony padding. */
+html[data-skin="signal"] .identity,
+html[data-skin="signal"] .panel,
+html[data-skin="signal"] .reference-section {
+  padding: 16px 18px;
+}
+
+/* Hero cannot dominate tool pages. */
+html[data-skin="signal"] .signal-hero {
+  min-height: 300px;
+  justify-content: center;
+}
+
+html[data-skin="signal"] .identity:not(.signal-hero) {
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+/* Compact title stack. */
+html[data-skin="signal"] .kicker,
+html[data-skin="signal"] .panel-kicker,
+html[data-skin="signal"] .status-label,
+html[data-skin="signal"] label > span {
+  margin-bottom: 4px;
+}
+
+html[data-skin="signal"] h1,
+html[data-skin="signal"] .identity h1,
+html[data-skin="signal"] .panel h1,
+html[data-skin="signal"] .page-shell h1 {
+  margin-bottom: 8px;
+}
+
+html[data-skin="signal"] h2,
+html[data-skin="signal"] .panel h2,
+html[data-skin="signal"] .sequence-title,
+html[data-skin="signal"] .section-title,
+html[data-skin="signal"] .state-table h2,
+html[data-skin="signal"] .reference-section h2 {
+  margin-bottom: 7px;
+}
+
+html[data-skin="signal"] .lede,
+html[data-skin="signal"] .identity .lede,
+html[data-skin="signal"] .panel > .lede,
+html[data-skin="signal"] .reference-section > .lede {
+  margin-bottom: 11px;
+}
+
+/* Action groups: fewer gaps, shorter controls. */
+html[data-skin="signal"] .controls,
+html[data-skin="signal"] .page-actions,
+html[data-skin="signal"] .signal-lab-actions,
+html[data-skin="signal"] .template-list,
+html[data-skin="signal"] .command-template-list,
+html[data-skin="signal"] .inline-chip-list,
+html[data-skin="signal"] .prev-next-nav {
+  gap: 6px;
+}
+
+html[data-skin="signal"] .button,
+html[data-skin="signal"] .page-actions a,
+html[data-skin="signal"] .command-chip,
+html[data-skin="signal"] .switch-add-row button,
+html[data-skin="signal"] .command-input-row button,
+html[data-skin="signal"] .ledger-item__actions button,
+html[data-skin="signal"] .utility-link,
+html[data-skin="signal"] .plain-link,
+html[data-skin="signal"] .breadcrumb,
+html[data-skin="signal"] .prev-next-nav a,
+html[data-skin="signal"] .prev-next-nav .utility-link,
+html[data-skin="signal"] .prev-next-nav .plain-link {
+  min-height: 2rem;
+  padding: .42rem .78rem;
+  font-size: .92rem;
+}
+
+/* Row stacks must behave like compact interface tables. */
+html[data-skin="signal"] .sequence,
+html[data-skin="signal"] .status-strip,
+html[data-skin="signal"] .state-table,
+html[data-skin="signal"] .reference-table,
+html[data-skin="signal"] .flat-list,
+html[data-skin="signal"] .mini-state-list,
+html[data-skin="signal"] .standing-decree-list,
+html[data-skin="signal"] .bank-list,
+html[data-skin="signal"] .ledger-list {
+  gap: 0;
+}
+
+html[data-skin="signal"] .seq-row,
+html[data-skin="signal"] .state-row,
+html[data-skin="signal"] .reference-row,
+html[data-skin="signal"] .flat-row,
+html[data-skin="signal"] .status-row,
+html[data-skin="signal"] .ref-block,
+html[data-skin="signal"] .mini-state,
+html[data-skin="signal"] .custom-status-row {
+  padding: 7px 0;
+}
+
+/* Force sequence rows into a tighter utility-style rhythm on wider screens. */
+html[data-skin="signal"] .seq-row {
+  grid-template-columns: 30px minmax(64px, .18fr) minmax(0, 1fr);
+  gap: 8px;
+  align-items: center;
+}
+
+html[data-skin="signal"] .state-row,
+html[data-skin="signal"] .reference-row,
+html[data-skin="signal"] .flat-row,
+html[data-skin="signal"] .status-row,
+html[data-skin="signal"] .custom-status-row {
+  grid-template-columns: minmax(64px, .20fr) minmax(0, 1fr);
+  gap: 8px;
+  align-items: start;
+}
+
+html[data-skin="signal"] .seq-index {
+  width: 24px;
+  height: 24px;
+  font-size: .58rem;
+}
+
+html[data-skin="signal"] .seq-index,
+html[data-skin="signal"] .seq-label,
+html[data-skin="signal"] .state-label,
+html[data-skin="signal"] .reference-key,
+html[data-skin="signal"] .status-label,
+html[data-skin="signal"] .ledger-item__meta {
+  font-size: .58rem;
+  letter-spacing: .12em;
+}
+
+/* Functional boxes tighter too. */
+html[data-skin="signal"] .signal-form-block,
+html[data-skin="signal"] .ledger-item {
+  padding: 10px;
+}
+
+html[data-skin="signal"] input,
+html[data-skin="signal"] select,
+html[data-skin="signal"] textarea {
+  padding: 8px 9px;
+}
+
+html[data-skin="signal"] textarea {
+  min-height: 88px;
+}
+
+/* Level directory: compact navigation rows. */
+html[data-skin="signal"] #preview-levels .state-table {
+  gap: 6px;
+}
+
+html[data-skin="signal"] #preview-levels .state-row {
+  min-height: 56px;
+  padding: 9px 11px;
+}
+
+html[data-skin="signal"] #preview-levels .state-label--link {
+  font-size: clamp(1.06rem, 2vw, 1.62rem);
+  line-height: 1.02;
+}
+
+/* Mobile hard override: this is where the real-estate problem is most visible. */
+@media (max-width: 640px) {
+  html[data-skin="signal"] .shell,
+  html[data-skin="signal"] .page-shell {
+    gap: 12px;
+    padding: 12px 0 20px;
+  }
+
+  html[data-skin="signal"] .identity,
+  html[data-skin="signal"] .panel,
+  html[data-skin="signal"] .reference-section {
+    padding: 13px;
+  }
+
+  html[data-skin="signal"] .signal-hero {
+    min-height: 245px;
+  }
+
+  html[data-skin="signal"] h1,
+  html[data-skin="signal"] .identity h1,
+  html[data-skin="signal"] .panel h1,
+  html[data-skin="signal"] .page-shell h1 {
+    margin-bottom: 7px;
+  }
+
+  html[data-skin="signal"] h2,
+  html[data-skin="signal"] .panel h2,
+  html[data-skin="signal"] .sequence-title,
+  html[data-skin="signal"] .section-title,
+  html[data-skin="signal"] .state-table h2,
+  html[data-skin="signal"] .reference-section h2 {
+    margin-bottom: 6px;
+  }
+
+  html[data-skin="signal"] .lede,
+  html[data-skin="signal"] .identity .lede,
+  html[data-skin="signal"] .panel > .lede,
+  html[data-skin="signal"] .reference-section > .lede {
+    margin-bottom: 9px;
+  }
+
+  html[data-skin="signal"] .button,
+  html[data-skin="signal"] .page-actions a,
+  html[data-skin="signal"] .command-chip,
+  html[data-skin="signal"] .prev-next-nav a,
+  html[data-skin="signal"] .prev-next-nav .utility-link,
+  html[data-skin="signal"] .prev-next-nav .plain-link {
+    min-height: 2.05rem;
+    padding: .44rem .7rem;
+  }
+
+  html[data-skin="signal"] .seq-row,
+  html[data-skin="signal"] .state-row,
+  html[data-skin="signal"] .reference-row,
+  html[data-skin="signal"] .flat-row,
+  html[data-skin="signal"] .status-row,
+  html[data-skin="signal"] .ref-block,
+  html[data-skin="signal"] .mini-state,
+  html[data-skin="signal"] .custom-status-row {
+    padding: 7px 0;
+  }
+
+  html[data-skin="signal"] .seq-row {
+    grid-template-columns: 26px minmax(0, 1fr);
+    gap: 5px;
+    align-items: start;
+  }
+
+  html[data-skin="signal"] .seq-body {
+    grid-column: 2;
+  }
+
+  html[data-skin="signal"] #preview-levels .state-row {
+    min-height: 60px;
+    padding: 9px 10px;
+  }
+}
+/* =========================================================
+   WORMHOLE REFINEMENT PASS 09
+   CSS-only visual correction.
+   Purpose: preserve compact three-column sequence rows through breakpoints.
+   No HTML / JS / content / behavior changes.
+   ========================================================= */
+
+/* The previous density pass was being undermined by breakpoint rules that stacked seq-body below the label.
+   Keep sequence rows closer to Utility density until the viewport is truly tiny. */
+@media (max-width: 860px) {
+  html[data-skin="signal"] .seq-row {
+    grid-template-columns: 24px 58px minmax(0, 1fr) !important;
+    gap: 6px !important;
+    align-items: center !important;
+    padding: 5px 0 !important;
+  }
+
+  html[data-skin="signal"] .seq-body {
+    grid-column: auto !important;
+  }
+
+  html[data-skin="signal"] .seq-index {
+    width: 20px !important;
+    height: 20px !important;
+    font-size: .52rem !important;
+  }
+
+  html[data-skin="signal"] .seq-label {
+    align-self: center;
+    font-size: .55rem !important;
+    letter-spacing: .11em !important;
+  }
+
+  html[data-skin="signal"] .seq-body,
+  html[data-skin="signal"] .state-value,
+  html[data-skin="signal"] .reference-value {
+    font-size: .92rem;
+    line-height: 1.28;
+  }
+}
+
+@media (max-width: 640px) {
+  html[data-skin="signal"] .seq-row {
+    grid-template-columns: 22px 54px minmax(0, 1fr) !important;
+    gap: 5px !important;
+    align-items: center !important;
+    padding: 5px 0 !important;
+  }
+
+  html[data-skin="signal"] .seq-body {
+    grid-column: auto !important;
+  }
+
+  html[data-skin="signal"] .seq-index {
+    width: 19px !important;
+    height: 19px !important;
+    font-size: .50rem !important;
+  }
+
+  html[data-skin="signal"] .seq-label {
+    font-size: .52rem !important;
+  }
+
+  html[data-skin="signal"] .panel,
+  html[data-skin="signal"] .identity,
+  html[data-skin="signal"] .reference-section {
+    padding: 11px !important;
+  }
+
+  html[data-skin="signal"] .sequence,
+  html[data-skin="signal"] .state-table,
+  html[data-skin="signal"] .reference-table,
+  html[data-skin="signal"] .flat-list {
+    gap: 0 !important;
+  }
+}
+
+@media (max-width: 430px) {
+  html[data-skin="signal"] .seq-row {
+    grid-template-columns: 22px minmax(0, 1fr) !important;
+    align-items: start !important;
+  }
+
+  html[data-skin="signal"] .seq-label {
+    grid-column: 2;
+  }
+
+  html[data-skin="signal"] .seq-body {
+    grid-column: 2 !important;
+  }
+}
