@@ -1046,3 +1046,132 @@ html[data-skin="signal"][data-theme="light"] .reference-value {
     gap: 6px !important;
   }
 }
+/* =========================================================
+   WORMHOLE REFINEMENT PASS 11
+   CSS-only visual correction.
+   Purpose: light-mode marker geometry + row alignment.
+   No HTML / JS / content / behavior changes.
+   ========================================================= */
+
+html[data-skin="signal"][data-theme="light"] .seq-index {
+  width: var(--wh-marker-size) !important;
+  height: var(--wh-marker-size) !important;
+  min-width: var(--wh-marker-size);
+  border-radius: var(--wh-marker-radius) !important;
+  border-color: rgba(111, 103, 90, .22);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, .58), rgba(198, 191, 177, .12));
+  font-size: .48rem !important;
+}
+
+html[data-skin="signal"][data-theme="light"] .seq-row {
+  grid-template-columns: var(--wh-marker-size) var(--wh-row-label-col) minmax(0, 1fr) !important;
+  column-gap: var(--wh-row-gap) !important;
+  row-gap: 0 !important;
+  align-items: center !important;
+  padding: 5px 0 !important;
+}
+
+html[data-skin="signal"][data-theme="light"] .status-strip .status-row,
+html[data-skin="signal"][data-theme="light"] .status-strip .state-row,
+html[data-skin="signal"][data-theme="light"] .panel > .status-row,
+html[data-skin="signal"][data-theme="light"] .panel > .state-row:not(#preview-levels .state-row) {
+  grid-template-columns:
+    calc(var(--wh-marker-size) + var(--wh-row-gap) + var(--wh-row-label-col))
+    minmax(0, 1fr) !important;
+  column-gap: var(--wh-row-gap) !important;
+  row-gap: 0 !important;
+  align-items: center !important;
+  padding: 5px 0 !important;
+}
+
+html[data-skin="signal"][data-theme="light"] .status-strip .status-value,
+html[data-skin="signal"][data-theme="light"] .status-strip .state-value,
+html[data-skin="signal"][data-theme="light"] .panel > .status-row .status-value,
+html[data-skin="signal"][data-theme="light"] .panel > .status-row .state-value,
+html[data-skin="signal"][data-theme="light"] .panel > .state-row .state-value {
+  min-height: 1.45rem;
+  padding: .14rem .38rem;
+  display: flex;
+  align-items: center;
+  font-size: .92rem;
+  line-height: 1.2;
+}
+
+html[data-skin="signal"][data-theme="light"] #preview-levels .state-row {
+  grid-template-columns: minmax(0, 1fr) auto !important;
+}
+/* =========================================================
+   WORMHOLE REFINEMENT PASS 12
+   CSS-only visual correction.
+   Purpose: light-mode reference-section documentation layout.
+   No HTML / JS / content / behavior changes.
+   ========================================================= */
+
+html[data-skin="signal"][data-theme="light"] .reference-section .flat-row,
+html[data-skin="signal"][data-theme="light"] .reference-section .reference-row,
+html[data-skin="signal"][data-theme="light"] .reference-section .state-row {
+  grid-template-columns: minmax(9.75rem, .28fr) minmax(0, 1fr) !important;
+  gap: 12px !important;
+  align-items: start !important;
+  padding: 8px 0 !important;
+  border-width: 0 0 1px;
+  border-style: solid;
+  border-color: rgba(20, 17, 13, .12);
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html[data-skin="signal"][data-theme="light"] .reference-section .flat-row strong,
+html[data-skin="signal"][data-theme="light"] .reference-section .reference-key,
+html[data-skin="signal"][data-theme="light"] .reference-section .state-label {
+  color: rgba(20, 17, 13, .88);
+  font-family: var(--font-heading);
+  font-size: .80rem !important;
+  font-weight: 800;
+  letter-spacing: .005em !important;
+  line-height: 1.14;
+  text-transform: none;
+  word-break: normal;
+  hyphens: none;
+}
+
+html[data-skin="signal"][data-theme="light"] .reference-section .flat-row > :last-child,
+html[data-skin="signal"][data-theme="light"] .reference-section .reference-value,
+html[data-skin="signal"][data-theme="light"] .reference-section .state-value {
+  min-height: 0;
+  padding: 0;
+  color: rgba(20, 17, 13, .74);
+  font-size: .95rem;
+  line-height: 1.34;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+html[data-skin="signal"][data-theme="light"] .reference-section .flat-row:hover,
+html[data-skin="signal"][data-theme="light"] .reference-section .reference-row:hover,
+html[data-skin="signal"][data-theme="light"] .reference-section .state-row:hover {
+  border-color: rgba(20, 17, 13, .16);
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+@media (max-width: 640px) {
+  html[data-skin="signal"][data-theme="light"] .reference-section .flat-row,
+  html[data-skin="signal"][data-theme="light"] .reference-section .reference-row,
+  html[data-skin="signal"][data-theme="light"] .reference-section .state-row {
+    grid-template-columns: minmax(7.6rem, .36fr) minmax(0, 1fr) !important;
+    gap: 9px !important;
+    padding: 7px 0 !important;
+  }
+}
+
+@media (max-width: 390px) {
+  html[data-skin="signal"][data-theme="light"] .reference-section .flat-row,
+  html[data-skin="signal"][data-theme="light"] .reference-section .reference-row,
+  html[data-skin="signal"][data-theme="light"] .reference-section .state-row {
+    grid-template-columns: 1fr !important;
+    gap: 4px !important;
+  }
+}

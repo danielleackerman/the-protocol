@@ -2776,3 +2776,297 @@ html[data-skin="signal"] .prev-next-nav .plain-link {
     grid-template-columns: 1fr !important;
   }
 }
+/* =========================================================
+   WORMHOLE REFINEMENT PASS 11
+   CSS-only visual correction.
+   Purpose: normalize marker geometry + align label/value columns.
+   No HTML / JS / content / behavior changes.
+   ========================================================= */
+
+/* Shared row geometry variables. */
+html[data-skin="signal"] {
+  --wh-marker-size: 18px;
+  --wh-marker-radius: 4px;
+  --wh-row-label-col: 62px;
+  --wh-row-gap: 7px;
+}
+
+/* Step markers: shift from circular badge to small squared interface chip. */
+html[data-skin="signal"] .seq-index {
+  width: var(--wh-marker-size) !important;
+  height: var(--wh-marker-size) !important;
+  min-width: var(--wh-marker-size);
+  border-radius: var(--wh-marker-radius) !important;
+  border-color: rgba(214, 209, 198, .24);
+  background:
+    linear-gradient(180deg, rgba(214, 209, 198, .055), rgba(214, 209, 198, .018));
+  color: var(--wh-label);
+  font-size: .48rem !important;
+  line-height: 1;
+}
+
+/* Sequence rows: one measured 3-column system. */
+html[data-skin="signal"] .seq-row {
+  grid-template-columns: var(--wh-marker-size) var(--wh-row-label-col) minmax(0, 1fr) !important;
+  column-gap: var(--wh-row-gap) !important;
+  row-gap: 0 !important;
+  align-items: center !important;
+  padding: 5px 0 !important;
+}
+
+html[data-skin="signal"] .seq-label {
+  display: flex;
+  align-items: center;
+  min-height: var(--wh-marker-size);
+  font-size: .52rem !important;
+  letter-spacing: .105em !important;
+  line-height: 1;
+}
+
+html[data-skin="signal"] .seq-body {
+  display: flex;
+  align-items: center;
+  min-height: 1.45rem;
+  padding: 0;
+  font-size: .92rem;
+  line-height: 1.22;
+}
+
+/* Status/value rows should align their values to the same content column as sequence bodies. */
+html[data-skin="signal"] .status-strip .status-row,
+html[data-skin="signal"] .status-strip .state-row,
+html[data-skin="signal"] .panel > .status-row,
+html[data-skin="signal"] .panel > .state-row:not(#preview-levels .state-row) {
+  grid-template-columns:
+    calc(var(--wh-marker-size) + var(--wh-row-gap) + var(--wh-row-label-col))
+    minmax(0, 1fr) !important;
+  column-gap: var(--wh-row-gap) !important;
+  row-gap: 0 !important;
+  align-items: center !important;
+  padding: 5px 0 !important;
+}
+
+/* Status/value labels occupy the full left control lane; values start at the shared content line. */
+html[data-skin="signal"] .status-strip .status-label,
+html[data-skin="signal"] .status-strip .state-label,
+html[data-skin="signal"] .panel > .status-row .status-label,
+html[data-skin="signal"] .panel > .state-row .state-label {
+  display: flex;
+  align-items: center;
+  min-height: 1.45rem;
+  padding-left: 0;
+  font-size: .52rem !important;
+  letter-spacing: .105em !important;
+  line-height: 1;
+}
+
+html[data-skin="signal"] .status-strip .status-value,
+html[data-skin="signal"] .status-strip .state-value,
+html[data-skin="signal"] .panel > .status-row .status-value,
+html[data-skin="signal"] .panel > .status-row .state-value,
+html[data-skin="signal"] .panel > .state-row .state-value {
+  min-height: 1.45rem;
+  padding: .14rem .38rem;
+  display: flex;
+  align-items: center;
+  font-size: .92rem;
+  line-height: 1.2;
+}
+
+/* Keep general reference/detail rows from inheriting the status-strip column system. */
+html[data-skin="signal"] .reference-table .state-row,
+html[data-skin="signal"] .reference-table .reference-row,
+html[data-skin="signal"] .flat-list .flat-row,
+html[data-skin="signal"] .mini-state-list .mini-state {
+  grid-template-columns: 76px minmax(0, 1fr) !important;
+}
+
+/* Level directory cards are navigation objects, not compact status rows. */
+html[data-skin="signal"] #preview-levels .state-row {
+  grid-template-columns: minmax(0, 1fr) auto !important;
+}
+
+/* Mobile keeps the same alignment system, just tighter. */
+@media (max-width: 640px) {
+  html[data-skin="signal"] {
+    --wh-marker-size: 17px;
+    --wh-marker-radius: 4px;
+    --wh-row-label-col: 56px;
+    --wh-row-gap: 6px;
+  }
+
+  html[data-skin="signal"] .seq-row {
+    grid-template-columns: var(--wh-marker-size) var(--wh-row-label-col) minmax(0, 1fr) !important;
+  }
+
+  html[data-skin="signal"] .seq-body,
+  html[data-skin="signal"] .status-strip .status-value,
+  html[data-skin="signal"] .status-strip .state-value {
+    font-size: .88rem;
+  }
+}
+
+/* Tiny screens can stack, but maintain label alignment before stacking the value. */
+@media (max-width: 390px) {
+  html[data-skin="signal"] .seq-row {
+    grid-template-columns: var(--wh-marker-size) minmax(0, 1fr) !important;
+    row-gap: 3px !important;
+    align-items: start !important;
+  }
+
+  html[data-skin="signal"] .seq-label,
+  html[data-skin="signal"] .seq-body {
+    grid-column: 2 !important;
+  }
+}
+/* =========================================================
+   WORMHOLE REFINEMENT PASS 12
+   CSS-only visual correction.
+   Purpose: repair reference-section layout as readable documentation.
+   No HTML / JS / content / behavior changes.
+   ========================================================= */
+
+/* Reference panels are documentation, not command grids. */
+html[data-skin="signal"] .reference-section {
+  padding-top: 18px;
+}
+
+html[data-skin="signal"] .reference-section h2 {
+  margin-bottom: 14px;
+}
+
+/* Reference subheads need clearer editorial grouping without shouting. */
+html[data-skin="signal"] .reference-section h3 {
+  margin: 14px 0 7px;
+  font-family: var(--font-heading);
+  font-size: .82rem;
+  font-style: normal;
+  font-weight: 800;
+  letter-spacing: .01em;
+  line-height: 1.18;
+  text-transform: none;
+}
+
+/* Reference prose should read as prose, not as table cells. */
+html[data-skin="signal"] .reference-section p,
+html[data-skin="signal"] .reference-section li,
+html[data-skin="signal"] .reference-section .support-copy {
+  max-width: 48rem;
+  margin-bottom: 10px;
+  line-height: 1.36;
+}
+
+/* Definition/reference lists: wider term column, quieter dividers. */
+html[data-skin="signal"] .reference-section .flat-list,
+html[data-skin="signal"] .reference-section .reference-table,
+html[data-skin="signal"] .reference-section .state-table {
+  display: grid;
+  gap: 0 !important;
+  margin-top: 8px;
+}
+
+/* Repair term/value rows inside reference sections only. */
+html[data-skin="signal"] .reference-section .flat-row,
+html[data-skin="signal"] .reference-section .reference-row,
+html[data-skin="signal"] .reference-section .state-row {
+  grid-template-columns: minmax(9.75rem, .28fr) minmax(0, 1fr) !important;
+  gap: 12px !important;
+  align-items: start !important;
+  padding: 8px 0 !important;
+  border-width: 0 0 1px;
+  border-style: solid;
+  border-color: rgba(214, 209, 198, .13);
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Make the left term column readable and prevent ugly one-word-per-line breaks. */
+html[data-skin="signal"] .reference-section .flat-row strong,
+html[data-skin="signal"] .reference-section .reference-key,
+html[data-skin="signal"] .reference-section .state-label {
+  display: block;
+  min-width: 0;
+  color: var(--wh-copy-strong);
+  font-family: var(--font-heading);
+  font-size: .80rem !important;
+  font-weight: 800;
+  letter-spacing: .005em !important;
+  line-height: 1.14;
+  text-transform: none;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+}
+
+/* Right-side explanation column: clean paragraph rhythm. */
+html[data-skin="signal"] .reference-section .flat-row > :last-child,
+html[data-skin="signal"] .reference-section .reference-value,
+html[data-skin="signal"] .reference-section .state-value {
+  min-height: 0;
+  padding: 0;
+  color: var(--wh-copy);
+  font-size: .95rem;
+  line-height: 1.34;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+/* Avoid noisy hover effects on reference documentation rows. */
+html[data-skin="signal"] .reference-section .flat-row:hover,
+html[data-skin="signal"] .reference-section .reference-row:hover,
+html[data-skin="signal"] .reference-section .state-row:hover {
+  border-color: rgba(214, 209, 198, .18);
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Last documentation row should not create a hard terminal rule. */
+html[data-skin="signal"] .reference-section .flat-list > :last-child,
+html[data-skin="signal"] .reference-section .reference-table > :last-child,
+html[data-skin="signal"] .reference-section .state-table > :last-child {
+  border-bottom-color: transparent;
+}
+
+@media (max-width: 640px) {
+  html[data-skin="signal"] .reference-section {
+    padding-top: 14px;
+  }
+
+  html[data-skin="signal"] .reference-section h3 {
+    margin-top: 12px;
+    margin-bottom: 6px;
+    font-size: .80rem;
+  }
+
+  html[data-skin="signal"] .reference-section .flat-row,
+  html[data-skin="signal"] .reference-section .reference-row,
+  html[data-skin="signal"] .reference-section .state-row {
+    grid-template-columns: minmax(7.6rem, .36fr) minmax(0, 1fr) !important;
+    gap: 9px !important;
+    padding: 7px 0 !important;
+  }
+
+  html[data-skin="signal"] .reference-section .flat-row strong,
+  html[data-skin="signal"] .reference-section .reference-key,
+  html[data-skin="signal"] .reference-section .state-label {
+    font-size: .76rem !important;
+    line-height: 1.12;
+  }
+
+  html[data-skin="signal"] .reference-section .flat-row > :last-child,
+  html[data-skin="signal"] .reference-section .reference-value,
+  html[data-skin="signal"] .reference-section .state-value {
+    font-size: .90rem;
+    line-height: 1.32;
+  }
+}
+
+@media (max-width: 390px) {
+  html[data-skin="signal"] .reference-section .flat-row,
+  html[data-skin="signal"] .reference-section .reference-row,
+  html[data-skin="signal"] .reference-section .state-row {
+    grid-template-columns: 1fr !important;
+    gap: 4px !important;
+  }
+}
