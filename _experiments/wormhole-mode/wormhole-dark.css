@@ -533,17 +533,14 @@ html[data-skin="signal"] .prev-next-nav {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-}
-
-html[data-skin="signal"] .button,
+}html[data-skin="signal"] .button,
 html[data-skin="signal"] .page-actions a,
 html[data-skin="signal"] .command-chip,
 html[data-skin="signal"] .switch-add-row button,
 html[data-skin="signal"] .command-input-row button,
 html[data-skin="signal"] .ledger-item__actions button,
 html[data-skin="signal"] .utility-link,
-html[data-skin="signal"] .plain-link,
-html[data-skin="signal"] .breadcrumb {
+html[data-skin="signal"] .plain-link {
   min-height: 39px;
   display: inline-flex;
   align-items: center;
@@ -569,9 +566,7 @@ html[data-skin="signal"] .danger-card .button,
 html[data-skin="signal"] .seq-row--firewall .button {
   border-color: var(--wh-border-alert);
   background: var(--wh-hot-button-bg);
-}
-
-html[data-skin="signal"] .button:hover,
+}html[data-skin="signal"] .button:hover,
 html[data-skin="signal"] .button:focus-visible,
 html[data-skin="signal"] .page-actions a:hover,
 html[data-skin="signal"] .page-actions a:focus-visible,
@@ -586,9 +581,7 @@ html[data-skin="signal"] .ledger-item__actions button:focus-visible,
 html[data-skin="signal"] .utility-link:hover,
 html[data-skin="signal"] .utility-link:focus-visible,
 html[data-skin="signal"] .plain-link:hover,
-html[data-skin="signal"] .plain-link:focus-visible,
-html[data-skin="signal"] .breadcrumb:hover,
-html[data-skin="signal"] .breadcrumb:focus-visible {
+html[data-skin="signal"] .plain-link:focus-visible {
   outline: none;
   border-color: var(--wh-border-active);
   box-shadow: var(--wh-small-glow);
@@ -1238,9 +1231,7 @@ html[data-skin="signal"] .command-template-list,
 html[data-skin="signal"] .inline-chip-list,
 html[data-skin="signal"] .prev-next-nav {
   gap: 8px;
-}
-
-html[data-skin="signal"] .button,
+}html[data-skin="signal"] .button,
 html[data-skin="signal"] .page-actions a,
 html[data-skin="signal"] .command-chip,
 html[data-skin="signal"] .switch-add-row button,
@@ -1248,18 +1239,14 @@ html[data-skin="signal"] .command-input-row button,
 html[data-skin="signal"] .ledger-item__actions button,
 html[data-skin="signal"] .utility-link,
 html[data-skin="signal"] .plain-link,
-html[data-skin="signal"] .breadcrumb,
 html[data-skin="signal"] .prev-next-nav a {
   min-height: 2.18rem;
   border-radius: 4px;
   padding: .48rem .82rem;
   box-shadow: none;
   line-height: 1;
-}
-
-html[data-skin="signal"] .button,
+}html[data-skin="signal"] .button,
 html[data-skin="signal"] .page-actions a,
-html[data-skin="signal"] .breadcrumb,
 html[data-skin="signal"] .prev-next-nav a {
   font-family: var(--font-display);
   font-size: .98rem;
@@ -1281,18 +1268,14 @@ html[data-skin="signal"] .plain-link {
   font-weight: 850;
   letter-spacing: .11em;
   text-transform: uppercase;
-}
-
-html[data-skin="signal"] .button:hover,
+}html[data-skin="signal"] .button:hover,
 html[data-skin="signal"] .button:focus-visible,
 html[data-skin="signal"] .page-actions a:hover,
 html[data-skin="signal"] .page-actions a:focus-visible,
 html[data-skin="signal"] .utility-link:hover,
 html[data-skin="signal"] .utility-link:focus-visible,
 html[data-skin="signal"] .plain-link:hover,
-html[data-skin="signal"] .plain-link:focus-visible,
-html[data-skin="signal"] .breadcrumb:hover,
-html[data-skin="signal"] .breadcrumb:focus-visible {
+html[data-skin="signal"] .plain-link:focus-visible {
   transform: none;
   box-shadow: var(--wh-small-glow);
 }
@@ -2001,3 +1984,61 @@ html[data-skin="signal"] .sequence + h3 {
     font-size: .58rem !important;
   }
 }
+
+/* =========================================================
+   WORMHOLE ACTION BUTTON SYSTEM
+   Purpose: restore compact editorial action buttons globally.
+   No page-specific selectors.
+   ========================================================= */
+
+html[data-skin="signal"] .controls,
+html[data-skin="signal"] .page-actions,
+html[data-skin="signal"] .signal-lab-actions,
+html[data-skin="signal"] .template-list,
+html[data-skin="signal"] .command-template-list,
+html[data-skin="signal"] .inline-chip-list,
+html[data-skin="signal"] .prev-next-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+html[data-skin="signal"] .signal-hero .page-actions,
+html[data-skin="signal"] .signal-hero .controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
+  gap: 8px;
+  align-items: center;
+}
+
+html[data-skin="signal"] .button,
+html[data-skin="signal"] .page-actions a,
+html[data-skin="signal"] .command-chip,
+html[data-skin="signal"] .utility-link,
+html[data-skin="signal"] .plain-link,
+html[data-skin="signal"] .prev-next-nav a {
+  width: auto;
+  min-height: 2.05rem;
+  padding: .44rem .78rem;
+  border-radius: 4px;
+  font-family: var(--font-display);
+  font-size: .96rem;
+  font-style: italic;
+  font-weight: 600;
+  letter-spacing: .015em;
+  line-height: 1;
+  text-transform: none;
+}
+
+html[data-skin="signal"] .command-chip,
+html[data-skin="signal"] .utility-link,
+html[data-skin="signal"] .plain-link {
+  font-family: var(--font-mono);
+  font-size: .66rem;
+  font-style: normal;
+  font-weight: 850;
+  letter-spacing: .10em;
+  text-transform: uppercase;
+}
+

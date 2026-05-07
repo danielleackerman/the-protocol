@@ -353,3 +353,61 @@ html[data-skin="signal"] .sequence + h3 {
     font-size: .58rem !important;
   }
 }
+
+/* =========================================================
+   WORMHOLE ACTION BUTTON SYSTEM
+   Purpose: restore compact editorial action buttons globally.
+   No page-specific selectors.
+   ========================================================= */
+
+html[data-skin="signal"] .controls,
+html[data-skin="signal"] .page-actions,
+html[data-skin="signal"] .signal-lab-actions,
+html[data-skin="signal"] .template-list,
+html[data-skin="signal"] .command-template-list,
+html[data-skin="signal"] .inline-chip-list,
+html[data-skin="signal"] .prev-next-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+html[data-skin="signal"] .signal-hero .page-actions,
+html[data-skin="signal"] .signal-hero .controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
+  gap: 8px;
+  align-items: center;
+}
+
+html[data-skin="signal"] .button,
+html[data-skin="signal"] .page-actions a,
+html[data-skin="signal"] .command-chip,
+html[data-skin="signal"] .utility-link,
+html[data-skin="signal"] .plain-link,
+html[data-skin="signal"] .prev-next-nav a {
+  width: auto;
+  min-height: 2.05rem;
+  padding: .44rem .78rem;
+  border-radius: 4px;
+  font-family: var(--font-display);
+  font-size: .96rem;
+  font-style: italic;
+  font-weight: 600;
+  letter-spacing: .015em;
+  line-height: 1;
+  text-transform: none;
+}
+
+html[data-skin="signal"] .command-chip,
+html[data-skin="signal"] .utility-link,
+html[data-skin="signal"] .plain-link {
+  font-family: var(--font-mono);
+  font-size: .66rem;
+  font-style: normal;
+  font-weight: 850;
+  letter-spacing: .10em;
+  text-transform: uppercase;
+}
+
