@@ -3070,3 +3070,353 @@ html[data-skin="signal"] .reference-section .state-table > :last-child {
     gap: 4px !important;
   }
 }
+/* =========================================================
+   WORMHOLE REFINEMENT PASS 13
+   CSS-only visual correction.
+   Purpose: rebalance core hierarchy: sequences first, reference quieter, levels stronger.
+   No HTML / JS / content / behavior changes.
+   ========================================================= */
+
+/* =========================================================
+   1) PROTOCOL SEQUENCE = PRIMARY OPERATING SURFACE
+   ========================================================= */
+
+/* Any panel containing the command sequence gets more authority than Reference. */
+html[data-skin="signal"] .panel:has(.sequence) {
+  border-color: color-mix(in srgb, var(--wh-border-active) 82%, transparent);
+  background:
+    linear-gradient(180deg, rgba(214, 209, 198, .060), rgba(214, 209, 198, .020)),
+    var(--wh-panel-bg);
+}
+
+/* Operation kicker stays small, but the sequence title must stop disappearing. */
+html[data-skin="signal"] .panel:has(.sequence) h2,
+html[data-skin="signal"] .panel:has(.sequence) .sequence-title,
+html[data-skin="signal"] .panel:has(.sequence) .section-title {
+  font-size: clamp(1.55rem, 3.4vw, 2.35rem);
+  line-height: 1.02;
+  font-weight: 650;
+  color: var(--wh-heading);
+  margin-bottom: 10px;
+}
+
+/* Lede under command sections: clear operating instruction, not decorative support copy. */
+html[data-skin="signal"] .panel:has(.sequence) > .lede,
+html[data-skin="signal"] .panel:has(.sequence) .lede {
+  max-width: 42rem;
+  color: var(--wh-copy-strong);
+  font-size: clamp(.92rem, 1.4vw, 1.02rem);
+  line-height: 1.32;
+  font-weight: 800;
+  margin-bottom: 13px;
+}
+
+/* Sequence stack gets a touch more presence than reference rows. */
+html[data-skin="signal"] .panel:has(.sequence) .sequence {
+  border-top: 1px solid rgba(214, 209, 198, .18);
+  border-bottom: 1px solid rgba(214, 209, 198, .16);
+}
+
+/* Hard lock command rows to 3 columns.
+   This prevents extra children/support copy from creating accidental fourth columns. */
+html[data-skin="signal"] .panel:has(.sequence) .seq-row {
+  grid-template-columns: 22px minmax(5.7rem, 6.6rem) minmax(0, 1fr) !important;
+  column-gap: 9px !important;
+  row-gap: 4px !important;
+  align-items: start !important;
+  padding: 8px 0 !important;
+  border-color: rgba(214, 209, 198, .16);
+}
+
+/* Everything after the marker + label belongs in the command content column. */
+html[data-skin="signal"] .panel:has(.sequence) .seq-row > :nth-child(n+3) {
+  grid-column: 3 !important;
+  min-width: 0;
+}
+
+/* If a row has multiple instruction fragments, stack them instead of making side-by-side columns. */
+html[data-skin="signal"] .panel:has(.sequence) .seq-row > :nth-child(n+4) {
+  margin-top: 2px;
+  opacity: .82;
+}
+
+/* Step chips are support, not the main event. */
+html[data-skin="signal"] .panel:has(.sequence) .seq-index {
+  margin-top: .15rem;
+  width: 18px !important;
+  height: 18px !important;
+  min-width: 18px;
+  border-radius: 4px !important;
+  border-color: rgba(214, 209, 198, .34);
+  color: var(--wh-copy-strong);
+  background: rgba(214, 209, 198, .055);
+}
+
+/* Step labels are readable metadata. */
+html[data-skin="signal"] .panel:has(.sequence) .seq-label {
+  min-height: 18px;
+  align-items: center;
+  color: var(--wh-label);
+  font-size: .58rem !important;
+  letter-spacing: .105em !important;
+  line-height: 1.05;
+  font-weight: 900;
+}
+
+/* Command body is the important part. */
+html[data-skin="signal"] .panel:has(.sequence) .seq-body,
+html[data-skin="signal"] .panel:has(.sequence) .seq-row > :nth-child(n+3) {
+  color: var(--wh-copy-strong);
+  font-size: clamp(.96rem, 1.55vw, 1.08rem);
+  line-height: 1.25;
+  font-weight: 620;
+}
+
+/* First command phrase in each row carries the row. */
+html[data-skin="signal"] .panel:has(.sequence) .seq-row > :nth-child(3) {
+  font-weight: 700;
+}
+
+/* Status rows are subordinate to commands. */
+html[data-skin="signal"] .panel:has(.sequence) .status-row,
+html[data-skin="signal"] .panel:has(.sequence) .state-row:not(#preview-levels .state-row) {
+  grid-template-columns: calc(22px + 9px + 6.6rem) minmax(0, 1fr) !important;
+  padding: 6px 0 !important;
+  border-color: rgba(214, 209, 198, .11);
+}
+
+html[data-skin="signal"] .panel:has(.sequence) .status-label,
+html[data-skin="signal"] .panel:has(.sequence) .state-label {
+  color: var(--wh-muted);
+  font-size: .54rem !important;
+  letter-spacing: .11em !important;
+}
+
+html[data-skin="signal"] .panel:has(.sequence) .status-value,
+html[data-skin="signal"] .panel:has(.sequence) .state-value {
+  color: var(--wh-copy);
+  font-size: .92rem;
+  font-weight: 520;
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  padding-left: 0;
+}
+
+/* =========================================================
+   2) REFERENCE = SUPPORTING DOCUMENTATION, NOT COMPETING UI
+   ========================================================= */
+
+html[data-skin="signal"] .reference-section {
+  border-color: rgba(214, 209, 198, .12);
+}
+
+/* Make Reference title elegant but deliberately secondary. */
+html[data-skin="signal"] .reference-section h2 {
+  font-size: clamp(1.22rem, 2.2vw, 1.62rem);
+  line-height: 1.08;
+  margin-bottom: 16px;
+  color: var(--wh-copy-strong);
+}
+
+/* Reference headings: one clear, quiet style. */
+html[data-skin="signal"] .reference-section h3 {
+  margin: 18px 0 7px;
+  color: var(--wh-copy-strong);
+  font-family: var(--font-heading);
+  font-size: .83rem;
+  font-weight: 850;
+  letter-spacing: .01em;
+  line-height: 1.18;
+  text-transform: none;
+}
+
+/* Reference prose should be comfortable, not command-weight. */
+html[data-skin="signal"] .reference-section p,
+html[data-skin="signal"] .reference-section li {
+  color: var(--wh-copy);
+  font-size: .96rem;
+  line-height: 1.34;
+  font-weight: 430;
+  max-width: 48rem;
+}
+
+/* Reduce divider noise and make term/value rows read like definitions. */
+html[data-skin="signal"] .reference-section .flat-row,
+html[data-skin="signal"] .reference-section .reference-row,
+html[data-skin="signal"] .reference-section .state-row {
+  grid-template-columns: minmax(7.8rem, .28fr) minmax(0, 1fr) !important;
+  gap: 12px !important;
+  padding: 6px 0 !important;
+  border-color: rgba(214, 209, 198, .09) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html[data-skin="signal"] .reference-section .flat-row strong,
+html[data-skin="signal"] .reference-section .reference-key,
+html[data-skin="signal"] .reference-section .state-label {
+  color: var(--wh-copy-strong);
+  font-size: .80rem !important;
+  font-weight: 800;
+  letter-spacing: 0 !important;
+  line-height: 1.15;
+  text-transform: none;
+}
+
+html[data-skin="signal"] .reference-section .flat-row > :last-child,
+html[data-skin="signal"] .reference-section .reference-value,
+html[data-skin="signal"] .reference-section .state-value {
+  color: var(--wh-copy);
+  font-size: .94rem;
+  line-height: 1.30;
+  font-weight: 430;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+/* Reference should not light up like an interactive command panel. */
+html[data-skin="signal"] .reference-section .flat-row:hover,
+html[data-skin="signal"] .reference-section .reference-row:hover,
+html[data-skin="signal"] .reference-section .state-row:hover {
+  background: transparent !important;
+  border-color: rgba(214, 209, 198, .12) !important;
+  box-shadow: none !important;
+}
+
+/* =========================================================
+   3) LEVELS = CHAMBER DIRECTORY, NOT AN OPEN-BUTTON SPREADSHEET
+   ========================================================= */
+
+html[data-skin="signal"] #preview-levels.panel,
+html[data-skin="signal"] .panel:has(#preview-levels) {
+  border-color: rgba(214, 209, 198, .16);
+}
+
+/* Level map rows: make the chamber identity louder than OPEN. */
+html[data-skin="signal"] #preview-levels .state-table {
+  gap: 8px !important;
+}
+
+html[data-skin="signal"] #preview-levels .state-row {
+  min-height: 54px !important;
+  grid-template-columns: minmax(0, 1fr) minmax(4.6rem, 6.5rem) !important;
+  gap: 10px !important;
+  align-items: center !important;
+  padding: 9px 10px !important;
+  border-color: rgba(214, 209, 198, .16);
+  background:
+    linear-gradient(180deg, rgba(214, 209, 198, .036), rgba(214, 209, 198, .010));
+}
+
+/* Whatever element contains the level title must stop being tiny/light. */
+html[data-skin="signal"] #preview-levels .state-row > :first-child,
+html[data-skin="signal"] #preview-levels .state-label,
+html[data-skin="signal"] #preview-levels .state-label--link,
+html[data-skin="signal"] #preview-levels .reference-key {
+  color: var(--wh-copy-strong) !important;
+  font-family: var(--font-heading) !important;
+  font-size: clamp(.88rem, 1.85vw, 1.12rem) !important;
+  font-style: normal !important;
+  font-weight: 900 !important;
+  letter-spacing: .045em !important;
+  line-height: 1.1 !important;
+  text-transform: uppercase !important;
+}
+
+/* OPEN is an action, not the title. */
+html[data-skin="signal"] #preview-levels .utility-link,
+html[data-skin="signal"] #preview-levels .utility-link--open,
+html[data-skin="signal"] #preview-levels .plain-link,
+html[data-skin="signal"] #preview-levels a:last-child {
+  min-height: 1.72rem !important;
+  padding: .30rem .58rem !important;
+  border-radius: 4px;
+  font-family: var(--font-mono) !important;
+  font-size: .62rem !important;
+  font-style: normal !important;
+  font-weight: 850 !important;
+  letter-spacing: .11em !important;
+  text-transform: uppercase !important;
+  color: var(--wh-copy-strong);
+  background:
+    linear-gradient(180deg, rgba(214, 209, 198, .045), rgba(214, 209, 198, .018));
+}
+
+/* Mobile adjustments: preserve hierarchy, avoid table-breakage. */
+@media (max-width: 640px) {
+  html[data-skin="signal"] .panel:has(.sequence) h2,
+  html[data-skin="signal"] .panel:has(.sequence) .sequence-title,
+  html[data-skin="signal"] .panel:has(.sequence) .section-title {
+    font-size: clamp(1.42rem, 6.2vw, 2rem);
+  }
+
+  html[data-skin="signal"] .panel:has(.sequence) .seq-row {
+    grid-template-columns: 20px minmax(4.9rem, 5.7rem) minmax(0, 1fr) !important;
+    gap: 7px !important;
+    padding: 7px 0 !important;
+  }
+
+  html[data-skin="signal"] .panel:has(.sequence) .seq-row > :nth-child(n+3) {
+    grid-column: 3 !important;
+  }
+
+  html[data-skin="signal"] .panel:has(.sequence) .seq-body,
+  html[data-skin="signal"] .panel:has(.sequence) .seq-row > :nth-child(n+3) {
+    font-size: .94rem;
+    line-height: 1.24;
+  }
+
+  html[data-skin="signal"] .panel:has(.sequence) .status-row,
+  html[data-skin="signal"] .panel:has(.sequence) .state-row:not(#preview-levels .state-row) {
+    grid-template-columns: calc(20px + 7px + 5.7rem) minmax(0, 1fr) !important;
+  }
+
+  html[data-skin="signal"] .reference-section h2 {
+    font-size: 1.25rem;
+  }
+
+  html[data-skin="signal"] .reference-section .flat-row,
+  html[data-skin="signal"] .reference-section .reference-row,
+  html[data-skin="signal"] .reference-section .state-row {
+    grid-template-columns: minmax(6.8rem, .34fr) minmax(0, 1fr) !important;
+    gap: 8px !important;
+  }
+
+  html[data-skin="signal"] #preview-levels .state-row {
+    min-height: 50px !important;
+    grid-template-columns: minmax(0, 1fr) minmax(4.2rem, 5.5rem) !important;
+  }
+
+  html[data-skin="signal"] #preview-levels .state-row > :first-child,
+  html[data-skin="signal"] #preview-levels .state-label,
+  html[data-skin="signal"] #preview-levels .state-label--link,
+  html[data-skin="signal"] #preview-levels .reference-key {
+    font-size: .82rem !important;
+    line-height: 1.08 !important;
+  }
+}
+
+@media (max-width: 390px) {
+  html[data-skin="signal"] .panel:has(.sequence) .seq-row {
+    grid-template-columns: 20px minmax(0, 1fr) !important;
+  }
+
+  html[data-skin="signal"] .panel:has(.sequence) .seq-label,
+  html[data-skin="signal"] .panel:has(.sequence) .seq-row > :nth-child(n+3) {
+    grid-column: 2 !important;
+  }
+
+  html[data-skin="signal"] #preview-levels .state-row {
+    grid-template-columns: 1fr !important;
+  }
+
+  html[data-skin="signal"] #preview-levels .utility-link,
+  html[data-skin="signal"] #preview-levels .utility-link--open,
+  html[data-skin="signal"] #preview-levels .plain-link,
+  html[data-skin="signal"] #preview-levels a:last-child {
+    justify-self: stretch;
+  }
+}
