@@ -260,3 +260,96 @@ html[data-skin="signal"][data-theme="light"] textarea:focus {
     0 0 0 3px rgba(111, 103, 90, .08),
     inset 0 1px 0 rgba(255, 255, 255, .82);
 }
+
+/* =========================================================
+   WORMHOLE GLOBAL H3 / ROW-KEY HIERARCHY FIX
+   Purpose: separate subsection headings from table row labels.
+   Style-system only. No page-specific selectors.
+   ========================================================= */
+
+/* H3 = real subsection heading */
+html[data-skin="signal"] h3,
+html[data-skin="signal"] .panel h3,
+html[data-skin="signal"] .reference-section h3 {
+  font-family: var(--font-display) !important;
+  font-style: italic !important;
+  font-size: clamp(1.18rem, 2vw, 1.55rem) !important;
+  font-weight: 600 !important;
+  line-height: 1.08 !important;
+  letter-spacing: -.012em !important;
+  text-transform: none !important;
+  color: var(--wh-heading) !important;
+  margin-top: 30px !important;
+  margin-bottom: 14px !important;
+}
+
+/* First subsection in a card should not float too far down */
+html[data-skin="signal"] h2 + h3,
+html[data-skin="signal"] .lede + h3,
+html[data-skin="signal"] .support-copy + h3,
+html[data-skin="signal"] .panel > h3:first-child,
+html[data-skin="signal"] .reference-section > h3:first-child {
+  margin-top: 18px !important;
+}
+
+/* Row keys = quiet table terms, NOT headings */
+html[data-skin="signal"] .flat-row strong,
+html[data-skin="signal"] .reference-key,
+html[data-skin="signal"] .state-label,
+html[data-skin="signal"] .status-label,
+html[data-skin="signal"] .seq-label,
+html[data-skin="signal"] .ledger-item__meta {
+  font-family: var(--font-mono) !important;
+  font-style: normal !important;
+  font-size: .62rem !important;
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
+  letter-spacing: .09em !important;
+  text-transform: uppercase !important;
+  color: var(--wh-muted) !important;
+}
+
+/* Row values carry the explanation, not the row key */
+html[data-skin="signal"] .flat-row,
+html[data-skin="signal"] .reference-row,
+html[data-skin="signal"] .state-row,
+html[data-skin="signal"] .status-row {
+  align-items: start !important;
+}
+
+html[data-skin="signal"] .reference-value,
+html[data-skin="signal"] .state-value,
+html[data-skin="signal"] .status-value,
+html[data-skin="signal"] .flat-row > :last-child {
+  color: var(--wh-copy) !important;
+  font-weight: 430 !important;
+  line-height: 1.38 !important;
+}
+
+/* Give subsection groups enough separation from the previous table */
+html[data-skin="signal"] .flat-list + h3,
+html[data-skin="signal"] .reference-table + h3,
+html[data-skin="signal"] .state-table + h3,
+html[data-skin="signal"] .status-strip + h3,
+html[data-skin="signal"] .sequence + h3 {
+  margin-top: 34px !important;
+}
+
+@media (max-width: 640px) {
+  html[data-skin="signal"] h3,
+  html[data-skin="signal"] .panel h3,
+  html[data-skin="signal"] .reference-section h3 {
+    font-size: clamp(1.08rem, 5vw, 1.36rem) !important;
+    margin-top: 26px !important;
+    margin-bottom: 12px !important;
+  }
+
+  html[data-skin="signal"] .flat-row strong,
+  html[data-skin="signal"] .reference-key,
+  html[data-skin="signal"] .state-label,
+  html[data-skin="signal"] .status-label,
+  html[data-skin="signal"] .seq-label,
+  html[data-skin="signal"] .ledger-item__meta {
+    font-size: .58rem !important;
+  }
+}
