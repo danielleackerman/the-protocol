@@ -591,3 +591,80 @@ html[data-skin="signal"][data-theme="light"] #preview-levels .state-label--link 
     margin-bottom: 12px;
   }
 }
+/* =========================================================
+   WORMHOLE REFINEMENT PASS 05
+   CSS-only visual correction.
+   Purpose: flatten nested cells in light mode.
+   No HTML / JS / content / behavior changes.
+   ========================================================= */
+
+html[data-skin="signal"][data-theme="light"] {
+  --wh-divider: rgba(20, 17, 13, .12);
+}
+
+/* Inner information rows become dividers/sections, not cards inside cards. */
+html[data-skin="signal"][data-theme="light"] .seq-row,
+html[data-skin="signal"][data-theme="light"] .state-row,
+html[data-skin="signal"][data-theme="light"] .reference-row,
+html[data-skin="signal"][data-theme="light"] .flat-row,
+html[data-skin="signal"][data-theme="light"] .status-row,
+html[data-skin="signal"][data-theme="light"] .ref-block,
+html[data-skin="signal"][data-theme="light"] .mini-state,
+html[data-skin="signal"][data-theme="light"] .custom-status-row {
+  border-width: 0 0 1px;
+  border-style: solid;
+  border-color: rgba(20, 17, 13, .12);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+html[data-skin="signal"][data-theme="light"] .seq-row:hover,
+html[data-skin="signal"][data-theme="light"] .state-row:hover,
+html[data-skin="signal"][data-theme="light"] .reference-row:hover,
+html[data-skin="signal"][data-theme="light"] .flat-row:hover,
+html[data-skin="signal"][data-theme="light"] .status-row:hover,
+html[data-skin="signal"][data-theme="light"] .ref-block:hover,
+html[data-skin="signal"][data-theme="light"] .mini-state:hover,
+html[data-skin="signal"][data-theme="light"] .custom-status-row:hover {
+  border-color: rgba(111, 103, 90, .26);
+  background: linear-gradient(90deg, rgba(198, 191, 177, .11), transparent 42%);
+  box-shadow: none;
+}
+
+/* Keep functional objects visibly actionable. */
+html[data-skin="signal"][data-theme="light"] .signal-form-block,
+html[data-skin="signal"][data-theme="light"] .ledger-item {
+  border: 1px solid var(--wh-inner-border);
+  background: var(--wh-inner-bg);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .62);
+}
+
+html[data-skin="signal"][data-theme="light"] .seq-index {
+  border-color: rgba(111, 103, 90, .22);
+  color: var(--wh-label);
+  background: transparent;
+}
+
+/* Level directory remains clickable, but with less nested-card depth. */
+html[data-skin="signal"][data-theme="light"] #preview-levels .state-row {
+  min-height: 86px;
+  border: 1px solid var(--wh-inner-border);
+  border-radius: var(--wh-radius-sm);
+  padding: 14px 16px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .68), rgba(251, 250, 247, .88));
+  box-shadow: none;
+}
+
+html[data-skin="signal"][data-theme="light"] #preview-levels .state-row:hover {
+  border-color: rgba(111, 103, 90, .28);
+  background: linear-gradient(180deg, rgba(255, 255, 255, .76), rgba(198, 191, 177, .11));
+  box-shadow: none;
+}
+
+/* Remove glow-ish behavior from passive light sections. */
+html[data-skin="signal"][data-theme="light"] .identity:hover,
+html[data-skin="signal"][data-theme="light"] .panel:hover,
+html[data-skin="signal"][data-theme="light"] .reference-section:hover {
+  box-shadow: var(--wh-panel-shadow);
+}

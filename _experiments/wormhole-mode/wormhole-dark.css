@@ -1700,3 +1700,133 @@ html[data-skin="signal"] #preview-levels .state-label--link {
     line-height: 1.04;
   }
 }
+/* =========================================================
+   WORMHOLE REFINEMENT PASS 05
+   CSS-only visual correction.
+   Purpose: flatten nested cells; keep outer panels as architecture.
+   No HTML / JS / content / behavior changes.
+   ========================================================= */
+
+/* Inner information rows should read like section rhythm, not cards inside cards. */
+html[data-skin="signal"] .seq-row,
+html[data-skin="signal"] .state-row,
+html[data-skin="signal"] .reference-row,
+html[data-skin="signal"] .flat-row,
+html[data-skin="signal"] .status-row,
+html[data-skin="signal"] .ref-block,
+html[data-skin="signal"] .mini-state,
+html[data-skin="signal"] .custom-status-row {
+  overflow: visible;
+  border-width: 0 0 1px;
+  border-style: solid;
+  border-color: var(--wh-divider);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  padding: 14px 0;
+}
+
+/* Last item in a stack should not create a heavy bottom rule. */
+html[data-skin="signal"] .sequence > :last-child,
+html[data-skin="signal"] .state-table > :last-child,
+html[data-skin="signal"] .reference-table > :last-child,
+html[data-skin="signal"] .flat-list > :last-child,
+html[data-skin="signal"] .status-strip > :last-child,
+html[data-skin="signal"] .mini-state-list > :last-child,
+html[data-skin="signal"] .standing-decree-list > :last-child {
+  border-bottom-color: transparent;
+}
+
+/* Hover clarifies position only; it should not build another cell. */
+html[data-skin="signal"] .seq-row:hover,
+html[data-skin="signal"] .state-row:hover,
+html[data-skin="signal"] .reference-row:hover,
+html[data-skin="signal"] .flat-row:hover,
+html[data-skin="signal"] .status-row:hover,
+html[data-skin="signal"] .ref-block:hover,
+html[data-skin="signal"] .mini-state:hover,
+html[data-skin="signal"] .custom-status-row:hover {
+  transform: none;
+  border-color: var(--wh-border-active);
+  background: linear-gradient(90deg, rgba(214, 209, 198, .045), transparent 42%);
+  box-shadow: none;
+}
+
+/* Keep truly interactive/form-like blocks boxed. */
+html[data-skin="signal"] .signal-form-block,
+html[data-skin="signal"] .ledger-item,
+html[data-skin="signal"] code,
+html[data-skin="signal"] input,
+html[data-skin="signal"] select,
+html[data-skin="signal"] textarea {
+  border-radius: var(--wh-radius-sm);
+}
+
+/* Forms and bank entries may remain containers; they are functional objects. */
+html[data-skin="signal"] .signal-form-block,
+html[data-skin="signal"] .ledger-item {
+  border: 1px solid var(--wh-inner-border);
+  background: var(--wh-inner-bg);
+  box-shadow: inset 0 1px 0 rgba(247, 241, 231, .025);
+}
+
+/* Sequence index can stay as a small anchor, but less badge-like. */
+html[data-skin="signal"] .seq-index {
+  width: 32px;
+  height: 32px;
+  border-color: rgba(214, 209, 198, .26);
+  color: var(--wh-label);
+  background: transparent;
+}
+
+/* Reduce the visual blockiness inside rows. */
+html[data-skin="signal"] .seq-row,
+html[data-skin="signal"] .state-row,
+html[data-skin="signal"] .reference-row,
+html[data-skin="signal"] .flat-row,
+html[data-skin="signal"] .status-row,
+html[data-skin="signal"] .custom-status-row {
+  gap: 12px;
+}
+
+/* Level directory cards remain actionable navigation objects, but flatten the depth. */
+html[data-skin="signal"] #preview-levels .state-row {
+  min-height: 86px;
+  border: 1px solid var(--wh-inner-border);
+  border-radius: var(--wh-radius-sm);
+  padding: 14px 16px;
+  background: linear-gradient(180deg, rgba(247, 241, 231, .020), rgba(247, 241, 231, .010));
+  box-shadow: none;
+}
+
+html[data-skin="signal"] #preview-levels .state-row:hover {
+  border-color: var(--wh-border-active);
+  background: linear-gradient(180deg, rgba(214, 209, 198, .040), rgba(214, 209, 198, .014));
+  box-shadow: none;
+}
+
+/* Outer panels remain the architecture, but should not glow when hovered. */
+html[data-skin="signal"] .identity:hover,
+html[data-skin="signal"] .panel:hover,
+html[data-skin="signal"] .reference-section:hover {
+  box-shadow: var(--wh-panel-shadow);
+}
+
+/* Mobile: row rhythm should stay compact and readable. */
+@media (max-width: 640px) {
+  html[data-skin="signal"] .seq-row,
+  html[data-skin="signal"] .state-row,
+  html[data-skin="signal"] .reference-row,
+  html[data-skin="signal"] .flat-row,
+  html[data-skin="signal"] .status-row,
+  html[data-skin="signal"] .ref-block,
+  html[data-skin="signal"] .mini-state,
+  html[data-skin="signal"] .custom-status-row {
+    padding: 13px 0;
+  }
+
+  html[data-skin="signal"] #preview-levels .state-row {
+    min-height: 92px;
+    padding: 14px;
+  }
+}
