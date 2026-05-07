@@ -3915,3 +3915,373 @@ html[data-skin="signal"] .reference-section .support-copy {
     font-size: clamp(1.42rem, 6.2vw, 2rem);
   }
 }
+/* =========================================================
+   WORMHOLE FINAL STYLE CONSOLIDATION
+   CSS-only system cleanup.
+   Purpose: normalize mode-wide visual styles without Utility cloning.
+   No HTML / JS / font-family changes.
+   ========================================================= */
+
+/* Root rhythm: keep Wormhole compact, but stop title stacks from collapsing. */
+html[data-skin="signal"] {
+  --wh-heading-gap-tight: 6px;
+  --wh-heading-gap: 18px;
+  --wh-heading-gap-loose: 24px;
+  --wh-row-index-col: 2.4ch;
+  --wh-row-label-col: clamp(5.8rem, 12vw, 7rem);
+  --wh-row-gap: 14px;
+}
+
+/* One heading system. H1 is page identity; every H2 is a section heading. */
+html[data-skin="signal"] h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.05rem, 4.35vw, 3.95rem);
+  font-weight: 600;
+  line-height: 1.04;
+  letter-spacing: -.028em;
+  text-transform: uppercase;
+  margin: 0 0 var(--wh-heading-gap);
+  max-width: 760px;
+}
+
+html[data-skin="signal"] h2,
+html[data-skin="signal"] .panel h2,
+html[data-skin="signal"] .sequence-title,
+html[data-skin="signal"] .section-title,
+html[data-skin="signal"] .reference-section h2 {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.75rem, 3.4vw, 2.45rem);
+  font-weight: 600;
+  line-height: 1.04;
+  letter-spacing: -.018em;
+  text-transform: none;
+  margin: 0 0 var(--wh-heading-gap);
+  max-width: 760px;
+}
+
+/* Kicker labels are metadata, not headings. */
+html[data-skin="signal"] .kicker,
+html[data-skin="signal"] .panel-kicker,
+html[data-skin="signal"] .status-label,
+html[data-skin="signal"] label > span {
+  margin: 0 0 var(--wh-heading-gap-tight);
+  font-family: var(--font-mono);
+  font-size: .62rem;
+  font-weight: 850;
+  letter-spacing: .15em;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+/* Support copy: clear, secondary, never pretending to be a heading. */
+html[data-skin="signal"] .lede,
+html[data-skin="signal"] .support-copy,
+html[data-skin="signal"] .panel > .lede,
+html[data-skin="signal"] .reference-section > .lede {
+  max-width: 42rem;
+  color: var(--wh-copy);
+  font-family: var(--font-body);
+  font-style: normal;
+  font-size: clamp(.90rem, 1.1vw, .98rem);
+  font-weight: 450;
+  line-height: 1.44;
+  margin: 0 0 var(--wh-heading-gap);
+}
+
+/* Gateway: more leading above the H1; no equidistant mush. */
+html[data-skin="signal"] .signal-hero {
+  min-height: clamp(330px, 52vh, 620px);
+  justify-content: flex-start;
+  padding-block: clamp(30px, 5vw, 58px);
+}
+
+html[data-skin="signal"] .signal-hero > .kicker,
+html[data-skin="signal"] .signal-hero > .panel-kicker {
+  margin-bottom: 22px;
+}
+
+html[data-skin="signal"] .signal-hero h1 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  line-height: 1.06;
+}
+
+html[data-skin="signal"] .signal-hero > .lede,
+html[data-skin="signal"] .signal-hero > .support-copy,
+html[data-skin="signal"] .signal-hero > p {
+  margin-bottom: 22px;
+  line-height: 1.50;
+}
+
+html[data-skin="signal"] .signal-hero > .page-actions,
+html[data-skin="signal"] .signal-hero > .controls {
+  margin-top: 2px;
+  gap: 10px;
+}
+
+/* Operation: group kicker + H2; separate support copy and table. */
+html[data-skin="signal"] .panel:has(.sequence) {
+  padding-block: clamp(20px, 3vw, 34px);
+}
+
+html[data-skin="signal"] .panel:has(.sequence) > .panel-kicker,
+html[data-skin="signal"] .panel:has(.sequence) > .kicker {
+  margin-bottom: 4px;
+}
+
+html[data-skin="signal"] .panel:has(.sequence) h2,
+html[data-skin="signal"] .panel:has(.sequence) .sequence-title,
+html[data-skin="signal"] .panel:has(.sequence) .section-title {
+  margin-bottom: 18px;
+}
+
+html[data-skin="signal"] .panel:has(.sequence) > .lede,
+html[data-skin="signal"] .panel:has(.sequence) > .support-copy,
+html[data-skin="signal"] .panel:has(.sequence) .lede {
+  margin-bottom: 24px;
+  font-weight: 450;
+  line-height: 1.42;
+}
+
+html[data-skin="signal"] .panel:has(.sequence) .lede strong,
+html[data-skin="signal"] .panel:has(.sequence) .support-copy strong {
+  font-weight: 500;
+}
+
+/* Command table: calm, aligned, readable. */
+html[data-skin="signal"] .panel:has(.sequence) .sequence {
+  gap: 0;
+  border-top: 1px solid color-mix(in srgb, var(--wh-border-active) 38%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--wh-border-active) 30%, transparent);
+}
+
+html[data-skin="signal"] .panel:has(.sequence) .seq-row {
+  display: grid;
+  grid-template-columns: var(--wh-row-index-col) var(--wh-row-label-col) minmax(0, 1fr) !important;
+  column-gap: var(--wh-row-gap) !important;
+  row-gap: 4px;
+  align-items: baseline;
+  padding: 11px 0 !important;
+  border-color: color-mix(in srgb, var(--wh-divider) 85%, transparent);
+}
+
+html[data-skin="signal"] .panel:has(.sequence) .seq-row > :nth-child(n+3) {
+  grid-column: 3;
+  min-width: 0;
+}
+
+html[data-skin="signal"] .panel:has(.sequence) .seq-index {
+  width: auto !important;
+  height: auto !important;
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: var(--wh-muted);
+  font-size: .62rem !important;
+  font-weight: 720;
+  line-height: 1.2;
+  opacity: .78;
+  font-variant-numeric: tabular-nums;
+}
+
+html[data-skin="signal"] .panel:has(.sequence) .seq-label {
+  min-height: 0;
+  color: var(--wh-label);
+  font-size: .64rem !important;
+  font-weight: 900;
+  letter-spacing: .12em !important;
+  line-height: 1.18;
+}
+
+html[data-skin="signal"] .panel:has(.sequence) .seq-body,
+html[data-skin="signal"] .panel:has(.sequence) .seq-row > :nth-child(n+3) {
+  color: var(--wh-copy-strong);
+  font-size: clamp(.92rem, 1.18vw, 1rem) !important;
+  font-weight: 470 !important;
+  line-height: 1.40 !important;
+}
+
+html[data-skin="signal"] .panel:has(.sequence) .seq-row > :nth-child(3) {
+  font-weight: 520 !important;
+}
+
+/* Status: clear values, secondary weight. */
+html[data-skin="signal"] .panel:has(.sequence) .status-strip {
+  margin-top: 16px;
+  gap: 0;
+  border-top: 1px solid color-mix(in srgb, var(--wh-divider) 70%, transparent);
+}
+
+html[data-skin="signal"] .panel:has(.sequence) .status-row,
+html[data-skin="signal"] .panel:has(.sequence) .state-row:not(#preview-levels .state-row) {
+  grid-template-columns: calc(var(--wh-row-index-col) + var(--wh-row-gap) + var(--wh-row-label-col)) minmax(0, 1fr) !important;
+  column-gap: var(--wh-row-gap) !important;
+  align-items: baseline;
+  padding: 8px 0 !important;
+  border-color: color-mix(in srgb, var(--wh-divider) 62%, transparent);
+}
+
+html[data-skin="signal"] .panel:has(.sequence) .status-label,
+html[data-skin="signal"] .panel:has(.sequence) .state-label {
+  color: var(--wh-muted);
+  font-size: .58rem !important;
+  font-weight: 760;
+  letter-spacing: .12em !important;
+  line-height: 1.15;
+}
+
+html[data-skin="signal"] .panel:has(.sequence) .status-value,
+html[data-skin="signal"] .panel:has(.sequence) .state-value {
+  min-height: 0;
+  padding: 0;
+  color: var(--wh-copy);
+  font-size: .90rem;
+  font-weight: 460;
+  line-height: 1.34;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+html[data-skin="signal"] .panel:has(.sequence) .status-value strong,
+html[data-skin="signal"] .panel:has(.sequence) .state-value strong {
+  color: var(--wh-copy-strong);
+  font-weight: 620;
+}
+
+/* Reference: documentation card with real H2 and readable rhythm. */
+html[data-skin="signal"] .reference-section {
+  padding-block: clamp(24px, 3.4vw, 40px);
+}
+
+html[data-skin="signal"] .reference-section h2 {
+  margin-bottom: 24px;
+}
+
+html[data-skin="signal"] .reference-section h3 {
+  margin: 20px 0 8px;
+  font-family: var(--font-heading);
+  font-size: .86rem;
+  font-style: normal;
+  font-weight: 850;
+  letter-spacing: .01em;
+  line-height: 1.2;
+  text-transform: none;
+}
+
+html[data-skin="signal"] .reference-section p,
+html[data-skin="signal"] .reference-section li,
+html[data-skin="signal"] .reference-section .support-copy {
+  max-width: 48rem;
+  font-size: .96rem;
+  font-weight: 430;
+  line-height: 1.44;
+}
+
+html[data-skin="signal"] .reference-section .flat-list,
+html[data-skin="signal"] .reference-section .reference-table,
+html[data-skin="signal"] .reference-section .state-table {
+  margin-top: 12px;
+  gap: 0 !important;
+}
+
+html[data-skin="signal"] .reference-section .flat-row,
+html[data-skin="signal"] .reference-section .reference-row,
+html[data-skin="signal"] .reference-section .state-row {
+  grid-template-columns: minmax(8.4rem, .30fr) minmax(0, 1fr) !important;
+  gap: 14px !important;
+  align-items: start !important;
+  padding: 8px 0 !important;
+}
+
+@media (max-width: 640px) {
+  html[data-skin="signal"] {
+    --wh-row-index-col: 2ch;
+    --wh-row-label-col: minmax(4.9rem, 5.7rem);
+    --wh-row-gap: 8px;
+  }
+
+  html[data-skin="signal"] h1 {
+    font-size: clamp(2rem, 9vw, 3.15rem);
+    line-height: 1.06;
+  }
+
+  html[data-skin="signal"] h2,
+  html[data-skin="signal"] .panel h2,
+  html[data-skin="signal"] .sequence-title,
+  html[data-skin="signal"] .section-title,
+  html[data-skin="signal"] .reference-section h2 {
+    font-size: clamp(1.62rem, 7vw, 2.2rem);
+    margin-bottom: 16px;
+  }
+
+  html[data-skin="signal"] .signal-hero {
+    min-height: 310px;
+    padding-block: 24px;
+  }
+
+  html[data-skin="signal"] .signal-hero > .kicker,
+  html[data-skin="signal"] .signal-hero > .panel-kicker {
+    margin-bottom: 20px;
+  }
+
+  html[data-skin="signal"] .signal-hero h1 {
+    margin-bottom: 18px;
+  }
+
+  html[data-skin="signal"] .signal-hero > .lede,
+  html[data-skin="signal"] .signal-hero > .support-copy,
+  html[data-skin="signal"] .signal-hero > p {
+    margin-bottom: 20px;
+  }
+
+  html[data-skin="signal"] .panel:has(.sequence) {
+    padding-block: 20px;
+  }
+
+  html[data-skin="signal"] .panel:has(.sequence) h2,
+  html[data-skin="signal"] .panel:has(.sequence) .sequence-title,
+  html[data-skin="signal"] .panel:has(.sequence) .section-title {
+    margin-bottom: 16px;
+  }
+
+  html[data-skin="signal"] .panel:has(.sequence) > .lede,
+  html[data-skin="signal"] .panel:has(.sequence) > .support-copy,
+  html[data-skin="signal"] .panel:has(.sequence) .lede {
+    margin-bottom: 20px;
+  }
+
+  html[data-skin="signal"] .panel:has(.sequence) .seq-row {
+    padding: 10px 0 !important;
+  }
+
+  html[data-skin="signal"] .panel:has(.sequence) .seq-label {
+    font-size: .58rem !important;
+    letter-spacing: .105em !important;
+  }
+
+  html[data-skin="signal"] .panel:has(.sequence) .seq-body,
+  html[data-skin="signal"] .panel:has(.sequence) .seq-row > :nth-child(n+3) {
+    font-size: .90rem !important;
+    line-height: 1.36 !important;
+  }
+
+  html[data-skin="signal"] .reference-section {
+    padding-block: 22px;
+  }
+
+  html[data-skin="signal"] .reference-section h2 {
+    margin-bottom: 20px;
+  }
+
+  html[data-skin="signal"] .reference-section .flat-row,
+  html[data-skin="signal"] .reference-section .reference-row,
+  html[data-skin="signal"] .reference-section .state-row {
+    grid-template-columns: minmax(6.8rem, .34fr) minmax(0, 1fr) !important;
+    gap: 9px !important;
+  }
+}
