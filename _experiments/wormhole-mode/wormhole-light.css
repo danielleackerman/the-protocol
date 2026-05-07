@@ -943,3 +943,106 @@ html[data-skin="signal"][data-theme="light"] #preview-levels .state-row {
     padding: 11px !important;
   }
 }
+/* =========================================================
+   WORMHOLE REFINEMENT PASS 10
+   CSS-only visual correction.
+   Purpose: light-mode action controls + row alignment.
+   No HTML / JS / content / behavior changes.
+   ========================================================= */
+
+html[data-skin="signal"][data-theme="light"] .page-actions,
+html[data-skin="signal"][data-theme="light"] .identity .page-actions,
+html[data-skin="signal"][data-theme="light"] .panel .page-actions,
+html[data-skin="signal"][data-theme="light"] .controls,
+html[data-skin="signal"][data-theme="light"] .signal-lab-actions {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(7.75rem, 1fr)) !important;
+  gap: 6px !important;
+}
+
+html[data-skin="signal"][data-theme="light"] .page-actions a,
+html[data-skin="signal"][data-theme="light"] .identity .page-actions a,
+html[data-skin="signal"][data-theme="light"] .panel .page-actions a,
+html[data-skin="signal"][data-theme="light"] .button,
+html[data-skin="signal"][data-theme="light"] .command-chip,
+html[data-skin="signal"][data-theme="light"] .utility-link,
+html[data-skin="signal"][data-theme="light"] .plain-link,
+html[data-skin="signal"][data-theme="light"] .breadcrumb {
+  width: auto !important;
+  min-height: 1.95rem !important;
+  padding: .38rem .66rem !important;
+  font-size: .86rem !important;
+}
+
+html[data-skin="signal"][data-theme="light"] .seq-row {
+  grid-template-columns: 22px 58px minmax(0, 1fr) !important;
+  gap: 6px !important;
+  align-items: center !important;
+  padding: 5px 0 !important;
+}
+
+html[data-skin="signal"][data-theme="light"] .seq-body {
+  grid-column: auto !important;
+  font-size: .92rem;
+  line-height: 1.25;
+}
+
+html[data-skin="signal"][data-theme="light"] .status-row,
+html[data-skin="signal"][data-theme="light"] .state-row,
+html[data-skin="signal"][data-theme="light"] .reference-row,
+html[data-skin="signal"][data-theme="light"] .flat-row,
+html[data-skin="signal"][data-theme="light"] .custom-status-row {
+  grid-template-columns: 76px minmax(0, 1fr) !important;
+  gap: 8px !important;
+  align-items: center !important;
+  padding: 5px 0 !important;
+}
+
+html[data-skin="signal"][data-theme="light"] .state-value,
+html[data-skin="signal"][data-theme="light"] .status-value,
+html[data-skin="signal"][data-theme="light"] .reference-value {
+  min-height: 1.55rem;
+  margin: 0;
+  padding: .18rem .42rem;
+  font-size: .92rem;
+  line-height: 1.22;
+}
+
+@media (max-width: 640px) {
+  html[data-skin="signal"][data-theme="light"] .page-actions,
+  html[data-skin="signal"][data-theme="light"] .identity .page-actions,
+  html[data-skin="signal"][data-theme="light"] .panel .page-actions,
+  html[data-skin="signal"][data-theme="light"] .controls,
+  html[data-skin="signal"][data-theme="light"] .signal-lab-actions {
+    grid-template-columns: repeat(auto-fit, minmax(6.8rem, 1fr)) !important;
+    gap: 5px !important;
+  }
+
+  html[data-skin="signal"][data-theme="light"] .page-actions a,
+  html[data-skin="signal"][data-theme="light"] .identity .page-actions a,
+  html[data-skin="signal"][data-theme="light"] .panel .page-actions a,
+  html[data-skin="signal"][data-theme="light"] .button,
+  html[data-skin="signal"][data-theme="light"] .command-chip,
+  html[data-skin="signal"][data-theme="light"] .utility-link,
+  html[data-skin="signal"][data-theme="light"] .plain-link,
+  html[data-skin="signal"][data-theme="light"] .breadcrumb {
+    width: auto !important;
+    min-height: 1.9rem !important;
+    padding: .36rem .56rem !important;
+    font-size: .82rem !important;
+  }
+
+  html[data-skin="signal"][data-theme="light"] .seq-row {
+    grid-template-columns: 20px 50px minmax(0, 1fr) !important;
+    gap: 5px !important;
+  }
+
+  html[data-skin="signal"][data-theme="light"] .status-row,
+  html[data-skin="signal"][data-theme="light"] .state-row,
+  html[data-skin="signal"][data-theme="light"] .reference-row,
+  html[data-skin="signal"][data-theme="light"] .flat-row,
+  html[data-skin="signal"][data-theme="light"] .custom-status-row {
+    grid-template-columns: 68px minmax(0, 1fr) !important;
+    gap: 6px !important;
+  }
+}

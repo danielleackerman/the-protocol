@@ -2611,3 +2611,168 @@ html[data-skin="signal"] #preview-levels .state-label--link {
     grid-column: 2 !important;
   }
 }
+/* =========================================================
+   WORMHOLE REFINEMENT PASS 10
+   CSS-only visual correction.
+   Purpose: tighten action controls + normalize row alignment.
+   No HTML / JS / content / behavior changes.
+   ========================================================= */
+
+/* Action controls: stop page/hero buttons from becoming tall stacked bars. */
+html[data-skin="signal"] .page-actions,
+html[data-skin="signal"] .identity .page-actions,
+html[data-skin="signal"] .panel .page-actions,
+html[data-skin="signal"] .controls,
+html[data-skin="signal"] .signal-lab-actions {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(7.75rem, 1fr)) !important;
+  gap: 6px !important;
+  align-items: stretch;
+}
+
+html[data-skin="signal"] .page-actions a,
+html[data-skin="signal"] .identity .page-actions a,
+html[data-skin="signal"] .panel .page-actions a,
+html[data-skin="signal"] .button,
+html[data-skin="signal"] .command-chip,
+html[data-skin="signal"] .utility-link,
+html[data-skin="signal"] .plain-link,
+html[data-skin="signal"] .breadcrumb {
+  width: auto !important;
+  min-height: 1.95rem !important;
+  padding: .38rem .66rem !important;
+  font-size: .86rem !important;
+  line-height: 1 !important;
+}
+
+/* Sequence rows: keep the compact Utility-style three-column alignment. */
+html[data-skin="signal"] .seq-row {
+  grid-template-columns: 22px 58px minmax(0, 1fr) !important;
+  gap: 6px !important;
+  align-items: center !important;
+  min-height: 0;
+  padding: 5px 0 !important;
+}
+
+html[data-skin="signal"] .seq-body {
+  grid-column: auto !important;
+  align-self: center;
+  font-size: .92rem;
+  line-height: 1.25;
+}
+
+html[data-skin="signal"] .seq-index {
+  width: 19px !important;
+  height: 19px !important;
+  font-size: .50rem !important;
+  align-self: center;
+}
+
+html[data-skin="signal"] .seq-label {
+  align-self: center;
+  font-size: .52rem !important;
+  letter-spacing: .11em !important;
+  line-height: 1;
+}
+
+/* Status/value rows: fixed label column prevents values from drifting right on wider panels. */
+html[data-skin="signal"] .status-row,
+html[data-skin="signal"] .state-row,
+html[data-skin="signal"] .reference-row,
+html[data-skin="signal"] .flat-row,
+html[data-skin="signal"] .custom-status-row {
+  grid-template-columns: 76px minmax(0, 1fr) !important;
+  gap: 8px !important;
+  align-items: center !important;
+  padding: 5px 0 !important;
+}
+
+html[data-skin="signal"] .state-label,
+html[data-skin="signal"] .status-label,
+html[data-skin="signal"] .reference-key,
+html[data-skin="signal"] .ledger-item__meta {
+  align-self: center;
+  font-size: .52rem !important;
+  letter-spacing: .11em !important;
+  line-height: 1.1;
+}
+
+html[data-skin="signal"] .state-value,
+html[data-skin="signal"] .status-value,
+html[data-skin="signal"] .reference-value {
+  align-self: center;
+  min-height: 1.55rem;
+  margin: 0;
+  padding: .18rem .42rem;
+  font-size: .92rem;
+  line-height: 1.22;
+}
+
+html[data-skin="signal"] .status-row .state-value,
+html[data-skin="signal"] .status-row .status-value,
+html[data-skin="signal"] .state-row .state-value {
+  display: flex;
+  align-items: center;
+}
+
+/* Footer previous/next controls should match the tighter action language. */
+html[data-skin="signal"] .prev-next-nav {
+  gap: 6px !important;
+}
+
+html[data-skin="signal"] .prev-next-nav a,
+html[data-skin="signal"] .prev-next-nav .utility-link,
+html[data-skin="signal"] .prev-next-nav .plain-link {
+  min-height: 1.95rem !important;
+  padding: .38rem .7rem !important;
+  font-size: .86rem !important;
+}
+
+@media (max-width: 640px) {
+  html[data-skin="signal"] .page-actions,
+  html[data-skin="signal"] .identity .page-actions,
+  html[data-skin="signal"] .panel .page-actions,
+  html[data-skin="signal"] .controls,
+  html[data-skin="signal"] .signal-lab-actions {
+    grid-template-columns: repeat(auto-fit, minmax(6.8rem, 1fr)) !important;
+    gap: 5px !important;
+  }
+
+  html[data-skin="signal"] .page-actions a,
+  html[data-skin="signal"] .identity .page-actions a,
+  html[data-skin="signal"] .panel .page-actions a,
+  html[data-skin="signal"] .button,
+  html[data-skin="signal"] .command-chip,
+  html[data-skin="signal"] .utility-link,
+  html[data-skin="signal"] .plain-link,
+  html[data-skin="signal"] .breadcrumb {
+    width: auto !important;
+    min-height: 1.9rem !important;
+    padding: .36rem .56rem !important;
+    font-size: .82rem !important;
+  }
+
+  html[data-skin="signal"] .seq-row {
+    grid-template-columns: 20px 50px minmax(0, 1fr) !important;
+    gap: 5px !important;
+  }
+
+  html[data-skin="signal"] .status-row,
+  html[data-skin="signal"] .state-row,
+  html[data-skin="signal"] .reference-row,
+  html[data-skin="signal"] .flat-row,
+  html[data-skin="signal"] .custom-status-row {
+    grid-template-columns: 68px minmax(0, 1fr) !important;
+    gap: 6px !important;
+  }
+}
+
+@media (max-width: 390px) {
+  html[data-skin="signal"] .page-actions,
+  html[data-skin="signal"] .identity .page-actions,
+  html[data-skin="signal"] .panel .page-actions,
+  html[data-skin="signal"] .controls,
+  html[data-skin="signal"] .signal-lab-actions {
+    grid-template-columns: 1fr !important;
+  }
+}
