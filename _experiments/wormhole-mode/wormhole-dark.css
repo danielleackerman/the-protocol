@@ -3420,3 +3420,236 @@ html[data-skin="signal"] #preview-levels a:last-child {
     justify-self: stretch;
   }
 }
+/* =========================================================
+   WORMHOLE REFINEMENT PASS 14
+   CSS-only visual correction.
+   Purpose: restore Levels directory hierarchy.
+   No HTML / JS / content / behavior changes.
+   ========================================================= */
+
+/* LEVELS DIRECTORY ONLY.
+   The chamber name is the row title. OPEN is a secondary action. */
+html[data-skin="signal"] #preview-levels .state-table {
+  gap: 0 !important;
+}
+
+html[data-skin="signal"] #preview-levels .state-row {
+  display: grid !important;
+  grid-template-columns: minmax(13rem, 1fr) max-content !important;
+  gap: 14px !important;
+  align-items: center !important;
+  min-height: 42px !important;
+  padding: 8px 0 !important;
+  border-width: 0 0 1px !important;
+  border-style: solid !important;
+  border-color: rgba(214, 209, 198, .18) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Restore Utility-style row identity: readable, strong, left-led. */
+html[data-skin="signal"] #preview-levels .state-row > :first-child,
+html[data-skin="signal"] #preview-levels .state-label,
+html[data-skin="signal"] #preview-levels .state-label--link,
+html[data-skin="signal"] #preview-levels .reference-key {
+  justify-self: start !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  color: var(--wh-copy-strong) !important;
+  font-family: var(--font-mono) !important;
+  font-size: clamp(.78rem, 1.25vw, .95rem) !important;
+  font-style: normal !important;
+  font-weight: 900 !important;
+  letter-spacing: .095em !important;
+  line-height: 1.16 !important;
+  text-transform: uppercase !important;
+  opacity: 1 !important;
+  white-space: normal !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+}
+
+/* OPEN must stop behaving like the main content column. */
+html[data-skin="signal"] #preview-levels .utility-link,
+html[data-skin="signal"] #preview-levels .utility-link--open,
+html[data-skin="signal"] #preview-levels .plain-link,
+html[data-skin="signal"] #preview-levels a:last-child {
+  justify-self: end !important;
+  width: auto !important;
+  min-width: 4.35rem !important;
+  max-width: max-content !important;
+  min-height: 1.8rem !important;
+  padding: .34rem .58rem !important;
+  border-radius: 4px !important;
+  font-family: var(--font-mono) !important;
+  font-size: .60rem !important;
+  font-style: normal !important;
+  font-weight: 850 !important;
+  letter-spacing: .105em !important;
+  line-height: 1 !important;
+  text-transform: uppercase !important;
+  color: var(--wh-copy-strong) !important;
+  background:
+    linear-gradient(180deg, rgba(214, 209, 198, .050), rgba(214, 209, 198, .018)) !important;
+  border-color: rgba(214, 209, 198, .24) !important;
+  box-shadow: none !important;
+}
+
+html[data-skin="signal"] #preview-levels .state-row:hover {
+  border-color: rgba(214, 209, 198, .34) !important;
+  background:
+    linear-gradient(90deg, rgba(214, 209, 198, .045), transparent 54%) !important;
+  box-shadow: none !important;
+}
+
+/* Keep the directory compact on mobile, but do not let OPEN become the title again. */
+@media (max-width: 640px) {
+  html[data-skin="signal"] #preview-levels .state-row {
+    grid-template-columns: minmax(0, 1fr) max-content !important;
+    gap: 10px !important;
+    min-height: 40px !important;
+    padding: 8px 0 !important;
+  }
+
+  html[data-skin="signal"] #preview-levels .state-row > :first-child,
+  html[data-skin="signal"] #preview-levels .state-label,
+  html[data-skin="signal"] #preview-levels .state-label--link,
+  html[data-skin="signal"] #preview-levels .reference-key {
+    font-size: .76rem !important;
+    letter-spacing: .085em !important;
+    line-height: 1.14 !important;
+  }
+
+  html[data-skin="signal"] #preview-levels .utility-link,
+  html[data-skin="signal"] #preview-levels .utility-link--open,
+  html[data-skin="signal"] #preview-levels .plain-link,
+  html[data-skin="signal"] #preview-levels a:last-child {
+    min-width: 4.05rem !important;
+    min-height: 1.75rem !important;
+    padding: .32rem .52rem !important;
+    font-size: .58rem !important;
+  }
+}
+
+@media (max-width: 390px) {
+  html[data-skin="signal"] #preview-levels .state-row {
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    gap: 8px !important;
+  }
+}
+/* =========================================================
+   WORMHOLE REFINEMENT PASS 15
+   CSS-only visual correction.
+   Purpose: target the real Levels markup, not the old #preview-levels wrapper.
+   No HTML / JS / content / behavior changes.
+   ========================================================= */
+
+/* Actual levels.html structure:
+   section.panel.state-card > .state-table > .state-row > .state-label--link + .utility-link--open */
+html[data-skin="signal"] .panel.state-card .state-table {
+  gap: 0 !important;
+}
+
+html[data-skin="signal"] .panel.state-card .state-row:has(.utility-link--open[href^="levels/level-"]) {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  gap: 14px !important;
+  align-items: center !important;
+  min-height: 42px !important;
+  padding: 8px 0 !important;
+  border-width: 0 0 1px !important;
+  border-style: solid !important;
+  border-color: rgba(214, 209, 198, .18) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Level names restore the Utility-like directory hierarchy. */
+html[data-skin="signal"] .panel.state-card .state-row:has(.utility-link--open[href^="levels/level-"]) > .state-label--link {
+  justify-self: start !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  color: var(--wh-copy-strong) !important;
+  font-family: var(--font-mono) !important;
+  font-size: clamp(.78rem, 1.25vw, .95rem) !important;
+  font-style: normal !important;
+  font-weight: 900 !important;
+  letter-spacing: .095em !important;
+  line-height: 1.16 !important;
+  text-transform: uppercase !important;
+  opacity: 1 !important;
+  white-space: normal !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+}
+
+/* Open controls become compact right-side actions, not giant row content. */
+html[data-skin="signal"] .panel.state-card .state-row:has(.utility-link--open[href^="levels/level-"]) > .utility-link--open {
+  justify-self: end !important;
+  width: auto !important;
+  min-width: 4.35rem !important;
+  max-width: max-content !important;
+  min-height: 1.8rem !important;
+  padding: .34rem .58rem !important;
+  border-radius: 4px !important;
+  font-family: var(--font-mono) !important;
+  font-size: .60rem !important;
+  font-style: normal !important;
+  font-weight: 850 !important;
+  letter-spacing: .105em !important;
+  line-height: 1 !important;
+  text-transform: uppercase !important;
+  color: var(--wh-copy-strong) !important;
+  background:
+    linear-gradient(180deg, rgba(214, 209, 198, .050), rgba(214, 209, 198, .018)) !important;
+  border-color: rgba(214, 209, 198, .24) !important;
+  box-shadow: none !important;
+}
+
+html[data-skin="signal"] .panel.state-card .state-row:has(.utility-link--open[href^="levels/level-"]):hover {
+  border-color: rgba(214, 209, 198, .34) !important;
+  background:
+    linear-gradient(90deg, rgba(214, 209, 198, .045), transparent 54%) !important;
+  box-shadow: none !important;
+}
+
+@media (max-width: 640px) {
+  html[data-skin="signal"] .panel.state-card .state-row:has(.utility-link--open[href^="levels/level-"]) {
+    gap: 10px !important;
+    min-height: 40px !important;
+    padding: 8px 0 !important;
+  }
+
+  html[data-skin="signal"] .panel.state-card .state-row:has(.utility-link--open[href^="levels/level-"]) > .state-label--link {
+    font-size: .76rem !important;
+    letter-spacing: .085em !important;
+    line-height: 1.14 !important;
+  }
+
+  html[data-skin="signal"] .panel.state-card .state-row:has(.utility-link--open[href^="levels/level-"]) > .utility-link--open {
+    min-width: 4.05rem !important;
+    min-height: 1.75rem !important;
+    padding: .32rem .52rem !important;
+    font-size: .58rem !important;
+  }
+}
+
+/* =========================================================
+   WORMHOLE REFINEMENT PASS 16
+   CSS-only visual correction.
+   Purpose: remove all breadcrumb/path strips from Wormhole mode.
+   No HTML / JS / content / behavior changes.
+   ========================================================= */
+
+html[data-skin="signal"] .breadcrumb,
+html[data-skin="signal"] .breadcrumbs,
+html[data-skin="signal"] .breadcrumb-bar,
+html[data-skin="signal"] .path-strip,
+html[data-skin="signal"] .page-path,
+html[data-skin="signal"] .utility-path,
+html[data-skin="signal"] nav[aria-label="Breadcrumb"],
+html[data-skin="signal"] nav[aria-label="breadcrumb"] {
+  display: none !important;
+}
