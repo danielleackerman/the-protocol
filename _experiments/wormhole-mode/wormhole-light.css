@@ -668,3 +668,156 @@ html[data-skin="signal"][data-theme="light"] .panel:hover,
 html[data-skin="signal"][data-theme="light"] .reference-section:hover {
   box-shadow: var(--wh-panel-shadow);
 }
+/* =========================================================
+   WORMHOLE REFINEMENT PASS 06
+   CSS-only visual correction.
+   Purpose: light-mode section typography polish.
+   No HTML / JS / content / behavior changes.
+   ========================================================= */
+
+html[data-skin="signal"][data-theme="light"] h2,
+html[data-skin="signal"][data-theme="light"] .panel h2,
+html[data-skin="signal"][data-theme="light"] .sequence-title,
+html[data-skin="signal"][data-theme="light"] .section-title,
+html[data-skin="signal"][data-theme="light"] .state-table h2,
+html[data-skin="signal"][data-theme="light"] .reference-section h2 {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.30rem, 2.12vw, 1.95rem);
+  line-height: 1.06;
+  letter-spacing: -.014em;
+  font-weight: 500;
+  text-transform: none;
+  text-shadow: none;
+  margin-bottom: 12px;
+  max-width: 640px;
+}
+
+html[data-skin="signal"][data-theme="light"] .lede,
+html[data-skin="signal"][data-theme="light"] .identity .lede,
+html[data-skin="signal"][data-theme="light"] .panel > .lede,
+html[data-skin="signal"][data-theme="light"] .reference-section > .lede {
+  font-family: var(--font-body);
+  font-style: normal;
+  font-size: clamp(.84rem, .92vw, .96rem);
+  line-height: 1.38;
+  font-weight: 700;
+  letter-spacing: .005em;
+  max-width: 35rem;
+  color: rgba(20, 17, 13, .76);
+}
+
+html[data-skin="signal"][data-theme="light"] .reference-section > .panel-kicker:first-child {
+  display: none;
+}
+
+html[data-skin="signal"][data-theme="light"] h3,
+html[data-skin="signal"][data-theme="light"] .reference-section h3,
+html[data-skin="signal"][data-theme="light"] .ref-block h3,
+html[data-skin="signal"][data-theme="light"] .flat-row strong,
+html[data-skin="signal"][data-theme="light"] .reference-value strong,
+html[data-skin="signal"][data-theme="light"] .support-copy strong {
+  font-family: var(--font-heading);
+  font-size: .86rem;
+  font-style: normal;
+  font-weight: 800;
+  letter-spacing: .015em;
+  line-height: 1.22;
+  text-transform: none;
+}
+
+html[data-skin="signal"][data-theme="light"] p,
+html[data-skin="signal"][data-theme="light"] li,
+html[data-skin="signal"][data-theme="light"] .support-copy,
+html[data-skin="signal"][data-theme="light"] .seq-body,
+html[data-skin="signal"][data-theme="light"] .state-value,
+html[data-skin="signal"][data-theme="light"] .reference-value,
+html[data-skin="signal"][data-theme="light"] .ledger-item__text {
+  line-height: 1.42;
+}
+
+html[data-skin="signal"][data-theme="light"] .reference-section p,
+html[data-skin="signal"][data-theme="light"] .reference-section li,
+html[data-skin="signal"][data-theme="light"] .reference-value,
+html[data-skin="signal"][data-theme="light"] .flat-row,
+html[data-skin="signal"][data-theme="light"] .ref-block {
+  line-height: 1.38;
+}
+
+html[data-skin="signal"][data-theme="light"] .prev-next-nav a,
+html[data-skin="signal"][data-theme="light"] .prev-next-nav .utility-link,
+html[data-skin="signal"][data-theme="light"] .prev-next-nav .plain-link {
+  border-color: var(--wh-button-border);
+  background: var(--wh-button-bg);
+  color: var(--wh-button-text);
+}
+/* =========================================================
+   WORMHOLE REFINEMENT PASS 07
+   CSS-only visual correction.
+   Purpose: light-mode density alignment.
+   No HTML / JS / content / behavior changes.
+   ========================================================= */
+
+/* Keep light mode from feeling larger than dark after density pass. */
+html[data-skin="signal"][data-theme="light"] .identity,
+html[data-skin="signal"][data-theme="light"] .panel,
+html[data-skin="signal"][data-theme="light"] .reference-section {
+  padding: clamp(16px, 2.4vw, 28px);
+}
+
+html[data-skin="signal"][data-theme="light"] .button,
+html[data-skin="signal"][data-theme="light"] .page-actions a,
+html[data-skin="signal"][data-theme="light"] .command-chip,
+html[data-skin="signal"][data-theme="light"] .switch-add-row button,
+html[data-skin="signal"][data-theme="light"] .command-input-row button,
+html[data-skin="signal"][data-theme="light"] .ledger-item__actions button,
+html[data-skin="signal"][data-theme="light"] .utility-link,
+html[data-skin="signal"][data-theme="light"] .plain-link,
+html[data-skin="signal"][data-theme="light"] .breadcrumb,
+html[data-skin="signal"][data-theme="light"] .prev-next-nav a {
+  min-height: 2.25rem;
+  padding: .52rem .92rem;
+}
+
+html[data-skin="signal"][data-theme="light"] .seq-row,
+html[data-skin="signal"][data-theme="light"] .state-row,
+html[data-skin="signal"][data-theme="light"] .reference-row,
+html[data-skin="signal"][data-theme="light"] .flat-row,
+html[data-skin="signal"][data-theme="light"] .status-row,
+html[data-skin="signal"][data-theme="light"] .ref-block,
+html[data-skin="signal"][data-theme="light"] .mini-state,
+html[data-skin="signal"][data-theme="light"] .custom-status-row {
+  padding: 10px 0;
+}
+
+html[data-skin="signal"][data-theme="light"] #preview-levels .state-row {
+  min-height: 68px;
+  padding: 11px 13px;
+}
+
+@media (max-width: 640px) {
+  html[data-skin="signal"][data-theme="light"] .identity,
+  html[data-skin="signal"][data-theme="light"] .panel,
+  html[data-skin="signal"][data-theme="light"] .reference-section {
+    padding: 16px;
+  }
+
+  html[data-skin="signal"][data-theme="light"] .button,
+  html[data-skin="signal"][data-theme="light"] .page-actions a,
+  html[data-skin="signal"][data-theme="light"] .command-chip,
+  html[data-skin="signal"][data-theme="light"] .prev-next-nav a {
+    min-height: 2.35rem;
+    padding: .56rem .8rem;
+  }
+
+  html[data-skin="signal"][data-theme="light"] .seq-row,
+  html[data-skin="signal"][data-theme="light"] .state-row,
+  html[data-skin="signal"][data-theme="light"] .reference-row,
+  html[data-skin="signal"][data-theme="light"] .flat-row,
+  html[data-skin="signal"][data-theme="light"] .status-row,
+  html[data-skin="signal"][data-theme="light"] .ref-block,
+  html[data-skin="signal"][data-theme="light"] .mini-state,
+  html[data-skin="signal"][data-theme="light"] .custom-status-row {
+    padding: 9px 0;
+  }
+}
