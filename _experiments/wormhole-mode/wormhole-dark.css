@@ -71,13 +71,14 @@ html[data-skin="signal"] {
   --wh-mono-eyebrow-track:     .11em;
 
   /* Mono — row-key tier — for terms that ARE the content (OPERATE, FLIP,
-     EXECUTE, ABUNDANCE, DO NOT MANIFEST). These pair with their value as
-     equal-weight content, NOT as metadata about the value. Bigger than
-     eyebrows, full-strength text color, less aggressive tracking so the
-     terms read as words rather than badges. */
-  --wh-mono-rowkey-size:       .76rem;
-  --wh-mono-rowkey-weight:     800;
-  --wh-mono-rowkey-track:      .08em;
+     EXECUTE, ABUNDANCE, DO NOT MANIFEST). Sits between eyebrow and value
+     prose. Must read as legible terminal labels but must NOT outweigh
+     the H3 sitting above them. Earlier this was at .76rem/800/full-ivory
+     which crushed H3 hierarchy and made multi-word keys feel like
+     command badges. */
+  --wh-mono-rowkey-size:       .70rem;
+  --wh-mono-rowkey-weight:     760;
+  --wh-mono-rowkey-track:      .09em;
 
   /* Mono — data tier (numbers, code-as-data, sequence index) */
   --wh-mono-data-size:         .66rem;
@@ -100,8 +101,8 @@ html[data-skin="signal"] {
   --wh-sans-body-weight:       430;
 
   /* Sans — prose tier (reference-section paragraphs; tighter than body) */
-  --wh-sans-prose-size:        .94rem;
-  --wh-sans-prose-line:        1.36;
+  --wh-sans-prose-size:        .88rem;
+  --wh-sans-prose-line:        1.42;
   --wh-sans-prose-weight:      420;
   --wh-sans-prose-measure:     42rem;
 
@@ -109,6 +110,13 @@ html[data-skin="signal"] {
   --wh-sans-lede-size:         clamp(.95rem, 1.05vw, 1.02rem);
   --wh-sans-lede-line:         1.46;
   --wh-sans-lede-weight:       450;
+
+  /* Sans — support tier (panel-meta support copy: "Gate level: complete
+     the install…", "Use this when…"). Quieter than lede so the H1/H2
+     above it stays the visual lead. */
+  --wh-sans-support-size:      .86rem;
+  --wh-sans-support-line:      1.42;
+  --wh-sans-support-weight:    430;
 
   /* Sans — value tier (seq-body, status-value, primary row values) */
   --wh-sans-value-size:        clamp(.94rem, 1.1vw, 1.0rem);
@@ -574,14 +582,15 @@ html[data-skin="signal"] h2 {
 }
 
 /* H3 — subsection heading. Distinct from row keys: italic Cormorant,
-   sentence case, larger than mono row labels. */
+   sentence case, sized and weighted so it clearly outranks the mono
+   row-keys sitting underneath it. */
 html[data-skin="signal"] h3 {
   margin: 30px 0 14px;
   color: var(--wh-heading);
   font-family: var(--font-display);
   font-style: italic;
-  font-size: clamp(1.18rem, 2vw, 1.55rem);
-  font-weight: 600;
+  font-size: clamp(1.28rem, 2.15vw, 1.65rem);
+  font-weight: 620;
   letter-spacing: -.012em;
   line-height: 1.08;
   text-transform: none;
@@ -605,12 +614,13 @@ html[data-skin="signal"] .sequence + h3 {
   margin-top: 34px;
 }
 
-/* Kickers / metadata labels — small mono uppercase tracked. */
+/* Kickers / metadata labels — small mono uppercase tracked. Margin-bottom
+   is small so the kicker hugs the heading below it as a single unit. */
 html[data-skin="signal"] .kicker,
 html[data-skin="signal"] .panel-kicker,
 html[data-skin="signal"] label > span {
   display: block;
-  margin: 0 0 8px;
+  margin: 0 0 4px;
   color: var(--wh-kicker);
   font-family: var(--font-mono);
   font-size: var(--wh-mono-eyebrow-sm-size);
@@ -625,9 +635,9 @@ html[data-skin="signal"] .is-danger {
   color: var(--wh-clay);
 }
 
-/* Lede / support copy — readable secondary, not heading-weight. */
+/* Lede — panel-leading paragraph. The deliberate readable-secondary
+   line right after a hero or H2. */
 html[data-skin="signal"] .lede,
-html[data-skin="signal"] .support-copy,
 html[data-skin="signal"] .panel > .lede,
 html[data-skin="signal"] .reference-section > .lede {
   max-width: 42rem;
@@ -639,6 +649,25 @@ html[data-skin="signal"] .reference-section > .lede {
   font-weight: var(--wh-sans-lede-weight);
   letter-spacing: .003em;
   line-height: var(--wh-sans-lede-line);
+}
+
+/* Support copy — panel-meta hint ("Gate level: complete the install…",
+   "Run first. Open reference only…"). Quieter than lede so the H1/H2
+   above it stays the visual lead. The earlier shared-with-lede rule
+   made these read as near-headline. */
+html[data-skin="signal"] .support-copy,
+html[data-skin="signal"] .panel > .support-copy,
+html[data-skin="signal"] .reference-section > .support-copy,
+html[data-skin="signal"] .identity > .support-copy {
+  max-width: 42rem;
+  margin: 0 0 14px;
+  color: var(--wh-copy);
+  font-family: var(--font-body);
+  font-size: var(--wh-sans-support-size);
+  font-style: normal;
+  font-weight: var(--wh-sans-support-weight);
+  letter-spacing: .003em;
+  line-height: var(--wh-sans-support-line);
 }
 
 html[data-skin="signal"] p,
@@ -900,20 +929,19 @@ html[data-skin="signal"] .standing-decree-list > :last-child {
   border-bottom-color: transparent;
 }
 
-/* Row keys — content terms that pair with their value as equal-weight
-   content (OPERATE / Operate as the version of yourself…). NOT eyebrows;
-   eyebrows describe a panel from above. Row keys ARE the content of
-   their row, so they read in full-strength text color, not the muted
-   bronze. The earlier mistake was treating row keys as if they were
-   metadata about the value — they're a peer to the value, not a label
-   above it. Bigger and darker than eyebrows. */
+/* Row keys — content terms that pair with their value (OPERATE / Operate
+   as the version of yourself…). They are content peers to the value but
+   subordinate to the H3 / subsection heading sitting above them. Earlier
+   the swing to full-ivory + .76/800 made these louder than H3, which
+   crushed documentation hierarchy. Now warm-bronze label color and the
+   row-key tier sizing — readable, quietly subordinate to H3. */
 html[data-skin="signal"] .seq-label,
 html[data-skin="signal"] .state-label,
 html[data-skin="signal"] .reference-key,
 html[data-skin="signal"] .status-label,
 html[data-skin="signal"] .flat-row > strong,
 html[data-skin="signal"] .ledger-item__meta {
-  color: var(--wh-text);
+  color: var(--wh-label);
   font-family: var(--font-mono);
   font-size: var(--wh-mono-rowkey-size);
   font-weight: var(--wh-mono-rowkey-weight);
@@ -1045,6 +1073,35 @@ html[data-skin="signal"] .panel:has(.sequence) .support-copy strong {
   font-weight: var(--wh-strong-weight);
 }
 
+/* Operation card — ceremonial variant for cards without a sequence grid
+   (Seal Declaration). Inherits panel chrome and kicker/H2/lede rhythm
+   from .operation-card, but gives free paragraphs the same divider-based
+   rhythm a sequence would provide, so the page reads as part of the
+   system rather than as loose prose. The ceremonial register comes from
+   the lede + status-strip pairing, not from forced prose styling. */
+html[data-skin="signal"] .operation-card--ceremonial > p {
+  max-width: var(--wh-sans-prose-measure);
+  margin: 0 0 14px;
+  color: var(--wh-copy-strong);
+  font-family: var(--font-body);
+  font-size: var(--wh-sans-value-size);
+  font-weight: var(--wh-sans-value-weight);
+  line-height: var(--wh-sans-value-line);
+}
+
+html[data-skin="signal"] .operation-card--ceremonial > p:last-of-type {
+  margin-bottom: 0;
+}
+
+html[data-skin="signal"] .operation-card--ceremonial > p + p {
+  padding-top: 14px;
+  border-top: 1px solid var(--wh-row-divider-soft);
+}
+
+html[data-skin="signal"] .operation-card--ceremonial > .status-strip {
+  margin-top: 24px;
+}
+
 html[data-skin="signal"] .operation-card .sequence,
 html[data-skin="signal"] .panel:has(.sequence) .sequence {
   border-top: 1px solid var(--wh-row-divider);
@@ -1094,15 +1151,14 @@ html[data-skin="signal"] .panel:has(.sequence) .seq-index--blank {
   opacity: .26;
 }
 
-/* Label column — EXECUTE / RECOGNIZE / ANCHOR / SAVE etc. These are
-   content terms, peers to the body text on their right, not eyebrows
-   above them. Use the row-key tier: bigger, full-ivory, less tracked.
-   Same treatment as flat-row > strong / reference-key elsewhere. */
+/* Label column — EXECUTE / RECOGNIZE / ANCHOR / SAVE etc. Content terms
+   that pair with their body text. Subordinate to H3 / subsection
+   headings via warm-bronze color and the row-key tier sizing. */
 html[data-skin="signal"] .operation-card .seq-label,
 html[data-skin="signal"] .panel:has(.sequence) .seq-label {
   min-height: 0;
   margin: 0;
-  color: var(--wh-text);
+  color: var(--wh-label);
   font-family: var(--font-mono);
   font-size: var(--wh-mono-rowkey-size);
   font-weight: var(--wh-mono-rowkey-weight);
@@ -1228,14 +1284,13 @@ html[data-skin="signal"] .reference-section .state-row {
 }
 
 /* Reference row keys — content terms (Premise / Identity / Therefore,
-   Operate / Flip / Decree, etc). Same row-key tier as operation cards;
-   reference rows have the same structure as operation rows so they
-   speak the same typography. */
+   Operate / Flip / Decree). Same warm-bronze row-key tier as operation
+   cards; subordinate to H3 / subsection heading above them. */
 html[data-skin="signal"] .reference-section .flat-row > strong,
 html[data-skin="signal"] .reference-section .reference-key,
 html[data-skin="signal"] .reference-section .state-label {
   display: block;
-  color: var(--wh-text);
+  color: var(--wh-label);
   font-family: var(--font-mono);
   font-size: var(--wh-mono-rowkey-size);
   font-weight: var(--wh-mono-rowkey-weight);
@@ -1358,7 +1413,7 @@ html[data-skin="signal"] .level-directory .state-label--link {
   justify-self: start;
   color: var(--wh-copy-strong);
   font-family: var(--font-display);
-  font-style: normal;
+  font-style: italic;
   font-size: clamp(1.05rem, 2.2vw, 1.55rem);
   font-weight: 600;
   letter-spacing: -.012em;
