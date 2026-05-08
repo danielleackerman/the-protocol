@@ -887,19 +887,23 @@ html[data-skin="signal"] .standing-decree-list > :last-child {
 }
 
 /* Row keys — quiet table terms. Visually subordinate to H3. Sized via the
-   row-eyebrow token so all row contexts (sequence, state, reference, flat)
-   read at the same calmer .68rem instead of the old .62rem cramp. */
+   row-eyebrow token so every row context (sequence, state, reference, flat,
+   status, ledger) reads at the same .68rem. The earlier mistake was routing
+   this through eyebrow-sm: it made Reference row keys smaller than Operation
+   seq-labels even though both are the same role. One token, one role.
+   Color is --wh-label (warmer than --wh-muted) so the eyebrow has presence
+   without competing with H3 italic. */
 html[data-skin="signal"] .seq-label,
 html[data-skin="signal"] .state-label,
 html[data-skin="signal"] .reference-key,
 html[data-skin="signal"] .status-label,
 html[data-skin="signal"] .flat-row > strong,
 html[data-skin="signal"] .ledger-item__meta {
-  color: var(--wh-muted);
+  color: var(--wh-label);
   font-family: var(--font-mono);
-  font-size: var(--wh-mono-eyebrow-sm-size);
-  font-weight: var(--wh-mono-eyebrow-sm-weight);
-  letter-spacing: var(--wh-mono-eyebrow-sm-track);
+  font-size: var(--wh-mono-eyebrow-size);
+  font-weight: var(--wh-mono-eyebrow-weight);
+  letter-spacing: var(--wh-mono-eyebrow-track);
   line-height: 1.2;
   text-transform: uppercase;
 }
@@ -964,15 +968,25 @@ html[data-skin="signal"] [aria-pressed="true"] {
   letter-spacing: .005em;
 }
 
-/* When the active state lives in a row that has its own row-key column
-   (Switchboard state-row), give the ROW a hairline left-accent so the
-   active rows read as the live ones at a glance, without color hue. */
+/* When the active state lives in a row that has its own row-key column,
+   give the ROW a hairline left-accent so a live row reads as live at a
+   glance — without color hue. This signal is only meaningful where state
+   is *mixed*; on the Switchboard every row is on, so we suppress it
+   inside .state-card via the second rule below. */
 html[data-skin="signal"] .state-row:has(.state-on),
 html[data-skin="signal"] .state-row:has(.status-active),
 html[data-skin="signal"] .state-row:has(.status-complete),
 html[data-skin="signal"] .state-row:has(.status-ready) {
   box-shadow: inset 2px 0 0 var(--wh-border-active);
   padding-left: 10px;
+}
+
+html[data-skin="signal"] .state-card .state-table .state-row:has(.state-on),
+html[data-skin="signal"] .state-card .state-table .state-row:has(.status-active),
+html[data-skin="signal"] .state-card .state-table .state-row:has(.status-complete),
+html[data-skin="signal"] .state-card .state-table .state-row:has(.status-ready) {
+  box-shadow: none;
+  padding-left: 0;
 }
 
 html[data-skin="signal"] .status-breach,
@@ -1198,20 +1212,19 @@ html[data-skin="signal"] .reference-section .state-row {
   border-color: var(--wh-row-divider-soft);
 }
 
-/* Reference row keys — terminal mono, calm. Replaces the previous
-   sans-bold-cap (Avenir 800 .80rem) treatment that read as shouty
-   inside documentation panels. The whole system now speaks one
-   row-eyebrow language across operation-card / state-table /
-   reference-table / flat-list. */
+/* Reference row keys — terminal mono at the same row-eyebrow tier the
+   rest of the system uses. Reference is documentation, but its row
+   structure is identical to operation/state/flat — so the row-key
+   typography is identical too. */
 html[data-skin="signal"] .reference-section .flat-row > strong,
 html[data-skin="signal"] .reference-section .reference-key,
 html[data-skin="signal"] .reference-section .state-label {
   display: block;
   color: var(--wh-label);
   font-family: var(--font-mono);
-  font-size: var(--wh-mono-eyebrow-sm-size);
-  font-weight: var(--wh-mono-eyebrow-sm-weight);
-  letter-spacing: var(--wh-mono-eyebrow-sm-track);
+  font-size: var(--wh-mono-eyebrow-size);
+  font-weight: var(--wh-mono-eyebrow-weight);
+  letter-spacing: var(--wh-mono-eyebrow-track);
   line-height: 1.2;
   text-transform: uppercase;
   word-break: normal;
@@ -1229,6 +1242,16 @@ html[data-skin="signal"] .reference-section .state-value {
   line-height: var(--wh-sans-body-line);
 }
 
+/* Reference flat-row column geometry: give the row-key column enough
+   width that longer mono labels ("THE SEAT ABOVE THE SEAT") can wrap
+   on two lines without crowding the value column. The earlier
+   minmax(8.4rem, .30fr) was too tight for the bigger eyebrow tier. */
+html[data-skin="signal"] .reference-section .flat-row,
+html[data-skin="signal"] .reference-section .reference-row,
+html[data-skin="signal"] .reference-section .state-row {
+  grid-template-columns: minmax(9.2rem, .34fr) minmax(0, 1fr);
+}
+
 /* Reference paragraphs — tighter than operation prose. Reference is
    scanned, not read while doing; tighter leading + narrower measure
    reads as documentation, not as floaty editorial. */
@@ -1238,6 +1261,41 @@ html[data-skin="signal"] .reference-section li {
   font-size: var(--wh-sans-prose-size);
   font-weight: var(--wh-sans-prose-weight);
   line-height: var(--wh-sans-prose-line);
+  margin: 0;
+}
+
+/* Reference paragraph block-spacing — controlled gap between adjacent
+   paragraphs. The earlier "wide" feeling came from default browser
+   p-margin (~1em top + 1em bottom = ~2em between siblings); the rule
+   above zeroes that, and this rule re-adds a single 10px gap. */
+html[data-skin="signal"] .reference-section p + p,
+html[data-skin="signal"] .reference-section .ref-block > p + .flat-list,
+html[data-skin="signal"] .reference-section .ref-block > p + .reference-table,
+html[data-skin="signal"] .reference-section .ref-block > p + .state-table,
+html[data-skin="signal"] .reference-section .ref-block > .flat-list + p,
+html[data-skin="signal"] .reference-section .ref-block > .reference-table + p,
+html[data-skin="signal"] .reference-section .ref-block > .state-table + p {
+  margin-top: 10px;
+}
+
+/* Lead term — inline enumeration prefix. Reusable pattern for prose
+   that opens with a labelled list ("Signals: a, b, c, …"). Quieter
+   than <strong>, reads as a category prefix without becoming a
+   mid-paragraph bold lump. The colon is included via ::after so HTML
+   stays clean: <span class="lead-term">Signals</span>. */
+html[data-skin="signal"] .lead-term {
+  font-family: var(--font-mono);
+  font-size: var(--wh-mono-eyebrow-sm-size);
+  font-weight: var(--wh-mono-eyebrow-sm-weight);
+  letter-spacing: var(--wh-mono-eyebrow-sm-track);
+  color: var(--wh-label);
+  text-transform: uppercase;
+  margin-right: .5em;
+}
+html[data-skin="signal"] .lead-term::after {
+  content: " /";
+  color: var(--wh-muted);
+  margin-left: .25em;
 }
 
 html[data-skin="signal"] .reference-section .ref-block {
@@ -1304,6 +1362,45 @@ html[data-skin="signal"] .level-directory .utility-link--open {
 html[data-skin="signal"] .level-directory .state-row:hover {
   border-color: var(--wh-border-active);
   background: var(--wh-row-hover);
+}
+
+/* Switchboard variant — systemic class.
+   When a .state-table lives inside a .state-card panel (the Switchboard
+   page), the row is conceptually inverted: the row "key" is the *item*
+   (Abundance, Magnetism — the thing being switched), not a meta-label.
+   The row "value" is its current state (ON).
+
+   So under .state-card the state-label reads as a readable sans item
+   and the state-value reads as the strong operative payload. Row
+   geometry stays identical to other state-tables; only typography
+   shifts. No HTML changes; the .state-card panel class on the wrapping
+   <section> is the scope.
+
+   The mini-state-list on Daily Run already reads this way; this block
+   brings the full Switchboard chamber in line with it. */
+html[data-skin="signal"] .state-card .state-table .state-row {
+  grid-template-columns: minmax(0, 1fr) minmax(4rem, max-content);
+  align-items: baseline;
+  padding: 12px 0;
+}
+
+html[data-skin="signal"] .state-card .state-table .state-label {
+  color: var(--wh-copy-strong);
+  font-family: var(--font-body);
+  font-size: var(--wh-sans-value-size);
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: var(--wh-sans-value-line);
+  text-transform: none;
+}
+
+html[data-skin="signal"] .state-card .state-table .state-value {
+  font-family: var(--font-mono);
+  font-size: var(--wh-mono-eyebrow-size);
+  font-weight: var(--wh-mono-eyebrow-weight);
+  letter-spacing: var(--wh-mono-eyebrow-track);
+  text-transform: uppercase;
+  justify-self: end;
 }
 
 /* Forms --------------------------------------------------------------- */
