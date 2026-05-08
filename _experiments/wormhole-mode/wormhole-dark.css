@@ -1457,7 +1457,7 @@ html[data-skin="signal"] .level-directory .state-label--link {
   justify-self: start;
   color: var(--wh-copy-strong);
   font-family: var(--font-display);
-  font-style: normal;
+  font-style: italic;
   font-size: clamp(1.05rem, 2.2vw, 1.55rem);
   font-weight: 600;
   letter-spacing: -.012em;
@@ -1492,13 +1492,13 @@ html[data-skin="signal"] .level-directory .state-row:hover {
 
    The mini-state-list on Daily Run already reads this way; this block
    brings the full Switchboard chamber in line with it. */
-html[data-skin="signal"] .state-card .state-table .state-row {
+html[data-skin="signal"] .state-card .state-table:not(.level-directory) .state-row {
   grid-template-columns: minmax(0, 1fr) minmax(4rem, max-content);
   align-items: baseline;
   padding: 12px 0;
 }
 
-html[data-skin="signal"] .state-card .state-table .state-label {
+html[data-skin="signal"] .state-card .state-table:not(.level-directory) .state-label {
   color: var(--wh-copy-strong);
   font-family: var(--font-body);
   font-size: var(--wh-sans-value-size);
@@ -1508,7 +1508,7 @@ html[data-skin="signal"] .state-card .state-table .state-label {
   text-transform: none;
 }
 
-html[data-skin="signal"] .state-card .state-table .state-value {
+html[data-skin="signal"] .state-card .state-table:not(.level-directory) .state-value {
   font-family: var(--font-mono);
   font-size: var(--wh-mono-eyebrow-size);
   font-weight: var(--wh-mono-eyebrow-weight);
