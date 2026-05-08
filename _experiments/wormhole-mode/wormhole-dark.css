@@ -51,6 +51,66 @@ html[data-skin="signal"] {
   --wh-row-divider-soft: rgba(214, 209, 198, .10);
   --wh-row-hover:        linear-gradient(90deg, rgba(214, 209, 198, .055), transparent 46%);
 
+  /* Type ladder — named tokens replace scattered literals. ---------------
+     Three parallel scales: mono, sans, display. Each role reaches for a
+     named token instead of a one-off size/weight. The mono scale used to
+     collapse onto .62rem for seven different roles; it now has three real
+     tiers. The sans scale used to run hot in a single .94–1.05rem band
+     with no small/default/lede separation; it now has six. */
+
+  /* Mono — page-meta tier (smallest) */
+  --wh-mono-eyebrow-sm-size:   .62rem;
+  --wh-mono-eyebrow-sm-weight: 800;
+  --wh-mono-eyebrow-sm-track:  .14em;
+
+  /* Mono — row-eyebrow tier (default for row keys, nav, primary labels) */
+  --wh-mono-eyebrow-size:      .68rem;
+  --wh-mono-eyebrow-weight:    850;
+  --wh-mono-eyebrow-track:     .11em;
+
+  /* Mono — data tier (numbers, code-as-data, sequence index) */
+  --wh-mono-data-size:         .66rem;
+  --wh-mono-data-weight:       720;
+  --wh-mono-data-track:        .04em;
+
+  /* Mono — chip tier (utility-link, command-chip, action chips) */
+  --wh-mono-chip-size:         .66rem;
+  --wh-mono-chip-weight:       850;
+  --wh-mono-chip-track:        .10em;
+
+  /* Sans — micro tier (module notes, tight support copy) */
+  --wh-sans-micro-size:        .82rem;
+  --wh-sans-micro-line:        1.32;
+  --wh-sans-micro-weight:      450;
+
+  /* Sans — body tier (default paragraphs, reference values) */
+  --wh-sans-body-size:         .92rem;
+  --wh-sans-body-line:         1.40;
+  --wh-sans-body-weight:       430;
+
+  /* Sans — prose tier (reference-section paragraphs; tighter than body) */
+  --wh-sans-prose-size:        .94rem;
+  --wh-sans-prose-line:        1.36;
+  --wh-sans-prose-weight:      420;
+  --wh-sans-prose-measure:     42rem;
+
+  /* Sans — lede tier (panel-level support copy) */
+  --wh-sans-lede-size:         clamp(.95rem, 1.05vw, 1.02rem);
+  --wh-sans-lede-line:         1.46;
+  --wh-sans-lede-weight:       450;
+
+  /* Sans — value tier (seq-body, status-value, primary row values) */
+  --wh-sans-value-size:        clamp(.94rem, 1.1vw, 1.0rem);
+  --wh-sans-value-line:        1.40;
+  --wh-sans-value-weight:      460;
+
+  /* Sans — value-strong tier (active state values; weight emphasis) */
+  --wh-sans-value-strong-weight: 600;
+
+  /* Strong — global emphasis weight. Lower than the original 620 so an
+     all-<strong> paragraph reads as emphasis without thickening the page. */
+  --wh-strong-weight: 560;
+
   scroll-behavior: smooth;
   background: var(--wh-void);
 }
@@ -233,9 +293,9 @@ html[data-skin="signal"] .brand__title {
 html[data-skin="signal"] .brand__sub {
   display: block;
   font-family: var(--font-mono);
-  font-size: .62rem;
-  font-weight: 800;
-  letter-spacing: .13em;
+  font-size: var(--wh-mono-eyebrow-sm-size);
+  font-weight: var(--wh-mono-eyebrow-sm-weight);
+  letter-spacing: var(--wh-mono-eyebrow-sm-track);
   color: var(--wh-kicker);
   text-transform: uppercase;
   white-space: nowrap;
@@ -270,9 +330,9 @@ html[data-skin="signal"] .mobile-nav a {
   background: var(--wh-nav-bg);
   color: var(--wh-nav-text);
   font-family: var(--font-mono);
-  font-size: .69rem;
-  font-weight: 800;
-  letter-spacing: .11em;
+  font-size: var(--wh-mono-eyebrow-size);
+  font-weight: var(--wh-mono-eyebrow-weight);
+  letter-spacing: var(--wh-mono-eyebrow-track);
   line-height: 1;
   text-transform: uppercase;
   white-space: nowrap;
@@ -539,9 +599,9 @@ html[data-skin="signal"] label > span {
   margin: 0 0 8px;
   color: var(--wh-kicker);
   font-family: var(--font-mono);
-  font-size: .62rem;
-  font-weight: 850;
-  letter-spacing: .145em;
+  font-size: var(--wh-mono-eyebrow-sm-size);
+  font-weight: var(--wh-mono-eyebrow-sm-weight);
+  letter-spacing: var(--wh-mono-eyebrow-sm-track);
   line-height: 1.15;
   text-transform: uppercase;
 }
@@ -560,22 +620,37 @@ html[data-skin="signal"] .reference-section > .lede {
   margin: 0 0 18px;
   color: var(--wh-lede);
   font-family: var(--font-body);
-  font-size: clamp(.95rem, 1.15vw, 1.05rem);
+  font-size: var(--wh-sans-lede-size);
   font-style: normal;
-  font-weight: 450;
+  font-weight: var(--wh-sans-lede-weight);
   letter-spacing: .003em;
-  line-height: 1.48;
+  line-height: var(--wh-sans-lede-line);
 }
 
 html[data-skin="signal"] p,
 html[data-skin="signal"] li {
   color: var(--wh-copy);
-  line-height: 1.44;
+  font-size: var(--wh-sans-body-size);
+  font-weight: var(--wh-sans-body-weight);
+  line-height: var(--wh-sans-body-line);
 }
 
+/* Strong — emphasis, not bulldozer. Reduced weight so an all-<strong>
+   paragraph reads as accentuated, not as a bold wall. */
 html[data-skin="signal"] strong {
   color: var(--wh-copy-strong);
-  font-weight: 620;
+  font-weight: var(--wh-strong-weight);
+}
+
+/* Module note — micro sans for "what this module does" hints. Used on
+   custom.html under each section H2. Quieter than .lede, smaller than p. */
+html[data-skin="signal"] .module-note {
+  margin: 0 0 12px;
+  color: var(--wh-copy);
+  font-family: var(--font-body);
+  font-size: var(--wh-sans-micro-size);
+  font-weight: var(--wh-sans-micro-weight);
+  line-height: var(--wh-sans-micro-line);
 }
 
 /* Buttons / Action system --------------------------------------------- */
@@ -600,12 +675,24 @@ html[data-skin="signal"] .identity--hero .controls {
   align-items: center;
 }
 
-/* Primary action — display italic, calm 4px radius, mode-wide. */
+/* Button taxonomy ----------------------------------------------------- */
+/* Three roles, one urgency modifier:
+   1. .button / .page-actions a / .prev-next-nav a — page-level actions.
+      Display italic Cormorant. The signature button.
+   2. .button--form — form submit. Sans, calmer, sits next to inputs.
+      Same shape, smaller, no italic, no display face.
+   3. .command-chip / .utility-link / .plain-link — quiet mono utility.
+   .button--hot is a token shift that applies to any of the three.
+
+   Form-context <button> elements without a class fall through to
+   .button--form via the form-wrapper selectors at the bottom of this
+   block, so HTML stays minimal. Saved-template chips inside .template-list
+   that aren't classed fall through to .command-chip.
+*/
+
+/* 1. Page action — display italic. */
 html[data-skin="signal"] .button,
 html[data-skin="signal"] .page-actions a,
-html[data-skin="signal"] .switch-add-row button,
-html[data-skin="signal"] .command-input-row button,
-html[data-skin="signal"] .ledger-item__actions button,
 html[data-skin="signal"] .prev-next-nav a {
   display: inline-flex;
   align-items: center;
@@ -629,10 +716,49 @@ html[data-skin="signal"] .prev-next-nav a {
   transition: border-color .18s ease, background .18s ease, box-shadow .18s ease, color .18s ease;
 }
 
-/* Mono-chip variant — inline metadata controls (copy chips, utility links). */
+/* 2. Form submit — sans, calmer, lives next to inputs.
+   Targets:
+   - explicit .button--form class
+   - any <button> inside a form wrapper class (no HTML class needed)
+   - the bare-button selector inside ledger actions (Copy/Delete on saved items) */
+html[data-skin="signal"] .button--form,
+html[data-skin="signal"] .utility-form button,
+html[data-skin="signal"] .switch-add-row button,
+html[data-skin="signal"] .command-input-row button,
+html[data-skin="signal"] .law-form button,
+html[data-skin="signal"] .peak-form button,
+html[data-skin="signal"] .three-part-form button,
+html[data-skin="signal"] .ledger-item__actions button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  min-height: 2rem;
+  padding: .42rem .82rem;
+  border: 1px solid var(--wh-button-border);
+  border-radius: 4px;
+  background: var(--wh-button-bg);
+  color: var(--wh-button-text);
+  font-family: var(--font-body);
+  font-size: .86rem;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: .005em;
+  line-height: 1;
+  text-transform: none;
+  cursor: pointer;
+  box-shadow: none;
+  transition: border-color .18s ease, background .18s ease, box-shadow .18s ease, color .18s ease;
+}
+
+/* 3. Mono chip — quiet utility/template/copy chips. Also catches bare
+   <button> inside .template-list / .command-template-list so saved
+   command templates don't fall through to display italic. */
 html[data-skin="signal"] .command-chip,
 html[data-skin="signal"] .utility-link,
-html[data-skin="signal"] .plain-link {
+html[data-skin="signal"] .plain-link,
+html[data-skin="signal"] .template-list button,
+html[data-skin="signal"] .command-template-list button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -644,10 +770,10 @@ html[data-skin="signal"] .plain-link {
   background: var(--wh-button-bg);
   color: var(--wh-button-text);
   font-family: var(--font-mono);
-  font-size: .66rem;
+  font-size: var(--wh-mono-chip-size);
   font-style: normal;
-  font-weight: 850;
-  letter-spacing: .10em;
+  font-weight: var(--wh-mono-chip-weight);
+  letter-spacing: var(--wh-mono-chip-track);
   line-height: 1;
   text-transform: uppercase;
   cursor: pointer;
@@ -655,7 +781,8 @@ html[data-skin="signal"] .plain-link {
   transition: border-color .18s ease, background .18s ease, box-shadow .18s ease, color .18s ease;
 }
 
-/* Hot/danger context — keeps shape, shifts palette via token. */
+/* Hot/danger context — keeps shape, shifts palette via token. Applies to
+   any of the three roles when --hot or .danger-card context is present. */
 html[data-skin="signal"] .button--hot,
 html[data-skin="signal"] .danger-card .button,
 html[data-skin="signal"] .danger-card .page-actions a,
@@ -668,16 +795,30 @@ html[data-skin="signal"] .button:hover,
 html[data-skin="signal"] .button:focus-visible,
 html[data-skin="signal"] .page-actions a:hover,
 html[data-skin="signal"] .page-actions a:focus-visible,
+html[data-skin="signal"] .button--form:hover,
+html[data-skin="signal"] .button--form:focus-visible,
+html[data-skin="signal"] .utility-form button:hover,
+html[data-skin="signal"] .utility-form button:focus-visible,
 html[data-skin="signal"] .switch-add-row button:hover,
 html[data-skin="signal"] .switch-add-row button:focus-visible,
 html[data-skin="signal"] .command-input-row button:hover,
 html[data-skin="signal"] .command-input-row button:focus-visible,
+html[data-skin="signal"] .law-form button:hover,
+html[data-skin="signal"] .law-form button:focus-visible,
+html[data-skin="signal"] .peak-form button:hover,
+html[data-skin="signal"] .peak-form button:focus-visible,
+html[data-skin="signal"] .three-part-form button:hover,
+html[data-skin="signal"] .three-part-form button:focus-visible,
 html[data-skin="signal"] .ledger-item__actions button:hover,
 html[data-skin="signal"] .ledger-item__actions button:focus-visible,
 html[data-skin="signal"] .prev-next-nav a:hover,
 html[data-skin="signal"] .prev-next-nav a:focus-visible,
 html[data-skin="signal"] .command-chip:hover,
 html[data-skin="signal"] .command-chip:focus-visible,
+html[data-skin="signal"] .template-list button:hover,
+html[data-skin="signal"] .template-list button:focus-visible,
+html[data-skin="signal"] .command-template-list button:hover,
+html[data-skin="signal"] .command-template-list button:focus-visible,
 html[data-skin="signal"] .utility-link:hover,
 html[data-skin="signal"] .utility-link:focus-visible,
 html[data-skin="signal"] .plain-link:hover,
@@ -745,7 +886,9 @@ html[data-skin="signal"] .standing-decree-list > :last-child {
   border-bottom-color: transparent;
 }
 
-/* Row keys — quiet table terms. Visually subordinate to H3. */
+/* Row keys — quiet table terms. Visually subordinate to H3. Sized via the
+   row-eyebrow token so all row contexts (sequence, state, reference, flat)
+   read at the same calmer .68rem instead of the old .62rem cramp. */
 html[data-skin="signal"] .seq-label,
 html[data-skin="signal"] .state-label,
 html[data-skin="signal"] .reference-key,
@@ -754,14 +897,14 @@ html[data-skin="signal"] .flat-row > strong,
 html[data-skin="signal"] .ledger-item__meta {
   color: var(--wh-muted);
   font-family: var(--font-mono);
-  font-size: .62rem;
-  font-weight: 800;
-  letter-spacing: .09em;
+  font-size: var(--wh-mono-eyebrow-sm-size);
+  font-weight: var(--wh-mono-eyebrow-sm-weight);
+  letter-spacing: var(--wh-mono-eyebrow-sm-track);
   line-height: 1.2;
   text-transform: uppercase;
 }
 
-/* Row values — readable explanatory content. */
+/* Row values — readable explanatory content. Sized via sans-value token. */
 html[data-skin="signal"] .seq-body,
 html[data-skin="signal"] .state-value,
 html[data-skin="signal"] .reference-value,
@@ -770,26 +913,66 @@ html[data-skin="signal"] .flat-row > :last-child,
 html[data-skin="signal"] .ledger-item__text {
   color: var(--wh-copy);
   font-family: var(--font-body);
-  font-size: .94rem;
-  font-weight: 430;
-  line-height: 1.38;
+  font-size: var(--wh-sans-value-size);
+  font-weight: var(--wh-sans-value-weight);
+  line-height: var(--wh-sans-value-line);
   min-width: 0;
+}
+
+/* When a span-stack is nested inside a value cell (multiple lines per row),
+   each <span> child should sit on its own line. Replaces the implicit-wrap
+   pattern that produced "AbundanceON" / collapsed-line bugs. System-level
+   fix; no per-page CSS. */
+html[data-skin="signal"] .seq-body > span,
+html[data-skin="signal"] .state-value > span,
+html[data-skin="signal"] .reference-value > span,
+html[data-skin="signal"] .flat-row > :last-child > span {
+  display: block;
+}
+html[data-skin="signal"] .seq-body > span + span,
+html[data-skin="signal"] .state-value > span + span,
+html[data-skin="signal"] .reference-value > span + span,
+html[data-skin="signal"] .flat-row > :last-child > span + span {
+  margin-top: 4px;
+}
+/* Restore inline behavior for nested-state lists (mini-state lists put
+   <span>label</span><b>ON</b> inside one cell; those should stay inline). */
+html[data-skin="signal"] .mini-state-list > .mini-state,
+html[data-skin="signal"] .mini-state > span,
+html[data-skin="signal"] .mini-state > b {
+  display: inline-flex;
 }
 
 html[data-skin="signal"] .status-value strong,
 html[data-skin="signal"] .state-value strong,
 html[data-skin="signal"] .seq-body strong {
   color: var(--wh-copy-strong);
-  font-weight: 620;
+  font-weight: var(--wh-strong-weight);
 }
 
-/* Semantic state colors */
+/* Semantic state — active states. Weight + full-opacity color promote the
+   ON value into the operative payload of the row. Palette stays locked
+   (no green/red); the differentiation is weight + ivory text against
+   muted-ivory baseline values. */
 html[data-skin="signal"] .state-on,
 html[data-skin="signal"] .status-active,
 html[data-skin="signal"] .status-complete,
 html[data-skin="signal"] .status-ready,
 html[data-skin="signal"] [aria-pressed="true"] {
-  color: var(--wh-copy-strong);
+  color: var(--wh-text);
+  font-weight: var(--wh-sans-value-strong-weight);
+  letter-spacing: .005em;
+}
+
+/* When the active state lives in a row that has its own row-key column
+   (Switchboard state-row), give the ROW a hairline left-accent so the
+   active rows read as the live ones at a glance, without color hue. */
+html[data-skin="signal"] .state-row:has(.state-on),
+html[data-skin="signal"] .state-row:has(.status-active),
+html[data-skin="signal"] .state-row:has(.status-complete),
+html[data-skin="signal"] .state-row:has(.status-ready) {
+  box-shadow: inset 2px 0 0 var(--wh-border-active);
+  padding-left: 10px;
 }
 
 html[data-skin="signal"] .status-breach,
@@ -798,6 +981,7 @@ html[data-skin="signal"] .status-firewall,
 html[data-skin="signal"] .status-pending,
 html[data-skin="signal"] .access-denied {
   color: var(--wh-clay);
+  font-weight: var(--wh-sans-value-strong-weight);
 }
 
 /* Operation card / command table -------------------------------------- */
@@ -822,15 +1006,15 @@ html[data-skin="signal"] .operation-card > .support-copy,
 html[data-skin="signal"] .panel:has(.sequence) > .lede,
 html[data-skin="signal"] .panel:has(.sequence) > .support-copy {
   margin-bottom: 24px;
-  font-weight: 450;
-  line-height: 1.42;
+  font-weight: var(--wh-sans-lede-weight);
+  line-height: var(--wh-sans-lede-line);
 }
 
 html[data-skin="signal"] .operation-card .lede strong,
 html[data-skin="signal"] .operation-card .support-copy strong,
 html[data-skin="signal"] .panel:has(.sequence) .lede strong,
 html[data-skin="signal"] .panel:has(.sequence) .support-copy strong {
-  font-weight: 500;
+  font-weight: var(--wh-strong-weight);
 }
 
 html[data-skin="signal"] .operation-card .sequence,
@@ -854,7 +1038,7 @@ html[data-skin="signal"] .panel:has(.sequence) .seq-row > :nth-child(n+3) {
   grid-column: 3;
 }
 
-/* Index column — quiet number, NOT a chip. */
+/* Index column — quiet number, NOT a chip. Sized via mono-data token. */
 html[data-skin="signal"] .operation-card .seq-index,
 html[data-skin="signal"] .panel:has(.sequence) .seq-index {
   display: block;
@@ -869,10 +1053,10 @@ html[data-skin="signal"] .panel:has(.sequence) .seq-index {
   background: transparent;
   color: var(--wh-muted);
   font-family: var(--font-mono);
-  font-size: .62rem;
-  font-weight: 720;
+  font-size: var(--wh-mono-data-size);
+  font-weight: var(--wh-mono-data-weight);
+  letter-spacing: var(--wh-mono-data-track);
   line-height: 1.2;
-  letter-spacing: .04em;
   opacity: .78;
   font-variant-numeric: tabular-nums;
 }
@@ -882,35 +1066,37 @@ html[data-skin="signal"] .panel:has(.sequence) .seq-index--blank {
   opacity: .26;
 }
 
-/* Label column — EXECUTE etc, mono uppercase but legible. */
+/* Label column — EXECUTE etc. Sized via mono-eyebrow token (the calmer
+   .68rem) so the seq-label is consistent with all other row eyebrows
+   instead of a one-off escalation. */
 html[data-skin="signal"] .operation-card .seq-label,
 html[data-skin="signal"] .panel:has(.sequence) .seq-label {
   min-height: 0;
   margin: 0;
   color: var(--wh-label);
   font-family: var(--font-mono);
-  font-size: .68rem;
-  font-weight: 900;
-  letter-spacing: .12em;
+  font-size: var(--wh-mono-eyebrow-size);
+  font-weight: var(--wh-mono-eyebrow-weight);
+  letter-spacing: var(--wh-mono-eyebrow-track);
   line-height: 1.18;
   text-transform: uppercase;
 }
 
-/* Body column — readable command text, NOT huge/heavy. */
+/* Body column — readable command text via sans-value token. */
 html[data-skin="signal"] .operation-card .seq-body,
 html[data-skin="signal"] .panel:has(.sequence) .seq-body,
 html[data-skin="signal"] .operation-card .seq-row > :nth-child(n+3),
 html[data-skin="signal"] .panel:has(.sequence) .seq-row > :nth-child(n+3) {
   color: var(--wh-copy-strong);
   font-family: var(--font-body);
-  font-size: clamp(.94rem, 1.18vw, 1.02rem);
-  font-weight: 480;
-  line-height: 1.42;
+  font-size: var(--wh-sans-value-size);
+  font-weight: var(--wh-sans-value-weight);
+  line-height: var(--wh-sans-value-line);
 }
 
 html[data-skin="signal"] .operation-card .seq-row > :nth-child(3),
 html[data-skin="signal"] .panel:has(.sequence) .seq-row > :nth-child(3) {
-  font-weight: 520;
+  font-weight: 500;
 }
 
 html[data-skin="signal"] .operation-card code,
@@ -920,8 +1106,8 @@ html[data-skin="signal"] .panel:has(.sequence) code {
   color: var(--wh-code-text);
   font-family: var(--font-mono);
   font-size: .88rem;
-  font-weight: 740;
-  letter-spacing: .045em;
+  font-weight: 720;
+  letter-spacing: .03em;
   background: var(--wh-code-bg);
 }
 
@@ -944,13 +1130,15 @@ html[data-skin="signal"] .panel:has(.sequence) .status-row {
   border-color: var(--wh-row-divider-soft);
 }
 
+/* Status-strip label — eyebrow-sm token (its position already marks it
+   as secondary; it doesn't need to whisper smaller). */
 html[data-skin="signal"] .status-strip .status-label,
 html[data-skin="signal"] .operation-card .status-label,
 html[data-skin="signal"] .panel:has(.sequence) .status-label {
   color: var(--wh-muted);
-  font-size: .58rem;
-  font-weight: 760;
-  letter-spacing: .12em;
+  font-size: var(--wh-mono-eyebrow-sm-size);
+  font-weight: var(--wh-mono-eyebrow-sm-weight);
+  letter-spacing: var(--wh-mono-eyebrow-sm-track);
   line-height: 1.15;
 }
 
@@ -960,9 +1148,9 @@ html[data-skin="signal"] .panel:has(.sequence) .status-value {
   min-height: 0;
   padding: 0;
   color: var(--wh-copy);
-  font-size: .90rem;
-  font-weight: 460;
-  line-height: 1.34;
+  font-size: var(--wh-sans-body-size);
+  font-weight: var(--wh-sans-body-weight);
+  line-height: var(--wh-sans-body-line);
   background: transparent;
   border: 0;
   box-shadow: none;
@@ -1010,19 +1198,25 @@ html[data-skin="signal"] .reference-section .state-row {
   border-color: var(--wh-row-divider-soft);
 }
 
+/* Reference row keys — terminal mono, calm. Replaces the previous
+   sans-bold-cap (Avenir 800 .80rem) treatment that read as shouty
+   inside documentation panels. The whole system now speaks one
+   row-eyebrow language across operation-card / state-table /
+   reference-table / flat-list. */
 html[data-skin="signal"] .reference-section .flat-row > strong,
 html[data-skin="signal"] .reference-section .reference-key,
 html[data-skin="signal"] .reference-section .state-label {
   display: block;
-  color: var(--wh-copy-strong);
-  font-family: var(--font-heading);
-  font-size: .80rem;
-  font-weight: 800;
-  letter-spacing: .005em;
-  line-height: 1.16;
-  text-transform: none;
+  color: var(--wh-label);
+  font-family: var(--font-mono);
+  font-size: var(--wh-mono-eyebrow-sm-size);
+  font-weight: var(--wh-mono-eyebrow-sm-weight);
+  letter-spacing: var(--wh-mono-eyebrow-sm-track);
+  line-height: 1.2;
+  text-transform: uppercase;
   word-break: normal;
   hyphens: none;
+  padding-top: 2px;
 }
 
 html[data-skin="signal"] .reference-section .flat-row > :last-child,
@@ -1030,17 +1224,20 @@ html[data-skin="signal"] .reference-section .reference-value,
 html[data-skin="signal"] .reference-section .state-value {
   color: var(--wh-copy);
   font-family: var(--font-body);
-  font-size: .94rem;
-  font-weight: 430;
-  line-height: 1.34;
+  font-size: var(--wh-sans-body-size);
+  font-weight: var(--wh-sans-body-weight);
+  line-height: var(--wh-sans-body-line);
 }
 
+/* Reference paragraphs — tighter than operation prose. Reference is
+   scanned, not read while doing; tighter leading + narrower measure
+   reads as documentation, not as floaty editorial. */
 html[data-skin="signal"] .reference-section p,
 html[data-skin="signal"] .reference-section li {
-  max-width: 48rem;
-  font-size: .96rem;
-  font-weight: 430;
-  line-height: 1.44;
+  max-width: var(--wh-sans-prose-measure);
+  font-size: var(--wh-sans-prose-size);
+  font-weight: var(--wh-sans-prose-weight);
+  line-height: var(--wh-sans-prose-line);
 }
 
 html[data-skin="signal"] .reference-section .ref-block {
@@ -1050,8 +1247,9 @@ html[data-skin="signal"] .reference-section .ref-block {
   background: transparent;
 }
 
+/* Ref-blocks need real separation, not the previous tiny 8px gap. */
 html[data-skin="signal"] .reference-section .ref-block + .ref-block {
-  margin-top: 8px;
+  margin-top: 22px;
 }
 
 html[data-skin="signal"] .reference-section .flat-row:hover,
@@ -1193,18 +1391,57 @@ html[data-skin="signal"] .empty-state {
   font-style: italic;
 }
 
+/* Inline chip — read-only mono badge. Aligned to the rest of the
+   chip system: 4px radius (not pill), eyebrow tokens. */
 html[data-skin="signal"] .inline-chip {
   display: inline-flex;
   align-items: center;
   border: 1px solid var(--wh-inner-border);
-  border-radius: 999px;
+  border-radius: 4px;
   padding: .35rem .55rem;
   background: var(--wh-chip-bg);
   color: var(--wh-label);
   font-family: var(--font-mono);
-  font-size: .68rem;
-  letter-spacing: .11em;
+  font-size: var(--wh-mono-chip-size);
+  font-weight: var(--wh-mono-chip-weight);
+  letter-spacing: var(--wh-mono-chip-track);
   text-transform: uppercase;
+}
+
+/* Standing decree list — Level 08 codex pattern. Single-cell flat-list
+   variant: no row-key column, full-width display-italic decrees that
+   read as standing rules without needing <p><strong>...</strong></p>
+   wrapping which produced the "wall of bold paragraphs" feel. */
+html[data-skin="signal"] .standing-decree-list .flat-row {
+  display: block;
+  padding: 12px 0;
+  border-color: var(--wh-row-divider-soft);
+}
+
+html[data-skin="signal"] .standing-decree-list .flat-row > span {
+  display: block;
+  color: var(--wh-copy-strong);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.05rem, 1.5vw, 1.22rem);
+  font-weight: 600;
+  letter-spacing: -.005em;
+  line-height: 1.32;
+  max-width: 42rem;
+}
+
+/* Architectural law block — Level 08. Replaces an H4 (which had no
+   system style) with a kicker-led block. The kicker reads as the law
+   number; the flat-list inside reads as Premise / Identity / Therefore
+   exactly as before. */
+html[data-skin="signal"] .law-block {
+  margin-top: 18px;
+}
+html[data-skin="signal"] .law-block + .law-block {
+  margin-top: 22px;
+}
+html[data-skin="signal"] .law-block > .kicker {
+  margin-bottom: 8px;
 }
 
 /* Footer -------------------------------------------------------------- */
@@ -1214,8 +1451,9 @@ html[data-skin="signal"] .footer {
   padding: 18px 0 32px;
   color: var(--wh-muted);
   font-family: var(--font-mono);
-  font-size: .7rem;
-  letter-spacing: .14em;
+  font-size: var(--wh-mono-eyebrow-size);
+  font-weight: var(--wh-mono-eyebrow-weight);
+  letter-spacing: var(--wh-mono-eyebrow-track);
   text-transform: uppercase;
 }
 
@@ -1303,23 +1541,23 @@ html[data-skin="signal"] .footer {
   html[data-skin="signal"] .identity,
   html[data-skin="signal"] .panel,
   html[data-skin="signal"] .reference-section {
-    padding: 18px;
+    padding: 22px;
   }
 
   html[data-skin="signal"] h1 {
-    font-size: clamp(2rem, 9vw, 3.15rem);
+    font-size: clamp(1.92rem, 7.5vw, 2.85rem);
     line-height: 1.08;
     margin-bottom: 8px;
   }
 
   html[data-skin="signal"] h1.h1--cinematic,
   html[data-skin="signal"] .identity--hero h1 {
-    font-size: clamp(2.6rem, 13vw, 4.4rem);
+    font-size: clamp(2.4rem, 10.5vw, 4rem);
     line-height: .98;
   }
 
   html[data-skin="signal"] h2 {
-    font-size: clamp(1.62rem, 7vw, 2.2rem);
+    font-size: clamp(1.5rem, 6.2vw, 2.05rem);
     margin-bottom: 16px;
   }
 
@@ -1367,8 +1605,8 @@ html[data-skin="signal"] .footer {
 
   html[data-skin="signal"] .operation-card .seq-label,
   html[data-skin="signal"] .panel:has(.sequence) .seq-label {
-    font-size: .60rem;
-    letter-spacing: .105em;
+    font-size: var(--wh-mono-eyebrow-size);
+    letter-spacing: var(--wh-mono-eyebrow-track);
   }
 
   html[data-skin="signal"] .operation-card .seq-body,
@@ -1380,7 +1618,7 @@ html[data-skin="signal"] .footer {
   }
 
   html[data-skin="signal"] .reference-section {
-    padding-block: 22px;
+    padding-block: 26px;
   }
 
   html[data-skin="signal"] .reference-section h2 {
@@ -1400,7 +1638,7 @@ html[data-skin="signal"] .footer {
   html[data-skin="signal"] .status-label,
   html[data-skin="signal"] .flat-row > strong,
   html[data-skin="signal"] .ledger-item__meta {
-    font-size: .58rem;
+    font-size: var(--wh-mono-eyebrow-sm-size);
   }
 
   html[data-skin="signal"] .level-directory .state-row {
