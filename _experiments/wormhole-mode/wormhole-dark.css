@@ -58,15 +58,26 @@ html[data-skin="signal"] {
      tiers. The sans scale used to run hot in a single .94–1.05rem band
      with no small/default/lede separation; it now has six. */
 
-  /* Mono — page-meta tier (smallest) */
+  /* Mono — page-meta tier (smallest) — for kickers, eyebrows above panels.
+     These are metadata about the panel; they stay quiet. */
   --wh-mono-eyebrow-sm-size:   .62rem;
   --wh-mono-eyebrow-sm-weight: 800;
   --wh-mono-eyebrow-sm-track:  .14em;
 
-  /* Mono — row-eyebrow tier (default for row keys, nav, primary labels) */
+  /* Mono — row-eyebrow tier — for nav, primary metadata labels above
+     content. Bigger than -sm but still meta-level. */
   --wh-mono-eyebrow-size:      .68rem;
   --wh-mono-eyebrow-weight:    850;
   --wh-mono-eyebrow-track:     .11em;
+
+  /* Mono — row-key tier — for terms that ARE the content (OPERATE, FLIP,
+     EXECUTE, ABUNDANCE, DO NOT MANIFEST). These pair with their value as
+     equal-weight content, NOT as metadata about the value. Bigger than
+     eyebrows, full-strength text color, less aggressive tracking so the
+     terms read as words rather than badges. */
+  --wh-mono-rowkey-size:       .76rem;
+  --wh-mono-rowkey-weight:     800;
+  --wh-mono-rowkey-track:      .08em;
 
   /* Mono — data tier (numbers, code-as-data, sequence index) */
   --wh-mono-data-size:         .66rem;
@@ -460,10 +471,13 @@ html[data-skin="signal"] .danger-card {
 }
 
 /* Hero modifier — opt-in cinematic register for entry/portal pages.
-   Apply via class="identity identity--hero". Reusable on Gateway and any
-   future entry page that should carry the larger hero rhythm. */
+   Apply via class="identity identity--hero". The bigger H1 scale (via
+   .h1--cinematic) and the larger padding-block give this register its
+   presence; the panel sizes to its content like other identity panels.
+   Earlier this had min-height: clamp(340px, 52vh, 640px) which produced
+   a panel taller than its content, with empty atmosphere space below
+   the buttons. Removed. */
 html[data-skin="signal"] .identity--hero {
-  min-height: clamp(340px, 52vh, 640px);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -886,24 +900,24 @@ html[data-skin="signal"] .standing-decree-list > :last-child {
   border-bottom-color: transparent;
 }
 
-/* Row keys — quiet table terms. Visually subordinate to H3. Sized via the
-   row-eyebrow token so every row context (sequence, state, reference, flat,
-   status, ledger) reads at the same .68rem. The earlier mistake was routing
-   this through eyebrow-sm: it made Reference row keys smaller than Operation
-   seq-labels even though both are the same role. One token, one role.
-   Color is --wh-label (warmer than --wh-muted) so the eyebrow has presence
-   without competing with H3 italic. */
+/* Row keys — content terms that pair with their value as equal-weight
+   content (OPERATE / Operate as the version of yourself…). NOT eyebrows;
+   eyebrows describe a panel from above. Row keys ARE the content of
+   their row, so they read in full-strength text color, not the muted
+   bronze. The earlier mistake was treating row keys as if they were
+   metadata about the value — they're a peer to the value, not a label
+   above it. Bigger and darker than eyebrows. */
 html[data-skin="signal"] .seq-label,
 html[data-skin="signal"] .state-label,
 html[data-skin="signal"] .reference-key,
 html[data-skin="signal"] .status-label,
 html[data-skin="signal"] .flat-row > strong,
 html[data-skin="signal"] .ledger-item__meta {
-  color: var(--wh-label);
+  color: var(--wh-text);
   font-family: var(--font-mono);
-  font-size: var(--wh-mono-eyebrow-size);
-  font-weight: var(--wh-mono-eyebrow-weight);
-  letter-spacing: var(--wh-mono-eyebrow-track);
+  font-size: var(--wh-mono-rowkey-size);
+  font-weight: var(--wh-mono-rowkey-weight);
+  letter-spacing: var(--wh-mono-rowkey-track);
   line-height: 1.2;
   text-transform: uppercase;
 }
@@ -1080,18 +1094,19 @@ html[data-skin="signal"] .panel:has(.sequence) .seq-index--blank {
   opacity: .26;
 }
 
-/* Label column — EXECUTE etc. Sized via mono-eyebrow token (the calmer
-   .68rem) so the seq-label is consistent with all other row eyebrows
-   instead of a one-off escalation. */
+/* Label column — EXECUTE / RECOGNIZE / ANCHOR / SAVE etc. These are
+   content terms, peers to the body text on their right, not eyebrows
+   above them. Use the row-key tier: bigger, full-ivory, less tracked.
+   Same treatment as flat-row > strong / reference-key elsewhere. */
 html[data-skin="signal"] .operation-card .seq-label,
 html[data-skin="signal"] .panel:has(.sequence) .seq-label {
   min-height: 0;
   margin: 0;
-  color: var(--wh-label);
+  color: var(--wh-text);
   font-family: var(--font-mono);
-  font-size: var(--wh-mono-eyebrow-size);
-  font-weight: var(--wh-mono-eyebrow-weight);
-  letter-spacing: var(--wh-mono-eyebrow-track);
+  font-size: var(--wh-mono-rowkey-size);
+  font-weight: var(--wh-mono-rowkey-weight);
+  letter-spacing: var(--wh-mono-rowkey-track);
   line-height: 1.18;
   text-transform: uppercase;
 }
@@ -1212,19 +1227,19 @@ html[data-skin="signal"] .reference-section .state-row {
   border-color: var(--wh-row-divider-soft);
 }
 
-/* Reference row keys — terminal mono at the same row-eyebrow tier the
-   rest of the system uses. Reference is documentation, but its row
-   structure is identical to operation/state/flat — so the row-key
-   typography is identical too. */
+/* Reference row keys — content terms (Premise / Identity / Therefore,
+   Operate / Flip / Decree, etc). Same row-key tier as operation cards;
+   reference rows have the same structure as operation rows so they
+   speak the same typography. */
 html[data-skin="signal"] .reference-section .flat-row > strong,
 html[data-skin="signal"] .reference-section .reference-key,
 html[data-skin="signal"] .reference-section .state-label {
   display: block;
-  color: var(--wh-label);
+  color: var(--wh-text);
   font-family: var(--font-mono);
-  font-size: var(--wh-mono-eyebrow-size);
-  font-weight: var(--wh-mono-eyebrow-weight);
-  letter-spacing: var(--wh-mono-eyebrow-track);
+  font-size: var(--wh-mono-rowkey-size);
+  font-weight: var(--wh-mono-rowkey-weight);
+  letter-spacing: var(--wh-mono-rowkey-track);
   line-height: 1.2;
   text-transform: uppercase;
   word-break: normal;
@@ -1343,7 +1358,7 @@ html[data-skin="signal"] .level-directory .state-label--link {
   justify-self: start;
   color: var(--wh-copy-strong);
   font-family: var(--font-display);
-  font-style: italic;
+  font-style: normal;
   font-size: clamp(1.05rem, 2.2vw, 1.55rem);
   font-weight: 600;
   letter-spacing: -.012em;
@@ -1665,7 +1680,6 @@ html[data-skin="signal"] .footer {
   }
 
   html[data-skin="signal"] .identity--hero {
-    min-height: 320px;
     padding-block: 26px;
   }
 
