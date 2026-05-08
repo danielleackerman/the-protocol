@@ -1,175 +1,38 @@
 /*
-  Wormhole Mode — Light Skin Overrides
-  Load after wormhole-dark.css.
-  Scope fence stays html[data-skin="signal"] until the lab migrates the attribute.
+  Wormhole Mode — Light Theme Overrides
+  --------------------------------------------------------------
+  Load AFTER wormhole-dark.css. Theme tokens only.
+
+  All structural rules (typography ladder, panels, rows, buttons,
+  operation card, reference, level directory, forms, footer,
+  responsive) live in wormhole-dark.css and adapt to either theme
+  via the token system. Do not duplicate structural CSS here.
+
+  Scope fence: html[data-skin="signal"][data-theme="light"].
 */
 
+/* Light theme tokens --------------------------------------------------- */
 html[data-skin="signal"][data-theme="light"] {
-  --wh-void: #f7efe1;
-  --wh-black: #fffaf0;
-  --wh-ink: #efe0ca;
-  --wh-espresso: #3a3025;
-  --wh-bronze: #a97e32;
-  --wh-gold: #a97e32;
-  --wh-gold-hot: #8a5f19;
-  --wh-clay: #b87968;
-  --wh-clay-soft: #b87968;
-  --wh-ivory: #14110d;
-
-  --wh-text: #14110d;
-  --wh-brand: #14110d;
-  --wh-heading: #14110d;
-  --wh-muted: rgba(20, 17, 13, .62);
-  --wh-copy: rgba(20, 17, 13, .78);
-  --wh-copy-strong: rgba(20, 17, 13, .92);
-  --wh-label: rgba(169, 126, 50, .96);
-  --wh-kicker: #8a5f19;
-  --wh-lede: rgba(20, 17, 13, .84);
-
-  --wh-page-bg:
-    radial-gradient(ellipse at 50% -12%, rgba(223, 193, 139, .40), transparent 34rem),
-    radial-gradient(circle at 0% 0%, rgba(184, 121, 104, .14), transparent 24rem),
-    radial-gradient(circle at 100% 8%, rgba(169, 126, 50, .14), transparent 28rem),
-    linear-gradient(135deg, #fffaf0 0%, #f7efe1 48%, #efe0ca 100%);
-
-  --wh-portal-layer:
-    radial-gradient(ellipse at 50% -18%, transparent 0 24rem, rgba(169, 126, 50, .18) 24.2rem, transparent 24.55rem),
-    radial-gradient(ellipse at 50% -18%, transparent 0 32rem, rgba(20, 17, 13, .055) 32.2rem, transparent 32.5rem),
-    linear-gradient(90deg, transparent, rgba(20, 17, 13, .035) 50%, transparent);
-  --wh-vignette-layer:
-    radial-gradient(circle at 50% 0%, transparent 0 25rem, rgba(255, 250, 240, .28) 46rem),
-    linear-gradient(180deg, transparent 0%, rgba(92, 64, 32, .10) 100%);
-  --wh-grid-opacity: .46;
-  --wh-scan-opacity: .52;
-
-  --wh-header-bg: rgba(255, 250, 240, .78);
-  --wh-header-border: rgba(20, 17, 13, .12);
-  --wh-nav-bg: rgba(255, 255, 255, .44);
-  --wh-nav-text: rgba(20, 17, 13, .72);
-  --wh-nav-active-bg: rgba(223, 193, 139, .26);
-  --wh-nav-active-text: #14110d;
-
-  --wh-border-default: rgba(20, 17, 13, .16);
-  --wh-border-active: rgba(169, 126, 50, .42);
-  --wh-border-alert: rgba(184, 121, 104, .34);
-  --wh-hero-border: rgba(169, 126, 50, .34);
-
-  --wh-panel-bg:
-    linear-gradient(180deg, rgba(255, 255, 255, .74), rgba(255, 250, 240, .90));
-  --wh-hero-bg:
-    radial-gradient(ellipse at 50% -10%, rgba(223, 193, 139, .26), transparent 30rem),
-    linear-gradient(180deg, rgba(255, 250, 240, .86), rgba(247, 239, 225, .76));
-
-  --wh-panel-atmosphere:
-    radial-gradient(circle at 0% 0%, rgba(184, 121, 104, .10), transparent 18rem),
-    radial-gradient(circle at 100% 0%, rgba(169, 126, 50, .12), transparent 20rem),
-    linear-gradient(90deg, rgba(255, 255, 255, .28), transparent 40%, rgba(223, 193, 139, .12));
-  --wh-panel-atmosphere-opacity: .95;
-
-  --wh-panel-shadow:
-    0 20px 50px rgba(64, 44, 24, .12),
-    inset 0 1px 0 rgba(255, 255, 255, .82);
-  --wh-hero-shadow:
-    0 30px 80px rgba(64, 44, 24, .14),
-    0 0 0 1px rgba(169, 126, 50, .12);
-  --wh-small-glow:
-    0 0 0 1px rgba(169, 126, 50, .20),
-    0 14px 34px rgba(169, 126, 50, .16);
-
-  --wh-h1-fill: #14110d;
-  --wh-h1-stroke: transparent;
-  --wh-h1-shadow:
-    0 10px 34px rgba(64, 44, 24, .10),
-    0 0 28px rgba(169, 126, 50, .10);
-
-  --wh-inner-bg:
-    linear-gradient(180deg, rgba(255, 255, 255, .72), rgba(255, 250, 240, .88));
-  --wh-inner-border: rgba(20, 17, 13, .14);
-  --wh-divider: rgba(20, 17, 13, .12);
-  --wh-chip-bg: rgba(223, 193, 139, .22);
-  --wh-code-bg: rgba(255, 255, 255, .62);
-  --wh-code-text: #14110d;
-
-  --wh-button-border: rgba(169, 126, 50, .38);
-  --wh-button-bg:
-    linear-gradient(180deg, rgba(255, 255, 255, .72), rgba(223, 193, 139, .22));
-  --wh-hot-button-bg:
-    linear-gradient(180deg, rgba(184, 121, 104, .20), rgba(184, 121, 104, .08));
-  --wh-button-text: #14110d;
-
-  --wh-input-border: rgba(20, 17, 13, .16);
-  --wh-input-bg: rgba(255, 255, 255, .58);
-  --wh-input-text: #14110d;
-  --wh-placeholder: rgba(20, 17, 13, .40);
-}
-
-html[data-skin="signal"][data-theme="light"] .identity::after,
-html[data-skin="signal"][data-theme="light"] .panel::after,
-html[data-skin="signal"][data-theme="light"] .reference-section::after {
-  background:
-    linear-gradient(90deg, transparent, rgba(169, 126, 50, .34), transparent) top left / 100% 1px no-repeat;
-}
-
-html[data-skin="signal"][data-theme="light"] .signal-hero::before {
-  background:
-    radial-gradient(ellipse at 50% 12%, transparent 0 11rem, rgba(169, 126, 50, .20) 11.1rem, transparent 11.35rem),
-    radial-gradient(ellipse at 50% 12%, transparent 0 16rem, rgba(20, 17, 13, .06) 16.1rem, transparent 16.4rem),
-    radial-gradient(circle at 16% 20%, rgba(184, 121, 104, .12), transparent 16rem),
-    radial-gradient(circle at 86% 12%, rgba(223, 193, 139, .20), transparent 18rem),
-    linear-gradient(135deg, rgba(255, 255, 255, .48), transparent 52%);
-}
-
-html[data-skin="signal"][data-theme="light"] #preview-levels .state-row {
-  background:
-    radial-gradient(circle at 12% 18%, rgba(184, 121, 104, .12), transparent 24rem),
-    radial-gradient(circle at 86% 12%, rgba(223, 193, 139, .20), transparent 22rem),
-    linear-gradient(180deg, rgba(255, 255, 255, .78), rgba(255, 250, 240, .92));
-}
-
-html[data-skin="signal"][data-theme="light"] #preview-levels .state-row:hover {
-  background:
-    radial-gradient(circle at 50% 0%, rgba(223, 193, 139, .34), transparent 18rem),
-    linear-gradient(180deg, rgba(255, 255, 255, .92), rgba(255, 250, 240, .98));
-}
-
-html[data-skin="signal"][data-theme="light"] input:hover,
-html[data-skin="signal"][data-theme="light"] input:focus,
-html[data-skin="signal"][data-theme="light"] select:hover,
-html[data-skin="signal"][data-theme="light"] select:focus,
-html[data-skin="signal"][data-theme="light"] textarea:hover,
-html[data-skin="signal"][data-theme="light"] textarea:focus {
-  box-shadow:
-    0 0 0 1px rgba(169, 126, 50, .28),
-    0 0 0 3px rgba(169, 126, 50, .10),
-    inset 0 1px 0 rgba(255, 255, 255, .82);
-}
-/* =========================================================
-   WORMHOLE CLEAN LIGHT THEME
-   Theme overrides only. Shared hierarchy lives in wormhole-dark.css.
-   No HTML / JS / font-family changes.
-   ========================================================= */
-
-html[data-skin="signal"][data-theme="light"] {
-  --wh-void: #f5f1e8;
-  --wh-black: #fcfaf5;
-  --wh-ink: #efe7d8;
-  --wh-espresso: #342d25;
-  --wh-bronze: #7f7768;
-  --wh-gold: #8f8778;
-  --wh-gold-hot: #6f675a;
-  --wh-clay: #9a847a;
+  --wh-void:      #f5f1e8;
+  --wh-black:     #fcfaf5;
+  --wh-ink:       #efe7d8;
+  --wh-espresso:  #342d25;
+  --wh-bronze:    #7f7768;
+  --wh-gold:      #8f8778;
+  --wh-gold-hot:  #6f675a;
+  --wh-clay:      #9a847a;
   --wh-clay-soft: #9a847a;
-  --wh-ivory: #14110d;
+  --wh-ivory:     #14110d;
 
-  --wh-text: #14110d;
-  --wh-brand: #14110d;
-  --wh-heading: #14110d;
-  --wh-muted: rgba(20, 17, 13, .58);
-  --wh-copy: rgba(20, 17, 13, .74);
+  --wh-text:        #14110d;
+  --wh-brand:       #14110d;
+  --wh-heading:     #14110d;
+  --wh-muted:       rgba(20, 17, 13, .58);
+  --wh-copy:        rgba(20, 17, 13, .74);
   --wh-copy-strong: rgba(20, 17, 13, .92);
-  --wh-label: rgba(111, 103, 90, .88);
-  --wh-kicker: #6f675a;
-  --wh-lede: rgba(20, 17, 13, .80);
+  --wh-label:       rgba(111, 103, 90, .88);
+  --wh-kicker:      #6f675a;
+  --wh-lede:        rgba(20, 17, 13, .80);
 
   --wh-page-bg:
     radial-gradient(ellipse at 50% -12%, rgba(198, 191, 177, .16), transparent 32rem),
@@ -182,48 +45,53 @@ html[data-skin="signal"][data-theme="light"] {
   --wh-grid-opacity: .24;
   --wh-scan-opacity: .24;
 
-  --wh-header-bg: rgba(251, 250, 247, .88);
-  --wh-header-border: rgba(20, 17, 13, .07);
-  --wh-nav-bg: rgba(255, 255, 255, .52);
-  --wh-nav-text: rgba(20, 17, 13, .70);
-  --wh-nav-active-bg: rgba(198, 191, 177, .16);
-  --wh-nav-active-text: #14110d;
+  --wh-header-bg:        rgba(251, 250, 247, .88);
+  --wh-header-border:    rgba(20, 17, 13, .07);
+  --wh-nav-bg:           rgba(255, 255, 255, .52);
+  --wh-nav-text:         rgba(20, 17, 13, .70);
+  --wh-nav-active-bg:    rgba(198, 191, 177, .16);
+  --wh-nav-active-text:  #14110d;
 
   --wh-border-default: rgba(20, 17, 13, .10);
-  --wh-border-active: rgba(111, 103, 90, .30);
-  --wh-border-alert: rgba(154, 132, 122, .24);
-  --wh-hero-border: rgba(111, 103, 90, .20);
+  --wh-border-active:  rgba(111, 103, 90, .30);
+  --wh-border-alert:   rgba(154, 132, 122, .24);
+  --wh-hero-border:    rgba(111, 103, 90, .20);
 
-  --wh-panel-bg: linear-gradient(180deg, rgba(255, 255, 255, .78), rgba(251, 250, 247, .92));
-  --wh-hero-bg: linear-gradient(180deg, rgba(251, 250, 247, .94), rgba(244, 241, 235, .86));
+  --wh-panel-bg:        linear-gradient(180deg, rgba(255, 255, 255, .78), rgba(251, 250, 247, .92));
+  --wh-hero-bg:         linear-gradient(180deg, rgba(251, 250, 247, .94), rgba(244, 241, 235, .86));
   --wh-panel-atmosphere: linear-gradient(90deg, rgba(255, 255, 255, .22), transparent 48%, rgba(198, 191, 177, .045));
   --wh-panel-atmosphere-opacity: .72;
 
   --wh-panel-shadow: 0 8px 18px rgba(64, 44, 24, .055), inset 0 1px 0 rgba(255, 255, 255, .76);
-  --wh-hero-shadow: 0 10px 24px rgba(64, 44, 24, .070), 0 0 0 1px rgba(111, 103, 90, .060);
-  --wh-small-glow: 0 0 0 1px rgba(111, 103, 90, .10), 0 8px 18px rgba(64, 44, 24, .050);
+  --wh-hero-shadow:  0 10px 24px rgba(64, 44, 24, .070), 0 0 0 1px rgba(111, 103, 90, .060);
+  --wh-small-glow:   0 0 0 1px rgba(111, 103, 90, .10), 0 8px 18px rgba(64, 44, 24, .050);
 
-  --wh-inner-bg: linear-gradient(180deg, rgba(255, 255, 255, .78), rgba(251, 250, 247, .92));
+  --wh-h1-fill:   #14110d;
+  --wh-h1-shadow: none;
+
+  --wh-inner-bg:     linear-gradient(180deg, rgba(255, 255, 255, .78), rgba(251, 250, 247, .92));
   --wh-inner-border: rgba(20, 17, 13, .085);
-  --wh-divider: rgba(20, 17, 13, .12);
-  --wh-chip-bg: rgba(198, 191, 177, .16);
-  --wh-code-bg: rgba(255, 255, 255, .70);
-  --wh-code-text: #14110d;
+  --wh-divider:      rgba(20, 17, 13, .12);
+  --wh-chip-bg:      rgba(198, 191, 177, .16);
+  --wh-code-bg:      rgba(255, 255, 255, .70);
+  --wh-code-text:    #14110d;
 
   --wh-button-border: rgba(111, 103, 90, .24);
-  --wh-button-bg: linear-gradient(180deg, rgba(255, 255, 255, .78), rgba(198, 191, 177, .12));
+  --wh-button-bg:     linear-gradient(180deg, rgba(255, 255, 255, .78), rgba(198, 191, 177, .12));
   --wh-hot-button-bg: linear-gradient(180deg, rgba(154, 132, 122, .12), rgba(154, 132, 122, .040));
-  --wh-button-text: #14110d;
+  --wh-button-text:   #14110d;
 
   --wh-input-border: rgba(20, 17, 13, .085);
-  --wh-input-bg: rgba(255, 255, 255, .70);
-  --wh-input-text: #14110d;
-  --wh-placeholder: rgba(20, 17, 13, .36);
+  --wh-input-bg:     rgba(255, 255, 255, .70);
+  --wh-input-text:   #14110d;
+  --wh-placeholder:  rgba(20, 17, 13, .36);
 
-  --wh-row-divider: rgba(20, 17, 13, .14);
+  --wh-row-divider:      rgba(20, 17, 13, .14);
   --wh-row-divider-soft: rgba(20, 17, 13, .09);
-  --wh-row-hover: linear-gradient(90deg, rgba(198, 191, 177, .13), transparent 54%);
+  --wh-row-hover:        linear-gradient(90deg, rgba(198, 191, 177, .13), transparent 54%);
 }
+
+/* Light-specific surface math (where token swap alone is insufficient) - */
 
 html[data-skin="signal"][data-theme="light"] .site-header {
   box-shadow: 0 6px 16px rgba(64, 44, 24, .035);
@@ -236,7 +104,7 @@ html[data-skin="signal"][data-theme="light"] .reference-section::after {
   opacity: .30;
 }
 
-html[data-skin="signal"][data-theme="light"] .signal-hero::before {
+html[data-skin="signal"][data-theme="light"] .identity--hero::before {
   opacity: .52;
   background:
     radial-gradient(ellipse at 50% 12%, transparent 0 11rem, rgba(111, 103, 90, .075) 11.1rem, transparent 11.35rem),
@@ -249,6 +117,12 @@ html[data-skin="signal"][data-theme="light"] .ledger-item {
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, .62);
 }
 
+html[data-skin="signal"][data-theme="light"] input,
+html[data-skin="signal"][data-theme="light"] select,
+html[data-skin="signal"][data-theme="light"] textarea {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .62);
+}
+
 html[data-skin="signal"][data-theme="light"] input:hover,
 html[data-skin="signal"][data-theme="light"] input:focus,
 html[data-skin="signal"][data-theme="light"] select:hover,
@@ -257,202 +131,5 @@ html[data-skin="signal"][data-theme="light"] textarea:hover,
 html[data-skin="signal"][data-theme="light"] textarea:focus {
   box-shadow:
     0 0 0 1px rgba(111, 103, 90, .22),
-    0 0 0 3px rgba(111, 103, 90, .08),
     inset 0 1px 0 rgba(255, 255, 255, .82);
 }
-
-/* =========================================================
-   WORMHOLE GLOBAL H3 / ROW-KEY HIERARCHY FIX
-   Purpose: separate subsection headings from table row labels.
-   Style-system only. No page-specific selectors.
-   ========================================================= */
-
-/* H3 = real subsection heading */
-html[data-skin="signal"] h3,
-html[data-skin="signal"] .panel h3,
-html[data-skin="signal"] .reference-section h3 {
-  font-family: var(--font-display) !important;
-  font-style: italic !important;
-  font-size: clamp(1.18rem, 2vw, 1.55rem) !important;
-  font-weight: 600 !important;
-  line-height: 1.08 !important;
-  letter-spacing: -.012em !important;
-  text-transform: none !important;
-  color: var(--wh-heading) !important;
-  margin-top: 30px !important;
-  margin-bottom: 14px !important;
-}
-
-/* First subsection in a card should not float too far down */
-html[data-skin="signal"] h2 + h3,
-html[data-skin="signal"] .lede + h3,
-html[data-skin="signal"] .support-copy + h3,
-html[data-skin="signal"] .panel > h3:first-child,
-html[data-skin="signal"] .reference-section > h3:first-child {
-  margin-top: 18px !important;
-}
-
-/* Row keys = quiet table terms, NOT headings */
-html[data-skin="signal"] .flat-row strong,
-html[data-skin="signal"] .reference-key,
-html[data-skin="signal"] .state-label,
-html[data-skin="signal"] .status-label,
-html[data-skin="signal"] .seq-label,
-html[data-skin="signal"] .ledger-item__meta {
-  font-family: var(--font-mono) !important;
-  font-style: normal !important;
-  font-size: .62rem !important;
-  font-weight: 800 !important;
-  line-height: 1.2 !important;
-  letter-spacing: .09em !important;
-  text-transform: uppercase !important;
-  color: var(--wh-muted) !important;
-}
-
-/* Row values carry the explanation, not the row key */
-html[data-skin="signal"] .flat-row,
-html[data-skin="signal"] .reference-row,
-html[data-skin="signal"] .state-row,
-html[data-skin="signal"] .status-row {
-  align-items: start !important;
-}
-
-html[data-skin="signal"] .reference-value,
-html[data-skin="signal"] .state-value,
-html[data-skin="signal"] .status-value,
-html[data-skin="signal"] .flat-row > :last-child {
-  color: var(--wh-copy) !important;
-  font-weight: 430 !important;
-  line-height: 1.38 !important;
-}
-
-/* Give subsection groups enough separation from the previous table */
-html[data-skin="signal"] .flat-list + h3,
-html[data-skin="signal"] .reference-table + h3,
-html[data-skin="signal"] .state-table + h3,
-html[data-skin="signal"] .status-strip + h3,
-html[data-skin="signal"] .sequence + h3 {
-  margin-top: 34px !important;
-}
-
-@media (max-width: 640px) {
-  html[data-skin="signal"] h3,
-  html[data-skin="signal"] .panel h3,
-  html[data-skin="signal"] .reference-section h3 {
-    font-size: clamp(1.08rem, 5vw, 1.36rem) !important;
-    margin-top: 26px !important;
-    margin-bottom: 12px !important;
-  }
-
-  html[data-skin="signal"] .flat-row strong,
-  html[data-skin="signal"] .reference-key,
-  html[data-skin="signal"] .state-label,
-  html[data-skin="signal"] .status-label,
-  html[data-skin="signal"] .seq-label,
-  html[data-skin="signal"] .ledger-item__meta {
-    font-size: .58rem !important;
-  }
-}
-
-/* =========================================================
-   WORMHOLE ACTION BUTTON SYSTEM
-   Purpose: restore compact editorial action buttons globally.
-   No page-specific selectors.
-   ========================================================= */
-
-html[data-skin="signal"] .controls,
-html[data-skin="signal"] .page-actions,
-html[data-skin="signal"] .signal-lab-actions,
-html[data-skin="signal"] .template-list,
-html[data-skin="signal"] .command-template-list,
-html[data-skin="signal"] .inline-chip-list,
-html[data-skin="signal"] .prev-next-nav {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px;
-}
-
-html[data-skin="signal"] .signal-hero .page-actions,
-html[data-skin="signal"] .signal-hero .controls {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
-  gap: 8px;
-  align-items: center;
-}
-
-html[data-skin="signal"] .button,
-html[data-skin="signal"] .page-actions a,
-html[data-skin="signal"] .command-chip,
-html[data-skin="signal"] .utility-link,
-html[data-skin="signal"] .plain-link,
-html[data-skin="signal"] .prev-next-nav a {
-  width: auto;
-  min-height: 2.05rem;
-  padding: .44rem .78rem;
-  border-radius: 4px;
-  font-family: var(--font-display);
-  font-size: .96rem;
-  font-style: italic;
-  font-weight: 600;
-  letter-spacing: .015em;
-  line-height: 1;
-  text-transform: none;
-}
-
-html[data-skin="signal"] .command-chip,
-html[data-skin="signal"] .utility-link,
-html[data-skin="signal"] .plain-link {
-  font-family: var(--font-mono);
-  font-size: .66rem;
-  font-style: normal;
-  font-weight: 850;
-  letter-spacing: .10em;
-  text-transform: uppercase;
-}
-
-
-/* =========================================================
-   WORMHOLE H1 STACK RHYTHM
-   Purpose: tighten H1-to-support-copy spacing globally.
-   No page-specific selectors.
-   ========================================================= */
-
-html[data-skin="signal"] h1 {
-  margin-bottom: 10px;
-}
-
-html[data-skin="signal"] h1 + .lede,
-html[data-skin="signal"] h1 + .support-copy,
-html[data-skin="signal"] h1 + p {
-  margin-top: 0;
-}
-
-html[data-skin="signal"] .identity h1,
-html[data-skin="signal"] .panel h1,
-html[data-skin="signal"] .signal-hero h1 {
-  margin-bottom: 10px;
-}
-
-html[data-skin="signal"] .identity h1 + .lede,
-html[data-skin="signal"] .identity h1 + .support-copy,
-html[data-skin="signal"] .identity h1 + p,
-html[data-skin="signal"] .panel h1 + .lede,
-html[data-skin="signal"] .panel h1 + .support-copy,
-html[data-skin="signal"] .panel h1 + p,
-html[data-skin="signal"] .signal-hero h1 + .lede,
-html[data-skin="signal"] .signal-hero h1 + .support-copy,
-html[data-skin="signal"] .signal-hero h1 + p {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-@media (max-width: 640px) {
-  html[data-skin="signal"] h1,
-  html[data-skin="signal"] .identity h1,
-  html[data-skin="signal"] .panel h1,
-  html[data-skin="signal"] .signal-hero h1 {
-    margin-bottom: 8px;
-  }
-}
-

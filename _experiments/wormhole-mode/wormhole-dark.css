@@ -1,134 +1,142 @@
 /*
-  Wormhole Mode — Dark Skin + Shared Experimental Structure
-  Scope fence: copied lab HTML still uses html[data-skin="signal"].
-  This is a visual-skin pass only: no content, structure, or behavior changes.
+  Wormhole Mode — Shared Structure + Dark Theme
+  --------------------------------------------------------------
+  This file is the single authority for Wormhole structural CSS.
+  Theme overrides live in wormhole-light.css (load order matters).
+
+  Scope fence: html[data-skin="signal"] until the lab migrates the attribute.
+
+  Architecture rules:
+    - One declaration per concept. No PASS blocks. No bottom-appended override piles.
+    - No page-specific selectors (no #preview-levels, no per-page hacks).
+    - Systemic modifiers only: .identity--hero, .level-directory, semantic .danger-card etc.
+    - Reference panels use the global H2; documentation register comes from the kicker, not a private H2.
+
+  Source of truth for the visual system. If a fix is needed, edit the rule in place.
+  Do NOT append a new override block at the bottom of this file.
 */
 
+/* Font tokens (theme-agnostic) ----------------------------------------- */
 :root {
   --font-display: "Cormorant Garamond", "Bodoni 72", "Didot", Georgia, serif;
   --font-heading: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
-  --font-body: "Inter", "Avenir Next", "Helvetica Neue", Arial, sans-serif;
-  --font-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  --font-body:    "Inter", "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+  --font-mono:    "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
 }
 
+/* Shared structural tokens (theme-agnostic) ---------------------------- */
 html[data-skin="signal"] {
   --font-display: "Cormorant Garamond", "Bodoni 72", "Didot", Georgia, serif;
   --font-heading: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
-  --font-body: "Inter", "Avenir Next", "Helvetica Neue", Arial, sans-serif;
-  --font-sans: var(--font-body);
-  --font-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  --font-body:    "Inter", "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+  --font-sans:    var(--font-body);
+  --font-mono:    "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
 
-  --wh-radius: 24px;
-  --wh-radius-sm: 14px;
-  --wh-page: min(1180px, calc(100vw - 28px));
+  --wh-radius:        14px;
+  --wh-radius-sm:     8px;
+  --wh-page:          min(1180px, calc(100vw - 28px));
   --wh-header-height: 76px;
+
+  --wh-space-1: 4px;
+  --wh-space-2: 8px;
+  --wh-space-3: 12px;
+  --wh-space-4: 18px;
+  --wh-space-5: 24px;
+  --wh-space-6: 32px;
+
+  --wh-row-index-col:    2.5ch;
+  --wh-row-label-col:    clamp(5.8rem, 12vw, 7rem);
+  --wh-row-gap:          14px;
+  --wh-row-divider:      rgba(214, 209, 198, .15);
+  --wh-row-divider-soft: rgba(214, 209, 198, .10);
+  --wh-row-hover:        linear-gradient(90deg, rgba(214, 209, 198, .055), transparent 46%);
 
   scroll-behavior: smooth;
   background: var(--wh-void);
 }
 
+/* Dark theme tokens ---------------------------------------------------- */
 html[data-skin="signal"][data-theme="dark"] {
-  --wh-void: #030201;
-  --wh-black: #070504;
-  --wh-ink: #11100d;
-  --wh-espresso: #1a1510;
-  --wh-bronze: #8a6532;
-  --wh-gold: #c9a45c;
-  --wh-gold-hot: #f0c46a;
-  --wh-clay: #a9685d;
-  --wh-clay-soft: #a9685d;
-  --wh-ivory: #fff8ec;
+  --wh-void:      #020201;
+  --wh-black:     #060504;
+  --wh-ink:       #0d0c0a;
+  --wh-espresso:  #14120f;
+  --wh-bronze:    #746b5d;
+  --wh-gold:      #a7a097;
+  --wh-gold-hot:  #d6d2c7;
+  --wh-clay:      #7e6e68;
+  --wh-clay-soft: #7e6e68;
+  --wh-ivory:     #f7f1e7;
 
-  --wh-text: #fff8ec;
-  --wh-brand: #fff8ec;
-  --wh-heading: #fff8ec;
-  --wh-muted: rgba(255, 248, 236, .62);
-  --wh-copy: rgba(255, 248, 236, .78);
-  --wh-copy-strong: rgba(255, 248, 236, .92);
-  --wh-label: rgba(240, 196, 106, .88);
-  --wh-kicker: #f0c46a;
-  --wh-lede: rgba(255, 248, 236, .88);
+  --wh-text:        #f7f1e7;
+  --wh-brand:       #f7f1e7;
+  --wh-heading:     #f7f1e7;
+  --wh-muted:       rgba(247, 241, 231, .60);
+  --wh-copy:        rgba(247, 241, 231, .76);
+  --wh-copy-strong: rgba(247, 241, 231, .92);
+  --wh-label:       rgba(199, 192, 178, .86);
+  --wh-kicker:      #c7c0b2;
+  --wh-lede:        rgba(247, 241, 231, .82);
 
   --wh-page-bg:
-    radial-gradient(ellipse at 50% -12%, rgba(240, 196, 106, .20), transparent 34rem),
-    radial-gradient(circle at 8% 18%, rgba(169, 104, 93, .14), transparent 26rem),
-    radial-gradient(circle at 92% 10%, rgba(201, 164, 92, .12), transparent 28rem),
-    linear-gradient(180deg, #0d0a07 0%, #050403 58%, #020201 100%);
-
+    radial-gradient(ellipse at 50% -10%, rgba(167, 160, 151, .075), transparent 32rem),
+    radial-gradient(circle at 12% 16%, rgba(126, 110, 104, .045), transparent 22rem),
+    linear-gradient(180deg, #080706 0%, #040403 58%, #020201 100%);
   --wh-portal-layer:
-    radial-gradient(ellipse at 50% -18%, transparent 0 25rem, rgba(240, 196, 106, .10) 25.2rem, transparent 25.55rem),
-    radial-gradient(ellipse at 50% -18%, transparent 0 33rem, rgba(255, 248, 236, .05) 33.2rem, transparent 33.5rem),
-    linear-gradient(90deg, transparent, rgba(255, 248, 236, .035) 50%, transparent);
-  --wh-vignette-layer:
-    radial-gradient(circle at 50% 0%, transparent 0 24rem, rgba(0, 0, 0, .22) 48rem),
-    linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, .42) 100%);
-  --wh-grid-opacity: .58;
-  --wh-scan-opacity: .55;
+    radial-gradient(ellipse at 50% -18%, transparent 0 25rem, rgba(214, 209, 198, .035) 25.2rem, transparent 25.5rem),
+    linear-gradient(90deg, transparent, rgba(214, 209, 198, .014) 50%, transparent);
+  --wh-vignette-layer: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, .34) 100%);
+  --wh-grid-opacity: .30;
+  --wh-scan-opacity: .28;
 
-  --wh-header-bg: rgba(5, 4, 3, .78);
-  --wh-header-border: rgba(255, 248, 236, .12);
-  --wh-nav-bg: rgba(255, 248, 236, .035);
-  --wh-nav-text: rgba(255, 248, 236, .78);
-  --wh-nav-active-bg: rgba(240, 196, 106, .11);
-  --wh-nav-active-text: #fff8ec;
+  --wh-header-bg:        rgba(4, 4, 3, .88);
+  --wh-header-border:    rgba(214, 209, 198, .09);
+  --wh-nav-bg:           rgba(247, 241, 231, .035);
+  --wh-nav-text:         rgba(247, 241, 231, .72);
+  --wh-nav-active-bg:    rgba(214, 209, 198, .08);
+  --wh-nav-active-text:  #f7f1e7;
 
-  --wh-border-default: rgba(255, 248, 236, .16);
-  --wh-border-active: rgba(240, 196, 106, .48);
-  --wh-border-alert: rgba(169, 104, 93, .42);
-  --wh-hero-border: rgba(240, 196, 106, .34);
+  --wh-border-default: rgba(214, 209, 198, .13);
+  --wh-border-active:  rgba(214, 209, 198, .34);
+  --wh-border-alert:   rgba(126, 110, 104, .30);
+  --wh-hero-border:    rgba(214, 209, 198, .24);
 
   --wh-panel-bg:
-    linear-gradient(180deg, rgba(255, 248, 236, .06), rgba(255, 248, 236, .025)),
-    rgba(7, 5, 4, .78);
+    linear-gradient(180deg, rgba(247, 241, 231, .026), rgba(247, 241, 231, .012)),
+    rgba(7, 6, 5, .88);
   --wh-hero-bg:
-    radial-gradient(ellipse at 50% -10%, rgba(240, 196, 106, .16), transparent 30rem),
-    linear-gradient(180deg, rgba(12, 9, 7, .92), rgba(5, 4, 3, .86));
-
+    radial-gradient(ellipse at 50% -10%, rgba(167, 160, 151, .12), transparent 30rem),
+    linear-gradient(180deg, rgba(9, 8, 7, .94), rgba(5, 4, 3, .91));
   --wh-panel-atmosphere:
-    radial-gradient(circle at 0% 0%, rgba(169, 104, 93, .12), transparent 18rem),
-    radial-gradient(circle at 100% 0%, rgba(240, 196, 106, .10), transparent 20rem),
-    linear-gradient(90deg, rgba(255, 248, 236, .025), transparent 40%, rgba(240, 196, 106, .035));
-  --wh-panel-atmosphere-opacity: .92;
+    linear-gradient(90deg, rgba(247, 241, 231, .010), transparent 45%, rgba(214, 209, 198, .014));
+  --wh-panel-atmosphere-opacity: .70;
 
-  --wh-panel-shadow:
-    0 24px 70px rgba(0, 0, 0, .48),
-    inset 0 1px 0 rgba(255, 248, 236, .08);
-  --wh-hero-shadow:
-    0 30px 90px rgba(0, 0, 0, .58),
-    0 0 0 1px rgba(240, 196, 106, .10);
-  --wh-small-glow:
-    0 0 0 1px rgba(240, 196, 106, .18),
-    0 0 34px rgba(240, 196, 106, .14),
-    0 14px 34px rgba(0, 0, 0, .28);
+  --wh-panel-shadow: 0 10px 24px rgba(0, 0, 0, .28), inset 0 1px 0 rgba(247, 241, 231, .035);
+  --wh-hero-shadow:  0 14px 34px rgba(0, 0, 0, .36), 0 0 0 1px rgba(214, 209, 198, .055);
+  --wh-small-glow:   0 0 0 1px rgba(214, 209, 198, .10), 0 8px 18px rgba(0, 0, 0, .16);
 
-  --wh-h1-fill: #fff8ec;
-  --wh-h1-stroke: transparent;
-  --wh-h1-shadow:
-    0 12px 44px rgba(0, 0, 0, .44),
-    0 0 38px rgba(240, 196, 106, .12);
+  --wh-h1-fill:   #f7f1e7;
+  --wh-h1-shadow: none;
 
-  --wh-inner-bg:
-    linear-gradient(180deg, rgba(255, 248, 236, .055), rgba(255, 248, 236, .018)),
-    rgba(255, 248, 236, .035);
-  --wh-inner-border: rgba(255, 248, 236, .13);
-  --wh-divider: rgba(255, 248, 236, .12);
-  --wh-chip-bg: rgba(240, 196, 106, .075);
-  --wh-code-bg: rgba(0, 0, 0, .30);
-  --wh-code-text: #fff8ec;
+  --wh-inner-bg:     linear-gradient(180deg, rgba(247, 241, 231, .032), rgba(247, 241, 231, .014));
+  --wh-inner-border: rgba(214, 209, 198, .12);
+  --wh-divider:      rgba(214, 209, 198, .12);
+  --wh-chip-bg:      rgba(214, 209, 198, .075);
+  --wh-code-bg:      rgba(0, 0, 0, .22);
+  --wh-code-text:    #f7f1e7;
 
-  --wh-button-border: rgba(240, 196, 106, .42);
-  --wh-button-bg:
-    linear-gradient(180deg, rgba(240, 196, 106, .14), rgba(240, 196, 106, .05));
-  --wh-hot-button-bg:
-    linear-gradient(180deg, rgba(169, 104, 93, .18), rgba(169, 104, 93, .06));
-  --wh-button-text: #fff8ec;
+  --wh-button-border: rgba(214, 209, 198, .30);
+  --wh-button-bg:     linear-gradient(180deg, rgba(214, 209, 198, .10), rgba(214, 209, 198, .035));
+  --wh-hot-button-bg: linear-gradient(180deg, rgba(126, 110, 104, .11), rgba(126, 110, 104, .035));
+  --wh-button-text:   #f7f1e7;
 
-  --wh-input-border: rgba(255, 248, 236, .18);
-  --wh-input-bg: rgba(255, 248, 236, .045);
-  --wh-input-text: #fff8ec;
-  --wh-placeholder: rgba(255, 248, 236, .42);
+  --wh-input-border: rgba(214, 209, 198, .13);
+  --wh-input-bg:     rgba(247, 241, 231, .045);
+  --wh-input-text:   #f7f1e7;
+  --wh-placeholder:  rgba(247, 241, 231, .38);
 }
 
+/* Universal base ------------------------------------------------------- */
 html[data-skin="signal"] *,
 html[data-skin="signal"] *::before,
 html[data-skin="signal"] *::after {
@@ -179,12 +187,11 @@ html[data-skin="signal"] textarea {
 }
 
 html[data-skin="signal"] ::selection {
-  background: rgba(240, 196, 106, .32);
+  background: rgba(214, 209, 198, .28);
   color: var(--wh-ivory);
 }
 
-/* Header / Navigation ---------------------------------------------------- */
-
+/* Header / Navigation -------------------------------------------------- */
 html[data-skin="signal"] .site-header {
   position: sticky;
   top: 0;
@@ -259,7 +266,7 @@ html[data-skin="signal"] .mobile-menu-toggle,
 html[data-skin="signal"] .mobile-nav a {
   min-height: 34px;
   border: 1px solid transparent;
-  border-radius: 999px;
+  border-radius: 6px;
   background: var(--wh-nav-bg);
   color: var(--wh-nav-text);
   font-family: var(--font-mono);
@@ -269,7 +276,7 @@ html[data-skin="signal"] .mobile-nav a {
   line-height: 1;
   text-transform: uppercase;
   white-space: nowrap;
-  transition: border-color .18s ease, background .18s ease, color .18s ease, box-shadow .18s ease, transform .18s ease;
+  transition: border-color .18s ease, background .18s ease, color .18s ease;
 }
 
 html[data-skin="signal"] .site-nav a,
@@ -307,8 +314,6 @@ html[data-skin="signal"] .mobile-nav a.is-active {
   border-color: var(--wh-border-active);
   background: var(--wh-nav-active-bg);
   color: var(--wh-nav-active-text);
-  box-shadow: var(--wh-small-glow);
-  transform: translateY(-1px);
 }
 
 html[data-skin="signal"] .mobile-nav {
@@ -320,15 +325,14 @@ html[data-skin="signal"] .mobile-nav {
   flex-wrap: wrap;
 }
 
-/* Layout ---------------------------------------------------------------- */
-
+/* Layout shell --------------------------------------------------------- */
 html[data-skin="signal"] .shell,
 html[data-skin="signal"] .page-shell {
   width: var(--wh-page);
   margin: 0 auto;
   display: grid;
-  gap: clamp(24px, 4vw, 42px);
-  padding: clamp(28px, 5vw, 64px) 0;
+  gap: clamp(18px, 2.6vw, 32px);
+  padding: clamp(18px, 3.2vw, 42px) 0;
 }
 
 html[data-skin="signal"] .layout-two,
@@ -345,6 +349,7 @@ html[data-skin="signal"] .form-wide {
   grid-column: 1 / -1;
 }
 
+/* Panels --------------------------------------------------------------- */
 html[data-skin="signal"] .identity,
 html[data-skin="signal"] .panel,
 html[data-skin="signal"] .reference-section {
@@ -356,15 +361,7 @@ html[data-skin="signal"] .reference-section {
   box-shadow: var(--wh-panel-shadow);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-}
-
-html[data-skin="signal"] .identity,
-html[data-skin="signal"] .panel {
-  padding: clamp(22px, 4vw, 42px);
-}
-
-html[data-skin="signal"] .reference-section {
-  padding: clamp(22px, 4vw, 38px);
+  padding: clamp(18px, 2.8vw, 34px);
 }
 
 html[data-skin="signal"] .identity::before,
@@ -386,9 +383,8 @@ html[data-skin="signal"] .reference-section::after {
   inset: 0;
   pointer-events: none;
   border-radius: inherit;
-  background:
-    linear-gradient(90deg, transparent, rgba(240, 196, 106, .42), transparent) top left / 100% 1px no-repeat;
-  opacity: .58;
+  background: linear-gradient(90deg, transparent, rgba(214, 209, 198, .24), transparent) top left / 100% 1px no-repeat;
+  opacity: .34;
 }
 
 html[data-skin="signal"] .identity > *,
@@ -398,53 +394,58 @@ html[data-skin="signal"] .reference-section > * {
   z-index: 1;
 }
 
-html[data-skin="signal"] .identity:hover,
-html[data-skin="signal"] .panel:hover,
-html[data-skin="signal"] .reference-section:hover {
-  border-color: var(--wh-border-active);
-  box-shadow: var(--wh-panel-shadow), var(--wh-small-glow);
+/* Semantic panel modifiers (color shift via tokens, no layout change) */
+html[data-skin="signal"] .danger-card {
+  --wh-border-default: var(--wh-border-alert);
 }
 
-/* Hero / Identity -------------------------------------------------------- */
-
-html[data-skin="signal"] .signal-hero {
-  min-height: clamp(520px, 72vh, 860px);
+/* Hero modifier — opt-in cinematic register for entry/portal pages.
+   Apply via class="identity identity--hero". Reusable on Gateway and any
+   future entry page that should carry the larger hero rhythm. */
+html[data-skin="signal"] .identity--hero {
+  min-height: clamp(340px, 52vh, 640px);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   border-color: var(--wh-hero-border);
   background: var(--wh-hero-bg);
   box-shadow: var(--wh-hero-shadow);
+  padding-block: clamp(34px, 5vw, 58px);
 }
 
-html[data-skin="signal"] .signal-hero::before {
+html[data-skin="signal"] .identity--hero::before {
   background:
-    radial-gradient(ellipse at 50% 12%, transparent 0 11rem, rgba(240, 196, 106, .22) 11.1rem, transparent 11.35rem),
-    radial-gradient(ellipse at 50% 12%, transparent 0 16rem, rgba(255, 248, 236, .08) 16.1rem, transparent 16.4rem),
-    radial-gradient(circle at 18% 20%, rgba(169, 104, 93, .16), transparent 16rem),
-    radial-gradient(circle at 82% 18%, rgba(240, 196, 106, .13), transparent 18rem),
-    linear-gradient(135deg, rgba(255, 248, 236, .04), transparent 48%);
-  opacity: .95;
+    radial-gradient(ellipse at 50% 12%, transparent 0 11rem, rgba(214, 209, 198, .14) 11.1rem, transparent 11.35rem),
+    radial-gradient(ellipse at 50% 12%, transparent 0 16rem, rgba(247, 241, 231, .06) 16.1rem, transparent 16.4rem),
+    radial-gradient(circle at 18% 20%, rgba(126, 110, 104, .12), transparent 16rem),
+    radial-gradient(circle at 82% 18%, rgba(214, 209, 198, .10), transparent 18rem),
+    linear-gradient(135deg, rgba(247, 241, 231, .03), transparent 48%);
+  opacity: .58;
 }
 
-html[data-skin="signal"] .kicker,
-html[data-skin="signal"] .panel-kicker,
-html[data-skin="signal"] .status-label,
-html[data-skin="signal"] label > span {
-  margin: 0 0 8px;
-  color: var(--wh-kicker);
-  font-family: var(--font-mono);
-  font-size: .72rem;
-  font-weight: 900;
-  letter-spacing: .16em;
-  text-transform: uppercase;
+html[data-skin="signal"] .identity--hero > .kicker,
+html[data-skin="signal"] .identity--hero > .panel-kicker {
+  margin-bottom: 28px;
 }
 
-html[data-skin="signal"] .panel-kicker.is-danger,
-html[data-skin="signal"] .is-danger {
-  color: var(--wh-clay);
+html[data-skin="signal"] .identity--hero h1 {
+  margin-bottom: 18px;
 }
 
+html[data-skin="signal"] .identity--hero > .lede,
+html[data-skin="signal"] .identity--hero > .support-copy,
+html[data-skin="signal"] .identity--hero > p {
+  margin-bottom: 22px;
+  line-height: 1.50;
+}
+
+html[data-skin="signal"] .identity--hero > .page-actions,
+html[data-skin="signal"] .identity--hero > .controls {
+  margin-top: 2px;
+  gap: 10px;
+}
+
+/* Typography ladder ---------------------------------------------------- */
 html[data-skin="signal"] h1,
 html[data-skin="signal"] h2,
 html[data-skin="signal"] h3,
@@ -452,697 +453,41 @@ html[data-skin="signal"] p {
   margin-top: 0;
 }
 
-html[data-skin="signal"] h1 {
-  max-width: 980px;
-  margin-bottom: 18px;
-  color: var(--wh-h1-fill);
-  font-family: var(--font-display);
-  font-size: clamp(4rem, 12vw, 10rem);
-  font-weight: 600;
-  letter-spacing: -.055em;
-  line-height: .82;
-  text-transform: uppercase;
-  text-shadow: var(--wh-h1-shadow);
-}
-
-html[data-skin="signal"] h2 {
-  margin-bottom: 18px;
-  color: var(--wh-heading);
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 5vw, 4.2rem);
-  font-weight: 600;
-  letter-spacing: -.035em;
-  line-height: .92;
-  text-transform: uppercase;
-}
-
-html[data-skin="signal"] h3 {
-  margin-bottom: 10px;
-  color: var(--wh-heading);
-  font-family: var(--font-heading);
-  font-size: .96rem;
-  font-weight: 800;
-  letter-spacing: .08em;
-  line-height: 1.18;
-  text-transform: uppercase;
-}
-
-html[data-skin="signal"] .lede {
-  max-width: 720px;
-  margin-bottom: 26px;
-  color: var(--wh-lede);
-  font-size: clamp(1.05rem, 2vw, 1.36rem);
-  line-height: 1.45;
-}
-
-html[data-skin="signal"] p,
-html[data-skin="signal"] li,
-html[data-skin="signal"] .support-copy,
-html[data-skin="signal"] .seq-body,
-html[data-skin="signal"] .state-value,
-html[data-skin="signal"] .reference-value {
-  color: var(--wh-copy);
-}
-
-html[data-skin="signal"] strong,
-html[data-skin="signal"] .status-value,
-html[data-skin="signal"] .state-label {
-  color: var(--wh-copy-strong);
-}
-
-html[data-skin="signal"] .footer {
-  width: var(--wh-page);
-  margin: 0 auto;
-  padding: 24px 0 44px;
-  color: var(--wh-muted);
-  font-family: var(--font-mono);
-  font-size: .7rem;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-}
-
-/* Buttons / Actions ------------------------------------------------------ */
-
-html[data-skin="signal"] .controls,
-html[data-skin="signal"] .page-actions,
-html[data-skin="signal"] .signal-lab-actions,
-html[data-skin="signal"] .template-list,
-html[data-skin="signal"] .command-template-list,
-html[data-skin="signal"] .inline-chip-list,
-html[data-skin="signal"] .prev-next-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}html[data-skin="signal"] .button,
-html[data-skin="signal"] .page-actions a,
-html[data-skin="signal"] .command-chip,
-html[data-skin="signal"] .switch-add-row button,
-html[data-skin="signal"] .command-input-row button,
-html[data-skin="signal"] .ledger-item__actions button,
-html[data-skin="signal"] .utility-link,
-html[data-skin="signal"] .plain-link {
-  min-height: 39px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid var(--wh-button-border);
-  border-radius: 999px;
-  padding: 9px 14px;
-  background: var(--wh-button-bg);
-  color: var(--wh-button-text);
-  font-family: var(--font-mono);
-  font-size: .72rem;
-  font-weight: 900;
-  letter-spacing: .13em;
-  line-height: 1;
-  text-transform: uppercase;
-  cursor: pointer;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, .18);
-  transition: border-color .18s ease, background .18s ease, color .18s ease, box-shadow .18s ease, transform .18s ease;
-}
-
-html[data-skin="signal"] .button--hot,
-html[data-skin="signal"] .danger-card .button,
-html[data-skin="signal"] .seq-row--firewall .button {
-  border-color: var(--wh-border-alert);
-  background: var(--wh-hot-button-bg);
-}html[data-skin="signal"] .button:hover,
-html[data-skin="signal"] .button:focus-visible,
-html[data-skin="signal"] .page-actions a:hover,
-html[data-skin="signal"] .page-actions a:focus-visible,
-html[data-skin="signal"] .command-chip:hover,
-html[data-skin="signal"] .command-chip:focus-visible,
-html[data-skin="signal"] .switch-add-row button:hover,
-html[data-skin="signal"] .switch-add-row button:focus-visible,
-html[data-skin="signal"] .command-input-row button:hover,
-html[data-skin="signal"] .command-input-row button:focus-visible,
-html[data-skin="signal"] .ledger-item__actions button:hover,
-html[data-skin="signal"] .ledger-item__actions button:focus-visible,
-html[data-skin="signal"] .utility-link:hover,
-html[data-skin="signal"] .utility-link:focus-visible,
-html[data-skin="signal"] .plain-link:hover,
-html[data-skin="signal"] .plain-link:focus-visible {
-  outline: none;
-  border-color: var(--wh-border-active);
-  box-shadow: var(--wh-small-glow);
-  transform: translateY(-1px);
-}
-
-/* Rows / Reference Blocks ------------------------------------------------ */
-
-html[data-skin="signal"] .sequence,
-html[data-skin="signal"] .status-strip,
-html[data-skin="signal"] .state-table,
-html[data-skin="signal"] .reference-table,
-html[data-skin="signal"] .flat-list,
-html[data-skin="signal"] .mini-state-list,
-html[data-skin="signal"] .standing-decree-list,
-html[data-skin="signal"] .bank-list,
-html[data-skin="signal"] .ledger-list {
-  display: grid;
-  gap: 12px;
-}
-
-html[data-skin="signal"] .seq-row,
-html[data-skin="signal"] .state-row,
-html[data-skin="signal"] .reference-row,
-html[data-skin="signal"] .flat-row,
-html[data-skin="signal"] .status-row,
-html[data-skin="signal"] .ref-block,
-html[data-skin="signal"] .signal-form-block,
-html[data-skin="signal"] .mini-state,
-html[data-skin="signal"] .custom-status-row,
-html[data-skin="signal"] .ledger-item,
-html[data-skin="signal"] code {
-  position: relative;
-  overflow: hidden;
-  border: 1px solid var(--wh-inner-border);
-  border-radius: var(--wh-radius-sm);
-  background: var(--wh-inner-bg);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 248, 236, .055),
-    0 10px 26px rgba(0, 0, 0, .12);
-  transition: border-color .18s ease, box-shadow .18s ease, background .18s ease, transform .18s ease;
-}
-
-html[data-skin="signal"] .seq-row,
-html[data-skin="signal"] .state-row,
-html[data-skin="signal"] .reference-row,
-html[data-skin="signal"] .flat-row,
-html[data-skin="signal"] .status-row,
-html[data-skin="signal"] .custom-status-row {
-  display: grid;
-  grid-template-columns: minmax(90px, .34fr) minmax(0, 1fr);
-  gap: 14px;
-  align-items: start;
-  padding: 15px 16px;
-}
-
-html[data-skin="signal"] .seq-row {
-  grid-template-columns: 54px minmax(160px, .42fr) minmax(0, 1fr);
-}
-
-html[data-skin="signal"] .seq-index,
-html[data-skin="signal"] .seq-label,
-html[data-skin="signal"] .state-label,
-html[data-skin="signal"] .reference-key,
-html[data-skin="signal"] .status-label,
-html[data-skin="signal"] .ledger-item__meta {
-  color: var(--wh-label);
-  font-family: var(--font-mono);
-  font-size: .72rem;
-  font-weight: 900;
-  letter-spacing: .13em;
-  text-transform: uppercase;
-}
-
-html[data-skin="signal"] .seq-index {
-  display: inline-grid;
-  place-items: center;
-  width: 36px;
-  height: 36px;
-  border: 1px solid var(--wh-border-active);
-  border-radius: 999px;
-  color: var(--wh-gold-hot);
-  background: var(--wh-chip-bg);
-}
-
-html[data-skin="signal"] .seq-index--blank {
-  opacity: .28;
-}
-
-html[data-skin="signal"] .seq-body {
-  min-width: 0;
-}
-
-html[data-skin="signal"] .ref-block,
-html[data-skin="signal"] .signal-form-block,
-html[data-skin="signal"] .mini-state,
-html[data-skin="signal"] .ledger-item {
-  padding: 16px;
-}
-
-html[data-skin="signal"] .seq-row:hover,
-html[data-skin="signal"] .state-row:hover,
-html[data-skin="signal"] .reference-row:hover,
-html[data-skin="signal"] .flat-row:hover,
-html[data-skin="signal"] .status-row:hover,
-html[data-skin="signal"] .ref-block:hover,
-html[data-skin="signal"] .signal-form-block:hover,
-html[data-skin="signal"] .mini-state:hover,
-html[data-skin="signal"] .custom-status-row:hover,
-html[data-skin="signal"] .ledger-item:hover,
-html[data-skin="signal"] code:hover {
-  transform: translateY(-1px);
-  border-color: var(--wh-border-active);
-  box-shadow: var(--wh-small-glow);
-}
-
-html[data-skin="signal"] .is-active,
-html[data-skin="signal"] .state-on,
-html[data-skin="signal"] [aria-pressed="true"],
-html[data-skin="signal"] .status-active,
-html[data-skin="signal"] .status-complete,
-html[data-skin="signal"] .status-ready {
-  border-color: var(--wh-border-active);
-  color: var(--wh-copy-strong);
-}
-
-html[data-skin="signal"] .status-breach,
-html[data-skin="signal"] .status-denied,
-html[data-skin="signal"] .status-firewall,
-html[data-skin="signal"] .status-pending {
-  border-color: var(--wh-border-alert);
-}
-
-/* Level directory: cinematic path cards without changing markup. */
-html[data-skin="signal"] #preview-levels .state-table {
-  gap: 14px;
-}
-
-html[data-skin="signal"] #preview-levels .state-row {
-  min-height: 112px;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: center;
-  padding: 18px 20px;
-  border-radius: var(--wh-radius);
-  border-color: var(--wh-border-default);
-  background:
-    radial-gradient(circle at 12% 18%, rgba(169, 104, 93, .16), transparent 24rem),
-    radial-gradient(circle at 86% 12%, rgba(240, 196, 106, .12), transparent 22rem),
-    linear-gradient(180deg, rgba(255, 248, 236, .075), rgba(255, 248, 236, .025)),
-    rgba(7, 5, 4, .80);
-}
-
-html[data-skin="signal"] #preview-levels .state-row:hover {
-  border-color: var(--wh-border-active);
-  background:
-    radial-gradient(circle at 50% 0%, rgba(240, 196, 106, .20), transparent 18rem),
-    linear-gradient(180deg, rgba(255, 248, 236, .09), rgba(255, 248, 236, .03)),
-    rgba(7, 5, 4, .86);
-}
-
-html[data-skin="signal"] #preview-levels .state-label--link {
-  color: var(--wh-heading);
-  font-family: var(--font-display);
-  font-size: clamp(1.45rem, 4vw, 3.8rem);
-  line-height: .9;
-  letter-spacing: -.035em;
-  text-transform: uppercase;
-}
-
-html[data-skin="signal"] #preview-levels .utility-link--open {
-  white-space: nowrap;
-}
-
-/* Forms ----------------------------------------------------------------- */
-
-html[data-skin="signal"] label {
-  display: grid;
-  gap: 6px;
-}
-
-html[data-skin="signal"] input,
-html[data-skin="signal"] select,
-html[data-skin="signal"] textarea {
-  width: 100%;
-  border: 1px solid var(--wh-input-border);
-  border-radius: 12px;
-  padding: 11px 12px;
-  background: var(--wh-input-bg);
-  color: var(--wh-input-text);
-  font-family: var(--font-body);
-  line-height: 1.35;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 248, 236, .04),
-    0 0 0 1px rgba(0, 0, 0, .10);
-  transition: border-color .18s ease, box-shadow .18s ease, background .18s ease;
-}
-
-html[data-skin="signal"] textarea {
-  min-height: 120px;
-  resize: vertical;
-}
-
-html[data-skin="signal"] input::placeholder,
-html[data-skin="signal"] textarea::placeholder {
-  color: var(--wh-placeholder);
-}
-
-html[data-skin="signal"] input:hover,
-html[data-skin="signal"] input:focus,
-html[data-skin="signal"] select:hover,
-html[data-skin="signal"] select:focus,
-html[data-skin="signal"] textarea:hover,
-html[data-skin="signal"] textarea:focus {
-  outline: none;
-  border-color: var(--wh-border-active);
-  box-shadow:
-    0 0 0 1px rgba(240, 196, 106, .28),
-    0 0 0 3px rgba(240, 196, 106, .10),
-    inset 0 1px 0 rgba(255, 248, 236, .06);
-}
-
-html[data-skin="signal"] .switch-add-row,
-html[data-skin="signal"] .command-input-row,
-html[data-skin="signal"] .law-form,
-html[data-skin="signal"] .peak-form,
-html[data-skin="signal"] .three-part-form,
-html[data-skin="signal"] .utility-form {
-  display: grid;
-  gap: 12px;
-}
-
-html[data-skin="signal"] .switch-add-row,
-html[data-skin="signal"] .command-input-row {
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: end;
-}
-
-/* Custom / Bank generated content --------------------------------------- */
-
-html[data-skin="signal"] .ledger-item {
-  display: grid;
-  gap: 12px;
-}
-
-html[data-skin="signal"] .ledger-item__meta,
-html[data-skin="signal"] .ledger-item__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-html[data-skin="signal"] .ledger-item__text,
-html[data-skin="signal"] .empty-state {
-  color: var(--wh-copy);
-}
-
-html[data-skin="signal"] .empty-state {
-  margin: 0;
-  font-style: italic;
-}
-
-html[data-skin="signal"] code {
-  display: inline-block;
-  padding: .12em .45em;
-  color: var(--wh-code-text);
-  font-family: var(--font-mono);
-  font-size: .88em;
-  background: var(--wh-code-bg);
-}
-
-html[data-skin="signal"] .inline-chip {
-  display: inline-flex;
-  align-items: center;
-  border: 1px solid var(--wh-inner-border);
-  border-radius: 999px;
-  padding: .35rem .55rem;
-  background: var(--wh-chip-bg);
-  color: var(--wh-label);
-  font-family: var(--font-mono);
-  font-size: .68rem;
-  letter-spacing: .11em;
-  text-transform: uppercase;
-}
-
-/* Responsive ------------------------------------------------------------- */
-
-@media (max-width: 860px) {
-  html[data-skin="signal"] .site-header__inner {
-    grid-template-columns: minmax(145px, 1fr) auto;
-  }
-
-  html[data-skin="signal"] .site-nav {
-    display: none;
-  }
-
-  html[data-skin="signal"] .mobile-menu-toggle {
-    display: inline-flex;
-  }
-
-  html[data-skin="signal"] .mobile-nav.is-open {
-    display: flex;
-  }
-
-  html[data-skin="signal"] .layout-two,
-  html[data-skin="signal"] .signal-panel-grid,
-  html[data-skin="signal"] .bank-filter-grid,
-  html[data-skin="signal"] .config-grid {
-    grid-template-columns: 1fr;
-  }
-
-  html[data-skin="signal"] .seq-row {
-    grid-template-columns: 44px minmax(0, 1fr);
-  }
-
-  html[data-skin="signal"] .seq-body {
-    grid-column: 2;
-  }
-
-  html[data-skin="signal"] .switch-add-row,
-  html[data-skin="signal"] .command-input-row {
-    grid-template-columns: 1fr;
-    align-items: stretch;
-  }
-}
-
-@media (max-width: 640px) {
-  html[data-skin="signal"] {
-    --wh-page: min(calc(100vw - 20px), 1120px);
-    --wh-radius: 18px;
-    --wh-radius-sm: 12px;
-  }
-
-  html[data-skin="signal"] .site-header__inner {
-    gap: 8px;
-  }
-
-  html[data-skin="signal"] .theme-toggle,
-  html[data-skin="signal"] .mobile-menu-toggle {
-    min-height: 31px;
-    padding: 0 8px;
-    font-size: .64rem;
-  }
-
-  html[data-skin="signal"] .brand {
-    font-size: .92rem;
-    letter-spacing: .035em;
-  }
-
-  html[data-skin="signal"] .brand__sub {
-    font-size: .56rem;
-  }
-
-  html[data-skin="signal"] .shell,
-  html[data-skin="signal"] .page-shell {
-    padding-top: 20px;
-    gap: 22px;
-  }
-
-  html[data-skin="signal"] .identity,
-  html[data-skin="signal"] .panel,
-  html[data-skin="signal"] .reference-section {
-    padding: 20px;
-  }
-
-  html[data-skin="signal"] .signal-hero {
-    min-height: 620px;
-  }
-
-  html[data-skin="signal"] h1 {
-    font-size: clamp(3.35rem, 18vw, 6.4rem);
-    line-height: .86;
-    letter-spacing: -.055em;
-    overflow-wrap: anywhere;
-  }
-
-  html[data-skin="signal"] h2 {
-    font-size: clamp(1.85rem, 10vw, 3rem);
-  }
-
-  html[data-skin="signal"] .controls,
-  html[data-skin="signal"] .page-actions,
-  html[data-skin="signal"] .template-list,
-  html[data-skin="signal"] .command-template-list {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-
-  html[data-skin="signal"] .button,
-  html[data-skin="signal"] .page-actions a,
-  html[data-skin="signal"] .command-chip {
-    width: 100%;
-  }
-
-  html[data-skin="signal"] .state-row,
-  html[data-skin="signal"] .reference-row,
-  html[data-skin="signal"] .flat-row,
-  html[data-skin="signal"] .status-row,
-  html[data-skin="signal"] .custom-status-row {
-    grid-template-columns: 1fr;
-    gap: 6px;
-  }
-
-  html[data-skin="signal"] #preview-levels .state-row {
-    min-height: 132px;
-    grid-template-columns: 1fr;
-    align-items: start;
-  }
-}
-/* =========================================================
-   WORMHOLE CLEAN STYLE SYSTEM
-   Replacement consolidation: one authority for Wormhole styles.
-   No HTML / JS / font-family changes. No Utility cloning.
-   ========================================================= */
-
-html[data-skin="signal"] {
-  --wh-radius: 14px;
-  --wh-radius-sm: 8px;
-  --wh-page: min(1180px, calc(100vw - 28px));
-
-  --wh-space-1: 4px;
-  --wh-space-2: 8px;
-  --wh-space-3: 12px;
-  --wh-space-4: 18px;
-  --wh-space-5: 24px;
-  --wh-space-6: 32px;
-
-  --wh-row-index-col: 2.5ch;
-  --wh-row-label-col: clamp(5.8rem, 12vw, 7rem);
-  --wh-row-gap: 14px;
-  --wh-row-divider: rgba(214, 209, 198, .15);
-  --wh-row-divider-soft: rgba(214, 209, 198, .10);
-  --wh-row-hover: linear-gradient(90deg, rgba(214, 209, 198, .055), transparent 46%);
-}
-
-html[data-skin="signal"][data-theme="dark"] {
-  --wh-void: #020201;
-  --wh-black: #060504;
-  --wh-ink: #0d0c0a;
-  --wh-espresso: #14120f;
-  --wh-bronze: #746b5d;
-  --wh-gold: #a7a097;
-  --wh-gold-hot: #d6d2c7;
-  --wh-clay: #7e6e68;
-  --wh-clay-soft: #7e6e68;
-  --wh-ivory: #f7f1e7;
-
-  --wh-text: #f7f1e7;
-  --wh-brand: #f7f1e7;
-  --wh-heading: #f7f1e7;
-  --wh-muted: rgba(247, 241, 231, .60);
-  --wh-copy: rgba(247, 241, 231, .76);
-  --wh-copy-strong: rgba(247, 241, 231, .92);
-  --wh-label: rgba(199, 192, 178, .86);
-  --wh-kicker: #c7c0b2;
-  --wh-lede: rgba(247, 241, 231, .82);
-
-  --wh-page-bg:
-    radial-gradient(ellipse at 50% -10%, rgba(167, 160, 151, .075), transparent 32rem),
-    radial-gradient(circle at 12% 16%, rgba(126, 110, 104, .045), transparent 22rem),
-    linear-gradient(180deg, #080706 0%, #040403 58%, #020201 100%);
-  --wh-portal-layer:
-    radial-gradient(ellipse at 50% -18%, transparent 0 25rem, rgba(214, 209, 198, .035) 25.2rem, transparent 25.5rem),
-    linear-gradient(90deg, transparent, rgba(214, 209, 198, .014) 50%, transparent);
-  --wh-vignette-layer: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, .34) 100%);
-  --wh-grid-opacity: .30;
-  --wh-scan-opacity: .28;
-
-  --wh-header-bg: rgba(4, 4, 3, .88);
-  --wh-header-border: rgba(214, 209, 198, .09);
-  --wh-nav-bg: rgba(247, 241, 231, .035);
-  --wh-nav-text: rgba(247, 241, 231, .72);
-  --wh-nav-active-bg: rgba(214, 209, 198, .08);
-  --wh-nav-active-text: #f7f1e7;
-
-  --wh-border-default: rgba(214, 209, 198, .13);
-  --wh-border-active: rgba(214, 209, 198, .34);
-  --wh-border-alert: rgba(126, 110, 104, .30);
-  --wh-hero-border: rgba(214, 209, 198, .24);
-
-  --wh-panel-bg:
-    linear-gradient(180deg, rgba(247, 241, 231, .026), rgba(247, 241, 231, .012)),
-    rgba(7, 6, 5, .88);
-  --wh-hero-bg: linear-gradient(180deg, rgba(9, 8, 7, .94), rgba(5, 4, 3, .91));
-  --wh-panel-atmosphere: linear-gradient(90deg, rgba(247, 241, 231, .010), transparent 45%, rgba(214, 209, 198, .014));
-  --wh-panel-atmosphere-opacity: .70;
-
-  --wh-panel-shadow: 0 10px 24px rgba(0, 0, 0, .28), inset 0 1px 0 rgba(247, 241, 231, .035);
-  --wh-hero-shadow: 0 14px 34px rgba(0, 0, 0, .36), 0 0 0 1px rgba(214, 209, 198, .055);
-  --wh-small-glow: 0 0 0 1px rgba(214, 209, 198, .10), 0 8px 18px rgba(0, 0, 0, .16);
-
-  --wh-inner-bg: linear-gradient(180deg, rgba(247, 241, 231, .032), rgba(247, 241, 231, .014));
-  --wh-inner-border: rgba(214, 209, 198, .12);
-  --wh-divider: rgba(214, 209, 198, .12);
-  --wh-chip-bg: rgba(214, 209, 198, .075);
-  --wh-code-bg: rgba(0, 0, 0, .22);
-  --wh-code-text: #f7f1e7;
-
-  --wh-button-border: rgba(214, 209, 198, .30);
-  --wh-button-bg: linear-gradient(180deg, rgba(214, 209, 198, .10), rgba(214, 209, 198, .035));
-  --wh-hot-button-bg: linear-gradient(180deg, rgba(126, 110, 104, .11), rgba(126, 110, 104, .035));
-  --wh-button-text: #f7f1e7;
-
-  --wh-input-border: rgba(214, 209, 198, .13);
-  --wh-input-bg: rgba(247, 241, 231, .045);
-  --wh-input-text: #f7f1e7;
-  --wh-placeholder: rgba(247, 241, 231, .38);
-}
-
-/* Base structure --------------------------------------------------------- */
-html[data-skin="signal"] .shell,
-html[data-skin="signal"] .page-shell {
-  gap: clamp(18px, 2.6vw, 32px);
-  padding: clamp(18px, 3.2vw, 42px) 0;
-}
-
-html[data-skin="signal"] .identity,
-html[data-skin="signal"] .panel,
-html[data-skin="signal"] .reference-section {
-  border-radius: var(--wh-radius);
-  border-color: var(--wh-border-default);
-  background: var(--wh-panel-bg);
-  box-shadow: var(--wh-panel-shadow);
-  padding: clamp(18px, 2.8vw, 34px);
-}
-
-html[data-skin="signal"] .identity:hover,
-html[data-skin="signal"] .panel:hover,
-html[data-skin="signal"] .reference-section:hover {
-  border-color: var(--wh-border-default);
-  box-shadow: var(--wh-panel-shadow);
-}
-
-html[data-skin="signal"] .identity::after,
-html[data-skin="signal"] .panel::after,
-html[data-skin="signal"] .reference-section::after {
-  background: linear-gradient(90deg, transparent, rgba(214, 209, 198, .24), transparent) top left / 100% 1px no-repeat;
-  opacity: .34;
-}
-
-/* Typography hierarchy -------------------------------------------------- */
+/* H1 — page identity. Calm scale by default. */
 html[data-skin="signal"] h1 {
   max-width: 760px;
-  margin: 0 0 var(--wh-space-4);
-  color: var(--wh-heading);
+  margin: 0 0 10px;
+  color: var(--wh-h1-fill);
   font-family: var(--font-display);
   font-size: clamp(2.1rem, 4.35vw, 3.95rem);
   font-weight: 600;
   letter-spacing: -.028em;
   line-height: 1.06;
   text-transform: uppercase;
-  text-shadow: none;
+  text-shadow: var(--wh-h1-shadow);
 }
 
-html[data-skin="signal"] h2,
-html[data-skin="signal"] .panel h2,
-html[data-skin="signal"] .sequence-title,
-html[data-skin="signal"] .section-title,
-html[data-skin="signal"] .state-table h2,
-html[data-skin="signal"] .reference-section h2 {
+/* Cinematic H1 modifier — opt-in. Apply via class="h1--cinematic" on the
+   <h1> when the page identity should feel larger. Inside .identity--hero
+   it engages automatically. Available systemically. */
+html[data-skin="signal"] h1.h1--cinematic,
+html[data-skin="signal"] .identity--hero h1 {
+  font-size: clamp(3.4rem, 8.5vw, 6.8rem);
+  letter-spacing: -.04em;
+  line-height: .94;
+}
+
+/* H1 + support copy collapse: lede/p hugs the title */
+html[data-skin="signal"] h1 + .lede,
+html[data-skin="signal"] h1 + .support-copy,
+html[data-skin="signal"] h1 + p {
+  margin-top: 0;
+}
+
+/* H2 — primary section heading. ONE style, mode-wide. No private variants. */
+html[data-skin="signal"] h2 {
   max-width: 760px;
-  margin: 0 0 var(--wh-space-4);
+  margin: 0 0 18px;
   color: var(--wh-heading);
   font-family: var(--font-display);
   font-style: italic;
@@ -1154,26 +499,44 @@ html[data-skin="signal"] .reference-section h2 {
   text-shadow: none;
 }
 
+/* H3 — subsection heading. Distinct from row keys: italic Cormorant,
+   sentence case, larger than mono row labels. */
 html[data-skin="signal"] h3 {
-  margin: 0 0 var(--wh-space-2);
+  margin: 30px 0 14px;
   color: var(--wh-heading);
-  font-family: var(--font-heading);
-  font-size: .88rem;
-  font-weight: 800;
-  letter-spacing: .01em;
-  line-height: 1.22;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.18rem, 2vw, 1.55rem);
+  font-weight: 600;
+  letter-spacing: -.012em;
+  line-height: 1.08;
   text-transform: none;
 }
 
+/* First subsection in a card should not float too far down */
+html[data-skin="signal"] h2 + h3,
+html[data-skin="signal"] .lede + h3,
+html[data-skin="signal"] .support-copy + h3,
+html[data-skin="signal"] .panel > h3:first-child,
+html[data-skin="signal"] .reference-section > h3:first-child {
+  margin-top: 18px;
+}
+
+/* Subsection groups need separation from the previous table */
+html[data-skin="signal"] .flat-list + h3,
+html[data-skin="signal"] .reference-table + h3,
+html[data-skin="signal"] .state-table + h3,
+html[data-skin="signal"] .status-strip + h3,
+html[data-skin="signal"] .sequence + h3 {
+  margin-top: 34px;
+}
+
+/* Kickers / metadata labels — small mono uppercase tracked. */
 html[data-skin="signal"] .kicker,
 html[data-skin="signal"] .panel-kicker,
-html[data-skin="signal"] .status-label,
-html[data-skin="signal"] label > span,
-html[data-skin="signal"] .seq-label,
-html[data-skin="signal"] .state-label,
-html[data-skin="signal"] .reference-key,
-html[data-skin="signal"] .ledger-item__meta {
-  margin: 0 0 var(--wh-space-2);
+html[data-skin="signal"] label > span {
+  display: block;
+  margin: 0 0 8px;
   color: var(--wh-kicker);
   font-family: var(--font-mono);
   font-size: .62rem;
@@ -1183,46 +546,39 @@ html[data-skin="signal"] .ledger-item__meta {
   text-transform: uppercase;
 }
 
+html[data-skin="signal"] .panel-kicker.is-danger,
+html[data-skin="signal"] .is-danger {
+  color: var(--wh-clay);
+}
+
+/* Lede / support copy — readable secondary, not heading-weight. */
 html[data-skin="signal"] .lede,
 html[data-skin="signal"] .support-copy,
 html[data-skin="signal"] .panel > .lede,
 html[data-skin="signal"] .reference-section > .lede {
   max-width: 42rem;
-  margin: 0 0 var(--wh-space-4);
-  color: var(--wh-copy);
+  margin: 0 0 18px;
+  color: var(--wh-lede);
   font-family: var(--font-body);
-  font-size: clamp(.90rem, 1.1vw, .98rem);
+  font-size: clamp(.95rem, 1.15vw, 1.05rem);
   font-style: normal;
   font-weight: 450;
   letter-spacing: .003em;
-  line-height: 1.44;
+  line-height: 1.48;
 }
 
 html[data-skin="signal"] p,
-html[data-skin="signal"] li,
-html[data-skin="signal"] .seq-body,
-html[data-skin="signal"] .state-value,
-html[data-skin="signal"] .reference-value,
-html[data-skin="signal"] .ledger-item__text {
+html[data-skin="signal"] li {
   color: var(--wh-copy);
   line-height: 1.44;
 }
 
-html[data-skin="signal"] strong,
-html[data-skin="signal"] .status-value,
-html[data-skin="signal"] .state-label {
+html[data-skin="signal"] strong {
   color: var(--wh-copy-strong);
+  font-weight: 620;
 }
 
-/* Header / controls ----------------------------------------------------- */
-html[data-skin="signal"] .site-nav a,
-html[data-skin="signal"] .theme-toggle,
-html[data-skin="signal"] .mobile-menu-toggle,
-html[data-skin="signal"] .mobile-nav a {
-  border-radius: 6px;
-  box-shadow: none;
-}
-
+/* Buttons / Action system --------------------------------------------- */
 html[data-skin="signal"] .controls,
 html[data-skin="signal"] .page-actions,
 html[data-skin="signal"] .signal-lab-actions,
@@ -1230,94 +586,108 @@ html[data-skin="signal"] .template-list,
 html[data-skin="signal"] .command-template-list,
 html[data-skin="signal"] .inline-chip-list,
 html[data-skin="signal"] .prev-next-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   gap: 8px;
-}html[data-skin="signal"] .button,
+}
+
+html[data-skin="signal"] .identity--hero .page-actions,
+html[data-skin="signal"] .identity--hero .controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
+  gap: 8px;
+  align-items: center;
+}
+
+/* Primary action — display italic, calm 4px radius, mode-wide. */
+html[data-skin="signal"] .button,
 html[data-skin="signal"] .page-actions a,
-html[data-skin="signal"] .command-chip,
 html[data-skin="signal"] .switch-add-row button,
 html[data-skin="signal"] .command-input-row button,
 html[data-skin="signal"] .ledger-item__actions button,
-html[data-skin="signal"] .utility-link,
-html[data-skin="signal"] .plain-link,
 html[data-skin="signal"] .prev-next-nav a {
-  min-height: 2.18rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  min-height: 2.05rem;
+  padding: .44rem .82rem;
+  border: 1px solid var(--wh-button-border);
   border-radius: 4px;
-  padding: .48rem .82rem;
-  box-shadow: none;
-  line-height: 1;
-}html[data-skin="signal"] .button,
-html[data-skin="signal"] .page-actions a,
-html[data-skin="signal"] .prev-next-nav a {
+  background: var(--wh-button-bg);
+  color: var(--wh-button-text);
   font-family: var(--font-display);
   font-size: .98rem;
   font-style: italic;
   font-weight: 600;
-  letter-spacing: .02em;
+  letter-spacing: .015em;
+  line-height: 1;
   text-transform: none;
+  cursor: pointer;
+  box-shadow: none;
+  transition: border-color .18s ease, background .18s ease, box-shadow .18s ease, color .18s ease;
 }
 
+/* Mono-chip variant — inline metadata controls (copy chips, utility links). */
 html[data-skin="signal"] .command-chip,
-html[data-skin="signal"] .switch-add-row button,
-html[data-skin="signal"] .command-input-row button,
-html[data-skin="signal"] .ledger-item__actions button,
 html[data-skin="signal"] .utility-link,
 html[data-skin="signal"] .plain-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  min-height: 1.85rem;
+  padding: .38rem .68rem;
+  border: 1px solid var(--wh-button-border);
+  border-radius: 4px;
+  background: var(--wh-button-bg);
+  color: var(--wh-button-text);
   font-family: var(--font-mono);
-  font-size: .68rem;
+  font-size: .66rem;
   font-style: normal;
   font-weight: 850;
-  letter-spacing: .11em;
+  letter-spacing: .10em;
+  line-height: 1;
   text-transform: uppercase;
-}html[data-skin="signal"] .button:hover,
+  cursor: pointer;
+  box-shadow: none;
+  transition: border-color .18s ease, background .18s ease, box-shadow .18s ease, color .18s ease;
+}
+
+/* Hot/danger context — keeps shape, shifts palette via token. */
+html[data-skin="signal"] .button--hot,
+html[data-skin="signal"] .danger-card .button,
+html[data-skin="signal"] .danger-card .page-actions a,
+html[data-skin="signal"] .seq-row--firewall .button {
+  border-color: var(--wh-border-alert);
+  background: var(--wh-hot-button-bg);
+}
+
+html[data-skin="signal"] .button:hover,
 html[data-skin="signal"] .button:focus-visible,
 html[data-skin="signal"] .page-actions a:hover,
 html[data-skin="signal"] .page-actions a:focus-visible,
+html[data-skin="signal"] .switch-add-row button:hover,
+html[data-skin="signal"] .switch-add-row button:focus-visible,
+html[data-skin="signal"] .command-input-row button:hover,
+html[data-skin="signal"] .command-input-row button:focus-visible,
+html[data-skin="signal"] .ledger-item__actions button:hover,
+html[data-skin="signal"] .ledger-item__actions button:focus-visible,
+html[data-skin="signal"] .prev-next-nav a:hover,
+html[data-skin="signal"] .prev-next-nav a:focus-visible,
+html[data-skin="signal"] .command-chip:hover,
+html[data-skin="signal"] .command-chip:focus-visible,
 html[data-skin="signal"] .utility-link:hover,
 html[data-skin="signal"] .utility-link:focus-visible,
 html[data-skin="signal"] .plain-link:hover,
 html[data-skin="signal"] .plain-link:focus-visible {
-  transform: none;
+  outline: none;
+  border-color: var(--wh-border-active);
   box-shadow: var(--wh-small-glow);
 }
 
-/* Gateway hero ---------------------------------------------------------- */
-html[data-skin="signal"] .signal-hero {
-  min-height: clamp(340px, 52vh, 640px);
-  justify-content: flex-start;
-  border-color: var(--wh-hero-border);
-  background: var(--wh-hero-bg);
-  box-shadow: var(--wh-hero-shadow);
-  padding-block: clamp(34px, 5vw, 58px);
-}
-
-html[data-skin="signal"] .signal-hero::before {
-  opacity: .58;
-}
-
-html[data-skin="signal"] .signal-hero > .kicker,
-html[data-skin="signal"] .signal-hero > .panel-kicker {
-  margin-bottom: 28px;
-}
-
-html[data-skin="signal"] .signal-hero h1 {
-  margin-bottom: 20px;
-  line-height: 1.08;
-}
-
-html[data-skin="signal"] .signal-hero > .lede,
-html[data-skin="signal"] .signal-hero > .support-copy,
-html[data-skin="signal"] .signal-hero > p {
-  margin-bottom: 22px;
-  line-height: 1.50;
-}
-
-html[data-skin="signal"] .signal-hero > .page-actions,
-html[data-skin="signal"] .signal-hero > .controls {
-  margin-top: 2px;
-  gap: 10px;
-}
-
-/* Row and table foundation --------------------------------------------- */
+/* Row foundation — hairline-separated rows, no per-row card. ---------- */
 html[data-skin="signal"] .sequence,
 html[data-skin="signal"] .status-strip,
 html[data-skin="signal"] .state-table,
@@ -1339,14 +709,18 @@ html[data-skin="signal"] .status-row,
 html[data-skin="signal"] .ref-block,
 html[data-skin="signal"] .mini-state,
 html[data-skin="signal"] .custom-status-row {
-  overflow: visible;
+  display: grid;
+  grid-template-columns: minmax(8.4rem, .30fr) minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+  padding: 10px 0;
   border-width: 0 0 1px;
   border-style: solid;
   border-color: var(--wh-row-divider-soft);
   border-radius: 0;
   background: transparent;
   box-shadow: none;
-  padding: 10px 0;
+  transition: border-color .18s ease, background .18s ease;
 }
 
 html[data-skin="signal"] .seq-row:hover,
@@ -1357,10 +731,8 @@ html[data-skin="signal"] .status-row:hover,
 html[data-skin="signal"] .ref-block:hover,
 html[data-skin="signal"] .mini-state:hover,
 html[data-skin="signal"] .custom-status-row:hover {
-  transform: none;
   border-color: var(--wh-border-active);
   background: var(--wh-row-hover);
-  box-shadow: none;
 }
 
 html[data-skin="signal"] .sequence > :last-child,
@@ -1373,7 +745,62 @@ html[data-skin="signal"] .standing-decree-list > :last-child {
   border-bottom-color: transparent;
 }
 
-/* Operation / command sequence ----------------------------------------- */
+/* Row keys — quiet table terms. Visually subordinate to H3. */
+html[data-skin="signal"] .seq-label,
+html[data-skin="signal"] .state-label,
+html[data-skin="signal"] .reference-key,
+html[data-skin="signal"] .status-label,
+html[data-skin="signal"] .flat-row > strong,
+html[data-skin="signal"] .ledger-item__meta {
+  color: var(--wh-muted);
+  font-family: var(--font-mono);
+  font-size: .62rem;
+  font-weight: 800;
+  letter-spacing: .09em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+/* Row values — readable explanatory content. */
+html[data-skin="signal"] .seq-body,
+html[data-skin="signal"] .state-value,
+html[data-skin="signal"] .reference-value,
+html[data-skin="signal"] .status-value,
+html[data-skin="signal"] .flat-row > :last-child,
+html[data-skin="signal"] .ledger-item__text {
+  color: var(--wh-copy);
+  font-family: var(--font-body);
+  font-size: .94rem;
+  font-weight: 430;
+  line-height: 1.38;
+  min-width: 0;
+}
+
+html[data-skin="signal"] .status-value strong,
+html[data-skin="signal"] .state-value strong,
+html[data-skin="signal"] .seq-body strong {
+  color: var(--wh-copy-strong);
+  font-weight: 620;
+}
+
+/* Semantic state colors */
+html[data-skin="signal"] .state-on,
+html[data-skin="signal"] .status-active,
+html[data-skin="signal"] .status-complete,
+html[data-skin="signal"] .status-ready,
+html[data-skin="signal"] [aria-pressed="true"] {
+  color: var(--wh-copy-strong);
+}
+
+html[data-skin="signal"] .status-breach,
+html[data-skin="signal"] .status-denied,
+html[data-skin="signal"] .status-firewall,
+html[data-skin="signal"] .status-pending,
+html[data-skin="signal"] .access-denied {
+  color: var(--wh-clay);
+}
+
+/* Operation card / command table -------------------------------------- */
 html[data-skin="signal"] .operation-card,
 html[data-skin="signal"] .panel:has(.sequence) {
   padding-block: clamp(20px, 3vw, 34px);
@@ -1385,10 +812,8 @@ html[data-skin="signal"] .panel:has(.sequence) > .kicker {
   margin-bottom: 4px;
 }
 
-html[data-skin="signal"] .operation-card h2,
-html[data-skin="signal"] .panel:has(.sequence) h2,
-html[data-skin="signal"] .panel:has(.sequence) .sequence-title,
-html[data-skin="signal"] .panel:has(.sequence) .section-title {
+html[data-skin="signal"] .operation-card > h2,
+html[data-skin="signal"] .panel:has(.sequence) > h2 {
   margin-bottom: 18px;
 }
 
@@ -1422,29 +847,32 @@ html[data-skin="signal"] .panel:has(.sequence) .seq-row {
   row-gap: 4px;
   align-items: baseline;
   padding: 11px 0;
-  border-color: var(--wh-row-divider-soft);
 }
 
 html[data-skin="signal"] .operation-card .seq-row > :nth-child(n+3),
 html[data-skin="signal"] .panel:has(.sequence) .seq-row > :nth-child(n+3) {
   grid-column: 3;
-  min-width: 0;
 }
 
+/* Index column — quiet number, NOT a chip. */
 html[data-skin="signal"] .operation-card .seq-index,
 html[data-skin="signal"] .panel:has(.sequence) .seq-index {
+  display: block;
   width: auto;
   height: auto;
   min-width: 0;
   min-height: 0;
   margin: 0;
+  padding: 0;
   border: 0;
   border-radius: 0;
   background: transparent;
   color: var(--wh-muted);
+  font-family: var(--font-mono);
   font-size: .62rem;
   font-weight: 720;
   line-height: 1.2;
+  letter-spacing: .04em;
   opacity: .78;
   font-variant-numeric: tabular-nums;
 }
@@ -1454,24 +882,30 @@ html[data-skin="signal"] .panel:has(.sequence) .seq-index--blank {
   opacity: .26;
 }
 
+/* Label column — EXECUTE etc, mono uppercase but legible. */
 html[data-skin="signal"] .operation-card .seq-label,
 html[data-skin="signal"] .panel:has(.sequence) .seq-label {
   min-height: 0;
+  margin: 0;
   color: var(--wh-label);
-  font-size: .64rem;
+  font-family: var(--font-mono);
+  font-size: .68rem;
   font-weight: 900;
   letter-spacing: .12em;
   line-height: 1.18;
+  text-transform: uppercase;
 }
 
+/* Body column — readable command text, NOT huge/heavy. */
 html[data-skin="signal"] .operation-card .seq-body,
 html[data-skin="signal"] .panel:has(.sequence) .seq-body,
 html[data-skin="signal"] .operation-card .seq-row > :nth-child(n+3),
 html[data-skin="signal"] .panel:has(.sequence) .seq-row > :nth-child(n+3) {
   color: var(--wh-copy-strong);
-  font-size: clamp(.92rem, 1.18vw, 1rem);
-  font-weight: 470;
-  line-height: 1.40;
+  font-family: var(--font-body);
+  font-size: clamp(.94rem, 1.18vw, 1.02rem);
+  font-weight: 480;
+  line-height: 1.42;
 }
 
 html[data-skin="signal"] .operation-card .seq-row > :nth-child(3),
@@ -1482,24 +916,27 @@ html[data-skin="signal"] .panel:has(.sequence) .seq-row > :nth-child(3) {
 html[data-skin="signal"] .operation-card code,
 html[data-skin="signal"] .panel:has(.sequence) code {
   border-radius: 4px;
-  padding: .14rem .40rem;
+  padding: .14rem .42rem;
   color: var(--wh-code-text);
+  font-family: var(--font-mono);
   font-size: .88rem;
   font-weight: 740;
   letter-spacing: .045em;
   background: var(--wh-code-bg);
 }
 
+/* Status strip — secondary register beneath the sequence. */
 html[data-skin="signal"] .status-strip {
   margin-top: 16px;
   border-top: 1px solid var(--wh-row-divider-soft);
+  padding-top: 8px;
 }
 
 html[data-skin="signal"] .status-strip .status-row,
 html[data-skin="signal"] .status-strip .state-row,
 html[data-skin="signal"] .operation-card .status-row,
-html[data-skin="signal"] .panel:has(.sequence) .status-row,
-html[data-skin="signal"] .panel:has(.sequence) .state-row:not(#preview-levels .state-row) {
+html[data-skin="signal"] .panel:has(.sequence) .status-row {
+  display: grid;
   grid-template-columns: calc(var(--wh-row-index-col) + var(--wh-row-gap) + var(--wh-row-label-col)) minmax(0, 1fr);
   column-gap: var(--wh-row-gap);
   align-items: baseline;
@@ -1508,10 +945,8 @@ html[data-skin="signal"] .panel:has(.sequence) .state-row:not(#preview-levels .s
 }
 
 html[data-skin="signal"] .status-strip .status-label,
-html[data-skin="signal"] .status-strip .state-label,
 html[data-skin="signal"] .operation-card .status-label,
-html[data-skin="signal"] .panel:has(.sequence) .status-label,
-html[data-skin="signal"] .panel:has(.sequence) .state-label {
+html[data-skin="signal"] .panel:has(.sequence) .status-label {
   color: var(--wh-muted);
   font-size: .58rem;
   font-weight: 760;
@@ -1520,10 +955,8 @@ html[data-skin="signal"] .panel:has(.sequence) .state-label {
 }
 
 html[data-skin="signal"] .status-strip .status-value,
-html[data-skin="signal"] .status-strip .state-value,
 html[data-skin="signal"] .operation-card .status-value,
-html[data-skin="signal"] .panel:has(.sequence) .status-value,
-html[data-skin="signal"] .panel:has(.sequence) .state-value {
+html[data-skin="signal"] .panel:has(.sequence) .status-value {
   min-height: 0;
   padding: 0;
   color: var(--wh-copy);
@@ -1535,47 +968,28 @@ html[data-skin="signal"] .panel:has(.sequence) .state-value {
   box-shadow: none;
 }
 
-html[data-skin="signal"] .status-value strong,
-html[data-skin="signal"] .state-value strong {
-  color: var(--wh-copy-strong);
-  font-weight: 620;
+/* Code (inline) — base style; operation-card overrides above for sequence context. */
+html[data-skin="signal"] code {
+  display: inline-block;
+  padding: .12em .45em;
+  color: var(--wh-code-text);
+  font-family: var(--font-mono);
+  font-size: .88em;
+  background: var(--wh-code-bg);
+  border-radius: 4px;
 }
 
-/* Reference / documentation -------------------------------------------- */
+/* Reference / documentation ------------------------------------------- */
 html[data-skin="signal"] .reference-section {
   padding-block: clamp(24px, 3.4vw, 40px);
 }
 
-html[data-skin="signal"] .reference-section > .panel-kicker:first-child {
-  display: none;
-}
+/* C2 decision: Reference shows its kicker. The documentation register is
+   carried by the kicker label, not by a private H2 style. The H2 in
+   reference panels uses the global H2 declaration — no override here. */
 
 html[data-skin="signal"] .reference-section h2 {
   margin-bottom: 24px;
-}
-
-html[data-skin="signal"] .reference-section h3,
-html[data-skin="signal"] .ref-block h3 {
-  margin: 20px 0 8px;
-  font-family: var(--font-heading);
-  font-size: .86rem;
-  font-style: normal;
-  font-weight: 850;
-  letter-spacing: .01em;
-  line-height: 1.2;
-  text-transform: none;
-}
-
-html[data-skin="signal"] .reference-section p,
-html[data-skin="signal"] .reference-section li,
-html[data-skin="signal"] .reference-section .support-copy,
-html[data-skin="signal"] .reference-value,
-html[data-skin="signal"] .flat-row,
-html[data-skin="signal"] .ref-block {
-  max-width: 48rem;
-  font-size: .96rem;
-  font-weight: 430;
-  line-height: 1.44;
 }
 
 html[data-skin="signal"] .reference-section .flat-list,
@@ -1596,7 +1010,7 @@ html[data-skin="signal"] .reference-section .state-row {
   border-color: var(--wh-row-divider-soft);
 }
 
-html[data-skin="signal"] .reference-section .flat-row strong,
+html[data-skin="signal"] .reference-section .flat-row > strong,
 html[data-skin="signal"] .reference-section .reference-key,
 html[data-skin="signal"] .reference-section .state-label {
   display: block;
@@ -1614,15 +1028,30 @@ html[data-skin="signal"] .reference-section .state-label {
 html[data-skin="signal"] .reference-section .flat-row > :last-child,
 html[data-skin="signal"] .reference-section .reference-value,
 html[data-skin="signal"] .reference-section .state-value {
-  min-height: 0;
-  padding: 0;
   color: var(--wh-copy);
+  font-family: var(--font-body);
   font-size: .94rem;
   font-weight: 430;
   line-height: 1.34;
-  background: transparent;
+}
+
+html[data-skin="signal"] .reference-section p,
+html[data-skin="signal"] .reference-section li {
+  max-width: 48rem;
+  font-size: .96rem;
+  font-weight: 430;
+  line-height: 1.44;
+}
+
+html[data-skin="signal"] .reference-section .ref-block {
+  display: block;
+  padding: 0;
   border: 0;
-  box-shadow: none;
+  background: transparent;
+}
+
+html[data-skin="signal"] .reference-section .ref-block + .ref-block {
+  margin-top: 8px;
 }
 
 html[data-skin="signal"] .reference-section .flat-row:hover,
@@ -1633,20 +1062,19 @@ html[data-skin="signal"] .reference-section .ref-block:hover {
   background: transparent;
 }
 
-/* Level directory ------------------------------------------------------- */
-html[data-skin="signal"] #preview-levels .state-table,
-html[data-skin="signal"] .panel.state-card .state-table {
+/* Level directory — systemic class. Used wherever the level chamber list appears.
+   Apply via class="state-table level-directory" on the container. ----- */
+html[data-skin="signal"] .level-directory {
   gap: 0;
 }
 
-html[data-skin="signal"] #preview-levels .state-row,
-html[data-skin="signal"] .panel.state-card .state-row:has(.utility-link--open[href*="level-"]) {
+html[data-skin="signal"] .level-directory .state-row {
   display: grid;
   grid-template-columns: minmax(0, 1fr) max-content;
   gap: 14px;
   align-items: center;
   min-height: 42px;
-  padding: 8px 0;
+  padding: 10px 0;
   border-width: 0 0 1px;
   border-style: solid;
   border-color: var(--wh-row-divider);
@@ -1655,77 +1083,143 @@ html[data-skin="signal"] .panel.state-card .state-row:has(.utility-link--open[hr
   box-shadow: none;
 }
 
-html[data-skin="signal"] #preview-levels .state-label--link,
-html[data-skin="signal"] .panel.state-card .state-row:has(.utility-link--open[href*="level-"]) > .state-label--link {
+html[data-skin="signal"] .level-directory .state-label--link {
   justify-self: start;
   color: var(--wh-copy-strong);
-  font-family: var(--font-mono);
-  font-size: clamp(.78rem, 1.25vw, .95rem);
-  font-style: normal;
-  font-weight: 900;
-  letter-spacing: .095em;
-  line-height: 1.16;
-  text-transform: uppercase;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.05rem, 2.2vw, 1.55rem);
+  font-weight: 600;
+  letter-spacing: -.012em;
+  line-height: 1.12;
+  text-transform: none;
   white-space: normal;
   overflow-wrap: normal;
   word-break: normal;
 }
 
-html[data-skin="signal"] #preview-levels .utility-link--open,
-html[data-skin="signal"] .panel.state-card .state-row:has(.utility-link--open[href*="level-"]) > .utility-link--open {
+html[data-skin="signal"] .level-directory .utility-link--open {
   justify-self: end;
   min-width: 4.35rem;
-  max-width: max-content;
-  min-height: 1.8rem;
-  padding: .34rem .58rem;
-  font-family: var(--font-mono);
-  font-size: .60rem;
-  font-style: normal;
-  font-weight: 850;
-  letter-spacing: .105em;
-  line-height: 1;
-  text-transform: uppercase;
-  background: var(--wh-chip-bg);
-  box-shadow: none;
 }
 
-html[data-skin="signal"] #preview-levels .state-row:hover,
-html[data-skin="signal"] .panel.state-card .state-row:has(.utility-link--open[href*="level-"]):hover {
+html[data-skin="signal"] .level-directory .state-row:hover {
   border-color: var(--wh-border-active);
   background: var(--wh-row-hover);
 }
 
-/* Forms / generated content -------------------------------------------- */
-html[data-skin="signal"] .signal-form-block,
-html[data-skin="signal"] .ledger-item,
+/* Forms --------------------------------------------------------------- */
+html[data-skin="signal"] label {
+  display: grid;
+  gap: 6px;
+}
+
 html[data-skin="signal"] input,
 html[data-skin="signal"] select,
 html[data-skin="signal"] textarea {
+  width: 100%;
+  border: 1px solid var(--wh-input-border);
   border-radius: var(--wh-radius-sm);
-}
-
-html[data-skin="signal"] .signal-form-block,
-html[data-skin="signal"] .ledger-item {
-  border: 1px solid var(--wh-inner-border);
-  background: var(--wh-inner-bg);
-  box-shadow: inset 0 1px 0 rgba(247, 241, 231, .025);
-  padding: 14px;
-}
-
-html[data-skin="signal"] input,
-html[data-skin="signal"] select,
-html[data-skin="signal"] textarea {
   padding: 9px 10px;
+  background: var(--wh-input-bg);
+  color: var(--wh-input-text);
+  font-family: var(--font-body);
+  line-height: 1.35;
+  box-shadow: inset 0 1px 0 rgba(247, 241, 231, .04);
+  transition: border-color .18s ease, box-shadow .18s ease, background .18s ease;
 }
 
 html[data-skin="signal"] textarea {
   min-height: 96px;
+  resize: vertical;
 }
 
+html[data-skin="signal"] input::placeholder,
+html[data-skin="signal"] textarea::placeholder {
+  color: var(--wh-placeholder);
+}
+
+html[data-skin="signal"] input:hover,
+html[data-skin="signal"] input:focus,
+html[data-skin="signal"] select:hover,
+html[data-skin="signal"] select:focus,
+html[data-skin="signal"] textarea:hover,
+html[data-skin="signal"] textarea:focus {
+  outline: none;
+  border-color: var(--wh-border-active);
+  box-shadow:
+    0 0 0 1px rgba(214, 209, 198, .18),
+    inset 0 1px 0 rgba(247, 241, 231, .055);
+}
+
+html[data-skin="signal"] .switch-add-row,
+html[data-skin="signal"] .command-input-row,
+html[data-skin="signal"] .law-form,
+html[data-skin="signal"] .peak-form,
+html[data-skin="signal"] .three-part-form,
+html[data-skin="signal"] .utility-form {
+  display: grid;
+  gap: 12px;
+}
+
+html[data-skin="signal"] .switch-add-row,
+html[data-skin="signal"] .command-input-row {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+}
+
+/* Custom / Bank generated content ------------------------------------- */
+html[data-skin="signal"] .signal-form-block,
+html[data-skin="signal"] .ledger-item {
+  display: grid;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid var(--wh-inner-border);
+  border-radius: var(--wh-radius-sm);
+  background: var(--wh-inner-bg);
+  box-shadow: inset 0 1px 0 rgba(247, 241, 231, .025);
+}
+
+html[data-skin="signal"] .ledger-item__meta,
+html[data-skin="signal"] .ledger-item__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+html[data-skin="signal"] .empty-state {
+  margin: 0;
+  color: var(--wh-copy);
+  font-style: italic;
+}
+
+html[data-skin="signal"] .inline-chip {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--wh-inner-border);
+  border-radius: 999px;
+  padding: .35rem .55rem;
+  background: var(--wh-chip-bg);
+  color: var(--wh-label);
+  font-family: var(--font-mono);
+  font-size: .68rem;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+}
+
+/* Footer -------------------------------------------------------------- */
 html[data-skin="signal"] .footer {
+  width: var(--wh-page);
+  margin: 0 auto;
   padding: 18px 0 32px;
+  color: var(--wh-muted);
+  font-family: var(--font-mono);
+  font-size: .7rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
 }
 
+/* Responsive ---------------------------------------------------------- */
 @media (max-width: 860px) {
   html[data-skin="signal"] .site-header__inner {
     grid-template-columns: minmax(145px, 1fr) auto;
@@ -1749,6 +1243,25 @@ html[data-skin="signal"] .footer {
   html[data-skin="signal"] .config-grid {
     grid-template-columns: 1fr;
   }
+
+  html[data-skin="signal"] .operation-card .seq-row,
+  html[data-skin="signal"] .panel:has(.sequence) .seq-row {
+    grid-template-columns: var(--wh-row-index-col) minmax(0, 1fr);
+    row-gap: 4px;
+  }
+
+  html[data-skin="signal"] .operation-card .seq-label,
+  html[data-skin="signal"] .panel:has(.sequence) .seq-label,
+  html[data-skin="signal"] .operation-card .seq-row > :nth-child(n+3),
+  html[data-skin="signal"] .panel:has(.sequence) .seq-row > :nth-child(n+3) {
+    grid-column: 2;
+  }
+
+  html[data-skin="signal"] .switch-add-row,
+  html[data-skin="signal"] .command-input-row {
+    grid-template-columns: 1fr;
+    align-items: stretch;
+  }
 }
 
 @media (max-width: 640px) {
@@ -1759,6 +1272,26 @@ html[data-skin="signal"] .footer {
     --wh-row-index-col: 2.1ch;
     --wh-row-label-col: minmax(4.9rem, 5.7rem);
     --wh-row-gap: 8px;
+  }
+
+  html[data-skin="signal"] .site-header__inner {
+    gap: 8px;
+  }
+
+  html[data-skin="signal"] .theme-toggle,
+  html[data-skin="signal"] .mobile-menu-toggle {
+    min-height: 31px;
+    padding: 0 8px;
+    font-size: .64rem;
+  }
+
+  html[data-skin="signal"] .brand {
+    font-size: .92rem;
+    letter-spacing: .035em;
+  }
+
+  html[data-skin="signal"] .brand__sub {
+    font-size: .56rem;
   }
 
   html[data-skin="signal"] .shell,
@@ -1776,30 +1309,38 @@ html[data-skin="signal"] .footer {
   html[data-skin="signal"] h1 {
     font-size: clamp(2rem, 9vw, 3.15rem);
     line-height: 1.08;
+    margin-bottom: 8px;
   }
 
-  html[data-skin="signal"] h2,
-  html[data-skin="signal"] .panel h2,
-  html[data-skin="signal"] .sequence-title,
-  html[data-skin="signal"] .section-title,
-  html[data-skin="signal"] .state-table h2,
-  html[data-skin="signal"] .reference-section h2 {
+  html[data-skin="signal"] h1.h1--cinematic,
+  html[data-skin="signal"] .identity--hero h1 {
+    font-size: clamp(2.6rem, 13vw, 4.4rem);
+    line-height: .98;
+  }
+
+  html[data-skin="signal"] h2 {
     font-size: clamp(1.62rem, 7vw, 2.2rem);
     margin-bottom: 16px;
   }
 
-  html[data-skin="signal"] .signal-hero {
+  html[data-skin="signal"] h3 {
+    font-size: clamp(1.08rem, 5vw, 1.36rem);
+    margin-top: 26px;
+    margin-bottom: 12px;
+  }
+
+  html[data-skin="signal"] .identity--hero {
     min-height: 320px;
     padding-block: 26px;
   }
 
-  html[data-skin="signal"] .signal-hero > .kicker,
-  html[data-skin="signal"] .signal-hero > .panel-kicker {
+  html[data-skin="signal"] .identity--hero > .kicker,
+  html[data-skin="signal"] .identity--hero > .panel-kicker {
     margin-bottom: 22px;
   }
 
-  html[data-skin="signal"] .signal-hero h1 {
-    margin-bottom: 18px;
+  html[data-skin="signal"] .identity--hero h1 {
+    margin-bottom: 16px;
   }
 
   html[data-skin="signal"] .operation-card,
@@ -1807,10 +1348,8 @@ html[data-skin="signal"] .footer {
     padding-block: 20px;
   }
 
-  html[data-skin="signal"] .operation-card h2,
-  html[data-skin="signal"] .panel:has(.sequence) h2,
-  html[data-skin="signal"] .panel:has(.sequence) .sequence-title,
-  html[data-skin="signal"] .panel:has(.sequence) .section-title {
+  html[data-skin="signal"] .operation-card > h2,
+  html[data-skin="signal"] .panel:has(.sequence) > h2 {
     margin-bottom: 16px;
   }
 
@@ -1828,7 +1367,7 @@ html[data-skin="signal"] .footer {
 
   html[data-skin="signal"] .operation-card .seq-label,
   html[data-skin="signal"] .panel:has(.sequence) .seq-label {
-    font-size: .58rem;
+    font-size: .60rem;
     letter-spacing: .105em;
   }
 
@@ -1836,8 +1375,8 @@ html[data-skin="signal"] .footer {
   html[data-skin="signal"] .panel:has(.sequence) .seq-body,
   html[data-skin="signal"] .operation-card .seq-row > :nth-child(n+3),
   html[data-skin="signal"] .panel:has(.sequence) .seq-row > :nth-child(n+3) {
-    font-size: .90rem;
-    line-height: 1.36;
+    font-size: .92rem;
+    line-height: 1.38;
   }
 
   html[data-skin="signal"] .reference-section {
@@ -1855,8 +1394,16 @@ html[data-skin="signal"] .footer {
     gap: 9px;
   }
 
-  html[data-skin="signal"] #preview-levels .state-row,
-  html[data-skin="signal"] .panel.state-card .state-row:has(.utility-link--open[href*="level-"]) {
+  html[data-skin="signal"] .seq-label,
+  html[data-skin="signal"] .state-label,
+  html[data-skin="signal"] .reference-key,
+  html[data-skin="signal"] .status-label,
+  html[data-skin="signal"] .flat-row > strong,
+  html[data-skin="signal"] .ledger-item__meta {
+    font-size: .58rem;
+  }
+
+  html[data-skin="signal"] .level-directory .state-row {
     grid-template-columns: minmax(0, 1fr) max-content;
     gap: 10px;
     min-height: 40px;
@@ -1881,209 +1428,11 @@ html[data-skin="signal"] .footer {
   html[data-skin="signal"] .reference-section .flat-row,
   html[data-skin="signal"] .reference-section .reference-row,
   html[data-skin="signal"] .reference-section .state-row,
-  html[data-skin="signal"] #preview-levels .state-row,
-  html[data-skin="signal"] .panel.state-card .state-row:has(.utility-link--open[href*="level-"]) {
+  html[data-skin="signal"] .level-directory .state-row {
     grid-template-columns: 1fr;
   }
 
-  html[data-skin="signal"] #preview-levels .utility-link--open,
-  html[data-skin="signal"] .panel.state-card .state-row:has(.utility-link--open[href*="level-"]) > .utility-link--open {
+  html[data-skin="signal"] .level-directory .utility-link--open {
     justify-self: stretch;
   }
 }
-
-/* =========================================================
-   WORMHOLE GLOBAL H3 / ROW-KEY HIERARCHY FIX
-   Purpose: separate subsection headings from table row labels.
-   Style-system only. No page-specific selectors.
-   ========================================================= */
-
-/* H3 = real subsection heading */
-html[data-skin="signal"] h3,
-html[data-skin="signal"] .panel h3,
-html[data-skin="signal"] .reference-section h3 {
-  font-family: var(--font-display) !important;
-  font-style: italic !important;
-  font-size: clamp(1.18rem, 2vw, 1.55rem) !important;
-  font-weight: 600 !important;
-  line-height: 1.08 !important;
-  letter-spacing: -.012em !important;
-  text-transform: none !important;
-  color: var(--wh-heading) !important;
-  margin-top: 30px !important;
-  margin-bottom: 14px !important;
-}
-
-/* First subsection in a card should not float too far down */
-html[data-skin="signal"] h2 + h3,
-html[data-skin="signal"] .lede + h3,
-html[data-skin="signal"] .support-copy + h3,
-html[data-skin="signal"] .panel > h3:first-child,
-html[data-skin="signal"] .reference-section > h3:first-child {
-  margin-top: 18px !important;
-}
-
-/* Row keys = quiet table terms, NOT headings */
-html[data-skin="signal"] .flat-row strong,
-html[data-skin="signal"] .reference-key,
-html[data-skin="signal"] .state-label,
-html[data-skin="signal"] .status-label,
-html[data-skin="signal"] .seq-label,
-html[data-skin="signal"] .ledger-item__meta {
-  font-family: var(--font-mono) !important;
-  font-style: normal !important;
-  font-size: .62rem !important;
-  font-weight: 800 !important;
-  line-height: 1.2 !important;
-  letter-spacing: .09em !important;
-  text-transform: uppercase !important;
-  color: var(--wh-muted) !important;
-}
-
-/* Row values carry the explanation, not the row key */
-html[data-skin="signal"] .flat-row,
-html[data-skin="signal"] .reference-row,
-html[data-skin="signal"] .state-row,
-html[data-skin="signal"] .status-row {
-  align-items: start !important;
-}
-
-html[data-skin="signal"] .reference-value,
-html[data-skin="signal"] .state-value,
-html[data-skin="signal"] .status-value,
-html[data-skin="signal"] .flat-row > :last-child {
-  color: var(--wh-copy) !important;
-  font-weight: 430 !important;
-  line-height: 1.38 !important;
-}
-
-/* Give subsection groups enough separation from the previous table */
-html[data-skin="signal"] .flat-list + h3,
-html[data-skin="signal"] .reference-table + h3,
-html[data-skin="signal"] .state-table + h3,
-html[data-skin="signal"] .status-strip + h3,
-html[data-skin="signal"] .sequence + h3 {
-  margin-top: 34px !important;
-}
-
-@media (max-width: 640px) {
-  html[data-skin="signal"] h3,
-  html[data-skin="signal"] .panel h3,
-  html[data-skin="signal"] .reference-section h3 {
-    font-size: clamp(1.08rem, 5vw, 1.36rem) !important;
-    margin-top: 26px !important;
-    margin-bottom: 12px !important;
-  }
-
-  html[data-skin="signal"] .flat-row strong,
-  html[data-skin="signal"] .reference-key,
-  html[data-skin="signal"] .state-label,
-  html[data-skin="signal"] .status-label,
-  html[data-skin="signal"] .seq-label,
-  html[data-skin="signal"] .ledger-item__meta {
-    font-size: .58rem !important;
-  }
-}
-
-/* =========================================================
-   WORMHOLE ACTION BUTTON SYSTEM
-   Purpose: restore compact editorial action buttons globally.
-   No page-specific selectors.
-   ========================================================= */
-
-html[data-skin="signal"] .controls,
-html[data-skin="signal"] .page-actions,
-html[data-skin="signal"] .signal-lab-actions,
-html[data-skin="signal"] .template-list,
-html[data-skin="signal"] .command-template-list,
-html[data-skin="signal"] .inline-chip-list,
-html[data-skin="signal"] .prev-next-nav {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px;
-}
-
-html[data-skin="signal"] .signal-hero .page-actions,
-html[data-skin="signal"] .signal-hero .controls {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
-  gap: 8px;
-  align-items: center;
-}
-
-html[data-skin="signal"] .button,
-html[data-skin="signal"] .page-actions a,
-html[data-skin="signal"] .command-chip,
-html[data-skin="signal"] .utility-link,
-html[data-skin="signal"] .plain-link,
-html[data-skin="signal"] .prev-next-nav a {
-  width: auto;
-  min-height: 2.05rem;
-  padding: .44rem .78rem;
-  border-radius: 4px;
-  font-family: var(--font-display);
-  font-size: .96rem;
-  font-style: italic;
-  font-weight: 600;
-  letter-spacing: .015em;
-  line-height: 1;
-  text-transform: none;
-}
-
-html[data-skin="signal"] .command-chip,
-html[data-skin="signal"] .utility-link,
-html[data-skin="signal"] .plain-link {
-  font-family: var(--font-mono);
-  font-size: .66rem;
-  font-style: normal;
-  font-weight: 850;
-  letter-spacing: .10em;
-  text-transform: uppercase;
-}
-
-
-/* =========================================================
-   WORMHOLE H1 STACK RHYTHM
-   Purpose: tighten H1-to-support-copy spacing globally.
-   No page-specific selectors.
-   ========================================================= */
-
-html[data-skin="signal"] h1 {
-  margin-bottom: 10px;
-}
-
-html[data-skin="signal"] h1 + .lede,
-html[data-skin="signal"] h1 + .support-copy,
-html[data-skin="signal"] h1 + p {
-  margin-top: 0;
-}
-
-html[data-skin="signal"] .identity h1,
-html[data-skin="signal"] .panel h1,
-html[data-skin="signal"] .signal-hero h1 {
-  margin-bottom: 10px;
-}
-
-html[data-skin="signal"] .identity h1 + .lede,
-html[data-skin="signal"] .identity h1 + .support-copy,
-html[data-skin="signal"] .identity h1 + p,
-html[data-skin="signal"] .panel h1 + .lede,
-html[data-skin="signal"] .panel h1 + .support-copy,
-html[data-skin="signal"] .panel h1 + p,
-html[data-skin="signal"] .signal-hero h1 + .lede,
-html[data-skin="signal"] .signal-hero h1 + .support-copy,
-html[data-skin="signal"] .signal-hero h1 + p {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-@media (max-width: 640px) {
-  html[data-skin="signal"] h1,
-  html[data-skin="signal"] .identity h1,
-  html[data-skin="signal"] .panel h1,
-  html[data-skin="signal"] .signal-hero h1 {
-    margin-bottom: 8px;
-  }
-}
-
