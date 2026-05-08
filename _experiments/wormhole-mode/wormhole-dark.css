@@ -615,9 +615,25 @@ html[data-skin="signal"] .sequence + h3 {
 }
 
 /* Kickers / metadata labels — small mono uppercase tracked. Margin-bottom
-   is small so the kicker hugs the heading below it as a single unit. */
+   is small so the kicker hugs the heading below it as a single unit.
+
+   The reference-section scoped selectors are specificity insurance: the
+   rule `.reference-section p` (set elsewhere for prose sizing) has
+   higher specificity than `.panel-kicker` alone, so without the
+   reference-section scope here, kickers inside reference panels would
+   inherit the .88rem prose size instead of the eyebrow size. The
+   identity/panel/operation-card scoped selectors are belt-and-braces:
+   any future scoped p-rule won't be able to up-size a kicker. */
 html[data-skin="signal"] .kicker,
 html[data-skin="signal"] .panel-kicker,
+html[data-skin="signal"] .identity > .kicker,
+html[data-skin="signal"] .identity > .panel-kicker,
+html[data-skin="signal"] .panel > .kicker,
+html[data-skin="signal"] .panel > .panel-kicker,
+html[data-skin="signal"] .reference-section > .kicker,
+html[data-skin="signal"] .reference-section > .panel-kicker,
+html[data-skin="signal"] .operation-card > .kicker,
+html[data-skin="signal"] .operation-card > .panel-kicker,
 html[data-skin="signal"] label > span {
   display: block;
   margin: 0 0 4px;
@@ -981,12 +997,40 @@ html[data-skin="signal"] .reference-value > span + span,
 html[data-skin="signal"] .flat-row > :last-child > span + span {
   margin-top: 4px;
 }
-/* Restore inline behavior for nested-state lists (mini-state lists put
-   <span>label</span><b>ON</b> inside one cell; those should stay inline). */
-html[data-skin="signal"] .mini-state-list > .mini-state,
-html[data-skin="signal"] .mini-state > span,
+/* Mini-state list — Daily Run inline-state pattern.
+   The parent .mini-state-list is the grid (so column widths are shared
+   across rows, making all ON badges line up at the same x-position).
+   Each .mini-state uses display:contents so its <span>name</span><b>ON</b>
+   children flow into the parent grid as cells. */
+html[data-skin="signal"] .mini-state-list {
+  display: grid;
+  grid-template-columns: minmax(7.5rem, max-content) minmax(0, 1fr);
+  column-gap: 12px;
+  row-gap: 0;
+}
+
+html[data-skin="signal"] .mini-state-list > .mini-state {
+  display: contents;
+}
+
+html[data-skin="signal"] .mini-state > span {
+  padding: 6px 0;
+  border-bottom: 1px solid var(--wh-row-divider-soft);
+  justify-self: start;
+}
+
 html[data-skin="signal"] .mini-state > b {
-  display: inline-flex;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--wh-row-divider-soft);
+  justify-self: start;
+  font-weight: inherit;
+}
+
+/* Strip the bottom-border from the last row's cells. Because we use
+   display:contents, "last child" is across two grid cells per row. */
+html[data-skin="signal"] .mini-state-list > .mini-state:last-child > span,
+html[data-skin="signal"] .mini-state-list > .mini-state:last-child > b {
+  border-bottom: 0;
 }
 
 html[data-skin="signal"] .status-value strong,
@@ -1413,7 +1457,7 @@ html[data-skin="signal"] .level-directory .state-label--link {
   justify-self: start;
   color: var(--wh-copy-strong);
   font-family: var(--font-display);
-  font-style: italic;
+  font-style: normal;
   font-size: clamp(1.05rem, 2.2vw, 1.55rem);
   font-weight: 600;
   letter-spacing: -.012em;
