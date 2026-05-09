@@ -585,7 +585,7 @@ html[data-skin="signal"] h2 {
    sentence case, sized and weighted so it clearly outranks the mono
    row-keys sitting underneath it. */
 html[data-skin="signal"] h3 {
-  margin: 30px 0 14px;
+  margin: 24px 0 10px;
   color: var(--wh-heading);
   font-family: var(--font-display);
   font-style: italic;
@@ -611,7 +611,7 @@ html[data-skin="signal"] .reference-table + h3,
 html[data-skin="signal"] .state-table + h3,
 html[data-skin="signal"] .status-strip + h3,
 html[data-skin="signal"] .sequence + h3 {
-  margin-top: 34px;
+  margin-top: 28px;
 }
 
 /* Kickers / metadata labels — small mono uppercase tracked. Margin-bottom
@@ -1326,10 +1326,17 @@ html[data-skin="signal"] .reference-section h2 {
 html[data-skin="signal"] .reference-section .flat-list,
 html[data-skin="signal"] .reference-section .reference-table,
 html[data-skin="signal"] .reference-section .state-table {
-  margin-top: 12px;
+  margin-top: 8px;
   gap: 0;
 }
 
+/* Reference flat-row column geometry and rhythm. One canonical rule for
+   .reference-section and .reference-card row patterns. The label column
+   minmax(9.2rem, .34fr) leaves room for longer mono labels ("THE SEAT
+   ABOVE THE SEAT") to wrap on two lines without crowding the value
+   column. Baseline alignment glues the small mono label to the first
+   line of its sans value so the pair reads as one row, not two stacked
+   pieces; gap and padding are kept compact but readable. */
 html[data-skin="signal"] .reference-section .flat-row,
 html[data-skin="signal"] .reference-section .reference-row,
 html[data-skin="signal"] .reference-section .state-row,
@@ -1337,9 +1344,9 @@ html[data-skin="signal"] .reference-card .flat-row,
 html[data-skin="signal"] .reference-card .reference-row,
 html[data-skin="signal"] .reference-card .state-row {
   display: grid;
-  grid-template-columns: minmax(8.4rem, .30fr) minmax(0, 1fr);
-  gap: 14px;
-  align-items: start;
+  grid-template-columns: minmax(9.2rem, .34fr) minmax(0, 1fr);
+  gap: 12px;
+  align-items: baseline;
   padding: 8px 0;
   border-color: var(--wh-row-divider-soft);
 }
@@ -1363,7 +1370,6 @@ html[data-skin="signal"] .reference-card .state-label {
   text-transform: uppercase;
   word-break: normal;
   hyphens: none;
-  padding-top: 2px;
 }
 
 html[data-skin="signal"] .reference-section .flat-row > :last-child,
@@ -1377,21 +1383,6 @@ html[data-skin="signal"] .reference-card .state-value {
   font-size: var(--wh-sans-body-size);
   font-weight: var(--wh-sans-body-weight);
   line-height: var(--wh-sans-body-line);
-}
-
-/* Reference flat-row column geometry: give the row-key column enough
-   width that longer mono labels ("THE SEAT ABOVE THE SEAT") can wrap
-   on two lines without crowding the value column. The earlier
-   minmax(8.4rem, .30fr) was too tight for the bigger eyebrow tier.
-   Applies to both .reference-section (most pages) and .reference-card
-   (Command Line) so all reference rows share one geometry. */
-html[data-skin="signal"] .reference-section .flat-row,
-html[data-skin="signal"] .reference-section .reference-row,
-html[data-skin="signal"] .reference-section .state-row,
-html[data-skin="signal"] .reference-card .flat-row,
-html[data-skin="signal"] .reference-card .reference-row,
-html[data-skin="signal"] .reference-card .state-row {
-  grid-template-columns: minmax(9.2rem, .34fr) minmax(0, 1fr);
 }
 
 /* Reference paragraphs — tighter than operation prose. Reference is
@@ -1469,7 +1460,7 @@ html[data-skin="signal"] .reference-section .ref-block {
 
 /* Ref-blocks need real separation, not the previous tiny 8px gap. */
 html[data-skin="signal"] .reference-section .ref-block + .ref-block {
-  margin-top: 22px;
+  margin-top: 18px;
 }
 
 html[data-skin="signal"] .reference-section .flat-row:hover,
