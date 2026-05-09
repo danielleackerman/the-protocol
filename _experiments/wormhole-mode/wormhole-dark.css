@@ -1256,8 +1256,8 @@ html[data-skin="signal"] .status-strip .state-row,
 html[data-skin="signal"] .operation-card .status-row,
 html[data-skin="signal"] .panel:has(.sequence) .status-row {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  column-gap: 12px;
+  grid-template-columns: minmax(8.4rem, .30fr) minmax(0, 1fr);
+  column-gap: 14px;
   align-items: baseline;
   padding: 7px 0;
   border-color: var(--wh-row-divider-soft);
@@ -1267,8 +1267,8 @@ html[data-skin="signal"] .panel:has(.sequence) .status-row {
 html[data-skin="signal"] .status-strip .status-row > .status-value,
 html[data-skin="signal"] .status-strip .status-row > .state-value,
 html[data-skin="signal"] .status-strip .state-row > .state-value {
-  justify-self: end;
-  text-align: right;
+  justify-self: start;
+  text-align: left;
 }
 
 /* Status-strip label — promoted to rowkey-size so it reads in the same
@@ -1332,7 +1332,10 @@ html[data-skin="signal"] .reference-section .state-table {
 
 html[data-skin="signal"] .reference-section .flat-row,
 html[data-skin="signal"] .reference-section .reference-row,
-html[data-skin="signal"] .reference-section .state-row {
+html[data-skin="signal"] .reference-section .state-row,
+html[data-skin="signal"] .reference-card .flat-row,
+html[data-skin="signal"] .reference-card .reference-row,
+html[data-skin="signal"] .reference-card .state-row {
   display: grid;
   grid-template-columns: minmax(8.4rem, .30fr) minmax(0, 1fr);
   gap: 14px;
@@ -1346,7 +1349,10 @@ html[data-skin="signal"] .reference-section .state-row {
    cards; subordinate to H3 / subsection heading above them. */
 html[data-skin="signal"] .reference-section .flat-row > strong,
 html[data-skin="signal"] .reference-section .reference-key,
-html[data-skin="signal"] .reference-section .state-label {
+html[data-skin="signal"] .reference-section .state-label,
+html[data-skin="signal"] .reference-card .flat-row > strong,
+html[data-skin="signal"] .reference-card .reference-key,
+html[data-skin="signal"] .reference-card .state-label {
   display: block;
   color: var(--wh-label);
   font-family: var(--font-mono);
@@ -1362,7 +1368,10 @@ html[data-skin="signal"] .reference-section .state-label {
 
 html[data-skin="signal"] .reference-section .flat-row > :last-child,
 html[data-skin="signal"] .reference-section .reference-value,
-html[data-skin="signal"] .reference-section .state-value {
+html[data-skin="signal"] .reference-section .state-value,
+html[data-skin="signal"] .reference-card .flat-row > :last-child,
+html[data-skin="signal"] .reference-card .reference-value,
+html[data-skin="signal"] .reference-card .state-value {
   color: var(--wh-copy);
   font-family: var(--font-body);
   font-size: var(--wh-sans-body-size);
@@ -1371,12 +1380,18 @@ html[data-skin="signal"] .reference-section .state-value {
 }
 
 /* Reference flat-row column geometry: give the row-key column enough
-   width that longer mono labels ("THE SEAT ABOVE THE SEAT") can wrap
-   on two lines without crowding the value column. The earlier
-   minmax(8.4rem, .30fr) was too tight for the bigger eyebrow tier. */
+   width that longer mono labels ("THE SEAT ABOVE THE SEAT", "01 · NO
+   REQUEST LANGUAGE") can wrap on two lines without crowding the value
+   column. The earlier minmax(8.4rem, .30fr) was too tight for the
+   bigger eyebrow tier. Applies to both .reference-section (most pages)
+   and .reference-card (Command Line) so all reference rows share one
+   geometry. */
 html[data-skin="signal"] .reference-section .flat-row,
 html[data-skin="signal"] .reference-section .reference-row,
-html[data-skin="signal"] .reference-section .state-row {
+html[data-skin="signal"] .reference-section .state-row,
+html[data-skin="signal"] .reference-card .flat-row,
+html[data-skin="signal"] .reference-card .reference-row,
+html[data-skin="signal"] .reference-card .state-row {
   grid-template-columns: minmax(9.2rem, .34fr) minmax(0, 1fr);
 }
 
