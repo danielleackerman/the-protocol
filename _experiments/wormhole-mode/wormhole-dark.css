@@ -1884,3 +1884,85 @@ html[data-skin="signal"] .footer {
     justify-self: stretch;
   }
 }
+
+
+/* ============================================================
+   WH-V1 — protocol-design-lab polish pass (wormhole-mode only)
+   - Compact status-row pairs (Seal, Switchboard, Firewall, etc.)
+   - Smaller subtitle lede in page identity headers
+   - Larger Command Line reference card typography
+   - Light-mode flash hardening (CSS half; JS half is in <head>)
+   ============================================================ */
+
+/* Compact status-strip rows. Wormhole already lays these out 2-up,
+   but vertical padding/leading was bigger than the spec calls for.
+   Tighten the strip without disturbing other row types. */
+html[data-skin="signal"] .status-strip .status-row {
+  padding: 7px 0;
+  align-items: baseline;
+  line-height: 1.3;
+}
+
+html[data-skin="signal"] .status-strip .status-row .status-value,
+html[data-skin="signal"] .status-strip .status-row .state-value {
+  justify-self: end;
+  text-align: right;
+}
+
+@media (max-width: 640px) {
+  html[data-skin="signal"] .status-strip .status-row {
+    padding: 6px 0;
+  }
+}
+
+/* Subtitle lede — drop a few points so it reads as supporting copy
+   rather than a second headline competing with the H1. */
+html[data-skin="signal"] {
+  --wh-sans-lede-size: clamp(.86rem, .95vw, .92rem);
+  --wh-sans-lede-line: 1.45;
+}
+
+/* Command Line reference card — bump up sub-headings + key/value rows
+   to read as deliberate interface copy, not metadata. Scoped to the
+   reference-card so other pages aren't affected. */
+html[data-skin="signal"] .reference-card > h3 {
+  font-size: 1.05rem;
+  letter-spacing: 0.04em;
+}
+
+html[data-skin="signal"] .reference-card .reference-key {
+  font-size: .82rem;
+  line-height: 1.4;
+}
+
+html[data-skin="signal"] .reference-card .reference-value {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 640px) {
+  html[data-skin="signal"] .reference-card > h3 {
+    font-size: .98rem;
+  }
+  html[data-skin="signal"] .reference-card .reference-key {
+    font-size: .76rem;
+  }
+  html[data-skin="signal"] .reference-card .reference-value {
+    font-size: .95rem;
+  }
+}
+
+/* Light-mode flash hardening. The body background resolves through
+   tokens, so before the stylesheet finishes parsing some browsers
+   paint the UA default. Pin a solid theme-appropriate fallback on
+   html so the first paint is correct even if variables haven't
+   resolved yet. The inline script in <head> sets data-theme=dark
+   synchronously when the user has dark stored, which suppresses
+   the inverse flash. */
+html[data-skin="signal"] {
+  background-color: #f5f1e8;
+}
+
+html[data-skin="signal"][data-theme="dark"] {
+  background-color: #06090f;
+}
