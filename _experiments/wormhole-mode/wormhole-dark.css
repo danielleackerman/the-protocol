@@ -1937,32 +1937,10 @@ html[data-skin="signal"] .footer {
 
 /* ============================================================
    WH-V1 — protocol-design-lab polish pass (wormhole-mode only)
-   - Compact status-row pairs (Seal, Switchboard, Firewall, etc.)
    - Smaller subtitle lede in page identity headers
    - Larger Command Line reference card typography
    - Light-mode flash hardening (CSS half; JS half is in <head>)
    ============================================================ */
-
-/* Compact status-strip rows. Wormhole already lays these out 2-up,
-   but vertical padding/leading was bigger than the spec calls for.
-   Tighten the strip without disturbing other row types. */
-html[data-skin="signal"] .status-strip .status-row {
-  padding: 7px 0;
-  align-items: baseline;
-  line-height: 1.3;
-}
-
-html[data-skin="signal"] .status-strip .status-row .status-value,
-html[data-skin="signal"] .status-strip .status-row .state-value {
-  justify-self: end;
-  text-align: right;
-}
-
-@media (max-width: 640px) {
-  html[data-skin="signal"] .status-strip .status-row {
-    padding: 6px 0;
-  }
-}
 
 /* Subtitle lede — drop a few points so it reads as supporting copy
    rather than a second headline competing with the H1. */
