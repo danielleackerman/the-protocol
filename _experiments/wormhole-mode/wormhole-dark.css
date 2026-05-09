@@ -1380,12 +1380,11 @@ html[data-skin="signal"] .reference-card .state-value {
 }
 
 /* Reference flat-row column geometry: give the row-key column enough
-   width that longer mono labels ("THE SEAT ABOVE THE SEAT", "01 · NO
-   REQUEST LANGUAGE") can wrap on two lines without crowding the value
-   column. The earlier minmax(8.4rem, .30fr) was too tight for the
-   bigger eyebrow tier. Applies to both .reference-section (most pages)
-   and .reference-card (Command Line) so all reference rows share one
-   geometry. */
+   width that longer mono labels ("THE SEAT ABOVE THE SEAT") can wrap
+   on two lines without crowding the value column. The earlier
+   minmax(8.4rem, .30fr) was too tight for the bigger eyebrow tier.
+   Applies to both .reference-section (most pages) and .reference-card
+   (Command Line) so all reference rows share one geometry. */
 html[data-skin="signal"] .reference-section .flat-row,
 html[data-skin="signal"] .reference-section .reference-row,
 html[data-skin="signal"] .reference-section .state-row,
