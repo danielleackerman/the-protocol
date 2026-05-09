@@ -569,7 +569,7 @@ html[data-skin="signal"] h1 + p {
 /* H2 — primary section heading. ONE style, mode-wide. No private variants. */
 html[data-skin="signal"] h2 {
   max-width: 760px;
-  margin: 0 0 18px;
+  margin: 0 0 14px;
   color: var(--wh-heading);
   font-family: var(--font-display);
   font-style: italic;
@@ -585,7 +585,7 @@ html[data-skin="signal"] h2 {
    sentence case, sized and weighted so it clearly outranks the mono
    row-keys sitting underneath it. */
 html[data-skin="signal"] h3 {
-  margin: 24px 0 10px;
+  margin: 36px 0 6px;
   color: var(--wh-heading);
   font-family: var(--font-display);
   font-style: italic;
@@ -602,7 +602,7 @@ html[data-skin="signal"] .lede + h3,
 html[data-skin="signal"] .support-copy + h3,
 html[data-skin="signal"] .panel > h3:first-child,
 html[data-skin="signal"] .reference-section > h3:first-child {
-  margin-top: 18px;
+  margin-top: 24px;
 }
 
 /* Subsection groups need separation from the previous table */
@@ -611,7 +611,7 @@ html[data-skin="signal"] .reference-table + h3,
 html[data-skin="signal"] .state-table + h3,
 html[data-skin="signal"] .status-strip + h3,
 html[data-skin="signal"] .sequence + h3 {
-  margin-top: 28px;
+  margin-top: 36px;
 }
 
 /* Kickers / metadata labels — small mono uppercase tracked. Margin-bottom
@@ -1102,7 +1102,7 @@ html[data-skin="signal"] .panel:has(.sequence) > .kicker {
 
 html[data-skin="signal"] .operation-card > h2,
 html[data-skin="signal"] .panel:has(.sequence) > h2 {
-  margin-bottom: 18px;
+  margin-bottom: 14px;
 }
 
 html[data-skin="signal"] .operation-card > .lede,
@@ -1320,13 +1320,13 @@ html[data-skin="signal"] .reference-section {
    reference panels uses the global H2 declaration — no override here. */
 
 html[data-skin="signal"] .reference-section h2 {
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
 html[data-skin="signal"] .reference-section .flat-list,
 html[data-skin="signal"] .reference-section .reference-table,
 html[data-skin="signal"] .reference-section .state-table {
-  margin-top: 8px;
+  margin-top: 4px;
   gap: 0;
 }
 
@@ -1813,8 +1813,8 @@ html[data-skin="signal"] .footer {
 
   html[data-skin="signal"] h3 {
     font-size: clamp(1.08rem, 5vw, 1.36rem);
-    margin-top: 26px;
-    margin-bottom: 12px;
+    margin-top: 30px;
+    margin-bottom: 6px;
   }
 
   html[data-skin="signal"] .identity--hero {
