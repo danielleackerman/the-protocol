@@ -1252,23 +1252,33 @@ html[data-skin="signal"] .status-strip .state-row,
 html[data-skin="signal"] .operation-card .status-row,
 html[data-skin="signal"] .panel:has(.sequence) .status-row {
   display: grid;
-  grid-template-columns: calc(var(--wh-row-index-col) + var(--wh-row-gap) + var(--wh-row-label-col)) minmax(0, 1fr);
-  column-gap: var(--wh-row-gap);
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 12px;
   align-items: baseline;
-  padding: 8px 0;
+  padding: 7px 0;
   border-color: var(--wh-row-divider-soft);
+  line-height: 1.3;
 }
 
-/* Status-strip label — eyebrow-sm token (its position already marks it
-   as secondary; it doesn't need to whisper smaller). */
+html[data-skin="signal"] .status-strip .status-row > .status-value,
+html[data-skin="signal"] .status-strip .status-row > .state-value,
+html[data-skin="signal"] .status-strip .state-row > .state-value {
+  justify-self: end;
+  text-align: right;
+}
+
+/* Status-strip label — promoted to rowkey-size so it reads in the same
+   register as reference-table keys and other row labels across the
+   page. The eyebrow-sm tier was rendering as whisper text against
+   the value beside it. */
 html[data-skin="signal"] .status-strip .status-label,
 html[data-skin="signal"] .operation-card .status-label,
 html[data-skin="signal"] .panel:has(.sequence) .status-label {
   color: var(--wh-muted);
-  font-size: var(--wh-mono-eyebrow-sm-size);
-  font-weight: var(--wh-mono-eyebrow-sm-weight);
-  letter-spacing: var(--wh-mono-eyebrow-sm-track);
-  line-height: 1.15;
+  font-size: var(--wh-mono-rowkey-size);
+  font-weight: var(--wh-mono-rowkey-weight);
+  letter-spacing: var(--wh-mono-rowkey-track);
+  line-height: 1.2;
 }
 
 html[data-skin="signal"] .status-strip .status-value,
@@ -1381,7 +1391,8 @@ html[data-skin="signal"] .reference-section li {
 /* Reference paragraph block-spacing — controlled gap between adjacent
    paragraphs. The earlier "wide" feeling came from default browser
    p-margin (~1em top + 1em bottom = ~2em between siblings); the rule
-   above zeroes that, and this rule re-adds a single 10px gap. */
+   above zeroes that, and this rule re-adds a single small gap so
+   adjacent paragraphs read as one designed block, not floating lines. */
 html[data-skin="signal"] .reference-section p + p,
 html[data-skin="signal"] .reference-section .ref-block > p + .flat-list,
 html[data-skin="signal"] .reference-section .ref-block > p + .reference-table,
@@ -1389,7 +1400,26 @@ html[data-skin="signal"] .reference-section .ref-block > p + .state-table,
 html[data-skin="signal"] .reference-section .ref-block > .flat-list + p,
 html[data-skin="signal"] .reference-section .ref-block > .reference-table + p,
 html[data-skin="signal"] .reference-section .ref-block > .state-table + p {
-  margin-top: 10px;
+  margin-top: 6px;
+}
+
+/* Reference paragraph hierarchy — when a paragraph leads or closes a
+   rows container (.flat-list / .reference-table / .state-table), it is
+   acting as the row-block's heading line, not as standalone prose.
+   Promote it to value-size so it does not render smaller than the row
+   bodies it introduces. Fixes the Render Confirmations case where
+   "The render begins updating within hours." sat smaller than
+   "The body softens first." */
+html[data-skin="signal"] .reference-section .ref-block > p:has(+ .flat-list),
+html[data-skin="signal"] .reference-section .ref-block > p:has(+ .reference-table),
+html[data-skin="signal"] .reference-section .ref-block > p:has(+ .state-table),
+html[data-skin="signal"] .reference-section .ref-block > .flat-list + p,
+html[data-skin="signal"] .reference-section .ref-block > .reference-table + p,
+html[data-skin="signal"] .reference-section .ref-block > .state-table + p {
+  font-size: var(--wh-sans-value-size);
+  font-weight: var(--wh-sans-value-weight);
+  line-height: var(--wh-sans-value-line);
+  color: var(--wh-copy-strong);
 }
 
 /* Lead term — inline enumeration prefix. Reusable pattern for prose
@@ -1510,9 +1540,9 @@ html[data-skin="signal"] .state-card .state-table:not(.level-directory) .state-l
 
 html[data-skin="signal"] .state-card .state-table:not(.level-directory) .state-value {
   font-family: var(--font-mono);
-  font-size: var(--wh-mono-eyebrow-size);
-  font-weight: var(--wh-mono-eyebrow-weight);
-  letter-spacing: var(--wh-mono-eyebrow-track);
+  font-size: .78rem;
+  font-weight: var(--wh-sans-value-strong-weight);
+  letter-spacing: .04em;
   text-transform: uppercase;
   justify-self: end;
 }
