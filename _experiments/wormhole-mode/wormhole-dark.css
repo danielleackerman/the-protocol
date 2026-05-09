@@ -1004,7 +1004,7 @@ html[data-skin="signal"] .flat-row > :last-child > span + span {
    children flow into the parent grid as cells. */
 html[data-skin="signal"] .mini-state-list {
   display: grid;
-  grid-template-columns: minmax(7.5rem, max-content) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) auto;
   column-gap: 12px;
   row-gap: 0;
 }
@@ -1022,8 +1022,12 @@ html[data-skin="signal"] .mini-state > span {
 html[data-skin="signal"] .mini-state > b {
   padding: 6px 0;
   border-bottom: 1px solid var(--wh-row-divider-soft);
-  justify-self: start;
-  font-weight: inherit;
+  justify-self: end;
+  text-align: right;
+  font-family: var(--font-mono);
+  font-size: .78rem;
+  font-weight: var(--wh-sans-value-strong-weight);
+  letter-spacing: .04em;
 }
 
 /* Strip the bottom-border from the last row's cells. Because we use
@@ -1950,36 +1954,6 @@ html[data-skin="signal"] .status-strip .status-row .state-value {
 html[data-skin="signal"] {
   --wh-sans-lede-size: clamp(.86rem, .95vw, .92rem);
   --wh-sans-lede-line: 1.45;
-}
-
-/* Command Line reference card — bump up sub-headings + key/value rows
-   to read as deliberate interface copy, not metadata. Scoped to the
-   reference-card so other pages aren't affected. */
-html[data-skin="signal"] .reference-card > h3 {
-  font-size: 1.05rem;
-  letter-spacing: 0.04em;
-}
-
-html[data-skin="signal"] .reference-card .reference-key {
-  font-size: .82rem;
-  line-height: 1.4;
-}
-
-html[data-skin="signal"] .reference-card .reference-value {
-  font-size: 1rem;
-  line-height: 1.5;
-}
-
-@media (max-width: 640px) {
-  html[data-skin="signal"] .reference-card > h3 {
-    font-size: .98rem;
-  }
-  html[data-skin="signal"] .reference-card .reference-key {
-    font-size: .76rem;
-  }
-  html[data-skin="signal"] .reference-card .reference-value {
-    font-size: .95rem;
-  }
 }
 
 /* Light-mode flash hardening. The body background resolves through
