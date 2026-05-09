@@ -97,30 +97,30 @@ html[data-skin="signal"] {
 
   /* Sans — body tier (default paragraphs, reference values) */
   --wh-sans-body-size:         .92rem;
-  --wh-sans-body-line:         1.40;
+  --wh-sans-body-line:         1.36;
   --wh-sans-body-weight:       430;
 
   /* Sans — prose tier (reference-section paragraphs; tighter than body) */
   --wh-sans-prose-size:        .88rem;
-  --wh-sans-prose-line:        1.42;
+  --wh-sans-prose-line:        1.36;
   --wh-sans-prose-weight:      420;
   --wh-sans-prose-measure:     42rem;
 
   /* Sans — lede tier (panel-level support copy) */
   --wh-sans-lede-size:         clamp(.95rem, 1.05vw, 1.02rem);
-  --wh-sans-lede-line:         1.46;
+  --wh-sans-lede-line:         1.38;
   --wh-sans-lede-weight:       450;
 
   /* Sans — support tier (panel-meta support copy: "Gate level: complete
      the install…", "Use this when…"). Quieter than lede so the H1/H2
      above it stays the visual lead. */
   --wh-sans-support-size:      .86rem;
-  --wh-sans-support-line:      1.42;
+  --wh-sans-support-line:      1.38;
   --wh-sans-support-weight:    430;
 
   /* Sans — value tier (seq-body, status-value, primary row values) */
   --wh-sans-value-size:        clamp(.94rem, 1.1vw, 1.0rem);
-  --wh-sans-value-line:        1.40;
+  --wh-sans-value-line:        1.34;
   --wh-sans-value-weight:      460;
 
   /* Sans — value-strong tier (active state values; weight emphasis) */
@@ -227,7 +227,7 @@ html[data-skin="signal"] body {
   min-height: 100vh;
   color: var(--wh-text);
   font-family: var(--font-body);
-  line-height: 1.55;
+  line-height: 1.45;
   overflow-x: hidden;
   background: var(--wh-page-bg);
   text-rendering: geometricPrecision;
@@ -1936,7 +1936,7 @@ html[data-skin="signal"] .footer {
    rather than a second headline competing with the H1. */
 html[data-skin="signal"] {
   --wh-sans-lede-size: clamp(.86rem, .95vw, .92rem);
-  --wh-sans-lede-line: 1.45;
+  --wh-sans-lede-line: 1.38;
 }
 
 /* Light-mode flash hardening. The body background resolves through
