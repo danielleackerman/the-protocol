@@ -1,12 +1,13 @@
 <!doctype html>
-<html lang="en" data-theme="light">
+<html data-skin="signal" lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Daily Run immediate actions for The Protocol" />
   <title>Daily Run · The Protocol</title>
-  <link rel="stylesheet" href="assets/css/protocol.css" />
-</head>
+  <link rel="stylesheet" href="wormhole-dark.css" />
+  <link rel="stylesheet" href="wormhole-light.css" />
+<script>(function(){try{var t=localStorage.getItem("the-protocol.theme");if(t==="dark"||t==="light"){document.documentElement.setAttribute("data-theme",t);}}catch(e){}})();</script></head>
 <body>
 <header class="site-header">
   <div class="site-header__inner">
@@ -38,7 +39,7 @@
     <p class="lede">Run the sequence. Reference stays below the action.</p>
     <div class="controls">
       <button id="copyQuickStart" class="button" type="button">Copy Run</button>
-      <a class="button" href="levels/level-03-firewall.html">Breach</a>
+      <a class="button button--hot" href="levels/level-03-firewall.html">Breach</a>
       <a class="button" href="levels.html">Levels</a>
     </div>
   </section>
@@ -80,10 +81,9 @@
       </div>
     </div>
     <div class="status-strip" id="quickStartStatus">
-      <div class="seq-row seq-row--status">
-        <span class="seq-index seq-index--blank" aria-hidden="true">00</span>
-        <span class="seq-label">Status</span>
-        <span class="seq-body"><span class="status-value status-ready">Ready</span></span>
+      <div class="status-row">
+        <span class="status-label">Status</span>
+        <span class="status-value status-ready">Ready</span>
       </div>
     </div>
   </section>
@@ -96,7 +96,7 @@
         <div class="seq-row seq-row--firewall">
           <span class="seq-index seq-index--blank" aria-hidden="true">00</span>
           <span class="seq-label">Deny</span>
-          <span class="seq-body"><span class="status-value status-denied">Access Denied</span></span>
+          <span class="seq-body">Access denied. This is not authorized code.</span>
         </div>
         <div class="seq-row seq-row--firewall">
           <span class="seq-index seq-index--blank" aria-hidden="true">00</span>
@@ -109,7 +109,7 @@
           <span class="seq-body">Breach sealed. Render protected.</span>
         </div>
       </div>
-      <div class="page-actions"><a href="levels/level-03-firewall.html">Open Firewall</a></div>
+      <div class="page-actions"><a class="button button--hot" href="levels/level-03-firewall.html">Open Firewall</a></div>
     </section>
 
     <section class="panel navigation-card">
@@ -125,6 +125,6 @@
   </div>
 </main>
 <footer class="footer">The Protocol / Utility Console</footer>
-<script src="assets/js/protocol.js"></script>
+<script src="wormhole-lab.js"></script>
 </body>
 </html>

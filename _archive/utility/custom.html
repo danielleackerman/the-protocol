@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>Custom · The Protocol</title><link rel="stylesheet" href="assets/css/protocol.css" /></head>
+<body>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="index.html">The Protocol</a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="overview.html" class="">Overview</a>
+      <a href="index.html" class="">Daily Run</a>
+      <a href="levels.html" class="">Levels</a>
+      <a href="custom.html" class="is-active">Custom</a>
+      <a href="bank.html" class="">Bank</a>
+    </nav>
+    <div class="header-actions">
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle theme">☼</button>
+      <button class="mobile-menu-toggle" type="button" data-mobile-menu-toggle aria-expanded="false" aria-label="Open menu">Menu</button>
+    </div>
+  </div>
+  <nav class="mobile-nav" data-mobile-nav aria-label="Mobile navigation">
+    <a href="overview.html" class="">Overview</a>
+    <a href="index.html" class="">Daily Run</a>
+    <a href="levels.html" class="">Levels</a>
+    <a href="custom.html" class="is-active">Custom</a>
+    <a href="bank.html" class="">Bank</a>
+  </nav>
+</header>
+<main class="shell" id="top">
+<section class="identity"><p class="kicker">Configuration Workbench</p><h1>Custom</h1><p class="lede">Add the pieces you actually use: switches, defaults, commands, laws, peak states, and confirmations.</p><div class="controls"><a class="button" href="bank.html">Open Bank</a><button class="button" id="copyCustomDailyRun" type="button">Copy Current Defaults</button></div></section>
+<section class="panel custom-status-panel" aria-live="polite"><p class="panel-kicker">Status</p><div class="status-row custom-status-row"><span class="status-label">Custom</span><span id="customStatus" class="status-value status-ready">Ready</span></div></section>
+<section class="config-grid" aria-label="Custom configuration modules">
+<section class="panel config-section" id="custom-switches"><p class="panel-kicker">01 / Custom Switches</p><h2>Switchboard</h2><p class="module-note">Group ON states by life area.</p><div class="utility-form three-part-form"><label><span>Category</span><select id="customSwitchCategory" data-category-select></select></label><label><span>Switch</span><input id="customSwitchName" type="text" placeholder="Paid quickly" /></label><button type="button" id="addCustomSwitch">Add Switch</button></div><div class="ledger-list" id="customSwitchList"></div></section>
+<section class="panel config-section" id="custom-defaults"><p class="panel-kicker">02 / Defaults</p><h2>Daily Defaults</h2><p class="module-note">Baseline statements for Daily Run.</p><div class="utility-form three-part-form"><label><span>Category</span><select id="customDefaultCategory" data-category-select></select></label><label><span>Default</span><input id="customDefaultText" type="text" placeholder="My default is overflow." /></label><button type="button" id="addCustomDefault">Add Default</button></div><div class="ledger-list" id="customDefaultList"></div></section>
+<section class="panel config-section" id="custom-commands"><p class="panel-kicker">03 / Commands</p><h2>Command Line</h2><p class="module-note">Reusable EXECUTE lines.</p><div class="utility-form three-part-form"><label><span>Category</span><select id="customCommandCategory" data-category-select></select></label><label><span>Command</span><input id="customCommandText" type="text" placeholder="Full payment received this week." /></label><button type="button" id="addCustomCommand">Save Command</button></div><div class="template-list command-template-list"><button type="button" data-template-target="customCommandText" data-template-value="Deal closed today.">Deal closed today.</button><button type="button" data-template-target="customCommandText" data-template-value="Full payment received this week.">Full payment received this week.</button></div><div class="ledger-list" id="customCommandList"></div></section>
+<section class="panel config-section" id="custom-laws"><p class="panel-kicker">04 / Laws</p><h2>Standing Laws</h2><p class="module-note">Codex lines. Rules, not requests.</p><div class="utility-form law-form"><label><span>Category</span><select id="customLawCategory" data-category-select></select></label><label><span>Law</span><textarea id="customLawText" placeholder="Nothing renders without my authorization."></textarea></label><button type="button" id="addCustomLaw">Save Law</button></div><div class="ledger-list" id="customLawList"></div></section>
+<section class="panel config-section config-section--wide" id="custom-peaks"><p class="panel-kicker">05 / Saved Peak States</p><h2>Peak States</h2><p class="module-note">Save the high-water mark.</p><div class="utility-form peak-form"><label><span>Category</span><select id="customPeakCategory" data-category-select></select></label><label><span>Peak</span><input id="customPeakTitle" type="text" placeholder="Calm authority after the call" /></label><label><span>Body Signal</span><input id="customPeakBody" type="text" placeholder="Breath dropped" /></label><label><span>Proof</span><input id="customPeakProof" type="text" placeholder="Answer arrived" /></label><label class="form-wide"><span>New Baseline</span><textarea id="customPeakBaseline" placeholder="This is the floor now."></textarea></label><button type="button" id="addCustomPeak">Save Peak</button></div><div class="ledger-list" id="customPeakList"></div></section>
+<section class="panel config-section config-section--wide" id="custom-confirmations"><p class="panel-kicker">06 / Confirmations</p><h2>Render Receipts</h2><p class="module-note">Log the field response.</p><div class="utility-form law-form"><label><span>Category</span><select id="customConfirmationCategory" data-category-select></select></label><label><span>Receipt</span><textarea id="customConfirmationText" placeholder="Sentence, number, door, payment, shifted feeling…"></textarea></label><button type="button" id="addCustomConfirmation">Log Receipt</button></div><div class="ledger-list" id="customConfirmationList"></div></section>
+</section></main><footer class="footer">The Protocol / Utility Console</footer><script src="assets/js/protocol.js"></script></body></html>

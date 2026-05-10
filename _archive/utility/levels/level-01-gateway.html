@@ -1,13 +1,12 @@
 <!doctype html>
-<html data-skin="signal" lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Enter the Protocol." />
   <title>Level 01 — Gateway · The Protocol</title>
-  <link rel="stylesheet" href="../wormhole-dark.css" />
-  <link rel="stylesheet" href="../wormhole-light.css" />
-<script>(function(){try{var t=localStorage.getItem("the-protocol.theme");if(t==="dark"||t==="light"){document.documentElement.setAttribute("data-theme",t);}}catch(e){}})();</script></head>
+  <link rel="stylesheet" href="../assets/css/protocol.css" />
+</head>
 <body class="level-page">
 <header class="site-header">
   <div class="site-header__inner">
@@ -33,7 +32,8 @@
   </nav>
 </header>
 <main class="page-shell">
-<section class="identity">
+  <p class="breadcrumb"><a href="../index.html">Daily Run</a> / <a href="../levels.html">Levels</a> / Level 01</p>
+  <section class="identity">
     <p class="kicker">Level 01 / Install Command Sequence</p>
     <h1>Gateway</h1>
     <p class="lede">Enter the Protocol.</p>
@@ -75,8 +75,9 @@
 
   <section class="reference-section">
     <p class="panel-kicker">Reference</p>
-    <h2>Access Event</h2>
+    <h2>Reference</h2>
     <div class="ref-block">
+      <h3>Access Event</h3>
       <p>Protocol install. The moment before this, you were outside the system. After this, you are inside it.</p>
       <p>Gate level: complete the install by speaking the commands out loud.</p>
     </div>
@@ -110,7 +111,7 @@
       <h3>Receipt Log</h3>
       <p>Log the first render confirmation within 48 hours.</p>
       <textarea id="level01ReceiptInput" placeholder="Log the first render confirmation here."></textarea>
-      <div class="page-actions"><button class="button button--form" id="saveLevel01Receipt" type="button">Save Receipt</button></div>
+      <div class="page-actions"><button id="saveLevel01Receipt" type="button">Save Receipt</button></div>
       <div id="level01Receipts" aria-live="polite"></div>
     </div>
   </section>
@@ -122,6 +123,6 @@
   </nav>
 </main>
 <footer class="footer">The Protocol / Utility Console</footer>
-<script src="../wormhole-lab.js"></script>
+<script src="../assets/js/protocol.js"></script>
 </body>
 </html>
