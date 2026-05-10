@@ -21,24 +21,4 @@
     <a href="custom.html" class="">Custom</a>
     <a href="bank.html" class="is-active">Bank</a>
   </nav>
-</header><main class="shell" id="top"><section class="identity"><p class="kicker">Saved Ledger</p><h1>Bank</h1><p class="lede">All saved custom switches, defaults, commands, laws, peak states, and confirmations.</p><div class="controls"><a class="button" href="custom.html">Add Custom Item</a><button class="button" id="exportBank" type="button">Export Bank</button></div></section><section class="panel bank-controls"><p class="panel-kicker">Filters</p><div class="bank-filter-grid"><label><span>Type</span><select id="bankTypeFilter"><option value="all">All Types</option><option value="switch">Switches</option><option value="default">Defaults</option><option value="command">Commands</option><option value="law">Laws</option><option value="peak">Peak States</option><option value="confirmation">Confirmations</option></select></label><label><span>Category</span><select id="bankCategoryFilter" data-category-select><option value="all">All Categories</option></select></label><label><span>Search</span><input id="bankSearch" type="search" placeholder="Search saved items…" /></label></div></section>
-<section class="panel bank-runseq" id="bank-runseq" aria-labelledby="bank-runseq-heading">
-  <p class="panel-kicker">Run Sequence</p>
-  <h2 id="bank-runseq-heading">Send to Run Sequence</h2>
-  <p class="module-note">Populate the existing Run Sequence with saved Bank items. Order: category, type, creation.</p>
-  <div class="utility-form three-part-form bank-runseq-form">
-    <label><span>Category</span><select id="bankSeqCategory" data-runseq-category-filter><option value="all">All Categories</option></select></label>
-    <label><span>Type</span><select id="bankSeqType">
-      <option value="all">All Types</option>
-      <option value="switch">Switches</option>
-      <option value="default">Defaults</option>
-      <option value="command">Commands</option>
-      <option value="law">Laws</option>
-      <option value="peak">Peak States</option>
-      <option value="confirmation">Confirmations</option>
-    </select></label>
-    <button type="button" id="addBankToRunSeq">Add Matching Items to Run Sequence</button>
-  </div>
-  <div class="bank-runseq-feedback"><span id="bankSeqStatus" class="status-value status-ready" aria-live="polite">Ready</span><a class="utility-link" href="custom.html#custom-runseq">Open Run Sequence</a></div>
-</section>
-<section class="panel bank-panel"><p class="panel-kicker">Ledger</p><h2>Saved Items</h2><div id="bankList" class="bank-list ledger-list" aria-live="polite"></div></section></main><footer class="footer">The Protocol / Utility Console</footer><script src="wormhole-lab.js"></script></body></html>
+</header><main class="shell" id="top"><section class="identity"><p class="kicker">Saved Ledger</p><h1>Bank</h1><p class="lede">All saved custom switches, defaults, commands, laws, peak states, confirmations, and run sequences.</p><div class="controls"><a class="button" href="custom.html">Add Custom Item</a><button class="button" id="exportBank" type="button">Export Bank</button></div></section><section class="panel bank-controls"><p class="panel-kicker">Filters</p><div class="bank-filter-grid"><label><span>Type</span><select id="bankTypeFilter"><option value="all">All Types</option><option value="runsequence">Run Sequences</option><option value="switch">Switches</option><option value="default">Defaults</option><option value="command">Commands</option><option value="law">Laws</option><option value="peak">Peak States</option><option value="confirmation">Confirmations</option></select></label><label><span>Category</span><select id="bankCategoryFilter" data-category-select><option value="all">All Categories</option></select></label><label><span>Search</span><input id="bankSearch" type="search" placeholder="Search saved items…" /></label></div></section><section class="panel bank-panel"><p class="panel-kicker">Ledger</p><h2>Saved Items</h2><div id="bankList" class="bank-list ledger-list" aria-live="polite"></div></section></main><footer class="footer">The Protocol / Utility Console</footer><script src="wormhole-lab.js"></script></body></html>
