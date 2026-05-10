@@ -2098,3 +2098,89 @@ html[data-skin="signal"] .runseq-index {
   font-family: var(--font-mono);
   opacity: .72;
 }
+
+/* --------------------------------------------------------------------- */
+/* Wormhole interaction-consistency patch                                */
+/* - Daily Run: Firewall card "Open Firewall" spacing above the button   */
+/* - Gold ::selection (replaces the cool ivory-gray selection)           */
+/* - Sitewide button gold hover/focus parity (catches selectors the      */
+/*   Custom patch missed: .page-actions a, .prev-next-nav a,             */
+/*   .command-chip, .utility-link, .switch-add-row button,               */
+/*   .command-input-row button, .theme-toggle, .mobile-menu-toggle)      */
+/* --------------------------------------------------------------------- */
+
+/* 1. Spacing above card action buttons (e.g. "Open Firewall" after the
+   Firewall sequence). Targets every card-level .page-actions block that
+   follows a row group, not just the danger card. Card padding stays. */
+html[data-skin="signal"] .sequence + .page-actions,
+html[data-skin="signal"] .status-strip + .page-actions,
+html[data-skin="signal"] .ledger-list + .page-actions,
+html[data-skin="signal"] .flat-list + .page-actions,
+html[data-skin="signal"] .reference-table + .page-actions,
+html[data-skin="signal"] .state-table + .page-actions {
+  margin-top: 18px;
+}
+
+/* 2. Gold text selection — warm, on-brand, replaces ivory-gray. */
+html[data-skin="signal"] ::selection {
+  background: var(--wh-accent-soft);
+  color: var(--wh-ivory);
+}
+
+/* 2b. Form accent-color sitewide (checkboxes, radios, range, progress).
+   The Custom patch already set this for .bank-filter-grid; this widens
+   it to all native form controls so nothing reverts to browser blue. */
+html[data-skin="signal"] {
+  accent-color: var(--wh-accent);
+}
+
+/* 3. Unified gold hover/focus for every button-like control, INCLUDING
+   the selectors the Custom patch missed:
+   .page-actions a   (← "Open Firewall", Daily Run / Reference card links)
+   .prev-next-nav a, .command-chip, .utility-link, .plain-link,
+   .switch-add-row button, .command-input-row button,
+   .theme-toggle, .mobile-menu-toggle.
+   Listed last so it overrides the earlier --wh-border-active rule. */
+html[data-skin="signal"] .button:hover,
+html[data-skin="signal"] .button:focus-visible,
+html[data-skin="signal"] .button--form:hover,
+html[data-skin="signal"] .button--form:focus-visible,
+html[data-skin="signal"] .button--hot:hover,
+html[data-skin="signal"] .button--hot:focus-visible,
+html[data-skin="signal"] .page-actions a:hover,
+html[data-skin="signal"] .page-actions a:focus-visible,
+html[data-skin="signal"] .prev-next-nav a:hover,
+html[data-skin="signal"] .prev-next-nav a:focus-visible,
+html[data-skin="signal"] .utility-form button:hover,
+html[data-skin="signal"] .utility-form button:focus-visible,
+html[data-skin="signal"] .law-form button:hover,
+html[data-skin="signal"] .law-form button:focus-visible,
+html[data-skin="signal"] .peak-form button:hover,
+html[data-skin="signal"] .peak-form button:focus-visible,
+html[data-skin="signal"] .three-part-form button:hover,
+html[data-skin="signal"] .three-part-form button:focus-visible,
+html[data-skin="signal"] .switch-add-row button:hover,
+html[data-skin="signal"] .switch-add-row button:focus-visible,
+html[data-skin="signal"] .command-input-row button:hover,
+html[data-skin="signal"] .command-input-row button:focus-visible,
+html[data-skin="signal"] .ledger-item__actions button:hover,
+html[data-skin="signal"] .ledger-item__actions button:focus-visible,
+html[data-skin="signal"] .template-list button:hover,
+html[data-skin="signal"] .template-list button:focus-visible,
+html[data-skin="signal"] .command-template-list button:hover,
+html[data-skin="signal"] .command-template-list button:focus-visible,
+html[data-skin="signal"] .command-chip:hover,
+html[data-skin="signal"] .command-chip:focus-visible,
+html[data-skin="signal"] .utility-link:hover,
+html[data-skin="signal"] .utility-link:focus-visible,
+html[data-skin="signal"] .plain-link:hover,
+html[data-skin="signal"] .plain-link:focus-visible,
+html[data-skin="signal"] .theme-toggle:hover,
+html[data-skin="signal"] .theme-toggle:focus-visible,
+html[data-skin="signal"] .mobile-menu-toggle:hover,
+html[data-skin="signal"] .mobile-menu-toggle:focus-visible {
+  outline: none;
+  border-color: var(--wh-accent-strong);
+  background: var(--wh-accent-soft);
+  box-shadow: 0 0 0 3px var(--wh-accent-glow);
+}

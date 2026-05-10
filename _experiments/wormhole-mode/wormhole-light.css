@@ -144,3 +144,10 @@ html[data-skin="signal"][data-theme="light"] {
   --wh-accent-glow:   rgba(168, 118, 27, .28);
   accent-color:       #a8761b;
 }
+
+/* Light-mode selection — gold on ivory needs more saturation than the
+   token --wh-accent-soft which is tuned for fills, not text highlight. */
+html[data-skin="signal"][data-theme="light"] ::selection {
+  background: rgba(168, 118, 27, .28);
+  color: #14110d;
+}
