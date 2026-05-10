@@ -2184,3 +2184,33 @@ html[data-skin="signal"] .mobile-menu-toggle:focus-visible {
   background: var(--wh-accent-soft);
   box-shadow: 0 0 0 3px var(--wh-accent-glow);
 }
+
+/* --------------------------------------------------------------------- */
+/* Bank page — Run Sequence control                                      */
+/* Reuses .panel / .utility-form / .three-part-form / .ledger-item       */
+/* tokens. Only adds layout for the feedback row + form rhythm.          */
+/* --------------------------------------------------------------------- */
+html[data-skin="signal"] .bank-runseq .bank-runseq-form {
+  align-items: end;
+}
+html[data-skin="signal"] .bank-runseq .bank-runseq-form > button {
+  justify-self: start;
+  width: auto;
+  min-width: 9rem;
+  max-width: max-content;
+}
+html[data-skin="signal"] .bank-runseq-feedback {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--wh-row-divider-soft);
+}
+html[data-skin="signal"] .bank-runseq-feedback #bankSeqStatus {
+  font-family: var(--font-mono);
+  font-size: .82rem;
+  letter-spacing: .04em;
+  color: var(--wh-copy-strong);
+}
