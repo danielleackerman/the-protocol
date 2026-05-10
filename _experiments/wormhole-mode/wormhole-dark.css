@@ -1953,3 +1953,148 @@ html[data-skin="signal"] {
 html[data-skin="signal"][data-theme="dark"] {
   background-color: #06090f;
 }
+
+/* --------------------------------------------------------------------- */
+/* Custom-page polish + Run Sequence section                             */
+/* Shared structural rules. Theme tokens live with each theme block.     */
+/* --------------------------------------------------------------------- */
+
+/* Accent token family — warm, Wormhole-compatible (not browser blue).
+   Dark uses gold; light overrides this block in wormhole-light.css. */
+html[data-skin="signal"] {
+  --wh-accent:        var(--wh-gold);
+  --wh-accent-strong: var(--wh-gold-hot);
+  --wh-accent-soft:   rgba(199, 168, 105, .14);
+  --wh-accent-glow:   rgba(199, 168, 105, .42);
+  accent-color:       var(--wh-gold);
+}
+
+/* 1. Form button width — buttons must NOT span the grid column.
+   .utility-form is a single-column grid; default child stretch makes
+   submit buttons full-width. Pin them to the start of the track. */
+html[data-skin="signal"] .utility-form > button,
+html[data-skin="signal"] .law-form > button,
+html[data-skin="signal"] .peak-form > button,
+html[data-skin="signal"] .three-part-form > button {
+  justify-self: start;
+  width: auto;
+  min-width: 9rem;
+  max-width: max-content;
+}
+
+/* 4. Spacing between submit row and the saved-output / template list. */
+html[data-skin="signal"] .utility-form + .ledger-list,
+html[data-skin="signal"] .utility-form + .template-list,
+html[data-skin="signal"] .utility-form + .command-template-list,
+html[data-skin="signal"] .three-part-form + .ledger-list,
+html[data-skin="signal"] .law-form + .ledger-list,
+html[data-skin="signal"] .peak-form + .ledger-list,
+html[data-skin="signal"] .template-list + .ledger-list,
+html[data-skin="signal"] .command-template-list + .ledger-list {
+  margin-top: 18px;
+}
+
+/* 2. Stronger input/select/textarea focus — warm accent ring, not blue. */
+html[data-skin="signal"] input:focus,
+html[data-skin="signal"] input:focus-visible,
+html[data-skin="signal"] select:focus,
+html[data-skin="signal"] select:focus-visible,
+html[data-skin="signal"] textarea:focus,
+html[data-skin="signal"] textarea:focus-visible {
+  outline: none;
+  border-color: var(--wh-accent-strong);
+  box-shadow:
+    0 0 0 3px var(--wh-accent-glow),
+    inset 0 1px 0 rgba(247, 241, 231, .055);
+}
+html[data-skin="signal"] input:hover,
+html[data-skin="signal"] select:hover,
+html[data-skin="signal"] textarea:hover {
+  border-color: var(--wh-accent);
+}
+
+/* 2. Stronger button hover/focus — warm accent border + soft fill. */
+html[data-skin="signal"] .button:hover,
+html[data-skin="signal"] .button:focus-visible,
+html[data-skin="signal"] .button--form:hover,
+html[data-skin="signal"] .button--form:focus-visible,
+html[data-skin="signal"] .utility-form button:hover,
+html[data-skin="signal"] .utility-form button:focus-visible,
+html[data-skin="signal"] .law-form button:hover,
+html[data-skin="signal"] .law-form button:focus-visible,
+html[data-skin="signal"] .peak-form button:hover,
+html[data-skin="signal"] .peak-form button:focus-visible,
+html[data-skin="signal"] .three-part-form button:hover,
+html[data-skin="signal"] .three-part-form button:focus-visible,
+html[data-skin="signal"] .ledger-item__actions button:hover,
+html[data-skin="signal"] .ledger-item__actions button:focus-visible,
+html[data-skin="signal"] .template-list button:hover,
+html[data-skin="signal"] .template-list button:focus-visible,
+html[data-skin="signal"] .command-template-list button:hover,
+html[data-skin="signal"] .command-template-list button:focus-visible {
+  outline: none;
+  border-color: var(--wh-accent-strong);
+  background: var(--wh-accent-soft);
+  box-shadow: 0 0 0 3px var(--wh-accent-glow);
+}
+
+/* 5. Top-right Menu + theme-toggle — visible resting border, strong hover/focus.
+   Existing rules use transparent border at rest; promote to the Wormhole
+   button-border token, then accent on interaction. */
+html[data-skin="signal"] .theme-toggle,
+html[data-skin="signal"] .mobile-menu-toggle {
+  border: 1px solid var(--wh-button-border);
+  background: var(--wh-button-bg);
+  transition: border-color .18s ease, background .18s ease, box-shadow .18s ease;
+}
+html[data-skin="signal"] .theme-toggle:hover,
+html[data-skin="signal"] .theme-toggle:focus-visible,
+html[data-skin="signal"] .mobile-menu-toggle:hover,
+html[data-skin="signal"] .mobile-menu-toggle:focus-visible {
+  outline: none;
+  border-color: var(--wh-accent-strong);
+  background: var(--wh-accent-soft);
+  box-shadow: 0 0 0 3px var(--wh-accent-glow);
+}
+html[data-skin="signal"] .mobile-menu-toggle[aria-expanded="true"] {
+  border-color: var(--wh-accent);
+  background: var(--wh-accent-soft);
+}
+
+/* 3. Bank dropdown — kill default browser blue where CSS can.
+   Native popup (OS) cannot be fully styled, but CSS-controllable parts
+   pick up the Wormhole accent. */
+html[data-skin="signal"] .bank-filter-grid {
+  accent-color: var(--wh-accent);
+}
+html[data-skin="signal"] .bank-filter-grid select option:checked,
+html[data-skin="signal"] .bank-filter-grid select option:hover {
+  background-color: var(--wh-accent-soft);
+  color: var(--wh-input-text);
+}
+
+/* 6/8/9/10. Run Sequence section. */
+html[data-skin="signal"] .runseq-section .runseq-forms {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(16px, 2.4vw, 24px);
+  margin-top: 14px;
+}
+@media (max-width: 720px) {
+  html[data-skin="signal"] .runseq-section .runseq-forms {
+    grid-template-columns: 1fr;
+  }
+}
+html[data-skin="signal"] .runseq-sub-kicker {
+  margin: 0 0 8px;
+}
+html[data-skin="signal"] .runseq-list {
+  margin-top: 18px;
+}
+html[data-skin="signal"] .runseq-add-form textarea {
+  min-height: 64px;
+}
+html[data-skin="signal"] .runseq-index {
+  font-family: var(--font-mono);
+  opacity: .72;
+}

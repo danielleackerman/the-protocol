@@ -133,3 +133,14 @@ html[data-skin="signal"][data-theme="light"] textarea:focus {
     0 0 0 1px rgba(111, 103, 90, .22),
     inset 0 1px 0 rgba(255, 255, 255, .82);
 }
+
+/* Accent override for light theme — deeper amber for contrast on warm ivory.
+   Structural rules for hover/focus/Run-Sequence layout live in
+   wormhole-dark.css and read these tokens. */
+html[data-skin="signal"][data-theme="light"] {
+  --wh-accent:        #a8761b;
+  --wh-accent-strong: #8c5f10;
+  --wh-accent-soft:   rgba(168, 118, 27, .14);
+  --wh-accent-glow:   rgba(168, 118, 27, .28);
+  accent-color:       #a8761b;
+}

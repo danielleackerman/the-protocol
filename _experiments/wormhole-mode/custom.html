@@ -28,6 +28,47 @@
 </header>
 <main class="shell" id="top">
 <section class="identity"><p class="kicker">Configuration Workbench</p><h1>Custom</h1><p class="lede">Add the pieces you actually use: switches, defaults, commands, laws, peak states, and confirmations.</p><div class="controls"><a class="button" href="bank.html">Open Bank</a><button class="button" id="copyCustomDailyRun" type="button">Copy Current Defaults</button></div></section>
+<section class="panel config-section config-section--wide runseq-section" id="custom-runseq" aria-labelledby="runseq-heading">
+  <p class="panel-kicker">00 / Run Sequence</p>
+  <h2 id="runseq-heading">Run Sequence</h2>
+  <p class="module-note">Build a run by adding steps manually, populating from saved items, or both.</p>
+  <div class="runseq-forms">
+    <div class="runseq-form runseq-form--manual">
+      <p class="panel-kicker runseq-sub-kicker">Add a Step</p>
+      <div class="utility-form three-part-form runseq-add-form">
+        <label><span>Category</span><select id="seqAddCategory" data-category-select></select></label>
+        <label><span>Type</span><select id="seqAddType">
+          <option value="switch">Switch</option>
+          <option value="default">Default</option>
+          <option value="command">Command</option>
+          <option value="law">Law</option>
+          <option value="peak">Peak State</option>
+          <option value="confirmation">Confirmation</option>
+          <option value="custom">Custom Step</option>
+        </select></label>
+        <label class="form-wide"><span>Step</span><textarea id="seqAddText" placeholder="Write the step exactly as you will run it."></textarea></label>
+        <button type="button" id="addRunSeqStep">Add to Run Sequence</button>
+      </div>
+    </div>
+    <div class="runseq-form runseq-form--populate">
+      <p class="panel-kicker runseq-sub-kicker">Populate from Saved</p>
+      <div class="utility-form three-part-form runseq-populate-form">
+        <label><span>Category</span><select id="seqPopulateCategory" data-runseq-category-filter><option value="all">All Categories</option></select></label>
+        <label><span>Type</span><select id="seqPopulateType">
+          <option value="all">All Types</option>
+          <option value="switch">Switches</option>
+          <option value="default">Defaults</option>
+          <option value="command">Commands</option>
+          <option value="law">Laws</option>
+          <option value="peak">Peak States</option>
+          <option value="confirmation">Confirmations</option>
+        </select></label>
+        <button type="button" id="populateRunSeq">Populate from Saved Items</button>
+      </div>
+    </div>
+  </div>
+  <div class="ledger-list runseq-list" id="runSeqList" aria-live="polite"></div>
+</section>
 <section class="panel custom-status-panel" aria-live="polite"><p class="panel-kicker">Status</p><div class="status-row custom-status-row"><span class="status-label">Custom</span><span id="customStatus" class="status-value status-ready">Ready</span></div></section>
 <section class="config-grid" aria-label="Custom configuration modules">
 <section class="panel config-section" id="custom-switches"><p class="panel-kicker">01 / Custom Switches</p><h2>Switchboard</h2><p class="module-note">Group ON states by life area.</p><div class="utility-form three-part-form"><label><span>Category</span><select id="customSwitchCategory" data-category-select></select></label><label><span>Switch</span><input id="customSwitchName" type="text" placeholder="Paid quickly" /></label><button type="button" id="addCustomSwitch">Add Switch</button></div><div class="ledger-list" id="customSwitchList"></div></section>
