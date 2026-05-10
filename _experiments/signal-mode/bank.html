@@ -1,0 +1,24 @@
+<!doctype html><html data-skin="signal" lang="en" data-theme="dark"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>Bank · The Protocol</title><link rel="stylesheet" href="signal-dark.css" />
+  <link rel="stylesheet" href="signal-light.css" /></head><body><header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="index.html">The Protocol</a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="overview.html" class="">Overview</a>
+      <a href="index.html" class="">Daily Run</a>
+      <a href="levels.html" class="">Levels</a>
+      <a href="custom.html" class="">Custom</a>
+      <a href="bank.html" class="is-active">Bank</a>
+    </nav>
+    <div class="header-actions">
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle theme">☼</button>
+      <button class="mobile-menu-toggle" type="button" data-mobile-menu-toggle aria-expanded="false" aria-label="Open menu">Menu</button>
+    </div>
+  </div>
+  <nav class="mobile-nav" data-mobile-nav aria-label="Mobile navigation">
+    <a href="overview.html" class="">Overview</a>
+    <a href="index.html" class="">Daily Run</a>
+    <a href="levels.html" class="">Levels</a>
+    <a href="custom.html" class="">Custom</a>
+    <a href="bank.html" class="is-active">Bank</a>
+  </nav>
+</header><main class="shell" id="top"><section class="identity"><p class="kicker">Saved Ledger</p><h1>Bank</h1><p class="lede">All saved custom switches, defaults, commands, laws, peak states, and confirmations.</p><div class="controls"><a class="button" href="custom.html">Add Custom Item</a><button class="button" id="exportBank" type="button">Export Bank</button></div></section><section class="panel bank-controls"><p class="panel-kicker">Filters</p><div class="bank-filter-grid"><label><span>Type</span><select id="bankTypeFilter"><option value="all">All Types</option><option value="switch">Switches</option><option value="default">Defaults</option><option value="command">Commands</option><option value="law">Laws</option><option value="peak">Peak States</option><option value="confirmation">Confirmations</option></select></label><label><span>Category</span><select id="bankCategoryFilter" data-category-select><option value="all">All Categories</option></select></label><label><span>Search</span><input id="bankSearch" type="search" placeholder="Search saved items…" /></label></div></section><section class="panel bank-panel"><p class="panel-kicker">Ledger</p><h2>Saved Items</h2><div id="bankList" class="bank-list ledger-list" aria-live="polite"></div></section></main><footer class="footer">The Protocol / Utility Console</footer><script src="signal-lab.js"></script></body></html>

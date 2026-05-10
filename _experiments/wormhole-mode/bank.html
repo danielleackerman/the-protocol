@@ -1,0 +1,64 @@
+<!doctype html>
+<html data-skin="signal" lang="en" data-theme="dark">
+<head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>Bank · The Protocol</title><link rel="stylesheet" href="wormhole-dark.css" />
+  <link rel="stylesheet" href="wormhole-light.css" /><script>(function(){try{var t=localStorage.getItem("the-protocol.theme");if(t==="dark"||t==="light"){document.documentElement.setAttribute("data-theme",t);}}catch(e){}})();</script></head>
+<body>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="index.html">The Protocol</a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="overview.html" class="">Overview</a>
+      <a href="index.html" class="">Daily Run</a>
+      <a href="levels.html" class="">Levels</a>
+      <a href="custom.html" class="">Custom</a>
+      <a href="bank.html" class="is-active">Bank</a>
+    </nav>
+    <div class="header-actions">
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle theme">☼</button>
+      <button class="mobile-menu-toggle" type="button" data-mobile-menu-toggle aria-expanded="false" aria-label="Open menu">Menu</button>
+    </div>
+  </div>
+  <nav class="mobile-nav" data-mobile-nav aria-label="Mobile navigation">
+    <a href="overview.html" class="">Overview</a>
+    <a href="index.html" class="">Daily Run</a>
+    <a href="levels.html" class="">Levels</a>
+    <a href="custom.html" class="">Custom</a>
+    <a href="bank.html" class="is-active">Bank</a>
+  </nav>
+</header>
+<main class="shell" id="top">
+  <section class="identity"><p class="kicker">Saved Ledger</p><h1>Bank</h1><p class="lede">Browse by category. Search across everything. Drill into any category for type filters.</p><div class="controls"><a class="button" href="custom.html">Add Custom Item</a><button class="button" id="exportBank" type="button">Export Bank</button></div></section>
+
+  <section class="panel bank-search-panel" id="bank-search-panel">
+    <label class="bank-search-label"><span class="visually-hidden">Search</span><input id="bankSearch" type="search" placeholder="Search saved items across all categories…" autocomplete="off" /></label>
+  </section>
+
+  <!-- Default view: category grid (twelve cards with counts) -->
+  <section class="panel bank-grid-panel" id="bank-grid-panel">
+    <p class="panel-kicker">Categories</p>
+    <h2>Browse by Category</h2>
+    <div class="bank-category-grid" id="bankCategoryGrid" aria-live="polite"></div>
+  </section>
+
+  <!-- Drilldown view: one category, with type chips + ledger -->
+  <section class="panel bank-drill-panel" id="bank-drill-panel" hidden>
+    <div class="bank-drill-head">
+      <button type="button" class="utility-link bank-back" id="bankBackBtn" aria-label="Back to all categories">← All Categories</button>
+      <p class="panel-kicker">Category</p>
+      <h2 id="bankDrillTitle">Category</h2>
+    </div>
+    <div class="bank-type-chips" id="bankTypeChips" role="tablist" aria-label="Type filter"></div>
+    <div class="ledger-list bank-list" id="bankList" aria-live="polite"></div>
+  </section>
+
+  <!-- Search-results view: flat matches across all categories -->
+  <section class="panel bank-search-results-panel" id="bank-search-results-panel" hidden>
+    <p class="panel-kicker">Search Results</p>
+    <h2 id="bankSearchHeading">Results</h2>
+    <div class="ledger-list bank-list" id="bankSearchList" aria-live="polite"></div>
+  </section>
+</main>
+<footer class="footer">The Protocol / Utility Console</footer>
+<script src="wormhole-lab.js"></script>
+</body>
+</html>

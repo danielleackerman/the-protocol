@@ -1,0 +1,2338 @@
+/*
+  Wormhole Mode — Shared Structure + Dark Theme
+  --------------------------------------------------------------
+  This file is the single authority for Wormhole structural CSS.
+  Theme overrides live in wormhole-light.css (load order matters).
+
+  Scope fence: html[data-skin="signal"] until the lab migrates the attribute.
+
+  Architecture rules:
+    - One declaration per concept. No PASS blocks. No bottom-appended override piles.
+    - No page-specific selectors (no #preview-levels, no per-page hacks).
+    - Systemic modifiers only: .identity--hero, .level-directory, semantic .danger-card etc.
+    - Reference panels use the global H2; documentation register comes from the kicker, not a private H2.
+
+  Source of truth for the visual system. If a fix is needed, edit the rule in place.
+  Do NOT append a new override block at the bottom of this file.
+*/
+
+/* Font tokens (theme-agnostic) ----------------------------------------- */
+:root {
+  --font-display: "Cormorant Garamond", "Bodoni 72", "Didot", Georgia, serif;
+  --font-heading: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+  --font-body:    "Inter", "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+  --font-mono:    "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+}
+
+/* Shared structural tokens (theme-agnostic) ---------------------------- */
+html[data-skin="signal"] {
+  --font-display: "Cormorant Garamond", "Bodoni 72", "Didot", Georgia, serif;
+  --font-heading: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+  --font-body:    "Inter", "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+  --font-sans:    var(--font-body);
+  --font-mono:    "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+
+  --wh-radius:        14px;
+  --wh-radius-sm:     8px;
+  --wh-page:          min(1180px, calc(100vw - 28px));
+  --wh-header-height: 76px;
+
+  --wh-space-1: 4px;
+  --wh-space-2: 8px;
+  --wh-space-3: 12px;
+  --wh-space-4: 18px;
+  --wh-space-5: 24px;
+  --wh-space-6: 32px;
+
+  --wh-row-index-col:    2.5ch;
+  --wh-row-label-col:    clamp(5.8rem, 12vw, 7rem);
+  --wh-row-gap:          14px;
+  --wh-row-divider:      rgba(214, 209, 198, .15);
+  --wh-row-divider-soft: rgba(214, 209, 198, .10);
+  --wh-row-hover:        linear-gradient(90deg, rgba(214, 209, 198, .055), transparent 46%);
+
+  /* Type ladder — named tokens replace scattered literals. ---------------
+     Three parallel scales: mono, sans, display. Each role reaches for a
+     named token instead of a one-off size/weight. The mono scale used to
+     collapse onto .62rem for seven different roles; it now has three real
+     tiers. The sans scale used to run hot in a single .94–1.05rem band
+     with no small/default/lede separation; it now has six. */
+
+  /* Mono — page-meta tier (smallest) — for kickers, eyebrows above panels.
+     These are metadata about the panel; they stay quiet. */
+  --wh-mono-eyebrow-sm-size:   .62rem;
+  --wh-mono-eyebrow-sm-weight: 800;
+  --wh-mono-eyebrow-sm-track:  .14em;
+
+  /* Mono — row-eyebrow tier — for nav, primary metadata labels above
+     content. Bigger than -sm but still meta-level. */
+  --wh-mono-eyebrow-size:      .68rem;
+  --wh-mono-eyebrow-weight:    850;
+  --wh-mono-eyebrow-track:     .11em;
+
+  /* Mono — row-key tier — for terms that ARE the content (OPERATE, FLIP,
+     EXECUTE, ABUNDANCE, DO NOT MANIFEST). Sits between eyebrow and value
+     prose. Must read as legible terminal labels but must NOT outweigh
+     the H3 sitting above them. Earlier this was at .76rem/800/full-ivory
+     which crushed H3 hierarchy and made multi-word keys feel like
+     command badges. */
+  --wh-mono-rowkey-size:       .70rem;
+  --wh-mono-rowkey-weight:     760;
+  --wh-mono-rowkey-track:      .09em;
+
+  /* Mono — data tier (numbers, code-as-data, sequence index) */
+  --wh-mono-data-size:         .66rem;
+  --wh-mono-data-weight:       720;
+  --wh-mono-data-track:        .04em;
+
+  /* Mono — chip tier (utility-link, command-chip, action chips) */
+  --wh-mono-chip-size:         .66rem;
+  --wh-mono-chip-weight:       850;
+  --wh-mono-chip-track:        .10em;
+
+  /* Sans — micro tier (module notes, tight support copy) */
+  --wh-sans-micro-size:        .82rem;
+  --wh-sans-micro-line:        1.32;
+  --wh-sans-micro-weight:      450;
+
+  /* Sans — body tier (default paragraphs, reference values) */
+  --wh-sans-body-size:         .92rem;
+  --wh-sans-body-line:         1.30;
+  --wh-sans-body-weight:       430;
+
+  /* Sans — prose tier (reference-section paragraphs; tighter than body) */
+  --wh-sans-prose-size:        .88rem;
+  --wh-sans-prose-line:        1.30;
+  --wh-sans-prose-weight:      420;
+  --wh-sans-prose-measure:     42rem;
+
+  /* Sans — lede tier (panel-level support copy) */
+  --wh-sans-lede-size:         clamp(.95rem, 1.05vw, 1.02rem);
+  --wh-sans-lede-line:         1.32;
+  --wh-sans-lede-weight:       450;
+
+  /* Sans — support tier (panel-meta support copy: "Gate level: complete
+     the install…", "Use this when…"). Quieter than lede so the H1/H2
+     above it stays the visual lead. */
+  --wh-sans-support-size:      .86rem;
+  --wh-sans-support-line:      1.32;
+  --wh-sans-support-weight:    430;
+
+  /* Sans — value tier (seq-body, status-value, primary row values) */
+  --wh-sans-value-size:        clamp(.94rem, 1.1vw, 1.0rem);
+  --wh-sans-value-line:        1.28;
+  --wh-sans-value-weight:      460;
+
+  /* Sans — value-strong tier (active state values; weight emphasis) */
+  --wh-sans-value-strong-weight: 600;
+
+  /* Strong — global emphasis weight. Lower than the original 620 so an
+     all-<strong> paragraph reads as emphasis without thickening the page. */
+  --wh-strong-weight: 560;
+
+  scroll-behavior: smooth;
+  background: var(--wh-void);
+}
+
+/* Dark theme tokens ---------------------------------------------------- */
+html[data-skin="signal"][data-theme="dark"] {
+  --wh-void:      #020201;
+  --wh-black:     #060504;
+  --wh-ink:       #0d0c0a;
+  --wh-espresso:  #14120f;
+  --wh-bronze:    #746b5d;
+  --wh-gold:      #a7a097;
+  --wh-gold-hot:  #d6d2c7;
+  --wh-clay:      #7e6e68;
+  --wh-clay-soft: #7e6e68;
+  --wh-ivory:     #f7f1e7;
+
+  --wh-text:        #f7f1e7;
+  --wh-brand:       #f7f1e7;
+  --wh-heading:     #f7f1e7;
+  --wh-muted:       rgba(247, 241, 231, .60);
+  --wh-copy:        rgba(247, 241, 231, .76);
+  --wh-copy-strong: rgba(247, 241, 231, .92);
+  --wh-label:       rgba(199, 192, 178, .86);
+  --wh-kicker:      #c7c0b2;
+  --wh-lede:        rgba(247, 241, 231, .82);
+
+  --wh-page-bg:
+    radial-gradient(ellipse at 50% -10%, rgba(167, 160, 151, .075), transparent 32rem),
+    radial-gradient(circle at 12% 16%, rgba(126, 110, 104, .045), transparent 22rem),
+    linear-gradient(180deg, #080706 0%, #040403 58%, #020201 100%);
+  --wh-portal-layer:
+    radial-gradient(ellipse at 50% -18%, transparent 0 25rem, rgba(214, 209, 198, .035) 25.2rem, transparent 25.5rem),
+    linear-gradient(90deg, transparent, rgba(214, 209, 198, .014) 50%, transparent);
+  --wh-vignette-layer: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, .34) 100%);
+  --wh-grid-opacity: .30;
+  --wh-scan-opacity: .28;
+
+  --wh-header-bg:        rgba(4, 4, 3, .88);
+  --wh-header-border:    rgba(214, 209, 198, .09);
+  --wh-nav-bg:           rgba(247, 241, 231, .035);
+  --wh-nav-text:         rgba(247, 241, 231, .72);
+  --wh-nav-active-bg:    rgba(214, 209, 198, .08);
+  --wh-nav-active-text:  #f7f1e7;
+
+  --wh-border-default: rgba(214, 209, 198, .13);
+  --wh-border-active:  rgba(214, 209, 198, .34);
+  --wh-border-alert:   rgba(126, 110, 104, .30);
+  --wh-hero-border:    rgba(214, 209, 198, .24);
+
+  --wh-panel-bg:
+    linear-gradient(180deg, rgba(247, 241, 231, .026), rgba(247, 241, 231, .012)),
+    rgba(7, 6, 5, .88);
+  --wh-hero-bg:
+    radial-gradient(ellipse at 50% -10%, rgba(167, 160, 151, .12), transparent 30rem),
+    linear-gradient(180deg, rgba(9, 8, 7, .94), rgba(5, 4, 3, .91));
+  --wh-panel-atmosphere:
+    linear-gradient(90deg, rgba(247, 241, 231, .010), transparent 45%, rgba(214, 209, 198, .014));
+  --wh-panel-atmosphere-opacity: .70;
+
+  --wh-panel-shadow: 0 10px 24px rgba(0, 0, 0, .28), inset 0 1px 0 rgba(247, 241, 231, .035);
+  --wh-hero-shadow:  0 14px 34px rgba(0, 0, 0, .36), 0 0 0 1px rgba(214, 209, 198, .055);
+  --wh-small-glow:   0 0 0 1px rgba(214, 209, 198, .10), 0 8px 18px rgba(0, 0, 0, .16);
+
+  --wh-h1-fill:   #f7f1e7;
+  --wh-h1-shadow: none;
+
+  --wh-inner-bg:     linear-gradient(180deg, rgba(247, 241, 231, .032), rgba(247, 241, 231, .014));
+  --wh-inner-border: rgba(214, 209, 198, .12);
+  --wh-divider:      rgba(214, 209, 198, .12);
+  --wh-chip-bg:      rgba(214, 209, 198, .075);
+  --wh-code-bg:      rgba(0, 0, 0, .22);
+  --wh-code-text:    #f7f1e7;
+
+  --wh-button-border: rgba(214, 209, 198, .30);
+  --wh-button-bg:     linear-gradient(180deg, rgba(214, 209, 198, .10), rgba(214, 209, 198, .035));
+  --wh-hot-button-bg: linear-gradient(180deg, rgba(126, 110, 104, .11), rgba(126, 110, 104, .035));
+  --wh-button-text:   #f7f1e7;
+
+  --wh-input-border: rgba(214, 209, 198, .13);
+  --wh-input-bg:     rgba(247, 241, 231, .045);
+  --wh-input-text:   #f7f1e7;
+  --wh-placeholder:  rgba(247, 241, 231, .38);
+}
+
+/* Universal base ------------------------------------------------------- */
+html[data-skin="signal"] *,
+html[data-skin="signal"] *::before,
+html[data-skin="signal"] *::after {
+  box-sizing: border-box;
+}
+
+html[data-skin="signal"] body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--wh-text);
+  font-family: var(--font-body);
+  line-height: 1.35;
+  overflow-x: hidden;
+  background: var(--wh-page-bg);
+  text-rendering: geometricPrecision;
+}
+
+html[data-skin="signal"] body::before,
+html[data-skin="signal"] body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+html[data-skin="signal"] body::before {
+  z-index: -2;
+  background: var(--wh-portal-layer);
+  opacity: var(--wh-grid-opacity);
+}
+
+html[data-skin="signal"] body::after {
+  z-index: -1;
+  background: var(--wh-vignette-layer);
+  opacity: var(--wh-scan-opacity);
+}
+
+html[data-skin="signal"] a {
+  color: inherit;
+  text-decoration: none;
+}
+
+html[data-skin="signal"] button,
+html[data-skin="signal"] input,
+html[data-skin="signal"] select,
+html[data-skin="signal"] textarea {
+  font: inherit;
+}
+
+html[data-skin="signal"] ::selection {
+  background: rgba(214, 209, 198, .28);
+  color: var(--wh-ivory);
+}
+
+/* Header / Navigation -------------------------------------------------- */
+html[data-skin="signal"] .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  border-bottom: 1px solid var(--wh-header-border);
+  background: var(--wh-header-bg);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+html[data-skin="signal"] .site-header__inner {
+  width: var(--wh-page);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(150px, 250px) 1fr auto;
+  gap: 14px;
+  align-items: center;
+  padding: 10px 0;
+}
+
+html[data-skin="signal"] .brand {
+  display: inline-grid;
+  gap: 2px;
+  min-width: 0;
+  color: var(--wh-brand);
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 2vw, 1.42rem);
+  font-weight: 600;
+  letter-spacing: .04em;
+  line-height: 1.02;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+html[data-skin="signal"] .brand__title {
+  font-family: var(--font-display);
+}
+
+html[data-skin="signal"] .brand__sub {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--wh-mono-eyebrow-sm-size);
+  font-weight: var(--wh-mono-eyebrow-sm-weight);
+  letter-spacing: var(--wh-mono-eyebrow-sm-track);
+  color: var(--wh-kicker);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+html[data-skin="signal"] .site-nav {
+  display: flex;
+  gap: 7px;
+  overflow-x: auto;
+  padding: 3px 0;
+  scrollbar-width: none;
+}
+
+html[data-skin="signal"] .site-nav::-webkit-scrollbar {
+  display: none;
+}
+
+html[data-skin="signal"] .header-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  justify-self: end;
+}
+
+html[data-skin="signal"] .site-nav a,
+html[data-skin="signal"] .theme-toggle,
+html[data-skin="signal"] .mobile-menu-toggle,
+html[data-skin="signal"] .mobile-nav a {
+  min-height: 34px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: var(--wh-nav-bg);
+  color: var(--wh-nav-text);
+  font-family: var(--font-mono);
+  font-size: var(--wh-mono-eyebrow-size);
+  font-weight: var(--wh-mono-eyebrow-weight);
+  letter-spacing: var(--wh-mono-eyebrow-track);
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: border-color .18s ease, background .18s ease, color .18s ease;
+}
+
+html[data-skin="signal"] .site-nav a,
+html[data-skin="signal"] .mobile-nav a {
+  display: inline-flex;
+  align-items: center;
+  padding: 9px 13px;
+}
+
+html[data-skin="signal"] .theme-toggle,
+html[data-skin="signal"] .mobile-menu-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 38px;
+  padding: 0 11px;
+  cursor: pointer;
+}
+
+html[data-skin="signal"] .mobile-menu-toggle {
+  display: none;
+}
+
+html[data-skin="signal"] .site-nav a:hover,
+html[data-skin="signal"] .site-nav a:focus-visible,
+html[data-skin="signal"] .site-nav a.is-active,
+html[data-skin="signal"] .theme-toggle:hover,
+html[data-skin="signal"] .theme-toggle:focus-visible,
+html[data-skin="signal"] .mobile-menu-toggle:hover,
+html[data-skin="signal"] .mobile-menu-toggle:focus-visible,
+html[data-skin="signal"] .mobile-nav a:hover,
+html[data-skin="signal"] .mobile-nav a:focus-visible,
+html[data-skin="signal"] .mobile-nav a.is-active {
+  outline: none;
+  border-color: var(--wh-border-active);
+  background: var(--wh-nav-active-bg);
+  color: var(--wh-nav-active-text);
+}
+
+html[data-skin="signal"] .mobile-nav {
+  display: none;
+  width: var(--wh-page);
+  margin: 0 auto;
+  padding: 0 0 12px;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Layout shell --------------------------------------------------------- */
+html[data-skin="signal"] .shell,
+html[data-skin="signal"] .page-shell {
+  width: var(--wh-page);
+  margin: 0 auto;
+  display: grid;
+  gap: clamp(18px, 2.6vw, 32px);
+  padding: clamp(18px, 3.2vw, 42px) 0;
+}
+
+html[data-skin="signal"] .layout-two,
+html[data-skin="signal"] .signal-panel-grid,
+html[data-skin="signal"] .bank-filter-grid,
+html[data-skin="signal"] .config-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(16px, 2.4vw, 24px);
+}
+
+html[data-skin="signal"] .config-section--wide,
+html[data-skin="signal"] .form-wide {
+  grid-column: 1 / -1;
+}
+
+/* Panels --------------------------------------------------------------- */
+html[data-skin="signal"] .identity,
+html[data-skin="signal"] .panel,
+html[data-skin="signal"] .reference-section {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--wh-border-default);
+  border-radius: var(--wh-radius);
+  background: var(--wh-panel-bg);
+  box-shadow: var(--wh-panel-shadow);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: clamp(18px, 2.8vw, 34px);
+}
+
+html[data-skin="signal"] .identity::before,
+html[data-skin="signal"] .panel::before,
+html[data-skin="signal"] .reference-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: var(--wh-panel-atmosphere);
+  opacity: var(--wh-panel-atmosphere-opacity);
+}
+
+html[data-skin="signal"] .identity::after,
+html[data-skin="signal"] .panel::after,
+html[data-skin="signal"] .reference-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(90deg, transparent, rgba(214, 209, 198, .24), transparent) top left / 100% 1px no-repeat;
+  opacity: .34;
+}
+
+html[data-skin="signal"] .identity > *,
+html[data-skin="signal"] .panel > *,
+html[data-skin="signal"] .reference-section > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Semantic panel modifiers (color shift via tokens, no layout change) */
+html[data-skin="signal"] .danger-card {
+  --wh-border-default: var(--wh-border-alert);
+}
+
+/* Hero modifier — opt-in cinematic register for entry/portal pages.
+   Apply via class="identity identity--hero". The bigger H1 scale (via
+   .h1--cinematic) and the larger padding-block give this register its
+   presence; the panel sizes to its content like other identity panels.
+   Earlier this had min-height: clamp(340px, 52vh, 640px) which produced
+   a panel taller than its content, with empty atmosphere space below
+   the buttons. Removed. */
+html[data-skin="signal"] .identity--hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border-color: var(--wh-hero-border);
+  background: var(--wh-hero-bg);
+  box-shadow: var(--wh-hero-shadow);
+  padding-block: clamp(34px, 5vw, 58px);
+}
+
+html[data-skin="signal"] .identity--hero::before {
+  background:
+    radial-gradient(ellipse at 50% 12%, transparent 0 11rem, rgba(214, 209, 198, .14) 11.1rem, transparent 11.35rem),
+    radial-gradient(ellipse at 50% 12%, transparent 0 16rem, rgba(247, 241, 231, .06) 16.1rem, transparent 16.4rem),
+    radial-gradient(circle at 18% 20%, rgba(126, 110, 104, .12), transparent 16rem),
+    radial-gradient(circle at 82% 18%, rgba(214, 209, 198, .10), transparent 18rem),
+    linear-gradient(135deg, rgba(247, 241, 231, .03), transparent 48%);
+  opacity: .58;
+}
+
+html[data-skin="signal"] .identity--hero > .kicker,
+html[data-skin="signal"] .identity--hero > .panel-kicker {
+  margin-bottom: 28px;
+}
+
+html[data-skin="signal"] .identity--hero h1 {
+  margin-bottom: 18px;
+}
+
+html[data-skin="signal"] .identity--hero > .lede,
+html[data-skin="signal"] .identity--hero > .support-copy,
+html[data-skin="signal"] .identity--hero > p {
+  margin-bottom: 22px;
+  line-height: 1.38;
+}
+
+html[data-skin="signal"] .identity--hero > .page-actions,
+html[data-skin="signal"] .identity--hero > .controls {
+  margin-top: 2px;
+  gap: 10px;
+}
+
+/* Typography ladder ---------------------------------------------------- */
+html[data-skin="signal"] h1,
+html[data-skin="signal"] h2,
+html[data-skin="signal"] h3,
+html[data-skin="signal"] p {
+  margin-top: 0;
+}
+
+/* H1 — page identity. Calm scale by default. */
+html[data-skin="signal"] h1 {
+  max-width: 760px;
+  margin: 0 0 10px;
+  color: var(--wh-h1-fill);
+  font-family: var(--font-display);
+  font-size: clamp(2.1rem, 4.35vw, 3.95rem);
+  font-weight: 600;
+  letter-spacing: -.028em;
+  line-height: 1.06;
+  text-transform: uppercase;
+  text-shadow: var(--wh-h1-shadow);
+}
+
+/* Cinematic H1 modifier — opt-in. Apply via class="h1--cinematic" on the
+   <h1> when the page identity should feel larger. Inside .identity--hero
+   it engages automatically. Available systemically. */
+html[data-skin="signal"] h1.h1--cinematic,
+html[data-skin="signal"] .identity--hero h1 {
+  font-size: clamp(3.4rem, 8.5vw, 6.8rem);
+  letter-spacing: -.04em;
+  line-height: .94;
+}
+
+/* H1 + support copy collapse: lede/p hugs the title */
+html[data-skin="signal"] h1 + .lede,
+html[data-skin="signal"] h1 + .support-copy,
+html[data-skin="signal"] h1 + p {
+  margin-top: 0;
+}
+
+/* H2 — primary section heading. ONE style, mode-wide. No private variants. */
+html[data-skin="signal"] h2 {
+  max-width: 760px;
+  margin: 0 0 14px;
+  color: var(--wh-heading);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.75rem, 3.4vw, 2.45rem);
+  font-weight: 600;
+  letter-spacing: -.018em;
+  line-height: 1.04;
+  text-transform: none;
+  text-shadow: none;
+}
+
+/* H3 — subsection heading. Distinct from row keys: italic Cormorant,
+   sentence case, sized and weighted so it clearly outranks the mono
+   row-keys sitting underneath it. */
+html[data-skin="signal"] h3 {
+  margin: 36px 0 6px;
+  color: var(--wh-heading);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.28rem, 2.15vw, 1.65rem);
+  font-weight: 620;
+  letter-spacing: -.012em;
+  line-height: 1.08;
+  text-transform: none;
+}
+
+/* First subsection in a card should not float too far down */
+html[data-skin="signal"] h2 + h3,
+html[data-skin="signal"] .lede + h3,
+html[data-skin="signal"] .support-copy + h3,
+html[data-skin="signal"] .panel > h3:first-child,
+html[data-skin="signal"] .reference-section > h3:first-child {
+  margin-top: 24px;
+}
+
+/* Subsection groups need separation from the previous table */
+html[data-skin="signal"] .flat-list + h3,
+html[data-skin="signal"] .reference-table + h3,
+html[data-skin="signal"] .state-table + h3,
+html[data-skin="signal"] .status-strip + h3,
+html[data-skin="signal"] .sequence + h3 {
+  margin-top: 36px;
+}
+
+/* Kickers / metadata labels — small mono uppercase tracked. Margin-bottom
+   is small so the kicker hugs the heading below it as a single unit.
+
+   The reference-section scoped selectors are specificity insurance: the
+   rule `.reference-section p` (set elsewhere for prose sizing) has
+   higher specificity than `.panel-kicker` alone, so without the
+   reference-section scope here, kickers inside reference panels would
+   inherit the .88rem prose size instead of the eyebrow size. The
+   identity/panel/operation-card scoped selectors are belt-and-braces:
+   any future scoped p-rule won't be able to up-size a kicker. */
+html[data-skin="signal"] .kicker,
+html[data-skin="signal"] .panel-kicker,
+html[data-skin="signal"] .identity > .kicker,
+html[data-skin="signal"] .identity > .panel-kicker,
+html[data-skin="signal"] .panel > .kicker,
+html[data-skin="signal"] .panel > .panel-kicker,
+html[data-skin="signal"] .reference-section > .kicker,
+html[data-skin="signal"] .reference-section > .panel-kicker,
+html[data-skin="signal"] .operation-card > .kicker,
+html[data-skin="signal"] .operation-card > .panel-kicker,
+html[data-skin="signal"] label > span {
+  display: block;
+  margin: 0 0 4px;
+  color: var(--wh-kicker);
+  font-family: var(--font-mono);
+  font-size: var(--wh-mono-eyebrow-sm-size);
+  font-weight: var(--wh-mono-eyebrow-sm-weight);
+  letter-spacing: var(--wh-mono-eyebrow-sm-track);
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+html[data-skin="signal"] .panel-kicker.is-danger,
+html[data-skin="signal"] .is-danger {
+  color: var(--wh-clay);
+}
+
+/* Lede — panel-leading paragraph. The deliberate readable-secondary
+   line right after a hero or H2. */
+html[data-skin="signal"] .lede,
+html[data-skin="signal"] .panel > .lede,
+html[data-skin="signal"] .reference-section > .lede {
+  max-width: 42rem;
+  margin: 0 0 18px;
+  color: var(--wh-lede);
+  font-family: var(--font-body);
+  font-size: var(--wh-sans-lede-size);
+  font-style: normal;
+  font-weight: var(--wh-sans-lede-weight);
+  letter-spacing: .003em;
+  line-height: var(--wh-sans-lede-line);
+}
+
+/* Support copy — panel-meta hint ("Gate level: complete the install…",
+   "Run first. Open reference only…"). Quieter than lede so the H1/H2
+   above it stays the visual lead. The earlier shared-with-lede rule
+   made these read as near-headline. */
+html[data-skin="signal"] .support-copy,
+html[data-skin="signal"] .panel > .support-copy,
+html[data-skin="signal"] .reference-section > .support-copy,
+html[data-skin="signal"] .identity > .support-copy {
+  max-width: 42rem;
+  margin: 0 0 14px;
+  color: var(--wh-copy);
+  font-family: var(--font-body);
+  font-size: var(--wh-sans-support-size);
+  font-style: normal;
+  font-weight: var(--wh-sans-support-weight);
+  letter-spacing: .003em;
+  line-height: var(--wh-sans-support-line);
+}
+
+html[data-skin="signal"] p,
+html[data-skin="signal"] li {
+  color: var(--wh-copy);
+  font-size: var(--wh-sans-body-size);
+  font-weight: var(--wh-sans-body-weight);
+  line-height: var(--wh-sans-body-line);
+}
+
+/* Strong — emphasis, not bulldozer. Reduced weight so an all-<strong>
+   paragraph reads as accentuated, not as a bold wall. */
+html[data-skin="signal"] strong {
+  color: var(--wh-copy-strong);
+  font-weight: var(--wh-strong-weight);
+}
+
+/* Module note — micro sans for "what this module does" hints. Used on
+   custom.html under each section H2. Quieter than .lede, smaller than p. */
+html[data-skin="signal"] .module-note {
+  margin: 0 0 12px;
+  color: var(--wh-copy);
+  font-family: var(--font-body);
+  font-size: var(--wh-sans-micro-size);
+  font-weight: var(--wh-sans-micro-weight);
+  line-height: var(--wh-sans-micro-line);
+}
+
+/* Buttons / Action system --------------------------------------------- */
+html[data-skin="signal"] .controls,
+html[data-skin="signal"] .page-actions,
+html[data-skin="signal"] .signal-lab-actions,
+html[data-skin="signal"] .template-list,
+html[data-skin="signal"] .command-template-list,
+html[data-skin="signal"] .inline-chip-list,
+html[data-skin="signal"] .prev-next-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+html[data-skin="signal"] .identity--hero .page-actions,
+html[data-skin="signal"] .identity--hero .controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
+  gap: 8px;
+  align-items: center;
+}
+
+/* Button taxonomy ----------------------------------------------------- */
+/* Three roles, one urgency modifier:
+   1. .button / .page-actions a / .prev-next-nav a — page-level actions.
+      Display italic Cormorant. The signature button.
+   2. .button--form — form submit. Sans, calmer, sits next to inputs.
+      Same shape, smaller, no italic, no display face.
+   3. .command-chip / .utility-link / .plain-link — quiet mono utility.
+   .button--hot is a token shift that applies to any of the three.
+
+   Form-context <button> elements without a class fall through to
+   .button--form via the form-wrapper selectors at the bottom of this
+   block, so HTML stays minimal. Saved-template chips inside .template-list
+   that aren't classed fall through to .command-chip.
+*/
+
+/* 1. Page action — display italic. */
+html[data-skin="signal"] .button,
+html[data-skin="signal"] .page-actions a,
+html[data-skin="signal"] .prev-next-nav a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  min-height: 2.05rem;
+  padding: .44rem .82rem;
+  border: 1px solid var(--wh-button-border);
+  border-radius: 4px;
+  background: var(--wh-button-bg);
+  color: var(--wh-button-text);
+  font-family: var(--font-display);
+  font-size: .98rem;
+  font-style: italic;
+  font-weight: 600;
+  letter-spacing: .015em;
+  line-height: 1;
+  text-transform: none;
+  cursor: pointer;
+  box-shadow: none;
+  transition: border-color .18s ease, background .18s ease, box-shadow .18s ease, color .18s ease;
+}
+
+/* 2. Form submit — sans, calmer, lives next to inputs.
+   Targets:
+   - explicit .button--form class
+   - any <button> inside a form wrapper class (no HTML class needed)
+   - the bare-button selector inside ledger actions (Copy/Delete on saved items) */
+html[data-skin="signal"] .button--form,
+html[data-skin="signal"] .utility-form button,
+html[data-skin="signal"] .switch-add-row button,
+html[data-skin="signal"] .command-input-row button,
+html[data-skin="signal"] .law-form button,
+html[data-skin="signal"] .peak-form button,
+html[data-skin="signal"] .three-part-form button,
+html[data-skin="signal"] .ledger-item__actions button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  min-height: 2rem;
+  padding: .42rem .82rem;
+  border: 1px solid var(--wh-button-border);
+  border-radius: 4px;
+  background: var(--wh-button-bg);
+  color: var(--wh-button-text);
+  font-family: var(--font-body);
+  font-size: .86rem;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: .005em;
+  line-height: 1;
+  text-transform: none;
+  cursor: pointer;
+  box-shadow: none;
+  transition: border-color .18s ease, background .18s ease, box-shadow .18s ease, color .18s ease;
+}
+
+/* 3. Mono chip — quiet utility/template/copy chips. Also catches bare
+   <button> inside .template-list / .command-template-list so saved
+   command templates don't fall through to display italic. */
+html[data-skin="signal"] .command-chip,
+html[data-skin="signal"] .utility-link,
+html[data-skin="signal"] .plain-link,
+html[data-skin="signal"] .template-list button,
+html[data-skin="signal"] .command-template-list button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  min-height: 1.85rem;
+  padding: .38rem .68rem;
+  border: 1px solid var(--wh-button-border);
+  border-radius: 4px;
+  background: var(--wh-button-bg);
+  color: var(--wh-button-text);
+  font-family: var(--font-mono);
+  font-size: var(--wh-mono-chip-size);
+  font-style: normal;
+  font-weight: var(--wh-mono-chip-weight);
+  letter-spacing: var(--wh-mono-chip-track);
+  line-height: 1;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: none;
+  transition: border-color .18s ease, background .18s ease, box-shadow .18s ease, color .18s ease;
+}
+
+/* Hot/danger context — keeps shape, shifts palette via token. Applies to
+   any of the three roles when --hot or .danger-card context is present. */
+html[data-skin="signal"] .button--hot,
+html[data-skin="signal"] .danger-card .button,
+html[data-skin="signal"] .danger-card .page-actions a,
+html[data-skin="signal"] .seq-row--firewall .button {
+  border-color: var(--wh-border-alert);
+  background: var(--wh-hot-button-bg);
+}
+
+html[data-skin="signal"] .button:hover,
+html[data-skin="signal"] .button:focus-visible,
+html[data-skin="signal"] .page-actions a:hover,
+html[data-skin="signal"] .page-actions a:focus-visible,
+html[data-skin="signal"] .button--form:hover,
+html[data-skin="signal"] .button--form:focus-visible,
+html[data-skin="signal"] .utility-form button:hover,
+html[data-skin="signal"] .utility-form button:focus-visible,
+html[data-skin="signal"] .switch-add-row button:hover,
+html[data-skin="signal"] .switch-add-row button:focus-visible,
+html[data-skin="signal"] .command-input-row button:hover,
+html[data-skin="signal"] .command-input-row button:focus-visible,
+html[data-skin="signal"] .law-form button:hover,
+html[data-skin="signal"] .law-form button:focus-visible,
+html[data-skin="signal"] .peak-form button:hover,
+html[data-skin="signal"] .peak-form button:focus-visible,
+html[data-skin="signal"] .three-part-form button:hover,
+html[data-skin="signal"] .three-part-form button:focus-visible,
+html[data-skin="signal"] .ledger-item__actions button:hover,
+html[data-skin="signal"] .ledger-item__actions button:focus-visible,
+html[data-skin="signal"] .prev-next-nav a:hover,
+html[data-skin="signal"] .prev-next-nav a:focus-visible,
+html[data-skin="signal"] .command-chip:hover,
+html[data-skin="signal"] .command-chip:focus-visible,
+html[data-skin="signal"] .template-list button:hover,
+html[data-skin="signal"] .template-list button:focus-visible,
+html[data-skin="signal"] .command-template-list button:hover,
+html[data-skin="signal"] .command-template-list button:focus-visible,
+html[data-skin="signal"] .utility-link:hover,
+html[data-skin="signal"] .utility-link:focus-visible,
+html[data-skin="signal"] .plain-link:hover,
+html[data-skin="signal"] .plain-link:focus-visible {
+  outline: none;
+  border-color: var(--wh-border-active);
+  box-shadow: var(--wh-small-glow);
+}
+
+/* Row foundation — hairline-separated rows, no per-row card. ---------- */
+html[data-skin="signal"] .sequence,
+html[data-skin="signal"] .status-strip,
+html[data-skin="signal"] .state-table,
+html[data-skin="signal"] .reference-table,
+html[data-skin="signal"] .flat-list,
+html[data-skin="signal"] .mini-state-list,
+html[data-skin="signal"] .standing-decree-list,
+html[data-skin="signal"] .bank-list,
+html[data-skin="signal"] .ledger-list {
+  display: grid;
+  gap: 0;
+}
+
+html[data-skin="signal"] .seq-row,
+html[data-skin="signal"] .state-row,
+html[data-skin="signal"] .reference-row,
+html[data-skin="signal"] .flat-row,
+html[data-skin="signal"] .status-row,
+html[data-skin="signal"] .ref-block,
+html[data-skin="signal"] .mini-state,
+html[data-skin="signal"] .custom-status-row {
+  display: grid;
+  grid-template-columns: minmax(8.4rem, .30fr) minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+  padding: 13px 0 7px;
+  border-width: 0 0 1px;
+  border-style: solid;
+  border-color: var(--wh-row-divider-soft);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  transition: border-color .18s ease, background .18s ease;
+}
+
+html[data-skin="signal"] .seq-row:hover,
+html[data-skin="signal"] .state-row:hover,
+html[data-skin="signal"] .reference-row:hover,
+html[data-skin="signal"] .flat-row:hover,
+html[data-skin="signal"] .status-row:hover,
+html[data-skin="signal"] .ref-block:hover,
+html[data-skin="signal"] .mini-state:hover,
+html[data-skin="signal"] .custom-status-row:hover {
+  border-color: var(--wh-border-active);
+  background: var(--wh-row-hover);
+}
+
+html[data-skin="signal"] .sequence > :last-child,
+html[data-skin="signal"] .status-strip > :last-child,
+html[data-skin="signal"] .state-table > :last-child,
+html[data-skin="signal"] .reference-table > :last-child,
+html[data-skin="signal"] .flat-list > :last-child,
+html[data-skin="signal"] .mini-state-list > :last-child,
+html[data-skin="signal"] .standing-decree-list > :last-child {
+  border-bottom-color: transparent;
+}
+
+/* Row keys — content terms that pair with their value (OPERATE / Operate
+   as the version of yourself…). They are content peers to the value but
+   subordinate to the H3 / subsection heading sitting above them. Earlier
+   the swing to full-ivory + .76/800 made these louder than H3, which
+   crushed documentation hierarchy. Now warm-bronze label color and the
+   row-key tier sizing — readable, quietly subordinate to H3. */
+html[data-skin="signal"] .seq-label,
+html[data-skin="signal"] .state-label,
+html[data-skin="signal"] .reference-key,
+html[data-skin="signal"] .status-label,
+html[data-skin="signal"] .flat-row > strong,
+html[data-skin="signal"] .ledger-item__meta {
+  color: var(--wh-label);
+  font-family: var(--font-mono);
+  font-size: var(--wh-mono-rowkey-size);
+  font-weight: var(--wh-mono-rowkey-weight);
+  letter-spacing: var(--wh-mono-rowkey-track);
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+/* Row values — readable explanatory content. Sized via sans-value token. */
+html[data-skin="signal"] .seq-body,
+html[data-skin="signal"] .state-value,
+html[data-skin="signal"] .reference-value,
+html[data-skin="signal"] .status-value,
+html[data-skin="signal"] .flat-row > :last-child,
+html[data-skin="signal"] .ledger-item__text {
+  color: var(--wh-copy);
+  font-family: var(--font-body);
+  font-size: var(--wh-sans-value-size);
+  font-weight: var(--wh-sans-value-weight);
+  line-height: var(--wh-sans-value-line);
+  min-width: 0;
+}
+
+/* When a span-stack is nested inside a value cell (multiple lines per row),
+   each <span> child should sit on its own line. Replaces the implicit-wrap
+   pattern that produced "AbundanceON" / collapsed-line bugs. System-level
+   fix; no per-page CSS. */
+html[data-skin="signal"] .seq-body > span,
+html[data-skin="signal"] .state-value > span,
+html[data-skin="signal"] .reference-value > span,
+html[data-skin="signal"] .flat-row > :last-child > span {
+  display: block;
+}
+html[data-skin="signal"] .seq-body > span + span,
+html[data-skin="signal"] .state-value > span + span,
+html[data-skin="signal"] .reference-value > span + span,
+html[data-skin="signal"] .flat-row > :last-child > span + span {
+  margin-top: 4px;
+}
+/* Mini-state list — Daily Run inline-state pattern.
+   The parent .mini-state-list is the grid (so column widths are shared
+   across rows, making all ON badges line up at the same x-position).
+   Each .mini-state uses display:contents so its <span>name</span><b>ON</b>
+   children flow into the parent grid as cells. */
+html[data-skin="signal"] .mini-state-list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 12px;
+  row-gap: 0;
+}
+
+html[data-skin="signal"] .mini-state-list > .mini-state {
+  display: contents;
+}
+
+html[data-skin="signal"] .mini-state > span {
+  padding: 8px 0 4px;
+  border-bottom: 1px solid var(--wh-row-divider-soft);
+  justify-self: start;
+}
+
+html[data-skin="signal"] .mini-state > b {
+  padding: 8px 0 4px;
+  border-bottom: 1px solid var(--wh-row-divider-soft);
+  justify-self: end;
+  text-align: right;
+  font-family: var(--font-mono);
+  font-size: .78rem;
+  font-weight: var(--wh-sans-value-strong-weight);
+  letter-spacing: .04em;
+}
+
+/* Strip the bottom-border from the last row's cells. Because we use
+   display:contents, "last child" is across two grid cells per row. */
+html[data-skin="signal"] .mini-state-list > .mini-state:last-child > span,
+html[data-skin="signal"] .mini-state-list > .mini-state:last-child > b {
+  border-bottom: 0;
+}
+
+html[data-skin="signal"] .status-value strong,
+html[data-skin="signal"] .state-value strong,
+html[data-skin="signal"] .seq-body strong {
+  color: var(--wh-copy-strong);
+  font-weight: var(--wh-strong-weight);
+}
+
+/* Semantic state — active states. Weight + full-opacity color promote the
+   ON value into the operative payload of the row. Palette stays locked
+   (no green/red); the differentiation is weight + ivory text against
+   muted-ivory baseline values. */
+html[data-skin="signal"] .state-on,
+html[data-skin="signal"] .status-active,
+html[data-skin="signal"] .status-complete,
+html[data-skin="signal"] .status-ready,
+html[data-skin="signal"] [aria-pressed="true"] {
+  color: var(--wh-text);
+  font-weight: var(--wh-sans-value-strong-weight);
+  letter-spacing: .005em;
+}
+
+/* When the active state lives in a row that has its own row-key column,
+   give the ROW a hairline left-accent so a live row reads as live at a
+   glance — without color hue. This signal is only meaningful where state
+   is *mixed*; on the Switchboard every row is on, so we suppress it
+   inside .state-card via the second rule below. */
+html[data-skin="signal"] .state-row:has(.state-on),
+html[data-skin="signal"] .state-row:has(.status-active),
+html[data-skin="signal"] .state-row:has(.status-complete),
+html[data-skin="signal"] .state-row:has(.status-ready) {
+  box-shadow: inset 2px 0 0 var(--wh-border-active);
+  padding-left: 10px;
+}
+
+html[data-skin="signal"] .state-card .state-table .state-row:has(.state-on),
+html[data-skin="signal"] .state-card .state-table .state-row:has(.status-active),
+html[data-skin="signal"] .state-card .state-table .state-row:has(.status-complete),
+html[data-skin="signal"] .state-card .state-table .state-row:has(.status-ready) {
+  box-shadow: none;
+  padding-left: 0;
+}
+
+html[data-skin="signal"] .status-breach,
+html[data-skin="signal"] .status-denied,
+html[data-skin="signal"] .status-firewall,
+html[data-skin="signal"] .status-pending,
+html[data-skin="signal"] .access-denied {
+  color: var(--wh-clay);
+  font-weight: var(--wh-sans-value-strong-weight);
+}
+
+/* Operation card / command table -------------------------------------- */
+html[data-skin="signal"] .operation-card,
+html[data-skin="signal"] .panel:has(.sequence) {
+  padding-block: clamp(20px, 3vw, 34px);
+}
+
+html[data-skin="signal"] .operation-card > .panel-kicker,
+html[data-skin="signal"] .panel:has(.sequence) > .panel-kicker,
+html[data-skin="signal"] .panel:has(.sequence) > .kicker {
+  margin-bottom: 4px;
+}
+
+html[data-skin="signal"] .operation-card > h2,
+html[data-skin="signal"] .panel:has(.sequence) > h2 {
+  margin-bottom: 14px;
+}
+
+html[data-skin="signal"] .operation-card > .lede,
+html[data-skin="signal"] .operation-card > .support-copy,
+html[data-skin="signal"] .panel:has(.sequence) > .lede,
+html[data-skin="signal"] .panel:has(.sequence) > .support-copy {
+  margin-bottom: 24px;
+  font-weight: var(--wh-sans-lede-weight);
+  line-height: var(--wh-sans-lede-line);
+}
+
+html[data-skin="signal"] .operation-card .lede strong,
+html[data-skin="signal"] .operation-card .support-copy strong,
+html[data-skin="signal"] .panel:has(.sequence) .lede strong,
+html[data-skin="signal"] .panel:has(.sequence) .support-copy strong {
+  font-weight: var(--wh-strong-weight);
+}
+
+/* Operation card — ceremonial variant for cards without a sequence grid
+   (Seal Declaration). Inherits panel chrome and kicker/H2/lede rhythm
+   from .operation-card, but gives free paragraphs the same divider-based
+   rhythm a sequence would provide, so the page reads as part of the
+   system rather than as loose prose. The ceremonial register comes from
+   the lede + status-strip pairing, not from forced prose styling. */
+html[data-skin="signal"] .operation-card--ceremonial > p {
+  max-width: var(--wh-sans-prose-measure);
+  margin: 0 0 14px;
+  color: var(--wh-copy-strong);
+  font-family: var(--font-body);
+  font-size: var(--wh-sans-value-size);
+  font-weight: var(--wh-sans-value-weight);
+  line-height: var(--wh-sans-value-line);
+}
+
+html[data-skin="signal"] .operation-card--ceremonial > p:last-of-type {
+  margin-bottom: 0;
+}
+
+html[data-skin="signal"] .operation-card--ceremonial > p + p {
+  padding-top: 14px;
+  border-top: 1px solid var(--wh-row-divider-soft);
+}
+
+html[data-skin="signal"] .operation-card--ceremonial > .status-strip {
+  margin-top: 24px;
+}
+
+html[data-skin="signal"] .operation-card .sequence,
+html[data-skin="signal"] .panel:has(.sequence) .sequence {
+  border-top: 1px solid var(--wh-row-divider);
+  border-bottom: 1px solid var(--wh-row-divider);
+}
+
+html[data-skin="signal"] .operation-card .seq-row,
+html[data-skin="signal"] .panel:has(.sequence) .seq-row {
+  display: grid;
+  grid-template-columns: var(--wh-row-index-col) var(--wh-row-label-col) minmax(0, 1fr);
+  column-gap: var(--wh-row-gap);
+  row-gap: 4px;
+  align-items: baseline;
+  padding: 14px 0 8px;
+}
+
+html[data-skin="signal"] .operation-card .seq-row > :nth-child(n+3),
+html[data-skin="signal"] .panel:has(.sequence) .seq-row > :nth-child(n+3) {
+  grid-column: 3;
+}
+
+/* Index column — quiet number, NOT a chip. Sized via mono-data token. */
+html[data-skin="signal"] .operation-card .seq-index,
+html[data-skin="signal"] .panel:has(.sequence) .seq-index {
+  display: block;
+  width: auto;
+  height: auto;
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--wh-muted);
+  font-family: var(--font-mono);
+  font-size: var(--wh-mono-data-size);
+  font-weight: var(--wh-mono-data-weight);
+  letter-spacing: var(--wh-mono-data-track);
+  line-height: 1.2;
+  opacity: .78;
+  font-variant-numeric: tabular-nums;
+}
+
+html[data-skin="signal"] .operation-card .seq-index--blank,
+html[data-skin="signal"] .panel:has(.sequence) .seq-index--blank {
+  opacity: .26;
+}
+
+/* Label column — EXECUTE / RECOGNIZE / ANCHOR / SAVE etc. Content terms
+   that pair with their body text. Subordinate to H3 / subsection
+   headings via warm-bronze color and the row-key tier sizing. */
+html[data-skin="signal"] .operation-card .seq-label,
+html[data-skin="signal"] .panel:has(.sequence) .seq-label {
+  min-height: 0;
+  margin: 0;
+  color: var(--wh-label);
+  font-family: var(--font-mono);
+  font-size: var(--wh-mono-rowkey-size);
+  font-weight: var(--wh-mono-rowkey-weight);
+  letter-spacing: var(--wh-mono-rowkey-track);
+  line-height: 1.18;
+  text-transform: uppercase;
+}
+
+/* Body column — readable command text via sans-value token. */
+html[data-skin="signal"] .operation-card .seq-body,
+html[data-skin="signal"] .panel:has(.sequence) .seq-body,
+html[data-skin="signal"] .operation-card .seq-row > :nth-child(n+3),
+html[data-skin="signal"] .panel:has(.sequence) .seq-row > :nth-child(n+3) {
+  color: var(--wh-copy-strong);
+  font-family: var(--font-body);
+  font-size: var(--wh-sans-value-size);
+  font-weight: var(--wh-sans-value-weight);
+  line-height: var(--wh-sans-value-line);
+}
+
+html[data-skin="signal"] .operation-card .seq-row > :nth-child(3),
+html[data-skin="signal"] .panel:has(.sequence) .seq-row > :nth-child(3) {
+  font-weight: 500;
+}
+
+html[data-skin="signal"] .operation-card code,
+html[data-skin="signal"] .panel:has(.sequence) code {
+  border-radius: 4px;
+  padding: .14rem .42rem;
+  color: var(--wh-code-text);
+  font-family: var(--font-mono);
+  font-size: .88rem;
+  font-weight: 720;
+  letter-spacing: .03em;
+  background: var(--wh-code-bg);
+}
+
+/* Status strip — secondary register beneath the sequence. */
+html[data-skin="signal"] .status-strip {
+  margin-top: 16px;
+  border-top: 1px solid var(--wh-row-divider-soft);
+  padding-top: 8px;
+}
+
+html[data-skin="signal"] .status-strip .status-row,
+html[data-skin="signal"] .status-strip .state-row,
+html[data-skin="signal"] .operation-card .status-row,
+html[data-skin="signal"] .panel:has(.sequence) .status-row {
+  display: grid;
+  grid-template-columns: minmax(8.4rem, .30fr) minmax(0, 1fr);
+  column-gap: 14px;
+  align-items: baseline;
+  padding: 10px 0 4px;
+  border-color: var(--wh-row-divider-soft);
+  line-height: 1.3;
+}
+
+html[data-skin="signal"] .status-strip .status-row > .status-value,
+html[data-skin="signal"] .status-strip .status-row > .state-value,
+html[data-skin="signal"] .status-strip .state-row > .state-value {
+  justify-self: start;
+  text-align: left;
+}
+
+/* Status-strip label — promoted to rowkey-size so it reads in the same
+   register as reference-table keys and other row labels across the
+   page. The eyebrow-sm tier was rendering as whisper text against
+   the value beside it. */
+html[data-skin="signal"] .status-strip .status-label,
+html[data-skin="signal"] .operation-card .status-label,
+html[data-skin="signal"] .panel:has(.sequence) .status-label {
+  color: var(--wh-muted);
+  font-size: var(--wh-mono-rowkey-size);
+  font-weight: var(--wh-mono-rowkey-weight);
+  letter-spacing: var(--wh-mono-rowkey-track);
+  line-height: 1.2;
+}
+
+html[data-skin="signal"] .status-strip .status-value,
+html[data-skin="signal"] .operation-card .status-value,
+html[data-skin="signal"] .panel:has(.sequence) .status-value {
+  min-height: 0;
+  padding: 0;
+  color: var(--wh-copy);
+  font-size: var(--wh-sans-body-size);
+  font-weight: var(--wh-sans-body-weight);
+  line-height: var(--wh-sans-body-line);
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+/* Code (inline) — base style; operation-card overrides above for sequence context. */
+html[data-skin="signal"] code {
+  display: inline-block;
+  padding: .12em .45em;
+  color: var(--wh-code-text);
+  font-family: var(--font-mono);
+  font-size: .88em;
+  background: var(--wh-code-bg);
+  border-radius: 4px;
+}
+
+/* Reference / documentation ------------------------------------------- */
+html[data-skin="signal"] .reference-section {
+  padding-block: clamp(24px, 3.4vw, 40px);
+}
+
+/* C2 decision: Reference shows its kicker. The documentation register is
+   carried by the kicker label, not by a private H2 style. The H2 in
+   reference panels uses the global H2 declaration — no override here. */
+
+html[data-skin="signal"] .reference-section h2 {
+  margin-bottom: 16px;
+}
+
+html[data-skin="signal"] .reference-section .flat-list,
+html[data-skin="signal"] .reference-section .reference-table,
+html[data-skin="signal"] .reference-section .state-table {
+  margin-top: 4px;
+  gap: 0;
+}
+
+/* Reference flat-row column geometry and rhythm. One canonical rule for
+   .reference-section and .reference-card row patterns. The label column
+   minmax(9.2rem, .34fr) leaves room for longer mono labels ("THE SEAT
+   ABOVE THE SEAT") to wrap on two lines without crowding the value
+   column. Baseline alignment glues the small mono label to the first
+   line of its sans value so the pair reads as one row, not two stacked
+   pieces; gap and padding are kept compact but readable. */
+html[data-skin="signal"] .reference-section .flat-row,
+html[data-skin="signal"] .reference-section .reference-row,
+html[data-skin="signal"] .reference-section .state-row,
+html[data-skin="signal"] .reference-card .flat-row,
+html[data-skin="signal"] .reference-card .reference-row,
+html[data-skin="signal"] .reference-card .state-row {
+  display: grid;
+  grid-template-columns: minmax(9.2rem, .34fr) minmax(0, 1fr);
+  gap: 12px;
+  align-items: baseline;
+  padding: 11px 0 5px;
+  border-color: var(--wh-row-divider-soft);
+}
+
+/* Reference row keys — content terms (Premise / Identity / Therefore,
+   Operate / Flip / Decree). Same warm-bronze row-key tier as operation
+   cards; subordinate to H3 / subsection heading above them. */
+html[data-skin="signal"] .reference-section .flat-row > strong,
+html[data-skin="signal"] .reference-section .reference-key,
+html[data-skin="signal"] .reference-section .state-label,
+html[data-skin="signal"] .reference-card .flat-row > strong,
+html[data-skin="signal"] .reference-card .reference-key,
+html[data-skin="signal"] .reference-card .state-label {
+  display: block;
+  color: var(--wh-label);
+  font-family: var(--font-mono);
+  font-size: var(--wh-mono-rowkey-size);
+  font-weight: var(--wh-mono-rowkey-weight);
+  letter-spacing: var(--wh-mono-rowkey-track);
+  line-height: 1.2;
+  text-transform: uppercase;
+  word-break: normal;
+  hyphens: none;
+}
+
+html[data-skin="signal"] .reference-section .flat-row > :last-child,
+html[data-skin="signal"] .reference-section .reference-value,
+html[data-skin="signal"] .reference-section .state-value,
+html[data-skin="signal"] .reference-card .flat-row > :last-child,
+html[data-skin="signal"] .reference-card .reference-value,
+html[data-skin="signal"] .reference-card .state-value {
+  color: var(--wh-copy);
+  font-family: var(--font-body);
+  font-size: var(--wh-sans-body-size);
+  font-weight: var(--wh-sans-body-weight);
+  line-height: var(--wh-sans-body-line);
+}
+
+/* Reference paragraphs — tighter than operation prose. Reference is
+   scanned, not read while doing; tighter leading + narrower measure
+   reads as documentation, not as floaty editorial. */
+html[data-skin="signal"] .reference-section p,
+html[data-skin="signal"] .reference-section li {
+  max-width: var(--wh-sans-prose-measure);
+  font-size: var(--wh-sans-prose-size);
+  font-weight: var(--wh-sans-prose-weight);
+  line-height: var(--wh-sans-prose-line);
+  margin: 0;
+}
+
+/* Reference paragraph block-spacing — controlled gap between adjacent
+   paragraphs. The earlier "wide" feeling came from default browser
+   p-margin (~1em top + 1em bottom = ~2em between siblings); the rule
+   above zeroes that, and this rule re-adds a single small gap so
+   adjacent paragraphs read as one designed block, not floating lines. */
+html[data-skin="signal"] .reference-section p + p,
+html[data-skin="signal"] .reference-section .ref-block > p + .flat-list,
+html[data-skin="signal"] .reference-section .ref-block > p + .reference-table,
+html[data-skin="signal"] .reference-section .ref-block > p + .state-table,
+html[data-skin="signal"] .reference-section .ref-block > .flat-list + p,
+html[data-skin="signal"] .reference-section .ref-block > .reference-table + p,
+html[data-skin="signal"] .reference-section .ref-block > .state-table + p {
+  margin-top: 6px;
+}
+
+/* Reference paragraph hierarchy — when a paragraph leads or closes a
+   rows container (.flat-list / .reference-table / .state-table), it is
+   acting as the row-block's heading line, not as standalone prose.
+   Promote it to value-size so it does not render smaller than the row
+   bodies it introduces. Fixes the Render Confirmations case where
+   "The render begins updating within hours." sat smaller than
+   "The body softens first." */
+html[data-skin="signal"] .reference-section .ref-block > p:has(+ .flat-list),
+html[data-skin="signal"] .reference-section .ref-block > p:has(+ .reference-table),
+html[data-skin="signal"] .reference-section .ref-block > p:has(+ .state-table),
+html[data-skin="signal"] .reference-section .ref-block > .flat-list + p,
+html[data-skin="signal"] .reference-section .ref-block > .reference-table + p,
+html[data-skin="signal"] .reference-section .ref-block > .state-table + p {
+  font-size: var(--wh-sans-value-size);
+  font-weight: var(--wh-sans-value-weight);
+  line-height: var(--wh-sans-value-line);
+  color: var(--wh-copy-strong);
+}
+
+/* Lead term — inline enumeration prefix. Reusable pattern for prose
+   that opens with a labelled list ("Signals: a, b, c, …"). Quieter
+   than <strong>, reads as a category prefix without becoming a
+   mid-paragraph bold lump. The colon is included via ::after so HTML
+   stays clean: <span class="lead-term">Signals</span>. */
+html[data-skin="signal"] .lead-term {
+  font-family: var(--font-mono);
+  font-size: var(--wh-mono-eyebrow-sm-size);
+  font-weight: var(--wh-mono-eyebrow-sm-weight);
+  letter-spacing: var(--wh-mono-eyebrow-sm-track);
+  color: var(--wh-label);
+  text-transform: uppercase;
+  margin-right: .5em;
+}
+html[data-skin="signal"] .lead-term::after {
+  content: " /";
+  color: var(--wh-muted);
+  margin-left: .25em;
+}
+
+html[data-skin="signal"] .reference-section .ref-block {
+  display: block;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+/* Ref-blocks need real separation, not the previous tiny 8px gap. */
+html[data-skin="signal"] .reference-section .ref-block + .ref-block {
+  margin-top: 18px;
+}
+
+html[data-skin="signal"] .reference-section .flat-row:hover,
+html[data-skin="signal"] .reference-section .reference-row:hover,
+html[data-skin="signal"] .reference-section .state-row:hover,
+html[data-skin="signal"] .reference-section .ref-block:hover {
+  border-color: var(--wh-row-divider);
+  background: transparent;
+}
+
+/* Level directory — systemic class. Used wherever the level chamber list appears.
+   Apply via class="state-table level-directory" on the container. ----- */
+html[data-skin="signal"] .level-directory {
+  gap: 0;
+}
+
+html[data-skin="signal"] .level-directory .state-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) max-content;
+  gap: 14px;
+  align-items: center;
+  min-height: 42px;
+  padding: 10px 0;
+  border-width: 0 0 1px;
+  border-style: solid;
+  border-color: var(--wh-row-divider);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+html[data-skin="signal"] .level-directory .state-label--link {
+  justify-self: start;
+  color: var(--wh-copy-strong);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.05rem, 2.2vw, 1.55rem);
+  font-weight: 600;
+  letter-spacing: -.012em;
+  line-height: 1.12;
+  text-transform: none;
+  white-space: normal;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+html[data-skin="signal"] .level-directory .utility-link--open {
+  justify-self: end;
+  min-width: 4.35rem;
+}
+
+html[data-skin="signal"] .level-directory .state-row:hover {
+  border-color: var(--wh-border-active);
+  background: var(--wh-row-hover);
+}
+
+/* Switchboard variant — systemic class.
+   When a .state-table lives inside a .state-card panel (the Switchboard
+   page), the row is conceptually inverted: the row "key" is the *item*
+   (Abundance, Magnetism — the thing being switched), not a meta-label.
+   The row "value" is its current state (ON).
+
+   So under .state-card the state-label reads as a readable sans item
+   and the state-value reads as the strong operative payload. Row
+   geometry stays identical to other state-tables; only typography
+   shifts. No HTML changes; the .state-card panel class on the wrapping
+   <section> is the scope.
+
+   The mini-state-list on Daily Run already reads this way; this block
+   brings the full Switchboard chamber in line with it. */
+html[data-skin="signal"] .state-card .state-table:not(.level-directory) .state-row {
+  grid-template-columns: minmax(0, 1fr) minmax(4rem, max-content);
+  align-items: baseline;
+  padding: 15px 0 9px;
+}
+
+html[data-skin="signal"] .state-card .state-table:not(.level-directory) .state-label {
+  color: var(--wh-copy-strong);
+  font-family: var(--font-body);
+  font-size: var(--wh-sans-value-size);
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: var(--wh-sans-value-line);
+  text-transform: none;
+}
+
+html[data-skin="signal"] .state-card .state-table:not(.level-directory) .state-value {
+  font-family: var(--font-mono);
+  font-size: .78rem;
+  font-weight: var(--wh-sans-value-strong-weight);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  justify-self: end;
+}
+
+/* Forms --------------------------------------------------------------- */
+html[data-skin="signal"] label {
+  display: grid;
+  gap: 6px;
+}
+
+html[data-skin="signal"] input,
+html[data-skin="signal"] select,
+html[data-skin="signal"] textarea {
+  width: 100%;
+  border: 1px solid var(--wh-input-border);
+  border-radius: var(--wh-radius-sm);
+  padding: 9px 10px;
+  background: var(--wh-input-bg);
+  color: var(--wh-input-text);
+  font-family: var(--font-body);
+  line-height: 1.35;
+  box-shadow: inset 0 1px 0 rgba(247, 241, 231, .04);
+  transition: border-color .18s ease, box-shadow .18s ease, background .18s ease;
+}
+
+html[data-skin="signal"] textarea {
+  min-height: 96px;
+  resize: vertical;
+}
+
+html[data-skin="signal"] input::placeholder,
+html[data-skin="signal"] textarea::placeholder {
+  color: var(--wh-placeholder);
+}
+
+html[data-skin="signal"] input:hover,
+html[data-skin="signal"] input:focus,
+html[data-skin="signal"] select:hover,
+html[data-skin="signal"] select:focus,
+html[data-skin="signal"] textarea:hover,
+html[data-skin="signal"] textarea:focus {
+  outline: none;
+  border-color: var(--wh-border-active);
+  box-shadow:
+    0 0 0 1px rgba(214, 209, 198, .18),
+    inset 0 1px 0 rgba(247, 241, 231, .055);
+}
+
+html[data-skin="signal"] .switch-add-row,
+html[data-skin="signal"] .command-input-row,
+html[data-skin="signal"] .law-form,
+html[data-skin="signal"] .peak-form,
+html[data-skin="signal"] .three-part-form,
+html[data-skin="signal"] .utility-form {
+  display: grid;
+  gap: 12px;
+}
+
+html[data-skin="signal"] .switch-add-row,
+html[data-skin="signal"] .command-input-row {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+}
+
+/* Custom / Bank generated content ------------------------------------- */
+html[data-skin="signal"] .signal-form-block,
+html[data-skin="signal"] .ledger-item {
+  display: grid;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid var(--wh-inner-border);
+  border-radius: var(--wh-radius-sm);
+  background: var(--wh-inner-bg);
+  box-shadow: inset 0 1px 0 rgba(247, 241, 231, .025);
+}
+
+html[data-skin="signal"] .ledger-item__meta,
+html[data-skin="signal"] .ledger-item__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+html[data-skin="signal"] .empty-state {
+  margin: 0;
+  color: var(--wh-copy);
+  font-style: italic;
+}
+
+/* Inline chip — read-only mono badge. Aligned to the rest of the
+   chip system: 4px radius (not pill), eyebrow tokens. */
+html[data-skin="signal"] .inline-chip {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--wh-inner-border);
+  border-radius: 4px;
+  padding: .35rem .55rem;
+  background: var(--wh-chip-bg);
+  color: var(--wh-label);
+  font-family: var(--font-mono);
+  font-size: var(--wh-mono-chip-size);
+  font-weight: var(--wh-mono-chip-weight);
+  letter-spacing: var(--wh-mono-chip-track);
+  text-transform: uppercase;
+}
+
+/* Standing decree list — Level 08 codex pattern. Single-cell flat-list
+   variant: no row-key column, full-width display-italic decrees that
+   read as standing rules without needing <p><strong>...</strong></p>
+   wrapping which produced the "wall of bold paragraphs" feel. */
+html[data-skin="signal"] .standing-decree-list .flat-row {
+  display: block;
+  padding: 15px 0 9px;
+  border-color: var(--wh-row-divider-soft);
+}
+
+html[data-skin="signal"] .standing-decree-list .flat-row > span {
+  display: block;
+  color: var(--wh-copy-strong);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.05rem, 1.5vw, 1.22rem);
+  font-weight: 600;
+  letter-spacing: -.005em;
+  line-height: 1.24;
+  max-width: 42rem;
+}
+
+/* Architectural law block — Level 08. Replaces an H4 (which had no
+   system style) with a kicker-led block. The kicker reads as the law
+   number; the flat-list inside reads as Premise / Identity / Therefore
+   exactly as before. */
+html[data-skin="signal"] .law-block {
+  margin-top: 18px;
+}
+html[data-skin="signal"] .law-block + .law-block {
+  margin-top: 22px;
+}
+html[data-skin="signal"] .law-block > .kicker {
+  margin-bottom: 8px;
+}
+
+/* Footer -------------------------------------------------------------- */
+html[data-skin="signal"] .footer {
+  width: var(--wh-page);
+  margin: 0 auto;
+  padding: 18px 0 32px;
+  color: var(--wh-muted);
+  font-family: var(--font-mono);
+  font-size: var(--wh-mono-eyebrow-size);
+  font-weight: var(--wh-mono-eyebrow-weight);
+  letter-spacing: var(--wh-mono-eyebrow-track);
+  text-transform: uppercase;
+}
+
+/* Responsive ---------------------------------------------------------- */
+@media (max-width: 860px) {
+  html[data-skin="signal"] .site-header__inner {
+    grid-template-columns: minmax(145px, 1fr) auto;
+  }
+
+  html[data-skin="signal"] .site-nav {
+    display: none;
+  }
+
+  html[data-skin="signal"] .mobile-menu-toggle {
+    display: inline-flex;
+  }
+
+  html[data-skin="signal"] .mobile-nav.is-open {
+    display: flex;
+  }
+
+  html[data-skin="signal"] .layout-two,
+  html[data-skin="signal"] .signal-panel-grid,
+  html[data-skin="signal"] .bank-filter-grid,
+  html[data-skin="signal"] .config-grid {
+    grid-template-columns: 1fr;
+  }
+
+  html[data-skin="signal"] .operation-card .seq-row,
+  html[data-skin="signal"] .panel:has(.sequence) .seq-row {
+    grid-template-columns: var(--wh-row-index-col) minmax(0, 1fr);
+    row-gap: 4px;
+  }
+
+  html[data-skin="signal"] .operation-card .seq-label,
+  html[data-skin="signal"] .panel:has(.sequence) .seq-label,
+  html[data-skin="signal"] .operation-card .seq-row > :nth-child(n+3),
+  html[data-skin="signal"] .panel:has(.sequence) .seq-row > :nth-child(n+3) {
+    grid-column: 2;
+  }
+
+  html[data-skin="signal"] .switch-add-row,
+  html[data-skin="signal"] .command-input-row {
+    grid-template-columns: 1fr;
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 640px) {
+  html[data-skin="signal"] {
+    --wh-page: min(calc(100vw - 20px), 1120px);
+    --wh-radius: 12px;
+    --wh-radius-sm: 7px;
+    --wh-row-index-col: 2.1ch;
+    --wh-row-label-col: minmax(4.9rem, 5.7rem);
+    --wh-row-gap: 8px;
+  }
+
+  html[data-skin="signal"] .site-header__inner {
+    gap: 8px;
+  }
+
+  html[data-skin="signal"] .theme-toggle,
+  html[data-skin="signal"] .mobile-menu-toggle {
+    min-height: 31px;
+    padding: 0 8px;
+    font-size: .64rem;
+  }
+
+  html[data-skin="signal"] .brand {
+    font-size: .92rem;
+    letter-spacing: .035em;
+  }
+
+  html[data-skin="signal"] .brand__sub {
+    font-size: .56rem;
+  }
+
+  html[data-skin="signal"] .shell,
+  html[data-skin="signal"] .page-shell {
+    gap: 18px;
+    padding: 16px 0 24px;
+  }
+
+  html[data-skin="signal"] .identity,
+  html[data-skin="signal"] .panel,
+  html[data-skin="signal"] .reference-section {
+    padding: 22px;
+  }
+
+  html[data-skin="signal"] h1 {
+    font-size: clamp(1.92rem, 7.5vw, 2.85rem);
+    line-height: 1.08;
+    margin-bottom: 8px;
+  }
+
+  html[data-skin="signal"] h1.h1--cinematic,
+  html[data-skin="signal"] .identity--hero h1 {
+    font-size: clamp(2.4rem, 10.5vw, 4rem);
+    line-height: .98;
+  }
+
+  html[data-skin="signal"] h2 {
+    font-size: clamp(1.5rem, 6.2vw, 2.05rem);
+    margin-bottom: 16px;
+  }
+
+  html[data-skin="signal"] h3 {
+    font-size: clamp(1.08rem, 5vw, 1.36rem);
+    margin-top: 30px;
+    margin-bottom: 6px;
+  }
+
+  html[data-skin="signal"] .identity--hero {
+    padding-block: 26px;
+  }
+
+  html[data-skin="signal"] .identity--hero > .kicker,
+  html[data-skin="signal"] .identity--hero > .panel-kicker {
+    margin-bottom: 22px;
+  }
+
+  html[data-skin="signal"] .identity--hero h1 {
+    margin-bottom: 16px;
+  }
+
+  html[data-skin="signal"] .operation-card,
+  html[data-skin="signal"] .panel:has(.sequence) {
+    padding-block: 20px;
+  }
+
+  html[data-skin="signal"] .operation-card > h2,
+  html[data-skin="signal"] .panel:has(.sequence) > h2 {
+    margin-bottom: 16px;
+  }
+
+  html[data-skin="signal"] .operation-card > .lede,
+  html[data-skin="signal"] .operation-card > .support-copy,
+  html[data-skin="signal"] .panel:has(.sequence) > .lede,
+  html[data-skin="signal"] .panel:has(.sequence) > .support-copy {
+    margin-bottom: 20px;
+  }
+
+  html[data-skin="signal"] .operation-card .seq-row,
+  html[data-skin="signal"] .panel:has(.sequence) .seq-row {
+    padding: 13px 0 7px;
+  }
+
+  html[data-skin="signal"] .operation-card .seq-label,
+  html[data-skin="signal"] .panel:has(.sequence) .seq-label {
+    font-size: var(--wh-mono-eyebrow-size);
+    letter-spacing: var(--wh-mono-eyebrow-track);
+  }
+
+  html[data-skin="signal"] .operation-card .seq-body,
+  html[data-skin="signal"] .panel:has(.sequence) .seq-body,
+  html[data-skin="signal"] .operation-card .seq-row > :nth-child(n+3),
+  html[data-skin="signal"] .panel:has(.sequence) .seq-row > :nth-child(n+3) {
+    font-size: .92rem;
+    line-height: 1.32;
+  }
+
+  html[data-skin="signal"] .reference-section {
+    padding-block: 26px;
+  }
+
+  html[data-skin="signal"] .reference-section h2 {
+    margin-bottom: 20px;
+  }
+
+  html[data-skin="signal"] .reference-section .flat-row,
+  html[data-skin="signal"] .reference-section .reference-row,
+  html[data-skin="signal"] .reference-section .state-row {
+    grid-template-columns: minmax(6.8rem, .34fr) minmax(0, 1fr);
+    gap: 9px;
+  }
+
+  html[data-skin="signal"] .seq-label,
+  html[data-skin="signal"] .state-label,
+  html[data-skin="signal"] .reference-key,
+  html[data-skin="signal"] .status-label,
+  html[data-skin="signal"] .flat-row > strong,
+  html[data-skin="signal"] .ledger-item__meta {
+    font-size: var(--wh-mono-eyebrow-sm-size);
+  }
+
+  html[data-skin="signal"] .level-directory .state-row {
+    grid-template-columns: minmax(0, 1fr) max-content;
+    gap: 10px;
+    min-height: 40px;
+    padding: 8px 0;
+  }
+}
+
+@media (max-width: 390px) {
+  html[data-skin="signal"] .operation-card .seq-row,
+  html[data-skin="signal"] .panel:has(.sequence) .seq-row {
+    grid-template-columns: var(--wh-row-index-col) minmax(0, 1fr);
+    row-gap: 4px;
+  }
+
+  html[data-skin="signal"] .operation-card .seq-label,
+  html[data-skin="signal"] .operation-card .seq-row > :nth-child(n+3),
+  html[data-skin="signal"] .panel:has(.sequence) .seq-label,
+  html[data-skin="signal"] .panel:has(.sequence) .seq-row > :nth-child(n+3) {
+    grid-column: 2;
+  }
+
+  html[data-skin="signal"] .reference-section .flat-row,
+  html[data-skin="signal"] .reference-section .reference-row,
+  html[data-skin="signal"] .reference-section .state-row,
+  html[data-skin="signal"] .level-directory .state-row {
+    grid-template-columns: 1fr;
+  }
+
+  html[data-skin="signal"] .level-directory .utility-link--open {
+    justify-self: stretch;
+  }
+}
+
+
+/* ============================================================
+   WH-V1 — protocol-design-lab polish pass (wormhole-mode only)
+   - Smaller subtitle lede in page identity headers
+   - Larger Command Line reference card typography
+   - Light-mode flash hardening (CSS half; JS half is in <head>)
+   ============================================================ */
+
+/* Subtitle lede — drop a few points so it reads as supporting copy
+   rather than a second headline competing with the H1. */
+html[data-skin="signal"] {
+  --wh-sans-lede-size: clamp(.86rem, .95vw, .92rem);
+  --wh-sans-lede-line: 1.32;
+}
+
+/* Light-mode flash hardening. The body background resolves through
+   tokens, so before the stylesheet finishes parsing some browsers
+   paint the UA default. Pin a solid theme-appropriate fallback on
+   html so the first paint is correct even if variables haven't
+   resolved yet. The inline script in <head> sets data-theme=dark
+   synchronously when the user has dark stored, which suppresses
+   the inverse flash. */
+html[data-skin="signal"] {
+  background-color: #f5f1e8;
+}
+
+html[data-skin="signal"][data-theme="dark"] {
+  background-color: #06090f;
+}
+
+/* --------------------------------------------------------------------- */
+/* Custom-page polish + Run Sequence section                             */
+/* Shared structural rules. Theme tokens live with each theme block.     */
+/* --------------------------------------------------------------------- */
+
+/* Accent token family — warm, Wormhole-compatible (not browser blue).
+   Dark uses gold; light overrides this block in wormhole-light.css. */
+html[data-skin="signal"] {
+  --wh-accent:        var(--wh-gold);
+  --wh-accent-strong: var(--wh-gold-hot);
+  --wh-accent-soft:   rgba(199, 168, 105, .14);
+  --wh-accent-glow:   rgba(199, 168, 105, .42);
+  accent-color:       var(--wh-gold);
+}
+
+/* 1. Form button width — buttons must NOT span the grid column.
+   .utility-form is a single-column grid; default child stretch makes
+   submit buttons full-width. Pin them to the start of the track. */
+html[data-skin="signal"] .utility-form > button,
+html[data-skin="signal"] .law-form > button,
+html[data-skin="signal"] .peak-form > button,
+html[data-skin="signal"] .three-part-form > button {
+  justify-self: start;
+  width: auto;
+  min-width: 9rem;
+  max-width: max-content;
+}
+
+/* 4. Spacing between submit row and the saved-output / template list. */
+html[data-skin="signal"] .utility-form + .ledger-list,
+html[data-skin="signal"] .utility-form + .template-list,
+html[data-skin="signal"] .utility-form + .command-template-list,
+html[data-skin="signal"] .three-part-form + .ledger-list,
+html[data-skin="signal"] .law-form + .ledger-list,
+html[data-skin="signal"] .peak-form + .ledger-list,
+html[data-skin="signal"] .template-list + .ledger-list,
+html[data-skin="signal"] .command-template-list + .ledger-list {
+  margin-top: 18px;
+}
+
+/* 2. Stronger input/select/textarea focus — warm accent ring, not blue. */
+html[data-skin="signal"] input:focus,
+html[data-skin="signal"] input:focus-visible,
+html[data-skin="signal"] select:focus,
+html[data-skin="signal"] select:focus-visible,
+html[data-skin="signal"] textarea:focus,
+html[data-skin="signal"] textarea:focus-visible {
+  outline: none;
+  border-color: var(--wh-accent-strong);
+  box-shadow:
+    0 0 0 3px var(--wh-accent-glow),
+    inset 0 1px 0 rgba(247, 241, 231, .055);
+}
+html[data-skin="signal"] input:hover,
+html[data-skin="signal"] select:hover,
+html[data-skin="signal"] textarea:hover {
+  border-color: var(--wh-accent);
+}
+
+/* 2. Stronger button hover/focus — warm accent border + soft fill. */
+html[data-skin="signal"] .button:hover,
+html[data-skin="signal"] .button:focus-visible,
+html[data-skin="signal"] .button--form:hover,
+html[data-skin="signal"] .button--form:focus-visible,
+html[data-skin="signal"] .utility-form button:hover,
+html[data-skin="signal"] .utility-form button:focus-visible,
+html[data-skin="signal"] .law-form button:hover,
+html[data-skin="signal"] .law-form button:focus-visible,
+html[data-skin="signal"] .peak-form button:hover,
+html[data-skin="signal"] .peak-form button:focus-visible,
+html[data-skin="signal"] .three-part-form button:hover,
+html[data-skin="signal"] .three-part-form button:focus-visible,
+html[data-skin="signal"] .ledger-item__actions button:hover,
+html[data-skin="signal"] .ledger-item__actions button:focus-visible,
+html[data-skin="signal"] .template-list button:hover,
+html[data-skin="signal"] .template-list button:focus-visible,
+html[data-skin="signal"] .command-template-list button:hover,
+html[data-skin="signal"] .command-template-list button:focus-visible {
+  outline: none;
+  border-color: var(--wh-accent-strong);
+  background: var(--wh-accent-soft);
+  box-shadow: 0 0 0 3px var(--wh-accent-glow);
+}
+
+/* 5. Top-right Menu + theme-toggle — visible resting border, strong hover/focus.
+   Existing rules use transparent border at rest; promote to the Wormhole
+   button-border token, then accent on interaction. */
+html[data-skin="signal"] .theme-toggle,
+html[data-skin="signal"] .mobile-menu-toggle {
+  border: 1px solid var(--wh-button-border);
+  background: var(--wh-button-bg);
+  transition: border-color .18s ease, background .18s ease, box-shadow .18s ease;
+}
+html[data-skin="signal"] .theme-toggle:hover,
+html[data-skin="signal"] .theme-toggle:focus-visible,
+html[data-skin="signal"] .mobile-menu-toggle:hover,
+html[data-skin="signal"] .mobile-menu-toggle:focus-visible {
+  outline: none;
+  border-color: var(--wh-accent-strong);
+  background: var(--wh-accent-soft);
+  box-shadow: 0 0 0 3px var(--wh-accent-glow);
+}
+html[data-skin="signal"] .mobile-menu-toggle[aria-expanded="true"] {
+  border-color: var(--wh-accent);
+  background: var(--wh-accent-soft);
+}
+
+/* 3. Bank dropdown — kill default browser blue where CSS can.
+   Native popup (OS) cannot be fully styled, but CSS-controllable parts
+   pick up the Wormhole accent. */
+html[data-skin="signal"] .bank-filter-grid {
+  accent-color: var(--wh-accent);
+}
+html[data-skin="signal"] .bank-filter-grid select option:checked,
+html[data-skin="signal"] .bank-filter-grid select option:hover {
+  background-color: var(--wh-accent-soft);
+  color: var(--wh-input-text);
+}
+
+/* 6/8/9/10. Run Sequence section. */
+html[data-skin="signal"] .runseq-section .runseq-forms {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(16px, 2.4vw, 24px);
+  margin-top: 14px;
+}
+@media (max-width: 720px) {
+  html[data-skin="signal"] .runseq-section .runseq-forms {
+    grid-template-columns: 1fr;
+  }
+}
+html[data-skin="signal"] .runseq-sub-kicker {
+  margin: 0 0 8px;
+}
+html[data-skin="signal"] .runseq-list {
+  margin-top: 18px;
+}
+html[data-skin="signal"] .runseq-add-form textarea {
+  min-height: 64px;
+}
+html[data-skin="signal"] .runseq-index {
+  font-family: var(--font-mono);
+  opacity: .72;
+}
+
+/* --------------------------------------------------------------------- */
+/* Wormhole interaction-consistency patch                                */
+/* - Daily Run: Firewall card "Open Firewall" spacing above the button   */
+/* - Gold ::selection (replaces the cool ivory-gray selection)           */
+/* - Sitewide button gold hover/focus parity (catches selectors the      */
+/*   Custom patch missed: .page-actions a, .prev-next-nav a,             */
+/*   .command-chip, .utility-link, .switch-add-row button,               */
+/*   .command-input-row button, .theme-toggle, .mobile-menu-toggle)      */
+/* --------------------------------------------------------------------- */
+
+/* 1. Spacing above card action buttons (e.g. "Open Firewall" after the
+   Firewall sequence). Targets every card-level .page-actions block that
+   follows a row group, not just the danger card. Card padding stays. */
+html[data-skin="signal"] .sequence + .page-actions,
+html[data-skin="signal"] .status-strip + .page-actions,
+html[data-skin="signal"] .ledger-list + .page-actions,
+html[data-skin="signal"] .flat-list + .page-actions,
+html[data-skin="signal"] .reference-table + .page-actions,
+html[data-skin="signal"] .state-table + .page-actions {
+  margin-top: 18px;
+}
+
+/* 2. Gold text selection — warm, on-brand, replaces ivory-gray. */
+html[data-skin="signal"] ::selection {
+  background: var(--wh-accent-soft);
+  color: var(--wh-ivory);
+}
+
+/* 2b. Form accent-color sitewide (checkboxes, radios, range, progress).
+   The Custom patch already set this for .bank-filter-grid; this widens
+   it to all native form controls so nothing reverts to browser blue. */
+html[data-skin="signal"] {
+  accent-color: var(--wh-accent);
+}
+
+/* 3. Unified gold hover/focus for every button-like control, INCLUDING
+   the selectors the Custom patch missed:
+   .page-actions a   (← "Open Firewall", Daily Run / Reference card links)
+   .prev-next-nav a, .command-chip, .utility-link, .plain-link,
+   .switch-add-row button, .command-input-row button,
+   .theme-toggle, .mobile-menu-toggle.
+   Listed last so it overrides the earlier --wh-border-active rule. */
+html[data-skin="signal"] .button:hover,
+html[data-skin="signal"] .button:focus-visible,
+html[data-skin="signal"] .button--form:hover,
+html[data-skin="signal"] .button--form:focus-visible,
+html[data-skin="signal"] .button--hot:hover,
+html[data-skin="signal"] .button--hot:focus-visible,
+html[data-skin="signal"] .page-actions a:hover,
+html[data-skin="signal"] .page-actions a:focus-visible,
+html[data-skin="signal"] .prev-next-nav a:hover,
+html[data-skin="signal"] .prev-next-nav a:focus-visible,
+html[data-skin="signal"] .utility-form button:hover,
+html[data-skin="signal"] .utility-form button:focus-visible,
+html[data-skin="signal"] .law-form button:hover,
+html[data-skin="signal"] .law-form button:focus-visible,
+html[data-skin="signal"] .peak-form button:hover,
+html[data-skin="signal"] .peak-form button:focus-visible,
+html[data-skin="signal"] .three-part-form button:hover,
+html[data-skin="signal"] .three-part-form button:focus-visible,
+html[data-skin="signal"] .switch-add-row button:hover,
+html[data-skin="signal"] .switch-add-row button:focus-visible,
+html[data-skin="signal"] .command-input-row button:hover,
+html[data-skin="signal"] .command-input-row button:focus-visible,
+html[data-skin="signal"] .ledger-item__actions button:hover,
+html[data-skin="signal"] .ledger-item__actions button:focus-visible,
+html[data-skin="signal"] .template-list button:hover,
+html[data-skin="signal"] .template-list button:focus-visible,
+html[data-skin="signal"] .command-template-list button:hover,
+html[data-skin="signal"] .command-template-list button:focus-visible,
+html[data-skin="signal"] .command-chip:hover,
+html[data-skin="signal"] .command-chip:focus-visible,
+html[data-skin="signal"] .utility-link:hover,
+html[data-skin="signal"] .utility-link:focus-visible,
+html[data-skin="signal"] .plain-link:hover,
+html[data-skin="signal"] .plain-link:focus-visible,
+html[data-skin="signal"] .theme-toggle:hover,
+html[data-skin="signal"] .theme-toggle:focus-visible,
+html[data-skin="signal"] .mobile-menu-toggle:hover,
+html[data-skin="signal"] .mobile-menu-toggle:focus-visible {
+  outline: none;
+  border-color: var(--wh-accent-strong);
+  background: var(--wh-accent-soft);
+  box-shadow: 0 0 0 3px var(--wh-accent-glow);
+}
+
+/* --------------------------------------------------------------------- */
+/* Bank — category-first navigation                                      */
+/* --------------------------------------------------------------------- */
+
+html[data-skin="signal"] .visually-hidden {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
+/* Sticky search panel — sits under header */
+html[data-skin="signal"] .bank-search-panel {
+  position: sticky;
+  top: 47px;
+  z-index: 20;
+  padding: clamp(12px, 1.6vw, 16px) clamp(18px, 2.8vw, 34px);
+}
+html[data-skin="signal"] .bank-search-label { display: block; }
+html[data-skin="signal"] .bank-search-panel input[type="search"] {
+  width: 100%;
+  padding: 11px 14px;
+  font-size: .95rem;
+}
+
+/* Category grid */
+html[data-skin="signal"] .bank-category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: clamp(10px, 1.4vw, 14px);
+  margin-top: 14px;
+}
+html[data-skin="signal"] .bank-cat-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: 96px;
+  padding: 16px 18px;
+  border: 1px solid var(--wh-inner-border);
+  border-radius: var(--wh-radius-sm);
+  background: var(--wh-inner-bg);
+  color: var(--wh-text);
+  text-decoration: none;
+  transition: border-color .18s ease, background .18s ease, box-shadow .18s ease, transform .12s ease;
+}
+html[data-skin="signal"] .bank-cat-card:hover,
+html[data-skin="signal"] .bank-cat-card:focus-visible {
+  outline: none;
+  border-color: var(--wh-accent-strong);
+  background: var(--wh-accent-soft);
+  box-shadow: 0 0 0 3px var(--wh-accent-glow);
+  transform: translateY(-1px);
+}
+html[data-skin="signal"] .bank-cat-card--empty { opacity: .58; }
+html[data-skin="signal"] .bank-cat-name {
+  font-family: var(--font-display, var(--font-body));
+  font-style: italic;
+  font-size: 1.25rem;
+  line-height: 1.1;
+  color: var(--wh-heading);
+}
+html[data-skin="signal"] .bank-cat-count {
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--wh-muted);
+}
+
+/* Drilldown: head + back link */
+html[data-skin="signal"] .bank-drill-head {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+html[data-skin="signal"] .bank-back {
+  align-self: start;
+  margin-bottom: 4px;
+  background: transparent;
+  border: 1px solid var(--wh-button-border);
+  border-radius: 4px;
+  padding: .35rem .6rem;
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--wh-text);
+  cursor: pointer;
+  transition: border-color .18s ease, background .18s ease, box-shadow .18s ease;
+}
+html[data-skin="signal"] .bank-back:hover,
+html[data-skin="signal"] .bank-back:focus-visible {
+  outline: none;
+  border-color: var(--wh-accent-strong);
+  background: var(--wh-accent-soft);
+  box-shadow: 0 0 0 3px var(--wh-accent-glow);
+}
+
+/* Type chips inside a drilldown */
+html[data-skin="signal"] .bank-type-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 6px 0 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--wh-row-divider-soft);
+}
+html[data-skin="signal"] .bank-type-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: .42rem .72rem;
+  border: 1px solid var(--wh-button-border);
+  border-radius: 4px;
+  background: var(--wh-button-bg);
+  color: var(--wh-button-text);
+  font-family: var(--font-mono);
+  font-size: var(--wh-mono-chip-size, .72rem);
+  letter-spacing: var(--wh-mono-chip-track, .06em);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color .18s ease, background .18s ease, box-shadow .18s ease, color .18s ease;
+}
+html[data-skin="signal"] .bank-type-chip__count {
+  font-family: var(--font-mono);
+  opacity: .68;
+}
+html[data-skin="signal"] .bank-type-chip:hover,
+html[data-skin="signal"] .bank-type-chip:focus-visible {
+  outline: none;
+  border-color: var(--wh-accent-strong);
+  background: var(--wh-accent-soft);
+  box-shadow: 0 0 0 3px var(--wh-accent-glow);
+}
+html[data-skin="signal"] .bank-type-chip.is-active {
+  border-color: var(--wh-accent-strong);
+  background: var(--wh-accent-soft);
+  color: var(--wh-heading);
+}
+html[data-skin="signal"] .bank-type-chip.is-active .bank-type-chip__count { opacity: 1; }
+
+/* Run Sequence cards — visually distinct from one-line items */
+html[data-skin="signal"] .ledger-item--runsequence {
+  border-left: 3px solid var(--wh-accent);
+  padding-left: calc(14px - 2px);
+}
+html[data-skin="signal"] .ledger-item--runsequence .ledger-item__text {
+  font-family: var(--font-mono);
+  font-size: .88rem;
+  line-height: 1.65;
+  white-space: pre-line;
+}
