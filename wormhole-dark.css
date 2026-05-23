@@ -1896,6 +1896,66 @@ html[data-skin="signal"] .footer {
     min-height: 40px;
     padding: 8px 0;
   }
+  /* AR-MOBILE-PASS — typography legibility lift.
+     Lifts mono labels, panel kickers, sequence labels, reference labels,
+     and body/value text slightly without changing weights or destroying
+     the editorial feel. */
+  html[data-skin="signal"] .panel-kicker,
+  html[data-skin="signal"] .kicker {
+    font-size: .72rem;
+    letter-spacing: .12em;
+    color: var(--wh-accent);
+  }
+
+  html[data-skin="signal"] .seq-label,
+  html[data-skin="signal"] .status-label,
+  html[data-skin="signal"] .state-label,
+  html[data-skin="signal"] .reference-key,
+  html[data-skin="signal"] .flat-row > strong,
+  html[data-skin="signal"] .ledger-item__meta {
+    font-size: .68rem;
+    letter-spacing: .1em;
+    color: var(--wh-copy-strong);
+  }
+
+  html[data-skin="signal"] .operation-card .seq-body,
+  html[data-skin="signal"] .panel:has(.sequence) .seq-body,
+  html[data-skin="signal"] .operation-card .seq-row > :nth-child(n+3),
+  html[data-skin="signal"] .panel:has(.sequence) .seq-row > :nth-child(n+3) {
+    font-size: 1rem;
+    line-height: 1.42;
+    color: var(--wh-copy-strong);
+  }
+
+  html[data-skin="signal"] .flat-row > span,
+  html[data-skin="signal"] .reference-row > span,
+  html[data-skin="signal"] .state-row > .state-value {
+    font-size: .98rem;
+    line-height: 1.38;
+    color: var(--wh-copy-strong);
+  }
+
+  html[data-skin="signal"] .status-value {
+    font-size: .95rem;
+    color: var(--wh-copy-strong);
+  }
+
+  /* Long mono labels — let them wrap on a word boundary rather than
+     break mid-token, so labels like "I DON'T HAVE THE ENERGY I USED TO HAVE"
+     don't force the value column into a 30px gutter. */
+  html[data-skin="signal"] .seq-label,
+  html[data-skin="signal"] .state-label,
+  html[data-skin="signal"] .flat-row > strong {
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  /* Mobile mini-state-row — stack the label above ON on very narrow widths
+     so the right-aligned ON never overlaps a long label. */
+  html[data-skin="signal"] .mini-state-row {
+    column-gap: 10px;
+  }
+
 }
 
 @media (max-width: 390px) {
@@ -1922,6 +1982,12 @@ html[data-skin="signal"] .footer {
   html[data-skin="signal"] .level-directory .utility-link--open {
     justify-self: stretch;
   }
+  /* AR-MOBILE-PASS — narrow widths: keep ON aligned right without stacking,
+     since these rows are typically 1-3 word labels. */
+  html[data-skin="signal"] .mini-state-row > b {
+    font-size: .76rem;
+  }
+
 }
 
 
@@ -2431,6 +2497,55 @@ html[data-skin="signal"] .transmission code {
   background: var(--wh-row-divider-soft);
   padding: 0.1em 0.4em;
   border-radius: var(--wh-radius-sm);
+}
+
+
+/* AR-MOBILE-PASS — shared system additions.
+   .mini-state-row: single-row analogue of .mini-state-list, used where one
+   switch occupies one parent row (e.g. inside a .seq-body). Reuses the same
+   visual treatment as .mini-state, including the ON value styling.
+   .flat-list--stack: opt-in modifier that forces .flat-row to stack the
+   label above its value on ALL widths — for content where the label is
+   itself the primary line (e.g. quoted false-instruction sentences). */
+html[data-skin="signal"] .mini-state-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 12px;
+  align-items: baseline;
+}
+html[data-skin="signal"] .mini-state-row > span {
+  justify-self: start;
+}
+html[data-skin="signal"] .mini-state-row > b {
+  justify-self: end;
+  text-align: right;
+  font-family: var(--font-mono);
+  font-size: .78rem;
+  font-weight: var(--wh-sans-value-strong-weight);
+  letter-spacing: .04em;
+}
+
+html[data-skin="signal"] .flat-list--stack > .flat-row {
+  grid-template-columns: 1fr;
+  row-gap: 4px;
+}
+html[data-skin="signal"] .flat-list--stack > .flat-row > strong {
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--wh-copy-strong);
+  line-height: 1.35;
+}
+html[data-skin="signal"] .flat-list--stack > .flat-row > span {
+  font-family: var(--font-mono);
+  font-size: var(--wh-mono-eyebrow-size);
+  font-weight: var(--wh-mono-eyebrow-weight);
+  letter-spacing: var(--wh-mono-eyebrow-track);
+  text-transform: uppercase;
+  color: var(--wh-accent);
+  margin-top: 2px;
 }
 
 /* Run Sequence cards — visually distinct from one-line items */
