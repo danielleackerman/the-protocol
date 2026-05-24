@@ -193,27 +193,24 @@ function migrate(){
 function chrome(){
   let t=localStorage.getItem(THEME);if(t)document.documentElement.dataset.theme=t;
   $$('[data-theme-toggle]').forEach(b=>b.onclick=()=>{let n=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=n;localStorage.setItem(THEME,n)});
-  // Mobile drawer — slide-in nav with backdrop, scroll-lock, and
-  // close on backdrop / link / Escape. Keeps the existing
-  // .mobile-nav.is-open class and aria-expanded attribute in sync so
-  // the CSS drawer state and the toggle button's active state both
-  // read from the same source of truth.
+  // Mobile menu — right-side slide-in panel. Keeps the .mobile-nav.is-open
+  // class and the toggle button's aria-expanded attribute in sync, and
+  // closes on link tap / outside tap / Escape. No scroll-lock and no
+  // backdrop: the menu overlays the page but doesn't take the page over.
   let nav=$('[data-mobile-nav]');
   let toggles=$$('[data-mobile-menu-toggle]');
   let setDrawer=open=>{
     if(!nav)return;
     nav.classList.toggle('is-open',open);
-    document.documentElement.classList.toggle('has-drawer-open',open);
     toggles.forEach(b=>{
       b.setAttribute('aria-expanded',open?'true':'false');
       b.setAttribute('aria-label',open?'Close menu':'Open menu');
     });
   };
   toggles.forEach(b=>b.onclick=()=>setDrawer(!nav?.classList.contains('is-open')));
-  // Close when a link inside the drawer is tapped.
+  // Close when a link inside the menu is tapped.
   nav?.addEventListener('click',e=>{if(e.target.closest('a'))setDrawer(false)});
-  // Close when the dimmed backdrop is tapped (anywhere outside the drawer
-  // while it's open).
+  // Close when anywhere outside the menu / toggle is tapped while open.
   document.addEventListener('click',e=>{
     if(!nav?.classList.contains('is-open'))return;
     if(e.target.closest('[data-mobile-nav]'))return;

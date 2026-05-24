@@ -422,64 +422,48 @@ html[data-skin="signal"] .mobile-nav a.is-active {
 }
 
 html[data-skin="signal"] .mobile-nav {
-  /* Off-canvas drawer. Lives in the DOM at all widths so transforms can
-     animate; visibility/pointer-events keep it inert when closed, and
-     the desktop tier never reveals it because the toggle is also hidden
-     above 860px. The drawer slides in from the right edge; the dimmed
-     backdrop is rendered by body::before below. */
+  /* Standard right-side mobile menu — panel docked under the sticky
+     header, anchored to the right edge, overlays the page (no push, no
+     full-viewport sheet, no backdrop, no scroll lock). Lives in the DOM
+     at all widths so the transform animates; visibility/pointer-events
+     keep it inert when closed. The desktop tier never reveals it
+     because the toggle is hidden above 860px. */
   position: fixed;
-  top: 0;
+  top: var(--wh-header-height);
   right: 0;
-  bottom: 0;
+  left: auto;
+  bottom: auto;
   z-index: 60;
-  width: min(86vw, 320px);
+  width: min(320px, calc(100vw - 32px));
+  max-height: calc(100vh - var(--wh-header-height) - 16px);
   margin: 0;
-  padding: calc(var(--wh-header-height) + 12px) 22px 28px;
+  padding: 14px 16px 18px;
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  gap: 8px;
+  gap: 6px;
   overflow-y: auto;
   overscroll-behavior: contain;
   background: var(--wh-panel-bg);
-  border-left: 1px solid var(--wh-border-default);
-  box-shadow: -12px 0 32px rgba(0, 0, 0, .35);
-  transform: translateX(100%);
+  border: 1px solid var(--wh-border-default);
+  border-right: 0;
+  border-top: 0;
+  border-bottom-left-radius: var(--wh-radius);
+  box-shadow: -10px 12px 28px rgba(0, 0, 0, .28);
+  transform: translateX(110%);
   visibility: hidden;
   pointer-events: none;
-  transition: transform .28s ease, visibility 0s linear .28s;
+  transition: transform .24s ease, visibility 0s linear .24s;
 }
 
 html[data-skin="signal"] .mobile-nav.is-open {
   transform: translateX(0);
   visibility: visible;
   pointer-events: auto;
-  transition: transform .28s ease, visibility 0s linear 0s;
+  transition: transform .24s ease, visibility 0s linear 0s;
 }
 
-/* Drawer backdrop — dim the page behind the open drawer. Scoped via the
-   .has-drawer-open class that the menu-toggle JS puts on <html> so the
-   pseudo is inert (no paint) when the drawer is closed. */
-html[data-skin="signal"].has-drawer-open body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 55;
-  background: rgba(0, 0, 0, .42);
-  -webkit-backdrop-filter: blur(2px);
-  backdrop-filter: blur(2px);
-  pointer-events: auto;
-}
-
-/* Lock the page scroll while the drawer is open. */
-html[data-skin="signal"].has-drawer-open,
-html[data-skin="signal"].has-drawer-open body {
-  overflow: hidden;
-}
-
-/* Drawer links sit one-per-line at full width so the touch target is
-   the full row, not a chip's width. Inherits the nav-link typography
-   declared above; only layout shifts. */
+/* Menu links — stacked vertically, full-width tap targets. */
 html[data-skin="signal"] .mobile-nav a {
   width: 100%;
   justify-content: flex-start;
