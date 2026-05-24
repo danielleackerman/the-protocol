@@ -1490,20 +1490,21 @@ html[data-skin="signal"] .reference-card .state-value {
   line-height: var(--wh-sans-body-line);
 }
 
-/* Reference paragraphs — tighter than operation prose. Reference is
-   scanned, not read while doing; tighter leading + narrower measure
-   reads as documentation, not as floaty editorial.
-   .reference-card included so the Level 05 reference page (which uses
-   the .reference-card modifier instead of .reference-section) reads in
-   the same prose tier as every other reference panel. */
+/* Reference paragraphs — readable at the same size as operation-card
+   sequence body, so a reference panel and an operation panel sitting
+   on the same page read at the same body scale. Earlier this used the
+   smaller prose tier (.88rem), which created a size step between the
+   two panel types; reference is the place to slow down and read, not
+   the place to read smaller. .reference-card included so the Level 05
+   reference page reads in the same tier as every other reference panel. */
 html[data-skin="signal"] .reference-section p,
 html[data-skin="signal"] .reference-section li,
 html[data-skin="signal"] .reference-card p,
 html[data-skin="signal"] .reference-card li {
   max-width: var(--wh-sans-prose-measure);
-  font-size: var(--wh-sans-prose-size);
-  font-weight: var(--wh-sans-prose-weight);
-  line-height: var(--wh-sans-prose-line);
+  font-size: var(--wh-sans-value-size);
+  font-weight: var(--wh-sans-value-weight);
+  line-height: var(--wh-sans-value-line);
   margin: 0;
 }
 
