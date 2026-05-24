@@ -193,10 +193,11 @@ function migrate(){
 function chrome(){
   let t=localStorage.getItem(THEME);if(t)document.documentElement.dataset.theme=t;
   $$('[data-theme-toggle]').forEach(b=>b.onclick=()=>{let n=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=n;localStorage.setItem(THEME,n)});
-  // Mobile menu — right-side slide-in panel. Keeps the .mobile-nav.is-open
-  // class and the toggle button's aria-expanded attribute in sync, and
-  // closes on link tap / outside tap / Escape. No scroll-lock and no
-  // backdrop: the menu overlays the page but doesn't take the page over.
+  // Mobile menu — full-screen left-slide overlay. Covers the entire
+  // viewport when open, slides in from the LEFT (translateX -100% → 0).
+  // Keeps the .mobile-nav.is-open class and the toggle button's
+  // aria-expanded attribute in sync. Closes on: any tap on the menu
+  // surface (link or empty space), outside tap, Escape key.
   let nav=$('[data-mobile-nav]');
   let toggles=$$('[data-mobile-menu-toggle]');
   let setDrawer=open=>{
@@ -208,8 +209,8 @@ function chrome(){
     });
   };
   toggles.forEach(b=>b.onclick=()=>setDrawer(!nav?.classList.contains('is-open')));
-  // Close when a link inside the menu is tapped.
-  nav?.addEventListener('click',e=>{if(e.target.closest('a'))setDrawer(false)});
+  // Close when anywhere on the menu surface is tapped (link or empty space).
+  nav?.addEventListener('click',()=>setDrawer(false));
   // Close when anywhere outside the menu / toggle is tapped while open.
   document.addEventListener('click',e=>{
     if(!nav?.classList.contains('is-open'))return;
