@@ -422,35 +422,35 @@ html[data-skin="signal"] .mobile-nav a.is-active {
 }
 
 html[data-skin="signal"] .mobile-nav {
-  /* Standard right-side mobile menu — panel docked under the sticky
-     header, anchored to the right edge, overlays the page (no push, no
-     full-viewport sheet, no backdrop, no scroll lock). Lives in the DOM
+  /* Standard full-screen mobile menu — covers the entire viewport
+     when open, slides in from the LEFT. Off-screen at translateX(-100%)
+     when closed, on-screen at translateX(0) when open. Lives in the DOM
      at all widths so the transform animates; visibility/pointer-events
      keep it inert when closed. The desktop tier never reveals it
      because the toggle is hidden above 860px. */
   position: fixed;
-  top: var(--wh-header-height);
-  right: 0;
-  left: auto;
-  bottom: auto;
+  top: 0;
+  left: 0;
+  right: auto;
+  bottom: 0;
   z-index: 60;
-  width: min(320px, calc(100vw - 32px));
-  max-height: calc(100vh - var(--wh-header-height) - 16px);
+  width: 100vw;
+  max-width: 100vw;
+  height: 100vh;
+  max-height: 100vh;
   margin: 0;
-  padding: 14px 16px 18px;
+  padding: calc(var(--wh-header-height) + 16px) 18px 24px;
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  gap: 6px;
+  gap: 8px;
   overflow-y: auto;
   overscroll-behavior: contain;
   background: var(--wh-panel-bg);
-  border: 1px solid var(--wh-border-default);
-  border-right: 0;
-  border-top: 0;
-  border-bottom-left-radius: var(--wh-radius);
-  box-shadow: -10px 12px 28px rgba(0, 0, 0, .28);
-  transform: translateX(110%);
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  transform: translateX(-100%);
   visibility: hidden;
   pointer-events: none;
   transition: transform .24s ease, visibility 0s linear .24s;
