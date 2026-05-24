@@ -598,11 +598,14 @@ html[data-skin="signal"] .identity--hero h1 {
   line-height: .94;
 }
 
-/* H1 + support copy collapse: lede/p hugs the title */
+/* H1 + support copy collapse: lede/p hugs the title with a small beat
+   so the lede reads as supporting copy and not crammed against the
+   baseline. The H1's own margin-bottom (10px) already provides the
+   visual gap; this rule ensures lede/support/p don't double-stack. */
 html[data-skin="signal"] h1 + .lede,
 html[data-skin="signal"] h1 + .support-copy,
 html[data-skin="signal"] h1 + p {
-  margin-top: 0;
+  margin-top: 2px;
 }
 
 /* H2 — primary section heading. ONE style, mode-wide. No private variants. */
@@ -688,6 +691,16 @@ html[data-skin="signal"] label > span {
 html[data-skin="signal"] .panel-kicker.is-danger,
 html[data-skin="signal"] .is-danger {
   color: var(--wh-clay);
+}
+
+/* Identity-block kicker — small extra breathing room above the page H1
+   so the identity register reads as page-level, not as a panel-internal
+   kicker hugging its heading. The .identity--hero kicker has its own
+   28px spacing; this brings the calm .identity register into the same
+   family without changing panel-kicker rhythm elsewhere. */
+html[data-skin="signal"] .identity > .kicker,
+html[data-skin="signal"] .identity > .panel-kicker {
+  margin-bottom: 10px;
 }
 
 /* Lede — panel-leading paragraph. The deliberate readable-secondary
@@ -1256,7 +1269,10 @@ html[data-skin="signal"] .panel:has(.sequence) .seq-row > :nth-child(n+3) {
   grid-column: 3;
 }
 
-/* Index column — quiet number, NOT a chip. Sized via mono-data token. */
+/* Index column — quiet number, NOT a chip. Sized via mono-data token.
+   Opacity tuned so the index reads as a deliberate numbered marker
+   rather than a faint ghost; still subordinate to the label and body
+   columns sitting to its right. */
 html[data-skin="signal"] .operation-card .seq-index,
 html[data-skin="signal"] .panel:has(.sequence) .seq-index {
   display: block;
@@ -1275,7 +1291,7 @@ html[data-skin="signal"] .panel:has(.sequence) .seq-index {
   font-weight: var(--wh-mono-data-weight);
   letter-spacing: var(--wh-mono-data-track);
   line-height: 1.2;
-  opacity: .78;
+  opacity: .88;
   font-variant-numeric: tabular-nums;
 }
 
@@ -1323,7 +1339,7 @@ html[data-skin="signal"] .panel:has(.sequence) code {
   padding: .14rem .42rem;
   color: var(--wh-code-text);
   font-family: var(--font-mono);
-  font-size: .88rem;
+  font-size: var(--wh-sans-prose-size);
   font-weight: 720;
   letter-spacing: .03em;
   background: var(--wh-code-bg);
@@ -1404,13 +1420,17 @@ html[data-skin="signal"] .reference-section {
    carried by the kicker label, not by a private H2 style. The H2 in
    reference panels uses the global H2 declaration — no override here. */
 
-html[data-skin="signal"] .reference-section h2 {
+html[data-skin="signal"] .reference-section h2,
+html[data-skin="signal"] .reference-card h2 {
   margin-bottom: 16px;
 }
 
 html[data-skin="signal"] .reference-section .flat-list,
 html[data-skin="signal"] .reference-section .reference-table,
-html[data-skin="signal"] .reference-section .state-table {
+html[data-skin="signal"] .reference-section .state-table,
+html[data-skin="signal"] .reference-card .flat-list,
+html[data-skin="signal"] .reference-card .reference-table,
+html[data-skin="signal"] .reference-card .state-table {
   margin-top: 4px;
   gap: 0;
 }
@@ -1472,9 +1492,14 @@ html[data-skin="signal"] .reference-card .state-value {
 
 /* Reference paragraphs — tighter than operation prose. Reference is
    scanned, not read while doing; tighter leading + narrower measure
-   reads as documentation, not as floaty editorial. */
+   reads as documentation, not as floaty editorial.
+   .reference-card included so the Level 05 reference page (which uses
+   the .reference-card modifier instead of .reference-section) reads in
+   the same prose tier as every other reference panel. */
 html[data-skin="signal"] .reference-section p,
-html[data-skin="signal"] .reference-section li {
+html[data-skin="signal"] .reference-section li,
+html[data-skin="signal"] .reference-card p,
+html[data-skin="signal"] .reference-card li {
   max-width: var(--wh-sans-prose-measure);
   font-size: var(--wh-sans-prose-size);
   font-weight: var(--wh-sans-prose-weight);
@@ -1720,6 +1745,23 @@ html[data-skin="signal"] .three-part-form > button {
   max-width: max-content;
 }
 
+/* Form labels — promote out of the global eyebrow-sm tier into the
+   rowkey tier so form labels read as real labels next to their inputs
+   instead of whisper text. The bare `label > span` selector kept in
+   the kicker rule above still serves status-strip and other non-form
+   label contexts. */
+html[data-skin="signal"] .utility-form label > span,
+html[data-skin="signal"] .law-form label > span,
+html[data-skin="signal"] .peak-form label > span,
+html[data-skin="signal"] .three-part-form label > span,
+html[data-skin="signal"] .switch-add-row label > span,
+html[data-skin="signal"] .command-input-row label > span {
+  color: var(--wh-kicker);
+  font-size: var(--wh-mono-rowkey-size);
+  font-weight: var(--wh-mono-rowkey-weight);
+  letter-spacing: var(--wh-mono-rowkey-track);
+}
+
 /* Spacing between submit row and the saved-output / template list. */
 html[data-skin="signal"] .utility-form + .ledger-list,
 html[data-skin="signal"] .utility-form + .template-list,
@@ -1759,7 +1801,7 @@ html[data-skin="signal"] .ledger-item--runsequence {
 }
 html[data-skin="signal"] .ledger-item--runsequence .ledger-item__text {
   font-family: var(--font-mono);
-  font-size: .88rem;
+  font-size: var(--wh-sans-prose-size);
   line-height: 1.65;
   white-space: pre-line;
 }
@@ -1833,7 +1875,7 @@ html[data-skin="signal"] .flat-list--stack > .flat-row {
 }
 html[data-skin="signal"] .flat-list--stack > .flat-row > strong {
   font-family: inherit;
-  font-size: 1rem;
+  font-size: var(--wh-sans-value-size);
   font-weight: 500;
   letter-spacing: 0;
   text-transform: none;
@@ -1874,6 +1916,9 @@ html[data-skin="signal"] .runseq-add-form textarea {
 }
 html[data-skin="signal"] .runseq-index {
   font-family: var(--font-mono);
+  font-size: var(--wh-mono-data-size);
+  font-weight: var(--wh-mono-data-weight);
+  letter-spacing: var(--wh-mono-data-track);
   opacity: .72;
 }
 
@@ -1959,14 +2004,17 @@ html[data-skin="signal"] .bank-cat-card--empty { opacity: .58; }
 html[data-skin="signal"] .bank-cat-name {
   font-family: var(--font-display, var(--font-body));
   font-style: italic;
-  font-size: 1.25rem;
-  line-height: 1.1;
+  font-size: clamp(1.18rem, 1.6vw, 1.32rem);
+  font-weight: 600;
+  letter-spacing: -.012em;
+  line-height: 1.12;
   color: var(--wh-heading);
 }
 html[data-skin="signal"] .bank-cat-count {
   font-family: var(--font-mono);
-  font-size: .72rem;
-  letter-spacing: .08em;
+  font-size: var(--wh-mono-eyebrow-size);
+  font-weight: var(--wh-mono-eyebrow-weight);
+  letter-spacing: var(--wh-mono-eyebrow-track);
   text-transform: uppercase;
   color: var(--wh-muted);
 }
@@ -1985,8 +2033,9 @@ html[data-skin="signal"] .bank-back {
   border-radius: 4px;
   padding: .35rem .6rem;
   font-family: var(--font-mono);
-  font-size: .72rem;
-  letter-spacing: .06em;
+  font-size: var(--wh-mono-chip-size);
+  font-weight: var(--wh-mono-chip-weight);
+  letter-spacing: var(--wh-mono-chip-track);
   text-transform: uppercase;
   color: var(--wh-text);
   cursor: pointer;
@@ -2019,8 +2068,10 @@ html[data-skin="signal"] .bank-type-chip {
   background: var(--wh-button-bg);
   color: var(--wh-button-text);
   font-family: var(--font-mono);
-  font-size: var(--wh-mono-chip-size, .72rem);
-  letter-spacing: var(--wh-mono-chip-track, .06em);
+  font-size: var(--wh-mono-chip-size);
+  font-weight: var(--wh-mono-chip-weight);
+  letter-spacing: var(--wh-mono-chip-track);
+  line-height: 1;
   text-transform: uppercase;
   cursor: pointer;
   transition: border-color .18s ease, background .18s ease, box-shadow .18s ease, color .18s ease;
@@ -2144,7 +2195,7 @@ html[data-skin="signal"] .transmission ol {
   flex-direction: column;
   gap: var(--wh-space-2);
 }
-html[data-skin="signal"] .transmission li { line-height: var(--wh-line-body); }
+html[data-skin="signal"] .transmission li { line-height: var(--wh-sans-body-line); }
 html[data-skin="signal"] .transmission code {
   font-family: var(--font-mono);
   font-size: 0.92em;
