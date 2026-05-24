@@ -2210,6 +2210,147 @@ html[data-skin="signal"] .footer {
     align-items: stretch;
   }
 
+  /* Mobile action targets — larger resting controls with visible borders. */
+  html[data-skin="signal"] .button,
+  html[data-skin="signal"] .page-actions a,
+  html[data-skin="signal"] .prev-next-nav a,
+  html[data-skin="signal"] .controls a,
+  html[data-skin="signal"] .controls button {
+    min-height: 2.4rem;
+    padding: .56rem .9rem;
+    font-size: 1rem;
+    border-color: var(--wh-button-border);
+  }
+
+  html[data-skin="signal"] .button--form,
+  html[data-skin="signal"] .utility-form button,
+  html[data-skin="signal"] .law-form button,
+  html[data-skin="signal"] .peak-form button,
+  html[data-skin="signal"] .three-part-form button,
+  html[data-skin="signal"] .switch-add-row button,
+  html[data-skin="signal"] .command-input-row button,
+  html[data-skin="signal"] .ledger-item__actions button {
+    min-height: 2.3rem;
+    padding: .52rem .9rem;
+    font-size: .92rem;
+  }
+
+  /* Mobile panel markers — stronger section anchors without new colors. */
+  html[data-skin="signal"] .kicker,
+  html[data-skin="signal"] .panel-kicker,
+  html[data-skin="signal"] .panel > .kicker,
+  html[data-skin="signal"] .panel > .panel-kicker,
+  html[data-skin="signal"] .identity > .kicker,
+  html[data-skin="signal"] .identity > .panel-kicker,
+  html[data-skin="signal"] .reference-section > .kicker,
+  html[data-skin="signal"] .reference-section > .panel-kicker,
+  html[data-skin="signal"] .operation-card > .kicker,
+  html[data-skin="signal"] .operation-card > .panel-kicker {
+    color: var(--wh-accent);
+    font-size: var(--wh-mono-rowkey-size);
+    font-weight: var(--wh-mono-rowkey-weight);
+    letter-spacing: .11em;
+    margin-bottom: 6px;
+  }
+
+  /* Mobile sequence copy — stronger weight so command text holds the row. */
+  html[data-skin="signal"] .operation-card .seq-body,
+  html[data-skin="signal"] .panel:has(.sequence) .seq-body,
+  html[data-skin="signal"] .operation-card .seq-row > :nth-child(n+3),
+  html[data-skin="signal"] .panel:has(.sequence) .seq-row > :nth-child(n+3) {
+    color: var(--wh-copy-strong);
+    font-weight: 500;
+  }
+
+  /* Mobile transmission summary — clearer disclosure control. */
+  html[data-skin="signal"] .transmission-details > summary {
+    padding: 10px 12px;
+    border: 1px solid var(--wh-button-border);
+    border-radius: var(--wh-radius-sm);
+    background: var(--wh-button-bg);
+    min-height: 2.4rem;
+    font-size: .72rem;
+  }
+
+  html[data-skin="signal"] .media-block__caption {
+    font-size: var(--wh-mono-rowkey-size);
+    font-weight: var(--wh-mono-rowkey-weight);
+    letter-spacing: .11em;
+  }
+
+  /* Bank mobile affordance — stronger search, cards, and chips. */
+  html[data-skin="signal"] .bank-search-panel input[type="search"] {
+    padding: 13px 14px;
+    font-size: 1rem;
+  }
+
+  html[data-skin="signal"] .bank-cat-card {
+    min-height: 88px;
+    padding: 14px 16px;
+  }
+
+  html[data-skin="signal"] .bank-cat-name {
+    font-size: 1.18rem;
+  }
+
+  html[data-skin="signal"] .bank-type-chip {
+    padding: .52rem .82rem;
+    font-size: .76rem;
+    min-height: 2.2rem;
+  }
+
+  /* Custom forms — stronger labels and more confident field targets. */
+  html[data-skin="signal"] .utility-form label,
+  html[data-skin="signal"] .law-form label,
+  html[data-skin="signal"] .peak-form label,
+  html[data-skin="signal"] .three-part-form label {
+    gap: 7px;
+  }
+
+  html[data-skin="signal"] .utility-form label > span,
+  html[data-skin="signal"] .law-form label > span,
+  html[data-skin="signal"] .peak-form label > span,
+  html[data-skin="signal"] .three-part-form label > span {
+    color: var(--wh-kicker);
+    font-size: var(--wh-mono-rowkey-size);
+    font-weight: var(--wh-mono-rowkey-weight);
+    letter-spacing: .11em;
+  }
+
+  html[data-skin="signal"] .utility-form input,
+  html[data-skin="signal"] .utility-form select,
+  html[data-skin="signal"] .utility-form textarea,
+  html[data-skin="signal"] .law-form input,
+  html[data-skin="signal"] .law-form select,
+  html[data-skin="signal"] .law-form textarea,
+  html[data-skin="signal"] .peak-form input,
+  html[data-skin="signal"] .peak-form textarea,
+  html[data-skin="signal"] .three-part-form input,
+  html[data-skin="signal"] .three-part-form textarea {
+    min-height: 2.6rem;
+    padding: 11px 12px;
+    font-size: 1rem;
+  }
+
+  html[data-skin="signal"] .utility-form textarea,
+  html[data-skin="signal"] .law-form textarea,
+  html[data-skin="signal"] .peak-form textarea,
+  html[data-skin="signal"] .three-part-form textarea {
+    min-height: 108px;
+  }
+
+  /* Mobile panel separation — keeps stacked panels from reading as one wall. */
+  html[data-skin="signal"] .shell > .panel + .panel,
+  html[data-skin="signal"] .page-shell > .panel + .panel,
+  html[data-skin="signal"] .shell > .panel + .reference-section,
+  html[data-skin="signal"] .page-shell > .panel + .reference-section,
+  html[data-skin="signal"] .shell > .reference-section + .panel,
+  html[data-skin="signal"] .page-shell > .reference-section + .panel,
+  html[data-skin="signal"] .shell > .reference-section + .reference-section,
+  html[data-skin="signal"] .page-shell > .reference-section + .reference-section {
+    margin-top: 4px;
+  }
+
   /* Run Sequence authoring grid: each form needs ~360px to be usable,
      so collapse to single column at the 860 tier. */
   html[data-skin="signal"] .runseq-section .runseq-forms {
@@ -2272,12 +2413,12 @@ html[data-skin="signal"] .footer {
   }
 
   html[data-skin="signal"] h2 {
-    font-size: clamp(1.5rem, 6.2vw, 2.05rem);
+    font-size: clamp(1.62rem, 6.6vw, 2.15rem);
     margin-bottom: 16px;
   }
 
   html[data-skin="signal"] h3 {
-    font-size: clamp(1.08rem, 5vw, 1.36rem);
+    font-size: clamp(1.16rem, 5.2vw, 1.42rem);
     margin-top: 30px;
     margin-bottom: 6px;
   }
@@ -2329,8 +2470,9 @@ html[data-skin="signal"] .footer {
   html[data-skin="signal"] .flat-row > strong,
   html[data-skin="signal"] .ledger-item__meta {
     font-size: .68rem;
+    font-weight: 850;
     letter-spacing: .1em;
-    color: var(--wh-copy-strong);
+    color: var(--wh-accent);
   }
 
   /* Phone-tier kickers — slightly larger and tinted with the accent
@@ -2350,6 +2492,7 @@ html[data-skin="signal"] .footer {
   html[data-skin="signal"] .operation-card .seq-row > :nth-child(n+3),
   html[data-skin="signal"] .panel:has(.sequence) .seq-row > :nth-child(n+3) {
     font-size: 1rem;
+    font-weight: 500;
     line-height: 1.42;
     color: var(--wh-copy-strong);
   }
@@ -2399,6 +2542,174 @@ html[data-skin="signal"] .footer {
     padding: 8px 0;
   }
 
+  /* Level directory Open chip — bump to a real action target size. */
+  html[data-skin="signal"] .level-directory .utility-link--open {
+    min-height: 2.3rem;
+    padding: .52rem .82rem;
+    font-size: .78rem;
+    min-width: 4.6rem;
+  }
+
+  /* Phone-tier actions — continue strengthening touch targets. */
+  html[data-skin="signal"] .button,
+  html[data-skin="signal"] .page-actions a,
+  html[data-skin="signal"] .prev-next-nav a {
+    min-height: 2.5rem;
+    padding: .6rem .95rem;
+    font-size: 1.02rem;
+  }
+
+  html[data-skin="signal"] .page-actions,
+  html[data-skin="signal"] .prev-next-nav,
+  html[data-skin="signal"] .controls {
+    gap: 10px;
+  }
+
+  /* Identity-hero actions — full-width targets on phone. */
+  html[data-skin="signal"] .identity--hero .page-actions,
+  html[data-skin="signal"] .identity--hero .controls {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  html[data-skin="signal"] .identity--hero .page-actions a,
+  html[data-skin="signal"] .identity--hero .controls a,
+  html[data-skin="signal"] .identity--hero .controls .button {
+    width: 100%;
+  }
+
+  /* Phone-tier transmission disclosure. */
+  html[data-skin="signal"] .transmission-details > summary {
+    padding: 11px 14px;
+    border: 1px solid var(--wh-button-border);
+    border-radius: var(--wh-radius-sm);
+    background: var(--wh-button-bg);
+    min-height: 2.5rem;
+    font-size: .74rem;
+    letter-spacing: .12em;
+  }
+
+  html[data-skin="signal"] .transmission-details[open] > summary {
+    margin-bottom: var(--wh-space-3);
+  }
+
+  html[data-skin="signal"] .media-block__caption {
+    font-size: var(--wh-mono-rowkey-size);
+    font-weight: 850;
+    letter-spacing: .12em;
+  }
+
+  html[data-skin="signal"] .media-block audio {
+    height: 44px;
+  }
+
+  /* Bank phone treatment — bigger search, grid, and chip targets. */
+  html[data-skin="signal"] .bank-search-panel {
+    padding: 14px 16px;
+    top: 44px;
+  }
+
+  html[data-skin="signal"] .bank-search-panel input[type="search"] {
+    padding: 13px 14px;
+    font-size: 1.02rem;
+    border-radius: var(--wh-radius-sm);
+  }
+
+  html[data-skin="signal"] .bank-category-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  html[data-skin="signal"] .bank-cat-card {
+    min-height: 96px;
+    padding: 14px;
+  }
+
+  html[data-skin="signal"] .bank-cat-name {
+    font-size: 1.12rem;
+    line-height: 1.12;
+  }
+
+  html[data-skin="signal"] .bank-cat-count {
+    font-size: .68rem;
+  }
+
+  html[data-skin="signal"] .bank-type-chips {
+    gap: 8px;
+    margin: 6px 0 16px;
+  }
+
+  html[data-skin="signal"] .bank-type-chip {
+    padding: .56rem .88rem;
+    font-size: .76rem;
+    min-height: 2.35rem;
+  }
+
+  html[data-skin="signal"] .bank-back {
+    padding: .52rem .8rem;
+    font-size: .76rem;
+    min-height: 2.3rem;
+  }
+
+  /* Custom phone forms — stronger labels, taller inputs, larger save buttons. */
+  html[data-skin="signal"] .utility-form label > span,
+  html[data-skin="signal"] .law-form label > span,
+  html[data-skin="signal"] .peak-form label > span,
+  html[data-skin="signal"] .three-part-form label > span {
+    color: var(--wh-kicker);
+    font-size: var(--wh-mono-rowkey-size);
+    font-weight: 800;
+    letter-spacing: .11em;
+  }
+
+  html[data-skin="signal"] .utility-form input,
+  html[data-skin="signal"] .utility-form select,
+  html[data-skin="signal"] .utility-form textarea,
+  html[data-skin="signal"] .law-form input,
+  html[data-skin="signal"] .law-form select,
+  html[data-skin="signal"] .law-form textarea,
+  html[data-skin="signal"] .peak-form input,
+  html[data-skin="signal"] .peak-form textarea,
+  html[data-skin="signal"] .three-part-form input,
+  html[data-skin="signal"] .three-part-form textarea {
+    min-height: 2.75rem;
+    padding: 12px 13px;
+    font-size: 1.02rem;
+  }
+
+  html[data-skin="signal"] .utility-form textarea,
+  html[data-skin="signal"] .law-form textarea,
+  html[data-skin="signal"] .peak-form textarea,
+  html[data-skin="signal"] .three-part-form textarea {
+    min-height: 116px;
+  }
+
+  html[data-skin="signal"] .utility-form > button,
+  html[data-skin="signal"] .law-form > button,
+  html[data-skin="signal"] .peak-form > button,
+  html[data-skin="signal"] .three-part-form > button {
+    min-height: 2.55rem;
+    min-width: 10rem;
+    padding: .65rem 1.15rem;
+    font-size: 1rem;
+  }
+
+  /* Ledger items — tighter rhythm, clearer action targets. */
+  html[data-skin="signal"] .ledger-item {
+    padding: 14px 0 12px;
+  }
+
+  html[data-skin="signal"] .ledger-item__meta {
+    gap: 6px;
+  }
+
+  html[data-skin="signal"] .ledger-item__actions button {
+    min-height: 2.2rem;
+    padding: .45rem .8rem;
+    font-size: .85rem;
+  }
+
   /* Mini-state row — tighten the column gap on phone so the value
      column never overlaps a long label. */
   html[data-skin="signal"] .mini-state-row {
@@ -2429,6 +2740,38 @@ html[data-skin="signal"] .footer {
 
   html[data-skin="signal"] .level-directory .utility-link--open {
     justify-self: stretch;
+  }
+
+  /* Smallest-phone Bank and nav layout. */
+  html[data-skin="signal"] .bank-category-grid {
+    grid-template-columns: 1fr;
+  }
+
+  html[data-skin="signal"] .bank-cat-card {
+    min-height: 84px;
+    padding: 13px 14px;
+  }
+
+  html[data-skin="signal"] .prev-next-nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  html[data-skin="signal"] .prev-next-nav a {
+    width: 100%;
+    padding: .58rem .7rem;
+    font-size: .94rem;
+  }
+
+  html[data-skin="signal"] .operation-card .seq-label,
+  html[data-skin="signal"] .panel:has(.sequence) .seq-label {
+    color: var(--wh-accent);
+    font-weight: 850;
+  }
+
+  html[data-skin="signal"] .identity--hero {
+    padding-inline: 18px;
   }
 
   /* Mini-state row at narrow widths — slightly smaller ON value so
