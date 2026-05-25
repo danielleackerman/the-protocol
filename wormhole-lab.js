@@ -135,11 +135,28 @@ function renderSearch(state){
 function renderBank(){
   if(!$('#bank-grid-panel'))return; // not on Bank page
   const state=getState();
+  const prevMode=renderBank._lastMode;
   if(state.mode==='grid'){showOnly('bank-grid-panel');renderCategoryGrid();}
   else if(state.mode==='drill'){showOnly('bank-drill-panel');renderDrill(state);}
   else if(state.mode==='search'){showOnly('bank-search-results-panel');renderSearch(state);}
   // keep search input synced
   const s=$('#bankSearch');if(s){const desired=state.mode==='search'?state.q:'';if(s.value!==desired&&document.activeElement!==s)s.value=desired;}
+  // Scroll feedback — when the user changes mode (e.g. taps a category card,
+  // submits a search, taps Back to grid) the new panel sits at a different
+  // vertical position than the panel they were viewing, so without a scroll
+  // cue the swap reads as "nothing happened". Only scroll when the mode
+  // actually changed, so refilters within drill (type chips) and back/forward
+  // restores don't yank the viewport unexpectedly.
+  if(prevMode&&prevMode!==state.mode){
+    const panelId=state.mode==='grid'?'bank-grid-panel':state.mode==='drill'?'bank-drill-panel':'bank-search-results-panel';
+    const panel=document.getElementById(panelId);
+    if(panel){
+      const headerH=parseInt(getComputedStyle(document.documentElement).getPropertyValue('--wh-header-height'),10)||76;
+      const top=panel.getBoundingClientRect().top+window.scrollY-headerH-12;
+      window.scrollTo({top:Math.max(0,top),behavior:'smooth'});
+    }
+  }
+  renderBank._lastMode=state.mode;
 }
 
 function initBank(){
