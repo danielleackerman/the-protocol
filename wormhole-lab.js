@@ -141,28 +141,26 @@ function renderBank(){
   else if(state.mode==='search'){showOnly('bank-search-results-panel');renderSearch(state);}
   // keep search input synced
   const s=$('#bankSearch');if(s){const desired=state.mode==='search'?state.q:'';if(s.value!==desired&&document.activeElement!==s)s.value=desired;}
-  // Scroll feedback — when the user changes mode (e.g. taps a category card,
-  // submits a search, taps Back to grid) the new panel sits at a different
-  // vertical position than the panel they were viewing, so without a scroll
-  // cue the swap reads as "nothing happened". Only scroll when the mode
-  // actually changed, so refilters within drill (type chips) and back/forward
-  // restores don't yank the viewport unexpectedly.
+  // Scroll feedback on mode change — when the user changes mode (taps a
+  // category card, submits a search, taps Back to grid) the new panel
+  // sits in the same DOM position as the panel it replaced (showOnly
+  // toggles [hidden] on sibling sections), so measuring the new panel's
+  // bounding rect returns roughly the same Y the user is already at —
+  // smooth-scrolling to "basically here" is a visible no-op, which is
+  // exactly the bug we kept hitting after the first tap.
   //
-  // The scroll is deferred via rAF because showOnly() above just toggled
-  // [hidden] on the panels — the browser needs a frame to apply the layout
-  // change before getBoundingClientRect() returns the panel's settled
-  // position. Without the defer, a second navigation (e.g. Back → tap
-  // another card) measures stale coordinates and the page appears not to
-  // scroll on the second and subsequent taps.
+  // Fix: on any mode change, scroll the page to the top of the Bank
+  // section (just below the sticky header). The user navigated; landing
+  // them at the top of the new view is the unambiguous feedback.
+  //
+  // Skip when mode didn't change (refilters within drill via type chips,
+  // hash-restore events that re-fire renderBank without a real change)
+  // and skip when we're already near the top (≤ 8px) to avoid a jarring
+  // micro-jump on first interaction from a top-of-page state.
   if(prevMode&&prevMode!==state.mode){
-    const panelId=state.mode==='grid'?'bank-grid-panel':state.mode==='drill'?'bank-drill-panel':'bank-search-results-panel';
-    requestAnimationFrame(()=>{
-      const panel=document.getElementById(panelId);
-      if(!panel)return;
-      const headerH=parseInt(getComputedStyle(document.documentElement).getPropertyValue('--wh-header-height'),10)||76;
-      const top=panel.getBoundingClientRect().top+window.scrollY-headerH-12;
-      window.scrollTo({top:Math.max(0,top),behavior:'smooth'});
-    });
+    if(window.scrollY>8){
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
   }
   renderBank._lastMode=state.mode;
 }
