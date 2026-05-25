@@ -147,14 +147,22 @@ function renderBank(){
   // cue the swap reads as "nothing happened". Only scroll when the mode
   // actually changed, so refilters within drill (type chips) and back/forward
   // restores don't yank the viewport unexpectedly.
+  //
+  // The scroll is deferred via rAF because showOnly() above just toggled
+  // [hidden] on the panels — the browser needs a frame to apply the layout
+  // change before getBoundingClientRect() returns the panel's settled
+  // position. Without the defer, a second navigation (e.g. Back → tap
+  // another card) measures stale coordinates and the page appears not to
+  // scroll on the second and subsequent taps.
   if(prevMode&&prevMode!==state.mode){
     const panelId=state.mode==='grid'?'bank-grid-panel':state.mode==='drill'?'bank-drill-panel':'bank-search-results-panel';
-    const panel=document.getElementById(panelId);
-    if(panel){
+    requestAnimationFrame(()=>{
+      const panel=document.getElementById(panelId);
+      if(!panel)return;
       const headerH=parseInt(getComputedStyle(document.documentElement).getPropertyValue('--wh-header-height'),10)||76;
       const top=panel.getBoundingClientRect().top+window.scrollY-headerH-12;
       window.scrollTo({top:Math.max(0,top),behavior:'smooth'});
-    }
+    });
   }
   renderBank._lastMode=state.mode;
 }
