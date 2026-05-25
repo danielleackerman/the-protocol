@@ -141,36 +141,51 @@ function renderBank(){
   else if(state.mode==='search'){showOnly('bank-search-results-panel');renderSearch(state);}
   // keep search input synced
   const s=$('#bankSearch');if(s){const desired=state.mode==='search'?state.q:'';if(s.value!==desired&&document.activeElement!==s)s.value=desired;}
-  // Scroll feedback on mode change — when the user navigates between
-  // bank views (grid → drill, drill → grid, * → search) the swapped
-  // panel sits in the same DOM position the previous panel occupied,
-  // so the user often can't tell anything changed. Bring the new
-  // panel's header into view as the page's first visible content
-  // below the sticky chrome.
+  // Scroll feedback on mode change — every previous attempt at this
+  // (5e6be44, 636c188, 0216c2f, 3599150) tried to "scroll the new
+  // panel into view." That fails because the grid and drill panels
+  // are sibling sections — showOnly() toggles `hidden` on one and
+  // off the other — so they occupy the same Y position in the
+  // document. scrollIntoView / getBoundingClientRect on the newly
+  // revealed panel returns the position the user is ALREADY at, so
+  // the smooth scroll has no distance to travel and the user sees
+  // no movement.
   //
-  // Implementation: scrollIntoView on the panel's heading element
-  // (not the panel itself, because the panel may be `hidden` for a
-  // fraction of a frame on first reveal). The sticky-header offset
-  // is handled in CSS via `scroll-margin-top` on the .panel-kicker
-  // / .bank-drill-head selectors — no JS math, no rAF gymnastics,
-  // no stale getBoundingClientRect.
-  //
-  // Skipped when mode didn't change (refilters within drill via
-  // type chips, hash-restore re-renders) so the viewport stays put
-  // for in-mode updates.
+  // The only way to produce a visible jump is to scroll to a Y that
+  // is meaningfully different from current scroll. We do that by
+  // computing one absolute target per mode using the OTHER content
+  // on the page (the identity section above the panels) — and by
+  // ALWAYS forcing the scroll, even if scrollY is already 0, by
+  // first jumping to a small offset and then animating to the real
+  // target. This guarantees a perceptible animation on every mode
+  // change.
   if(prevMode&&prevMode!==state.mode){
-    let target=null;
-    if(state.mode==='grid')target=$('#bank-grid-panel .panel-kicker')||$('#bank-grid-panel');
-    else if(state.mode==='drill')target=$('#bank-drill-panel .bank-drill-head')||$('#bank-drill-panel');
-    else if(state.mode==='search')target=$('#bank-search-results-panel .panel-kicker')||$('#bank-search-results-panel');
-    if(target){
-      // rAF gives the [hidden] toggle a frame to commit so the target
-      // is actually laid out before we ask the browser to scroll to it.
-      requestAnimationFrame(()=>{
-        try{target.scrollIntoView({behavior:'smooth',block:'start'});}
-        catch(e){target.scrollIntoView();}
-      });
-    }
+    requestAnimationFrame(()=>{
+      // Anchor element that is ABOVE all three swappable panels —
+      // the identity hero block at the top of the bank page. Its
+      // bottom edge is the natural "where the panel content begins"
+      // line, identical regardless of which panel is currently shown.
+      const identity=document.querySelector('.shell .identity');
+      const searchPanel=document.getElementById('bank-search-panel');
+      // For drill / search: scroll DOWN so the revealed panel header
+      // is the first thing under the sticky chrome. For grid: scroll
+      // UP to the very top so the identity hero reads as "you're
+      // back at the start."
+      let targetY=0;
+      if(state.mode!=='grid'&&identity&&searchPanel){
+        // Bottom of search panel = top of the visible panel content area.
+        const rect=searchPanel.getBoundingClientRect();
+        targetY=Math.max(0,rect.bottom+window.scrollY-76); // 76 = sticky header
+      }
+      // Diagnostic — remove after confirming scroll works on device.
+      console.log('[bank-scroll]',{prevMode,nextMode:state.mode,currentY:window.scrollY,targetY});
+      // Force a perceptible animation: if we're already within 4px of
+      // the target, nudge first so smooth scroll has somewhere to go.
+      if(Math.abs(window.scrollY-targetY)<4){
+        window.scrollTo({top:targetY+24,behavior:'auto'});
+      }
+      window.scrollTo({top:targetY,behavior:'smooth'});
+    });
   }
   renderBank._lastMode=state.mode;
 }
