@@ -141,25 +141,35 @@ function renderBank(){
   else if(state.mode==='search'){showOnly('bank-search-results-panel');renderSearch(state);}
   // keep search input synced
   const s=$('#bankSearch');if(s){const desired=state.mode==='search'?state.q:'';if(s.value!==desired&&document.activeElement!==s)s.value=desired;}
-  // Scroll feedback on mode change — when the user changes mode (taps a
-  // category card, submits a search, taps Back to grid) the new panel
-  // sits in the same DOM position as the panel it replaced (showOnly
-  // toggles [hidden] on sibling sections), so measuring the new panel's
-  // bounding rect returns roughly the same Y the user is already at —
-  // smooth-scrolling to "basically here" is a visible no-op, which is
-  // exactly the bug we kept hitting after the first tap.
+  // Scroll feedback on mode change — when the user navigates between
+  // bank views (grid → drill, drill → grid, * → search) the swapped
+  // panel sits in the same DOM position the previous panel occupied,
+  // so the user often can't tell anything changed. Bring the new
+  // panel's header into view as the page's first visible content
+  // below the sticky chrome.
   //
-  // Fix: on any mode change, scroll the page to the top of the Bank
-  // section (just below the sticky header). The user navigated; landing
-  // them at the top of the new view is the unambiguous feedback.
+  // Implementation: scrollIntoView on the panel's heading element
+  // (not the panel itself, because the panel may be `hidden` for a
+  // fraction of a frame on first reveal). The sticky-header offset
+  // is handled in CSS via `scroll-margin-top` on the .panel-kicker
+  // / .bank-drill-head selectors — no JS math, no rAF gymnastics,
+  // no stale getBoundingClientRect.
   //
-  // Skip when mode didn't change (refilters within drill via type chips,
-  // hash-restore events that re-fire renderBank without a real change)
-  // and skip when we're already near the top (≤ 8px) to avoid a jarring
-  // micro-jump on first interaction from a top-of-page state.
+  // Skipped when mode didn't change (refilters within drill via
+  // type chips, hash-restore re-renders) so the viewport stays put
+  // for in-mode updates.
   if(prevMode&&prevMode!==state.mode){
-    if(window.scrollY>8){
-      window.scrollTo({top:0,behavior:'smooth'});
+    let target=null;
+    if(state.mode==='grid')target=$('#bank-grid-panel .panel-kicker')||$('#bank-grid-panel');
+    else if(state.mode==='drill')target=$('#bank-drill-panel .bank-drill-head')||$('#bank-drill-panel');
+    else if(state.mode==='search')target=$('#bank-search-results-panel .panel-kicker')||$('#bank-search-results-panel');
+    if(target){
+      // rAF gives the [hidden] toggle a frame to commit so the target
+      // is actually laid out before we ask the browser to scroll to it.
+      requestAnimationFrame(()=>{
+        try{target.scrollIntoView({behavior:'smooth',block:'start'});}
+        catch(e){target.scrollIntoView();}
+      });
     }
   }
   renderBank._lastMode=state.mode;

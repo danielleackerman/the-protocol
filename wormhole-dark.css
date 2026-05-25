@@ -2012,6 +2012,17 @@ html[data-skin="signal"] .bank-search-results-panel {
   display: block;
 }
 
+/* Scroll feedback targets — when JS swaps between bank views and calls
+   scrollIntoView() on the heading of the newly revealed panel, this
+   offset keeps the heading clear of the sticky site header (76px) and
+   the sticky bank-search-panel (~64px combined with its top:47px
+   sticky offset), with a small extra margin for breathing room. */
+html[data-skin="signal"] #bank-grid-panel > .panel-kicker,
+html[data-skin="signal"] #bank-drill-panel .bank-drill-head,
+html[data-skin="signal"] #bank-search-results-panel > .panel-kicker {
+  scroll-margin-top: 160px;
+}
+
 /* Sticky search panel — sits under header. */
 html[data-skin="signal"] .bank-search-panel {
   position: sticky;
