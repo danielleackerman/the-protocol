@@ -2012,6 +2012,19 @@ html[data-skin="signal"] .bank-search-results-panel {
   display: block;
 }
 
+/* The rule above sets display:block on all three panels, which
+   overrides the browser default for the [hidden] attribute
+   (display:none). Without this override, showOnly() correctly
+   toggles the hidden attribute in the DOM but the panels all
+   render stacked on screen — the drill panel appears below the
+   grid instead of replacing it, which is why tapping a category
+   card showed no visible change in the viewport. */
+html[data-skin="signal"] .bank-grid-panel[hidden],
+html[data-skin="signal"] .bank-drill-panel[hidden],
+html[data-skin="signal"] .bank-search-results-panel[hidden] {
+  display: none;
+}
+
 /* Sticky search panel — sits under header. */
 html[data-skin="signal"] .bank-search-panel {
   position: sticky;
