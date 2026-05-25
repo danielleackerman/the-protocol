@@ -170,6 +170,15 @@ function initBank(){
   $('#bankBackBtn')?.addEventListener('click',()=>{setState({mode:'grid'});renderBank();});
   // Hash changes (back button, manual edits)
   window.addEventListener('hashchange',renderBank);
+  // After any state change that opens the drill or search panel,
+  // scroll it into view so the user sees the section that just
+  // opened. Symmetric to how the Back button jumps back to the grid.
+  const jumpToOpenPanel=()=>{
+    const s=getState();
+    const target=s.mode==='drill'?$('#bank-drill-panel'):s.mode==='search'?$('#bank-search-results-panel'):null;
+    if(target)target.scrollIntoView({behavior:'smooth',block:'start'});
+  };
+  window.addEventListener('hashchange',jumpToOpenPanel);
   $('#exportBank')?.addEventListener('click',()=>copyText(JSON.stringify(bank(),null,2)));
   renderBank();
 }
