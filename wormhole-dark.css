@@ -1966,16 +1966,19 @@ html[data-skin="signal"] .accordion-list {
   display: flex;
   flex-direction: column;
   margin-top: var(--wh-space-3);
+  width: 100%;
 }
 
 html[data-skin="signal"] .accordion-list .accordion-item {
   display: block;
+  width: 100%;
   padding: 9px 0 8px;
   border-bottom: 1px solid var(--wh-row-divider-soft);
   color: var(--wh-copy);
   font-family: var(--font-body);
   font-size: var(--wh-sans-value-size);
   font-weight: var(--wh-sans-value-weight);
+  font-style: normal;
   line-height: var(--wh-sans-value-line);
 }
 
