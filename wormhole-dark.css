@@ -1957,6 +1957,32 @@ html[data-skin="signal"] .flat-list--stack > .flat-row > span {
   margin-top: 2px;
 }
 
+/* Accordion item list — used inside .transmission-details within
+   .seq-body. Single-column, full-width divider rows. Body font,
+   normal weight — subordinate to the surrounding op card copy.
+   Each .accordion-item sits on its own line with a soft border-bottom
+   spanning the full width of the container. */
+html[data-skin="signal"] .accordion-list {
+  display: flex;
+  flex-direction: column;
+  margin-top: var(--wh-space-3);
+}
+
+html[data-skin="signal"] .accordion-list .accordion-item {
+  display: block;
+  padding: 9px 0 8px;
+  border-bottom: 1px solid var(--wh-row-divider-soft);
+  color: var(--wh-copy);
+  font-family: var(--font-body);
+  font-size: var(--wh-sans-value-size);
+  font-weight: var(--wh-sans-value-weight);
+  line-height: var(--wh-sans-value-line);
+}
+
+html[data-skin="signal"] .accordion-list .accordion-item:last-child {
+  border-bottom-color: transparent;
+}
+
 /* Custom / Run Sequence components ----------------------------------- */
 /* Run Sequence is the Custom page's two-column authoring grid: the
    left form composes a new sequence, the right form composes the
