@@ -2299,7 +2299,7 @@ html[data-skin="signal"] .transmission-kicker {
   font-weight: var(--wh-mono-eyebrow-weight);
   letter-spacing: var(--wh-mono-eyebrow-track);
   text-transform: uppercase;
-  color: var(--wh-accent);
+  color: var(--wh-kicker);
   margin-top: var(--wh-space-3);
 }
 html[data-skin="signal"] .transmission ul,
