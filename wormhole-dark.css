@@ -17,8 +17,8 @@
 */
 
 /* Shared structural tokens (theme-agnostic) ---------------------------- */
-/* Removed: :root font-token block (duplicate of this scoped block).      */
-/* Removed: --font-heading (declared but used in zero rules site-wide).   */
+/* :root font-token block removed — was a duplicate of this scoped block.  */
+/* --font-heading removed: declared but unused across the design system.   */
 html[data-skin="signal"] {
   --font-display: "Cormorant Garamond", "Bodoni 72", "Didot", Georgia, serif;
   --font-body:    "Inter", "Avenir Next", "Helvetica Neue", Arial, sans-serif;
@@ -1480,8 +1480,9 @@ html[data-skin="signal"] .reference-section {
 html[data-skin="signal"] .reference-section h2 {
   margin-bottom: 16px;
 }
-/* .reference-card h2 removed — no live HTML uses .reference-card after
-   Phase 1 migrated levels/level-05-command-line.html to reference-section. */
+/* .reference-card h2 removed: .reference-card is no longer used in live HTML.
+   Archive pages in _archive/ retain the class but are not part of the live
+   site; those pages are intentionally unsupported by the current style system. */
 
 html[data-skin="signal"] .reference-section .flat-list,
 html[data-skin="signal"] .reference-section .reference-table,
@@ -1489,7 +1490,8 @@ html[data-skin="signal"] .reference-section .state-table {
   margin-top: 4px;
   gap: 0;
 }
-/* .reference-card flat-list / reference-table / state-table removed. */
+/* .reference-card .flat-list / .reference-table / .state-table removed:
+   .reference-card is no longer used in live HTML. */
 
 /* Reference flat-row column geometry and rhythm. The label column
    minmax(9.2rem, .34fr) leaves room for longer mono labels ("THE SEAT
@@ -1507,7 +1509,7 @@ html[data-skin="signal"] .reference-section .state-row {
   padding: 11px 0 5px;
   border-color: var(--wh-row-divider-soft);
 }
-/* .reference-card row geometry removed. */
+/* .reference-card row geometry removed: class no longer used in live HTML. */
 
 /* Reference row keys — content terms (Premise / Identity / Therefore,
    Operate / Flip / Decree). Same warm-bronze row-key tier as operation
@@ -1526,7 +1528,7 @@ html[data-skin="signal"] .reference-section .state-label {
   word-break: normal;
   hyphens: none;
 }
-/* .reference-card row keys removed. */
+/* .reference-card row keys removed: class no longer used in live HTML. */
 
 html[data-skin="signal"] .reference-section .flat-row > :last-child,
 html[data-skin="signal"] .reference-section .reference-value,
@@ -1537,11 +1539,11 @@ html[data-skin="signal"] .reference-section .state-value {
   font-weight: var(--wh-sans-body-weight);
   line-height: var(--wh-sans-body-line);
 }
-/* .reference-card value rules removed. */
+/* .reference-card value rules removed: class no longer used in live HTML. */
 
 /* Reference paragraphs — readable at the same size as operation-card
-   sequence body, so a reference panel and an operation panel on the
-   same page read at the same body scale. */
+   sequence body, so a reference panel and an operation panel sitting
+   on the same page read at the same body scale. */
 html[data-skin="signal"] .reference-section p,
 html[data-skin="signal"] .reference-section li {
   max-width: var(--wh-sans-prose-measure);
@@ -1621,10 +1623,10 @@ html[data-skin="signal"] .reference-section .flat-row:hover,
 html[data-skin="signal"] .reference-section .reference-row:hover,
 html[data-skin="signal"] .reference-section .state-row:hover,
 html[data-skin="signal"] .reference-section .ref-block:hover {
+/* .reference-card hover removed: class no longer used in live HTML. */
   border-color: var(--wh-row-divider);
   background: transparent;
 }
-/* .reference-card hover removed — class not used in live HTML. */
 
 /* Level directory — systemic class. Used wherever the level chamber list appears.
    Apply via class="state-table level-directory" on the container. ----- */
@@ -2041,9 +2043,10 @@ html[data-skin="signal"] .bank-search-results-panel[hidden] {
   display: none;
 }
 
-/* Sticky search panel — sits under header.
-   top was hardcoded 47px (stale magic number). Now uses the declared
-   --wh-header-height token so any header resize propagates automatically. */
+/* Sticky search panel — sits under header. top was hardcoded at 47px
+   (a stale magic number from an earlier header height). Now uses the
+   declared --wh-header-height token so any future header resize is
+   automatically reflected. */
 html[data-skin="signal"] .bank-search-panel {
   position: sticky;
   top: var(--wh-header-height);
@@ -2209,19 +2212,16 @@ html[data-skin="signal"] .media-block:first-child {
   border-top: 0;
 }
 html[data-skin="signal"] .media-block__caption {
-  /* Demoted from --wh-accent (gold) to --wh-kicker (neutral) and from
-     eyebrow to eyebrow-sm. This caption is a static file/day label — it
-     appears on every age-reversal page and every wormhole day page, always
-     directly above the gold "Open transmission" interactive summary.
-     Two adjacent gold items at identical weight made the static label
-     indistinguishable from the interactive control. Neutral kicker + one
-     notch smaller creates clear caption → control separation everywhere
-     this component appears. */
   font-family: var(--font-mono);
   font-size: var(--wh-mono-eyebrow-sm-size);
   font-weight: var(--wh-mono-eyebrow-sm-weight);
   letter-spacing: var(--wh-mono-eyebrow-sm-track);
   text-transform: uppercase;
+  /* Demoted from --wh-accent to --wh-kicker: caption is a static
+     metadata label, not an interactive control. The disclosure summary
+     directly below it is the gold interactive element; two adjacent
+     gold items at the same size created a competition that flattened
+     the caption/control distinction. */
   color: var(--wh-kicker);
   margin: 0;
 }
@@ -2280,20 +2280,22 @@ html[data-skin="signal"] .transmission {
   border-top: 1px solid var(--wh-row-divider-soft);
   display: flex;
   flex-direction: column;
-  /* Increased from space-3 (12px) to space-4 (18px). The level pages
-     use ~18px between ref-block content groups; matching that rhythm
-     gives transmission sections the same breathing room. */
+  /* Increased from space-3 (12px) to space-4 (18px): the original tight
+     gap made prose, kicker sections, and flat-rows read as one compressed
+     gray block. 18px gives enough air for the kicker sections to separate. */
   gap: var(--wh-space-4);
 }
 html[data-skin="signal"] .transmission > * { margin: 0; }
 
-/* Transmission section label (INTRO / THE BRIEFING / POSITION / etc.).
-   The level pages use H3 with margin-top: 36px and a clear visual weight
-   to separate reference subsections. Transmission kickers need equivalent
-   hierarchy signal inside the accordion. Border-top acts as a visual rule
-   between sections — the same function H3's top margin serves in level
-   reference sections. First kicker suppresses its border since the
-   transmission container already has a top border. */
+/* Transmission section label — the named section breaks inside a long
+   transcript (INTRO / THE BRIEFING / THE CROSSING / etc.).
+   Previously: same .68rem/--wh-kicker as surrounding metadata labels with
+   only 12px of top margin. The result was that kicker sections blurred into
+   surrounding prose — no visual anchor.
+   Now: top border acts as a visual rule between sections; padding-top
+   separates the label from the rule; color matches panel-kicker. The
+   first kicker in a transmission suppresses its border because the
+   transmission itself already has a top border. */
 html[data-skin="signal"] .transmission-kicker {
   font-family: var(--font-mono);
   font-size: var(--wh-mono-eyebrow-size);
@@ -2311,28 +2313,25 @@ html[data-skin="signal"] .transmission-kicker:first-child {
   margin-top: 0;
 }
 
-/* Transmission prose — line-height 1.30 (global body) is calibrated for
-   short op-card value cells. Transmission paragraphs are multi-sentence
-   reading prose. 1.48 gives reading room. Matches reference-section prose
-   rhythm. Paragraph spacing matches .reference-section p + p (6px). */
+/* Transmission prose — slightly more open line-height than the global body
+   rule (1.30). Transcript copy is longer-form, meant to be read through
+   in sequence; the same tight line-height used for short op-card values
+   makes it feel compressed inside the accordion. */
 html[data-skin="signal"] .transmission p {
-  line-height: 1.48;
+  line-height: 1.50;
   color: var(--wh-copy);
 }
-html[data-skin="signal"] .transmission p + p {
-  margin-top: 6px;
-}
 
-/* Transmission em — the reflective prompt/question lines present in every
-   transmission. Slightly lighter so they read as invitational, not
-   declarative — same role as muted metadata labels elsewhere in the system. */
+/* Transmission emphasis — the question/prompt lines in each transmission
+   (italicised in HTML). Slightly lighter than --wh-copy so they read as
+   reflective/invitational rather than declarative. */
 html[data-skin="signal"] .transmission em {
   color: var(--wh-muted);
   font-style: italic;
 }
 
-/* Transmission strong — explicit scope matching global strong behavior.
-   Was falling through to the global rule; now intentional. */
+/* Transmission strong — scoped so we control it explicitly, not by
+   inheriting the global weight that can shift if the global value changes. */
 html[data-skin="signal"] .transmission strong {
   color: var(--wh-copy-strong);
   font-weight: var(--wh-strong-weight);
@@ -2346,23 +2345,18 @@ html[data-skin="signal"] .transmission ol {
   gap: var(--wh-space-2);
 }
 html[data-skin="signal"] .transmission li {
-  line-height: 1.48;
+  line-height: 1.50;
   color: var(--wh-copy);
 }
 
-/* Transmission flat-row — narrower label column for accordion context.
-   The base .flat-row uses minmax(8.4rem, .30fr). Inside a transmission
-   the content column is narrower. 7.8rem/.28fr gives the value column
-   more room, matching how reference-section flat-rows use .34fr to
-   weight the value side. No structural change — geometry only. */
+/* Transmission flat-list — scoped column geometry for accordion context.
+   The base .flat-row uses minmax(8.4rem, .30fr) which can crowd at accordion
+   widths. Narrowing the label column to 7.8rem gives the value column more
+   room without changing the two-column structure or adding layout classes. */
 html[data-skin="signal"] .transmission .flat-row {
   grid-template-columns: minmax(7.8rem, .28fr) minmax(0, 1fr);
 }
 
-/* Transmission code — use the system code-chip background/color tokens.
-   Previous background was --wh-row-divider-soft (.10 opacity) which is
-   near-invisible in dark mode. --wh-code-bg (.22 opacity solid) matches
-   how inline code renders in level pages and operation cards. */
 html[data-skin="signal"] .transmission code {
   font-family: var(--font-mono);
   font-size: 0.92em;
