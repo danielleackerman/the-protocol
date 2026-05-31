@@ -53,15 +53,15 @@ html[data-skin="signal"] {
 
   /* Mono — page-meta tier (smallest) — for kickers, eyebrows above panels.
      These are metadata about the panel; they stay quiet. */
-  --wh-mono-eyebrow-sm-size:   .58rem;
-  --wh-mono-eyebrow-sm-weight: 700;
-  --wh-mono-eyebrow-sm-track:  .12em;
+  --wh-mono-eyebrow-sm-size:   .62rem;
+  --wh-mono-eyebrow-sm-weight: 800;
+  --wh-mono-eyebrow-sm-track:  .14em;
 
   /* Mono — row-eyebrow tier — for nav, primary metadata labels above
      content. Bigger than -sm but still meta-level. */
-  --wh-mono-eyebrow-size:      .64rem;
-  --wh-mono-eyebrow-weight:    740;
-  --wh-mono-eyebrow-track:     .095em;
+  --wh-mono-eyebrow-size:      .68rem;
+  --wh-mono-eyebrow-weight:    850;
+  --wh-mono-eyebrow-track:     .11em;
 
   /* Mono — row-key tier — for terms that ARE the content (OPERATE, FLIP,
      EXECUTE, ABUNDANCE, DO NOT MANIFEST). Sits between eyebrow and value
@@ -69,9 +69,9 @@ html[data-skin="signal"] {
      the H3 sitting above them. Earlier this was at .76rem/800/full-ivory
      which crushed H3 hierarchy and made multi-word keys feel like
      command badges. */
-  --wh-mono-rowkey-size:       .65rem;
-  --wh-mono-rowkey-weight:     680;
-  --wh-mono-rowkey-track:      .075em;
+  --wh-mono-rowkey-size:       .70rem;
+  --wh-mono-rowkey-weight:     760;
+  --wh-mono-rowkey-track:      .09em;
 
   /* Mono — data tier (numbers, code-as-data, sequence index) */
   --wh-mono-data-size:         .66rem;
@@ -89,41 +89,41 @@ html[data-skin="signal"] {
   --wh-sans-micro-weight:      450;
 
   /* Sans — body tier (default paragraphs, reference values) */
-  --wh-sans-body-size:         .95rem;
-  --wh-sans-body-line:         1.42;
-  --wh-sans-body-weight:       420;
+  --wh-sans-body-size:         .92rem;
+  --wh-sans-body-line:         1.30;
+  --wh-sans-body-weight:       430;
 
   /* Sans — prose tier (reference-section paragraphs; tighter than body) */
-  --wh-sans-prose-size:        .94rem;
-  --wh-sans-prose-line:        1.46;
+  --wh-sans-prose-size:        .88rem;
+  --wh-sans-prose-line:        1.30;
   --wh-sans-prose-weight:      420;
   --wh-sans-prose-measure:     42rem;
 
   /* Sans — lede tier (panel-level support copy). Sized so the lede
      reads as supporting copy rather than a second headline competing
      with the H1. */
-  --wh-sans-lede-size:         clamp(1rem, 1.25vw, 1.12rem);
-  --wh-sans-lede-line:         1.42;
-  --wh-sans-lede-weight:       430;
+  --wh-sans-lede-size:         clamp(.86rem, .95vw, .92rem);
+  --wh-sans-lede-line:         1.32;
+  --wh-sans-lede-weight:       450;
 
   /* Sans — support tier (panel-meta support copy: "Gate level: complete
      the install…", "Use this when…"). Quieter than lede so the H1/H2
      above it stays the visual lead. */
-  --wh-sans-support-size:      .90rem;
-  --wh-sans-support-line:      1.40;
-  --wh-sans-support-weight:    410;
+  --wh-sans-support-size:      .86rem;
+  --wh-sans-support-line:      1.32;
+  --wh-sans-support-weight:    430;
 
   /* Sans — value tier (seq-body, status-value, primary row values) */
-  --wh-sans-value-size:        clamp(.96rem, 1.14vw, 1.04rem);
-  --wh-sans-value-line:        1.40;
-  --wh-sans-value-weight:      420;
+  --wh-sans-value-size:        clamp(.94rem, 1.1vw, 1.0rem);
+  --wh-sans-value-line:        1.28;
+  --wh-sans-value-weight:      460;
 
   /* Sans — value-strong tier (active state values; weight emphasis) */
   --wh-sans-value-strong-weight: 600;
 
   /* Strong — global emphasis weight. Lower than the original 620 so an
      all-<strong> paragraph reads as emphasis without thickening the page. */
-  --wh-strong-weight: 540;
+  --wh-strong-weight: 560;
 
   /* Accent token family — warm, Wormhole-compatible (not browser blue).
      Dark uses gold; light overrides this block in wormhole-light.css.
@@ -634,13 +634,13 @@ html[data-skin="signal"] p {
 /* H1 — page identity. Calm scale by default. */
 html[data-skin="signal"] h1 {
   max-width: 760px;
-  margin: 0 0 14px;
+  margin: 0 0 10px;
   color: var(--wh-h1-fill);
   font-family: var(--font-display);
-  font-size: clamp(2.35rem, 5vw, 4.45rem);
+  font-size: clamp(2.1rem, 4.35vw, 3.95rem);
   font-weight: 600;
-  letter-spacing: -.035em;
-  line-height: 1;
+  letter-spacing: -.028em;
+  line-height: 1.06;
   text-transform: uppercase;
   text-shadow: var(--wh-h1-shadow);
 }
@@ -668,14 +668,14 @@ html[data-skin="signal"] h1 + p {
 /* H2 — primary section heading. ONE style, mode-wide. No private variants. */
 html[data-skin="signal"] h2 {
   max-width: 760px;
-  margin: 0 0 18px;
+  margin: 0 0 14px;
   color: var(--wh-heading);
   font-family: var(--font-display);
   font-style: italic;
-  font-size: clamp(2rem, 3.8vw, 2.85rem);
-  font-weight: 560;
-  letter-spacing: -.024em;
-  line-height: 1.02;
+  font-size: clamp(1.75rem, 3.4vw, 2.45rem);
+  font-weight: 600;
+  letter-spacing: -.018em;
+  line-height: 1.04;
   text-transform: none;
   text-shadow: none;
 }
@@ -684,14 +684,14 @@ html[data-skin="signal"] h2 {
    sentence case, sized and weighted so it clearly outranks the mono
    row-keys sitting underneath it. */
 html[data-skin="signal"] h3 {
-  margin: 42px 0 10px;
+  margin: 36px 0 6px;
   color: var(--wh-heading);
   font-family: var(--font-display);
   font-style: italic;
-  font-size: clamp(1.46rem, 2.35vw, 1.9rem);
-  font-weight: 560;
-  letter-spacing: -.018em;
-  line-height: 1.06;
+  font-size: clamp(1.28rem, 2.15vw, 1.65rem);
+  font-weight: 620;
+  letter-spacing: -.012em;
+  line-height: 1.08;
   text-transform: none;
 }
 
@@ -736,12 +736,12 @@ html[data-skin="signal"] .operation-card > .panel-kicker,
 html[data-skin="signal"] label > span {
   display: block;
   margin: 0 0 4px;
-  color: var(--wh-muted);
+  color: var(--wh-kicker);
   font-family: var(--font-mono);
   font-size: var(--wh-mono-eyebrow-sm-size);
   font-weight: var(--wh-mono-eyebrow-sm-weight);
   letter-spacing: var(--wh-mono-eyebrow-sm-track);
-  line-height: 1.18;
+  line-height: 1.15;
   text-transform: uppercase;
 }
 
@@ -766,7 +766,7 @@ html[data-skin="signal"] .lede,
 html[data-skin="signal"] .panel > .lede,
 html[data-skin="signal"] .reference-section > .lede {
   max-width: 42rem;
-  margin: 0 0 20px;
+  margin: 0 0 18px;
   color: var(--wh-lede);
   font-family: var(--font-body);
   font-size: var(--wh-sans-lede-size);
@@ -785,7 +785,7 @@ html[data-skin="signal"] .panel > .support-copy,
 html[data-skin="signal"] .reference-section > .support-copy,
 html[data-skin="signal"] .identity > .support-copy {
   max-width: 42rem;
-  margin: 0 0 16px;
+  margin: 0 0 14px;
   color: var(--wh-copy);
   font-family: var(--font-body);
   font-size: var(--wh-sans-support-size);
@@ -2222,7 +2222,7 @@ html[data-skin="signal"] .media-block__caption {
   font-weight: var(--wh-mono-eyebrow-sm-weight);
   letter-spacing: var(--wh-mono-eyebrow-sm-track);
   text-transform: uppercase;
-  color: var(--wh-muted);
+  color: var(--wh-kicker);
   margin: 0;
 }
 html[data-skin="signal"] .media-block audio,
@@ -2300,7 +2300,7 @@ html[data-skin="signal"] .transmission-kicker {
   font-weight: var(--wh-mono-eyebrow-weight);
   letter-spacing: var(--wh-mono-eyebrow-track);
   text-transform: uppercase;
-  color: var(--wh-label);
+  color: var(--wh-kicker);
   padding-top: var(--wh-space-3);
   border-top: 1px solid var(--wh-row-divider-soft);
   margin-top: var(--wh-space-2);
@@ -2461,11 +2461,11 @@ html[data-skin="signal"] .footer {
   html[data-skin="signal"] .reference-section > .panel-kicker,
   html[data-skin="signal"] .operation-card > .kicker,
   html[data-skin="signal"] .operation-card > .panel-kicker {
-    color: var(--wh-kicker);
-    font-size: var(--wh-mono-eyebrow-size);
-    font-weight: var(--wh-mono-eyebrow-weight);
-    letter-spacing: var(--wh-mono-eyebrow-track);
-    margin-bottom: 8px;
+    color: var(--wh-accent);
+    font-size: var(--wh-mono-rowkey-size);
+    font-weight: var(--wh-mono-rowkey-weight);
+    letter-spacing: .11em;
+    margin-bottom: 6px;
   }
 
   /* Mobile sequence copy — stronger weight so command text holds the row. */
@@ -2488,9 +2488,9 @@ html[data-skin="signal"] .footer {
   }
 
   html[data-skin="signal"] .media-block__caption {
-    font-size: var(--wh-mono-eyebrow-sm-size);
-    font-weight: var(--wh-mono-eyebrow-sm-weight);
-    letter-spacing: var(--wh-mono-eyebrow-sm-track);
+    font-size: var(--wh-mono-rowkey-size);
+    font-weight: var(--wh-mono-rowkey-weight);
+    letter-spacing: .11em;
   }
 
   /* Bank mobile affordance — stronger search, cards, and chips. */
@@ -2527,9 +2527,9 @@ html[data-skin="signal"] .footer {
   html[data-skin="signal"] .peak-form label > span,
   html[data-skin="signal"] .three-part-form label > span {
     color: var(--wh-kicker);
-    font-size: var(--wh-mono-eyebrow-sm-size);
-    font-weight: var(--wh-mono-eyebrow-sm-weight);
-    letter-spacing: var(--wh-mono-eyebrow-sm-track);
+    font-size: var(--wh-mono-rowkey-size);
+    font-weight: var(--wh-mono-rowkey-weight);
+    letter-spacing: .11em;
   }
 
   html[data-skin="signal"] .utility-form input,
@@ -2616,9 +2616,9 @@ html[data-skin="signal"] .footer {
   }
 
   html[data-skin="signal"] h1 {
-    font-size: clamp(2.05rem, 8.5vw, 3.25rem);
-    line-height: 1.02;
-    margin-bottom: 12px;
+    font-size: clamp(1.92rem, 7.5vw, 2.85rem);
+    line-height: 1.08;
+    margin-bottom: 8px;
   }
 
   html[data-skin="signal"] h1.h1--cinematic,
@@ -2628,14 +2628,14 @@ html[data-skin="signal"] .footer {
   }
 
   html[data-skin="signal"] h2 {
-    font-size: clamp(1.78rem, 7.2vw, 2.38rem);
-    margin-bottom: 18px;
+    font-size: clamp(1.62rem, 6.6vw, 2.15rem);
+    margin-bottom: 16px;
   }
 
   html[data-skin="signal"] h3 {
-    font-size: clamp(1.34rem, 5.6vw, 1.7rem);
-    margin-top: 36px;
-    margin-bottom: 10px;
+    font-size: clamp(1.16rem, 5.2vw, 1.42rem);
+    margin-top: 30px;
+    margin-bottom: 6px;
   }
 
   html[data-skin="signal"] .identity--hero {
@@ -2684,19 +2684,19 @@ html[data-skin="signal"] .footer {
   html[data-skin="signal"] .status-label,
   html[data-skin="signal"] .flat-row > strong,
   html[data-skin="signal"] .ledger-item__meta {
-    font-size: var(--wh-mono-rowkey-size);
-    font-weight: var(--wh-mono-rowkey-weight);
-    letter-spacing: var(--wh-mono-rowkey-track);
-    color: var(--wh-label);
+    font-size: .68rem;
+    font-weight: 850;
+    letter-spacing: .1em;
+    color: var(--wh-accent);
   }
 
   /* Phone-tier kickers — slightly larger and tinted with the accent
      so the section anchor reads at a glance. */
   html[data-skin="signal"] .panel-kicker,
   html[data-skin="signal"] .kicker {
-    font-size: var(--wh-mono-eyebrow-size);
-    letter-spacing: var(--wh-mono-eyebrow-track);
-    color: var(--wh-kicker);
+    font-size: .72rem;
+    letter-spacing: .12em;
+    color: var(--wh-accent);
   }
 
   /* Phone-tier sequence body / value text — readable size,
@@ -2706,17 +2706,17 @@ html[data-skin="signal"] .footer {
   html[data-skin="signal"] .panel:has(.sequence) .seq-body,
   html[data-skin="signal"] .operation-card .seq-row > :nth-child(n+3),
   html[data-skin="signal"] .panel:has(.sequence) .seq-row > :nth-child(n+3) {
-    font-size: 1.01rem;
-    font-weight: 430;
-    line-height: 1.48;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.42;
     color: var(--wh-copy-strong);
   }
 
   html[data-skin="signal"] .flat-row > span,
   html[data-skin="signal"] .reference-row > span,
   html[data-skin="signal"] .state-row > .state-value {
-    font-size: 1rem;
-    line-height: 1.46;
+    font-size: .98rem;
+    line-height: 1.38;
     color: var(--wh-copy-strong);
   }
 
@@ -2801,8 +2801,8 @@ html[data-skin="signal"] .footer {
     border-radius: var(--wh-radius-sm);
     background: var(--wh-button-bg);
     min-height: 2.5rem;
-    font-size: var(--wh-mono-eyebrow-size);
-    letter-spacing: var(--wh-mono-eyebrow-track);
+    font-size: .74rem;
+    letter-spacing: .12em;
   }
 
   html[data-skin="signal"] .transmission-details[open] > summary {
@@ -2810,10 +2810,9 @@ html[data-skin="signal"] .footer {
   }
 
   html[data-skin="signal"] .media-block__caption {
-    color: var(--wh-muted);
-    font-size: var(--wh-mono-eyebrow-sm-size);
-    font-weight: var(--wh-mono-eyebrow-sm-weight);
-    letter-spacing: var(--wh-mono-eyebrow-sm-track);
+    font-size: var(--wh-mono-rowkey-size);
+    font-weight: 850;
+    letter-spacing: .12em;
   }
 
   html[data-skin="signal"] .media-block audio {
@@ -2874,9 +2873,9 @@ html[data-skin="signal"] .footer {
   html[data-skin="signal"] .peak-form label > span,
   html[data-skin="signal"] .three-part-form label > span {
     color: var(--wh-kicker);
-    font-size: var(--wh-mono-eyebrow-size);
-    font-weight: var(--wh-mono-eyebrow-weight);
-    letter-spacing: var(--wh-mono-eyebrow-track);
+    font-size: var(--wh-mono-rowkey-size);
+    font-weight: 800;
+    letter-spacing: .11em;
   }
 
   html[data-skin="signal"] .utility-form input,
