@@ -84,7 +84,7 @@ html[data-skin="signal"][data-theme="light"] {
   --wh-input-border: rgba(20, 17, 13, .085);
   --wh-input-bg:     rgba(255, 255, 255, .70);
   --wh-input-text:   #14110d;
-  --wh-placeholder:  rgba(20, 17, 13, .36);
+  --wh-placeholder:  rgba(20, 17, 13, .50);
 
   --wh-row-divider:      rgba(20, 17, 13, .14);
   --wh-row-divider-soft: rgba(20, 17, 13, .09);

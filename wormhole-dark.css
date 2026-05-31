@@ -90,6 +90,15 @@ html[data-skin="signal"] {
   --wh-mono-chip-weight:       850;
   --wh-mono-chip-track:        .10em;
 
+  /* Mono — section tier — for structural section labels inside long-form
+     content (transmission-kicker: INTRO, THE BRIEFING, THE CROSSING, etc.).
+     These are content-level anchors, not metadata; they must read larger
+     than surrounding body paragraphs, not smaller. Sits above the row-key
+     tier; below display headings. */
+  --wh-mono-section-size:      .82rem;
+  --wh-mono-section-weight:    700;
+  --wh-mono-section-track:     .10em;
+
   /* Sans — micro tier (module notes, tight support copy) */
   --wh-sans-micro-size:        .82rem;
   --wh-sans-micro-line:        1.32;
@@ -128,9 +137,11 @@ html[data-skin="signal"] {
   /* Sans — value-strong tier (active state values; weight emphasis) */
   --wh-sans-value-strong-weight: 600;
 
-  /* Strong — global emphasis weight. Lower than the original 620 so an
-     all-<strong> paragraph reads as emphasis without thickening the page. */
-  --wh-strong-weight: 560;
+  /* Strong — global emphasis weight. Raised from 560 to 600 so <strong>
+     lands as genuine emphasis inside the 430–460 body weight band. 560
+     was too close to the baseline; 600 creates a clear perceptual step
+     without turning emphasis text into a bold wall. */
+  --wh-strong-weight: 600;
 
   /* Accent token family — warm, Wormhole-compatible (not browser blue).
      Dark uses gold; light overrides this block in wormhole-light.css.
@@ -229,7 +240,7 @@ html[data-skin="signal"][data-theme="dark"] {
   --wh-input-border: rgba(214, 209, 198, .13);
   --wh-input-bg:     rgba(247, 241, 231, .045);
   --wh-input-text:   #f7f1e7;
-  --wh-placeholder:  rgba(247, 241, 231, .38);
+  --wh-placeholder:  rgba(247, 241, 231, .52);
 
   /* Flash-hardening: pin a solid theme-appropriate background on html
      so the first paint is correct even if variables haven't resolved
@@ -1470,7 +1481,7 @@ html[data-skin="signal"] code {
   padding: .12em .45em;
   color: var(--wh-code-text);
   font-family: var(--font-mono);
-  font-size: .88em;
+  font-size: .88rem;
   background: var(--wh-code-bg);
   border-radius: 4px;
 }
@@ -2294,13 +2305,21 @@ html[data-skin="signal"] .transmission {
 }
 html[data-skin="signal"] .transmission > * { margin: 0; }
 html[data-skin="signal"] .transmission-kicker {
+  /* Section tier: larger than body paragraphs (.82rem vs .92rem body),
+     clearly distinct from row-key labels (.70rem) and eyebrow metadata
+     (.68rem). Gold accent color separates structural section anchors from
+     bronze row-level metadata labels. Wider margin-top creates a real
+     section breath rather than a tight metadata bump. */
   font-family: var(--font-mono);
-  font-size: var(--wh-mono-eyebrow-size);
-  font-weight: var(--wh-mono-eyebrow-weight);
-  letter-spacing: var(--wh-mono-eyebrow-track);
+  font-size: var(--wh-mono-section-size);
+  font-weight: var(--wh-mono-section-weight);
+  letter-spacing: var(--wh-mono-section-track);
   text-transform: uppercase;
-  color: var(--wh-kicker);
-  margin-top: var(--wh-space-3);
+  color: var(--wh-accent);
+  margin-top: var(--wh-space-5);
+}
+html[data-skin="signal"] .transmission-kicker:first-child {
+  margin-top: 0;
 }
 html[data-skin="signal"] .transmission ul,
 html[data-skin="signal"] .transmission ol {
@@ -2749,6 +2768,18 @@ html[data-skin="signal"] .footer {
     min-height: 2.5rem;
     font-size: .74rem;
     letter-spacing: .12em;
+  }
+
+  /* Phone-tier transmission section labels — hold section tier above row
+     labels (.68rem at this breakpoint) while fitting phone reading scale.
+     margin-top preserved so sections still breathe on narrow viewports. */
+  html[data-skin="signal"] .transmission-kicker {
+    font-size: .78rem;
+    letter-spacing: .10em;
+    margin-top: var(--wh-space-4);
+  }
+  html[data-skin="signal"] .transmission-kicker:first-child {
+    margin-top: 0;
   }
 
   html[data-skin="signal"] .transmission-details[open] > summary {
