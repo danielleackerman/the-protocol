@@ -2910,6 +2910,17 @@ html[data-skin="signal"] .footer {
     margin-bottom: var(--wh-space-3);
   }
 
+  /* Accordion items — at 640px the surrounding seq-body gets
+     font-size: 1rem and --wh-copy-strong. Accordion items inherit
+     from the base rule (--wh-sans-value-size ≈ .94rem / --wh-copy)
+     which resolves smaller and quieter than the wrapping seq-body.
+     Lock to the same scale so "What counts" lists stay at parity
+     with the content that introduces them. */
+  html[data-skin="signal"] .accordion-list .accordion-item {
+    font-size: 1rem;
+    color: var(--wh-copy-strong);
+  }
+
   html[data-skin="signal"] .media-block__caption {
     font-size: var(--wh-mono-rowkey-size);
     font-weight: 850;
@@ -3084,6 +3095,36 @@ html[data-skin="signal"] .footer {
   html[data-skin="signal"] .panel:has(.sequence) .seq-label {
     color: var(--wh-label);
     font-weight: 850;
+  }
+
+  /* Flat-row stacked layout — when flat-rows collapse to a single
+     column at 390px, the label and value sit directly on top of
+     each other with no column gap to separate them. Add bottom
+     margin to the label so the value does not glue to it. */
+  html[data-skin="signal"] .flat-row > strong,
+  html[data-skin="signal"] .reference-row > strong,
+  html[data-skin="signal"] .state-row > .state-label {
+    margin-bottom: 3px;
+  }
+
+  /* Transmission heading floor — at 390px the clamp lower-bound
+     resolves to ~1.27rem which is only marginally above body 1rem.
+     Set a hard floor of 1.22rem so the heading always reads as a
+     distinct tier above body copy on the smallest phones. */
+  html[data-skin="signal"] h3.transmission-heading {
+    font-size: clamp(1.22rem, 5.2vw, 1.42rem);
+  }
+
+  /* Accordion items inside seq-body — at mobile the seq-body gets
+     font-size: 1rem and color: --wh-copy-strong. Accordion items
+     inherit from the base rule (--wh-sans-value-size / --wh-copy)
+     which at mobile resolves smaller and quieter than the surrounding
+     seq-body text. Lock accordion items to the same mobile scale so
+     the "What counts" list never reads as a subordinate tier to the
+     copy that introduces it. */
+  html[data-skin="signal"] .accordion-list .accordion-item {
+    font-size: 1rem;
+    color: var(--wh-copy-strong);
   }
 
   html[data-skin="signal"] .identity--hero {
