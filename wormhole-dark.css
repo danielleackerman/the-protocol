@@ -2826,19 +2826,18 @@ html[data-skin="signal"] .footer {
   html[data-skin="signal"] .flat-row,
   html[data-skin="signal"] .reference-row,
   html[data-skin="signal"] .state-row {
-    grid-template-columns: max-content minmax(0, 1fr);
-    gap: 10px;
+    grid-template-columns: 1fr;
+    gap: 2px;
   }
 
-  /* Cap the label column so very long labels don't consume the full row.
-     Short labels (The room / Reality / Signal) get their intrinsic width.
-     Long labels (The mirror is not reflection technology.) wrap within
-     the cap and the value column always has space to breathe. */
+  /* Stacked label spacing — label sits above value with a small gap.
+     The row padding (13px top / 7px bottom from base rule) creates
+     the visual separation between rows. The label needs only 2px of
+     bottom margin to read as a unit with the value below it. */
   html[data-skin="signal"] .flat-row > strong,
   html[data-skin="signal"] .reference-row > strong,
-  html[data-skin="signal"] .state-row > .state-label,
-  html[data-skin="signal"] .seq-label {
-    max-width: 11rem;
+  html[data-skin="signal"] .state-row > .state-label {
+    margin-bottom: 2px;
   }
 
   html[data-skin="signal"] .level-directory .state-row {
