@@ -73,7 +73,7 @@ html[data-skin="signal"][data-theme="light"] {
   --wh-inner-border: rgba(20, 17, 13, .085);
   --wh-divider:      rgba(20, 17, 13, .12);
   --wh-chip-bg:      rgba(198, 191, 177, .16);
-  --wh-code-bg:      rgba(255, 255, 255, .70);
+  --wh-code-bg:      rgba(20, 17, 13, .07);
   --wh-code-text:    #14110d;
 
   --wh-button-border: rgba(111, 103, 90, .24);

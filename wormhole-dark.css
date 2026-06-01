@@ -1503,6 +1503,24 @@ html[data-skin="signal"] code {
   border-radius: 4px;
 }
 
+/* Command payloads inside reference sections and flat-rows must render
+   with the same weight and chip treatment as operation-card and transmission
+   code. Without this, FORCE QUIT PUSHING. / EXECUTE: I am the source. /
+   I CROSS. / AT APEX. / SIGNAL COHERENT. etc fall through to the base
+   code rule and render as plain lightweight mono — indistinguishable from
+   row labels and weaker than comparable payloads in operation cards.
+   Row label = identifies the field (flat-row > strong, --wh-label bronze).
+   Command payload = executed content (code chip, weight 720, code-bg). */
+html[data-skin="signal"] .reference-section code,
+html[data-skin="signal"] .reference-card code,
+html[data-skin="signal"] .flat-list code,
+html[data-skin="signal"] .flat-row code,
+html[data-skin="signal"] .ref-block code {
+  font-weight: 720;
+  letter-spacing: .03em;
+  font-size: var(--wh-sans-prose-size);
+}
+
 /* Reference / documentation ------------------------------------------- */
 html[data-skin="signal"] .reference-section {
   padding-block: clamp(24px, 3.4vw, 40px);
