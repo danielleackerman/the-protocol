@@ -43,7 +43,7 @@ html[data-skin="signal"] {
   --wh-space-6: 32px;
 
   --wh-row-index-col:    2.5ch;
-  --wh-row-label-col:    clamp(5.8rem, 12vw, 7rem);
+  --wh-row-label-col:    clamp(6.8rem, 13vw, 8.5rem);
   --wh-row-gap:          14px;
   --wh-row-divider:      rgba(214, 209, 198, .15);
   --wh-row-divider-soft: rgba(214, 209, 198, .10);
@@ -63,20 +63,24 @@ html[data-skin="signal"] {
   --wh-mono-eyebrow-sm-track:  .14em;
 
   /* Mono — row-eyebrow tier — for nav, primary metadata labels above
-     content. Bigger than -sm but still meta-level. */
-  --wh-mono-eyebrow-size:      .68rem;
-  --wh-mono-eyebrow-weight:    850;
-  --wh-mono-eyebrow-track:     .11em;
+     content. Phase 2B.6: raised from .68rem to .72rem; tracking reduced
+     to .09em so OPERATION / MORNING ACTIVATION kickers read as labels
+     and not as spaced-out texture. */
+  --wh-mono-eyebrow-size:      .72rem;
+  --wh-mono-eyebrow-weight:    860;
+  --wh-mono-eyebrow-track:     .09em;
 
   /* Mono — row-key tier — for terms that ARE the content (OPERATE, FLIP,
      EXECUTE, ABUNDANCE, DO NOT MANIFEST). Sits between eyebrow and value
      prose. Must read as legible terminal labels but must NOT outweigh
-     the H3 sitting above them. Earlier this was at .76rem/800/full-ivory
-     which crushed H3 hierarchy and made multi-word keys feel like
-     command badges. */
-  --wh-mono-rowkey-size:       .70rem;
-  --wh-mono-rowkey-weight:     760;
-  --wh-mono-rowkey-track:      .09em;
+     the H3 sitting above them. Phase 2B.6: raised from .70rem to .76rem
+     so short and long labels alike anchor their rows without competing
+     with H3; weight raised to 800 for dark-background legibility;
+     tracking reduced to .07em so multi-word labels don't spread into
+     unreadable gapped strings when wrapping. */
+  --wh-mono-rowkey-size:       .76rem;
+  --wh-mono-rowkey-weight:     800;
+  --wh-mono-rowkey-track:      .07em;
 
   /* Mono — data tier (numbers, code-as-data, sequence index) */
   --wh-mono-data-size:         .68rem;
@@ -91,11 +95,12 @@ html[data-skin="signal"] {
   /* Mono — section tier — for structural section labels inside long-form
      content (transmission-kicker: INTRO, THE BRIEFING, THE CROSSING, etc.).
      These are content-level anchors, not metadata; they must read larger
-     than surrounding body paragraphs, not smaller. Sits above the row-key
-     tier; below display headings. */
-  --wh-mono-section-size:      .82rem;
-  --wh-mono-section-weight:    700;
-  --wh-mono-section-track:     .10em;
+     than surrounding body paragraphs, not smaller. Phase 2B.6: raised
+     from .82rem to .86rem; weight to 740 for stronger anchor presence;
+     tracking reduced to .08em (was .10em — less spread, more readable). */
+  --wh-mono-section-size:      .86rem;
+  --wh-mono-section-weight:    740;
+  --wh-mono-section-track:     .08em;
 
   /* Sans — micro tier (module notes, tight support copy) */
   --wh-sans-micro-size:        .84rem;
@@ -1117,14 +1122,13 @@ html[data-skin="signal"] .ledger-item__meta {
   text-transform: uppercase;
 }
 
-/* Status label — system metadata tier. Smaller and quieter than content
-   row-keys: STATUS / LEVEL / ARCHITECTURE are annotations on the system
-   state, not operational commands. Eyebrow size + muted color keeps them
-   clearly below seq-label in visual weight while remaining legible.
-   Phase 2B.5: font-size nudged to .70rem so it clears the readability
-   floor; color stays --wh-muted (now .66 opacity, raised from .60). */
+/* Status label — system metadata tier. Quieter than content row-keys
+   via smaller size, but functional — STATUS / LEVEL / ARCHITECTURE must
+   be readable, not faint. Phase 2B.6: color moved from --wh-muted to
+   --wh-label; hierarchy is maintained by size differential (.76rem
+   rowkey vs .70rem status) not by opacity starvation. */
 html[data-skin="signal"] .status-label {
-  color: var(--wh-muted);
+  color: var(--wh-label);
   font-family: var(--font-mono);
   font-size: .70rem;
   font-weight: var(--wh-mono-eyebrow-weight);
@@ -1463,13 +1467,14 @@ html[data-skin="signal"] .status-strip .state-row > .state-value {
   text-align: left;
 }
 
-/* Status-strip label — the base .status-label rule sets eyebrow tier +
-   muted color. These scoped selectors confirm that context-specific
-   inheritance doesn't override color back to label-bronze. */
+/* Status-strip label — Phase 2B.6: color moved from --wh-muted to
+   --wh-label to match the base .status-label rule. STATUS / MODE labels
+   inside operation cards must be readable, not faint. Size differential
+   (.70rem vs .76rem rowkey) preserves the hierarchy. */
 html[data-skin="signal"] .status-strip .status-label,
 html[data-skin="signal"] .operation-card .status-label,
 html[data-skin="signal"] .panel:has(.sequence) .status-label {
-  color: var(--wh-muted);
+  color: var(--wh-label);
   line-height: 1.2;
 }
 
@@ -2427,7 +2432,9 @@ html[data-skin="signal"] .footer {
     font-size: .92rem;
   }
 
-  /* Mobile panel markers — stronger section anchors without new colors. */
+  /* Mobile panel markers — stronger section anchors without new colors.
+     Phase 2B.6: letter-spacing reduced to .08em (was .11em — too wide
+     at the new .76rem rowkey size). */
   html[data-skin="signal"] .kicker,
   html[data-skin="signal"] .panel-kicker,
   html[data-skin="signal"] .panel > .kicker,
@@ -2441,7 +2448,7 @@ html[data-skin="signal"] .footer {
     color: var(--wh-accent);
     font-size: var(--wh-mono-rowkey-size);
     font-weight: var(--wh-mono-rowkey-weight);
-    letter-spacing: .11em;
+    letter-spacing: .08em;
     margin-bottom: 6px;
   }
 
@@ -2556,7 +2563,7 @@ html[data-skin="signal"] .footer {
     --wh-radius: 12px;
     --wh-radius-sm: 7px;
     --wh-row-index-col: 2.1ch;
-    --wh-row-label-col: minmax(4.9rem, 5.7rem);
+    --wh-row-label-col: minmax(5.8rem, 6.8rem);
     --wh-row-gap: 8px;
   }
 
@@ -2650,10 +2657,10 @@ html[data-skin="signal"] .footer {
     padding: 13px 0 7px;
   }
 
-  /* Phone-tier mono labels — lifted to .68rem with stronger color so
-     they read as labels, not as decoration. status-label excluded:
-     it stays muted/small so system metadata doesn't compete with
-     content row-keys at the phone scale. */
+  /* Phone-tier mono labels — Phase 2B.6: base rowkey is now .76rem so
+     phone-tier must hold at .74rem minimum to remain readable while
+     still fitting a tighter grid. Accent color and heavier weight kept
+     for phone-contrast benefit. */
   html[data-skin="signal"] .operation-card .seq-label,
   html[data-skin="signal"] .panel:has(.sequence) .seq-label,
   html[data-skin="signal"] .seq-label,
@@ -2661,24 +2668,25 @@ html[data-skin="signal"] .footer {
   html[data-skin="signal"] .reference-key,
   html[data-skin="signal"] .flat-row > strong,
   html[data-skin="signal"] .ledger-item__meta {
-    font-size: .68rem;
+    font-size: .74rem;
     font-weight: 850;
-    letter-spacing: .1em;
+    letter-spacing: .07em;
     color: var(--wh-accent);
   }
 
-  /* Phone-tier status label — remains at muted metadata tier. */
+  /* Phone-tier status label — holds readable at .68rem; color uses
+     --wh-label (not --wh-muted) consistent with the base rule change. */
   html[data-skin="signal"] .status-label {
-    font-size: var(--wh-mono-eyebrow-sm-size);
-    color: var(--wh-muted);
+    font-size: .68rem;
+    color: var(--wh-label);
   }
 
-  /* Phone-tier kickers — slightly larger and tinted with the accent
-     so the section anchor reads at a glance. */
+  /* Phone-tier kickers — Phase 2B.6: eyebrow base is now .72rem so
+     phone gets .74rem to maintain the phone-emphasis bump. */
   html[data-skin="signal"] .panel-kicker,
   html[data-skin="signal"] .kicker {
-    font-size: .72rem;
-    letter-spacing: .12em;
+    font-size: .74rem;
+    letter-spacing: .09em;
     color: var(--wh-accent);
   }
 
