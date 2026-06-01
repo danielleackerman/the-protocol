@@ -1521,6 +1521,24 @@ html[data-skin="signal"] .ref-block code {
   font-size: var(--wh-sans-prose-size);
 }
 
+/* Row-label code reset — when a command appears inside the label side of
+   a flat row, it remains a row key, not a gray command chip. Command chips
+   still render inside row values and prose. */
+html[data-skin="signal"] .flat-row > strong code,
+html[data-skin="signal"] .reference-section .flat-row > strong code,
+html[data-skin="signal"] .reference-card .flat-row > strong code {
+  display: inline;
+  padding: 0;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  background: transparent;
+  border-radius: 0;
+}
+
 /* Reference / documentation ------------------------------------------- */
 html[data-skin="signal"] .reference-section {
   padding-block: clamp(24px, 3.4vw, 40px);
@@ -2820,24 +2838,43 @@ html[data-skin="signal"] .footer {
     margin-bottom: 20px;
   }
 
+  /* Mobile row geometry — default rows stay two-column so short labels
+     remain beside their values. Long-label rows opt into stacking with
+     .row--mobile-stack in the HTML; CSS alone cannot infer intent from
+     text length without breaking short rows site-wide. */
   html[data-skin="signal"] .reference-section .flat-row,
   html[data-skin="signal"] .reference-section .reference-row,
   html[data-skin="signal"] .reference-section .state-row,
+  html[data-skin="signal"] .reference-card .flat-row,
+  html[data-skin="signal"] .reference-card .reference-row,
+  html[data-skin="signal"] .reference-card .state-row,
   html[data-skin="signal"] .flat-row,
   html[data-skin="signal"] .reference-row,
   html[data-skin="signal"] .state-row {
-    grid-template-columns: 1fr;
-    gap: 2px;
+    grid-template-columns: max-content minmax(0, 1fr);
+    gap: 10px;
   }
 
-  /* Stacked label spacing — label sits above value with a small gap.
-     The row padding (13px top / 7px bottom from base rule) creates
-     the visual separation between rows. The label needs only 2px of
-     bottom margin to read as a unit with the value below it. */
   html[data-skin="signal"] .flat-row > strong,
   html[data-skin="signal"] .reference-row > strong,
+  html[data-skin="signal"] .reference-row > .reference-key,
   html[data-skin="signal"] .state-row > .state-label {
+    margin-bottom: 0;
+    white-space: nowrap;
+  }
+
+  html[data-skin="signal"] .row--mobile-stack,
+  html[data-skin="signal"] .reference-section .row--mobile-stack,
+  html[data-skin="signal"] .reference-card .row--mobile-stack {
+    grid-template-columns: 1fr;
+    row-gap: 2px;
+  }
+
+  html[data-skin="signal"] .row--mobile-stack > strong,
+  html[data-skin="signal"] .row--mobile-stack > .reference-key,
+  html[data-skin="signal"] .row--mobile-stack > .state-label {
     margin-bottom: 2px;
+    white-space: normal;
   }
 
   html[data-skin="signal"] .level-directory .state-row {
@@ -3071,9 +3108,8 @@ html[data-skin="signal"] .footer {
     grid-column: 2;
   }
 
-  html[data-skin="signal"] .reference-section .flat-row,
-  html[data-skin="signal"] .reference-section .reference-row,
-  html[data-skin="signal"] .reference-section .state-row,
+  html[data-skin="signal"] .reference-section .row--mobile-stack,
+  html[data-skin="signal"] .reference-card .row--mobile-stack,
   html[data-skin="signal"] .level-directory .state-row {
     grid-template-columns: 1fr;
   }
@@ -3110,13 +3146,11 @@ html[data-skin="signal"] .footer {
     font-weight: 850;
   }
 
-  /* Flat-row stacked layout — when flat-rows collapse to a single
-     column at 390px, the label and value sit directly on top of
-     each other with no column gap to separate them. Add bottom
-     margin to the label so the value does not glue to it. */
-  html[data-skin="signal"] .flat-row > strong,
-  html[data-skin="signal"] .reference-row > strong,
-  html[data-skin="signal"] .state-row > .state-label {
+  /* Smallest-phone stacked modifier spacing. Default short-label rows
+     remain two-column; only rows marked .row--mobile-stack collapse. */
+  html[data-skin="signal"] .row--mobile-stack > strong,
+  html[data-skin="signal"] .row--mobile-stack > .reference-key,
+  html[data-skin="signal"] .row--mobile-stack > .state-label {
     margin-bottom: 3px;
   }
 
