@@ -2838,42 +2838,91 @@ html[data-skin="signal"] .footer {
     margin-bottom: 20px;
   }
 
-  /* Mobile row geometry — default rows stay two-column so short labels
-     remain beside their values. Long-label rows opt into stacking with
-     .row--mobile-stack in the HTML; CSS alone cannot infer intent from
-     text length without breaking short rows site-wide. */
+  /* Mobile row geometry — all label/value rows collapse into a single
+     readable column. The previous max-content / minmax two-column rule
+     kept desktop geometry alive on phones and produced cramped value
+     columns, hanging indents, and inconsistent row behavior. Navigation
+     directories are handled by the dedicated .level-directory exception
+     below; these rules are for content label/value rows. */
+  html[data-skin="signal"] .sequence .seq-row,
+  html[data-skin="signal"] .operation-card .seq-row,
+  html[data-skin="signal"] .panel:has(.sequence) .seq-row {
+    grid-template-columns: var(--wh-row-index-col) minmax(0, 1fr);
+    column-gap: 10px;
+    row-gap: 3px;
+    align-items: start;
+  }
+
+  html[data-skin="signal"] .sequence .seq-index {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    padding-top: .05rem;
+  }
+
+  html[data-skin="signal"] .sequence .seq-label,
+  html[data-skin="signal"] .sequence .seq-body,
+  html[data-skin="signal"] .sequence .seq-row > :nth-child(n+3) {
+    grid-column: 2;
+    min-width: 0;
+  }
+
   html[data-skin="signal"] .reference-section .flat-row,
   html[data-skin="signal"] .reference-section .reference-row,
   html[data-skin="signal"] .reference-section .state-row,
   html[data-skin="signal"] .reference-card .flat-row,
   html[data-skin="signal"] .reference-card .reference-row,
   html[data-skin="signal"] .reference-card .state-row,
+  html[data-skin="signal"] .status-strip .status-row,
+  html[data-skin="signal"] .status-strip .state-row,
+  html[data-skin="signal"] .operation-card .status-row,
+  html[data-skin="signal"] .panel:has(.sequence) .status-row,
   html[data-skin="signal"] .flat-row,
   html[data-skin="signal"] .reference-row,
-  html[data-skin="signal"] .state-row {
-    grid-template-columns: max-content minmax(0, 1fr);
-    gap: 10px;
+  html[data-skin="signal"] .state-row,
+  html[data-skin="signal"] .status-row,
+  html[data-skin="signal"] .custom-status-row {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+    row-gap: 3px;
+    align-items: start;
   }
 
   html[data-skin="signal"] .flat-row > strong,
   html[data-skin="signal"] .reference-row > strong,
   html[data-skin="signal"] .reference-row > .reference-key,
-  html[data-skin="signal"] .state-row > .state-label {
-    margin-bottom: 0;
-    white-space: nowrap;
+  html[data-skin="signal"] .state-row > .state-label,
+  html[data-skin="signal"] .status-row > .status-label,
+  html[data-skin="signal"] .custom-status-row > .status-label,
+  html[data-skin="signal"] .seq-row > .seq-label {
+    margin-bottom: 1px;
+    max-width: 100%;
+    min-width: 0;
+    white-space: normal;
+  }
+
+  html[data-skin="signal"] .flat-row > :last-child,
+  html[data-skin="signal"] .reference-row > .reference-value,
+  html[data-skin="signal"] .state-row > .state-value,
+  html[data-skin="signal"] .status-row > .status-value,
+  html[data-skin="signal"] .custom-status-row > .status-value,
+  html[data-skin="signal"] .seq-row > .seq-body {
+    justify-self: start;
+    min-width: 0;
+    text-align: left;
+    width: 100%;
   }
 
   html[data-skin="signal"] .row--mobile-stack,
   html[data-skin="signal"] .reference-section .row--mobile-stack,
   html[data-skin="signal"] .reference-card .row--mobile-stack {
     grid-template-columns: 1fr;
-    row-gap: 2px;
+    row-gap: 3px;
   }
 
   html[data-skin="signal"] .row--mobile-stack > strong,
   html[data-skin="signal"] .row--mobile-stack > .reference-key,
   html[data-skin="signal"] .row--mobile-stack > .state-label {
-    margin-bottom: 2px;
+    margin-bottom: 1px;
     white-space: normal;
   }
 
@@ -3146,8 +3195,9 @@ html[data-skin="signal"] .footer {
     font-weight: 850;
   }
 
-  /* Smallest-phone stacked modifier spacing. Default short-label rows
-     remain two-column; only rows marked .row--mobile-stack collapse. */
+  /* Smallest-phone stacked modifier spacing. Label/value rows already
+     collapse at 640px; keep the stacked label rhythm clear at the
+     narrowest tier. */
   html[data-skin="signal"] .row--mobile-stack > strong,
   html[data-skin="signal"] .row--mobile-stack > .reference-key,
   html[data-skin="signal"] .row--mobile-stack > .state-label {
