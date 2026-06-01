@@ -2874,14 +2874,21 @@ html[data-skin="signal"] .footer {
   html[data-skin="signal"] .reference-section .row--mobile-stack,
   html[data-skin="signal"] .reference-card .row--mobile-stack {
     grid-template-columns: 1fr;
-    row-gap: 2px;
+    row-gap: 3px;
+    align-items: start;
   }
 
+  html[data-skin="signal"] .row--mobile-stack > :first-child,
   html[data-skin="signal"] .row--mobile-stack > strong,
   html[data-skin="signal"] .row--mobile-stack > .reference-key,
   html[data-skin="signal"] .row--mobile-stack > .state-label {
-    margin-bottom: 2px;
+    margin-bottom: 1px;
     white-space: normal;
+  }
+
+  html[data-skin="signal"] .row--mobile-stack > :last-child {
+    grid-column: 1;
+    justify-self: start;
   }
 
   html[data-skin="signal"] .level-directory .state-row {
