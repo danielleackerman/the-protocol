@@ -78,7 +78,7 @@ html[data-skin="signal"] {
      with H3; weight raised to 800 for dark-background legibility;
      tracking reduced to .07em so multi-word labels don't spread into
      unreadable gapped strings when wrapping. */
-  --wh-mono-rowkey-size:       .76rem;
+  --wh-mono-rowkey-size:       .78rem;
   --wh-mono-rowkey-weight:     800;
   --wh-mono-rowkey-track:      .07em;
 
@@ -185,7 +185,7 @@ html[data-skin="signal"][data-theme="dark"] {
   --wh-muted:       rgba(247, 241, 231, .66);
   --wh-copy:        rgba(247, 241, 231, .84);
   --wh-copy-strong: rgba(247, 241, 231, .94);
-  --wh-label:       rgba(199, 192, 178, .90);
+  --wh-label:       rgba(199, 192, 178, .98);
   --wh-kicker:      #cec8bb;
   --wh-lede:        rgba(247, 241, 231, .90);
 
@@ -694,8 +694,8 @@ html[data-skin="signal"] h2 {
   color: var(--wh-heading);
   font-family: var(--font-display);
   font-style: italic;
-  font-size: clamp(1.75rem, 3.4vw, 2.45rem);
-  font-weight: 600;
+  font-size: clamp(1.85rem, 3.4vw, 2.45rem);
+  font-weight: 640;
   letter-spacing: -.018em;
   line-height: 1.04;
   text-transform: none;
@@ -710,8 +710,8 @@ html[data-skin="signal"] h3 {
   color: var(--wh-heading);
   font-family: var(--font-display);
   font-style: italic;
-  font-size: clamp(1.28rem, 2.15vw, 1.65rem);
-  font-weight: 620;
+  font-size: clamp(1.35rem, 2.15vw, 1.65rem);
+  font-weight: 650;
   letter-spacing: -.012em;
   line-height: 1.08;
   text-transform: none;
@@ -2390,8 +2390,8 @@ html[data-skin="signal"] h3.transmission-heading {
   color: var(--wh-heading);
   font-family: var(--font-display);
   font-style: italic;
-  font-size: clamp(1.28rem, 2.15vw, 1.65rem);
-  font-weight: 620;
+  font-size: clamp(1.35rem, 2.15vw, 1.65rem);
+  font-weight: 650;
   letter-spacing: -.012em;
   line-height: 1.08;
   text-transform: none;
@@ -2822,9 +2822,12 @@ html[data-skin="signal"] .footer {
 
   html[data-skin="signal"] .reference-section .flat-row,
   html[data-skin="signal"] .reference-section .reference-row,
-  html[data-skin="signal"] .reference-section .state-row {
-    grid-template-columns: minmax(6.8rem, .34fr) minmax(0, 1fr);
-    gap: 9px;
+  html[data-skin="signal"] .reference-section .state-row,
+  html[data-skin="signal"] .flat-row,
+  html[data-skin="signal"] .reference-row,
+  html[data-skin="signal"] .state-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
   }
 
   html[data-skin="signal"] .level-directory .state-row {

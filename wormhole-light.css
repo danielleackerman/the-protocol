@@ -30,7 +30,7 @@ html[data-skin="signal"][data-theme="light"] {
   --wh-muted:       rgba(20, 17, 13, .66);
   --wh-copy:        rgba(20, 17, 13, .82);
   --wh-copy-strong: rgba(20, 17, 13, .94);
-  --wh-label:       rgba(111, 103, 90, .92);
+  --wh-label:       rgba(111, 103, 90, 1.0);
   --wh-kicker:      #6b6353;
   --wh-lede:        rgba(20, 17, 13, .86);
 
