@@ -2338,6 +2338,53 @@ html[data-skin="signal"] .transmission-kicker {
 html[data-skin="signal"] .transmission-kicker:first-child {
   margin-top: 0;
 }
+
+/* Transmission heading — serif structural heading tier inside transcript
+   accordions. Applied via h3.transmission-heading. Sits between the mono
+   section markers (.transmission-kicker) and body paragraphs, bringing
+   the Levels-page hierarchy pattern (mono marker → serif heading → body)
+   one level deeper into transcript interiors.
+
+   Sized smaller than the reference-section h3 (1.28–1.65rem clamp) so it
+   reads as transcript-internal structure, not as a competing page-level
+   heading. Italic Cormorant, sentence case — same register as h3, calmer
+   scale. No text-transform (distinct from the uppercase mono system).
+   margin-top creates real section breath; margin-bottom hugs following prose.
+
+   When a .transmission-kicker immediately precedes this heading, the kicker
+   acts as a mono operational marker and the serif heading carries the
+   narrative title — they work as a pair without being redundant. */
+html[data-skin="signal"] h3.transmission-heading {
+  margin: var(--wh-space-5) 0 var(--wh-space-2);
+  color: var(--wh-heading);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.08rem, 1.7vw, 1.30rem);
+  font-weight: 600;
+  letter-spacing: -.010em;
+  line-height: 1.10;
+  text-transform: none;
+}
+
+/* First heading in a transmission needs no extra top margin — the
+   transmission container's own padding-top already provides separation. */
+html[data-skin="signal"] h3.transmission-heading:first-child {
+  margin-top: 0;
+}
+
+/* When a mono kicker immediately precedes the serif heading, they read
+   as a paired marker+title. Collapse the gap between them so they feel
+   like a single unit rather than two independent items. */
+html[data-skin="signal"] .transmission-kicker + h3.transmission-heading {
+  margin-top: var(--wh-space-1);
+}
+
+/* Paragraph immediately following a transmission-heading should hug it. */
+html[data-skin="signal"] h3.transmission-heading + p,
+html[data-skin="signal"] h3.transmission-heading + .lede {
+  margin-top: 0;
+}
+
 html[data-skin="signal"] .transmission ul,
 html[data-skin="signal"] .transmission ol {
   padding-left: var(--wh-space-5);
@@ -2806,6 +2853,18 @@ html[data-skin="signal"] .footer {
   }
   html[data-skin="signal"] .transmission-kicker:first-child {
     margin-top: 0;
+  }
+
+  /* Phone-tier transmission heading — scaled down from clamp(1.08–1.30rem)
+     to a comfortable phone read; still clearly larger than surrounding
+     body text and mono labels. */
+  html[data-skin="signal"] h3.transmission-heading {
+    font-size: 1.08rem;
+    margin-top: var(--wh-space-4);
+    margin-bottom: var(--wh-space-2);
+  }
+  html[data-skin="signal"] .transmission-kicker + h3.transmission-heading {
+    margin-top: var(--wh-space-1);
   }
 
   html[data-skin="signal"] .transmission-details[open] > summary {
