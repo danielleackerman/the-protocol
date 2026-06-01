@@ -2339,44 +2339,33 @@ html[data-skin="signal"] .transmission-kicker:first-child {
   margin-top: 0;
 }
 
-/* Transmission heading — serif structural heading tier inside transcript
-   accordions. Applied via h3.transmission-heading. Sits between the mono
-   section markers (.transmission-kicker) and body paragraphs, bringing
-   the Levels-page hierarchy pattern (mono marker → serif heading → body)
-   one level deeper into transcript interiors.
+/* Transmission heading — serif structural heading inside transcript
+   accordions. Applied via h3.transmission-heading.
 
-   Sized smaller than the reference-section h3 (1.28–1.65rem clamp) so it
-   reads as transcript-internal structure, not as a competing page-level
-   heading. Italic Cormorant, sentence case — same register as h3, calmer
-   scale. No text-transform (distinct from the uppercase mono system).
-   margin-top creates real section breath; margin-bottom hugs following prose.
-
-   When a .transmission-kicker immediately precedes this heading, the kicker
-   acts as a mono operational marker and the serif heading carries the
-   narrative title — they work as a pair without being redundant. */
+   Matches the global h3 scale (1.28–1.65rem clamp) so it reads
+   unambiguously as a heading above body copy. Same Cormorant italic
+   register as reference-section h3. Margin-top 24px (vs 36px for
+   page-level h3) so accordion sections breathe without full page gaps. */
 html[data-skin="signal"] h3.transmission-heading {
-  margin: var(--wh-space-5) 0 var(--wh-space-2);
+  margin: 24px 0 6px;
   color: var(--wh-heading);
   font-family: var(--font-display);
   font-style: italic;
-  font-size: clamp(1.08rem, 1.7vw, 1.30rem);
-  font-weight: 600;
-  letter-spacing: -.010em;
-  line-height: 1.10;
+  font-size: clamp(1.28rem, 2.15vw, 1.65rem);
+  font-weight: 620;
+  letter-spacing: -.012em;
+  line-height: 1.08;
   text-transform: none;
 }
 
-/* First heading in a transmission needs no extra top margin — the
-   transmission container's own padding-top already provides separation. */
+/* First heading in a transmission — no extra top margin. */
 html[data-skin="signal"] h3.transmission-heading:first-child {
   margin-top: 0;
 }
 
-/* When a mono kicker immediately precedes the serif heading, they read
-   as a paired marker+title. Collapse the gap between them so they feel
-   like a single unit rather than two independent items. */
+/* Kicker immediately before heading — tighten gap so they read as a unit. */
 html[data-skin="signal"] .transmission-kicker + h3.transmission-heading {
-  margin-top: var(--wh-space-1);
+  margin-top: 6px;
 }
 
 /* Paragraph immediately following a transmission-heading should hug it. */
@@ -2395,10 +2384,13 @@ html[data-skin="signal"] .transmission ol {
 html[data-skin="signal"] .transmission li { line-height: var(--wh-sans-body-line); }
 html[data-skin="signal"] .transmission code {
   font-family: var(--font-mono);
-  font-size: 0.92em;
-  background: var(--wh-row-divider-soft);
-  padding: 0.1em 0.4em;
-  border-radius: var(--wh-radius-sm);
+  font-size: var(--wh-sans-prose-size);
+  font-weight: 720;
+  letter-spacing: .03em;
+  background: var(--wh-code-bg);
+  color: var(--wh-code-text);
+  padding: .12em .42em;
+  border-radius: 4px;
 }
 
 /* Footer -------------------------------------------------------------- */
@@ -2855,16 +2847,14 @@ html[data-skin="signal"] .footer {
     margin-top: 0;
   }
 
-  /* Phone-tier transmission heading — scaled down from clamp(1.08–1.30rem)
-     to a comfortable phone read; still clearly larger than surrounding
-     body text and mono labels. */
+  /* Phone-tier transmission heading — matches the 640px h3 scale. */
   html[data-skin="signal"] h3.transmission-heading {
-    font-size: 1.08rem;
-    margin-top: var(--wh-space-4);
-    margin-bottom: var(--wh-space-2);
+    font-size: clamp(1.28rem, 5.2vw, 1.42rem);
+    margin-top: 20px;
+    margin-bottom: 4px;
   }
   html[data-skin="signal"] .transmission-kicker + h3.transmission-heading {
-    margin-top: var(--wh-space-1);
+    margin-top: 4px;
   }
 
   html[data-skin="signal"] .transmission-details[open] > summary {
