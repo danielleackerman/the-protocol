@@ -19,7 +19,6 @@
 /* Font tokens (theme-agnostic) ----------------------------------------- */
 :root {
   --font-display: "Cormorant Garamond", "Bodoni 72", "Didot", Georgia, serif;
-  --font-heading: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
   --font-body:    "Inter", "Avenir Next", "Helvetica Neue", Arial, sans-serif;
   --font-mono:    "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
 }
@@ -27,7 +26,6 @@
 /* Shared structural tokens (theme-agnostic) ---------------------------- */
 html[data-skin="signal"] {
   --font-display: "Cormorant Garamond", "Bodoni 72", "Didot", Georgia, serif;
-  --font-heading: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
   --font-body:    "Inter", "Avenir Next", "Helvetica Neue", Arial, sans-serif;
   --font-sans:    var(--font-body);
   --font-mono:    "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
@@ -101,8 +99,8 @@ html[data-skin="signal"] {
 
   /* Sans — micro tier (module notes, tight support copy) */
   --wh-sans-micro-size:        .82rem;
-  --wh-sans-micro-line:        1.32;
-  --wh-sans-micro-weight:      450;
+  --wh-sans-micro-line:        1.30;
+  --wh-sans-micro-weight:      420;
 
   /* Sans — body tier (default paragraphs, reference values) */
   --wh-sans-body-size:         .92rem;
@@ -115,19 +113,20 @@ html[data-skin="signal"] {
   --wh-sans-prose-weight:      420;
   --wh-sans-prose-measure:     42rem;
 
-  /* Sans — lede tier (panel-level support copy). Sized so the lede
-     reads as supporting copy rather than a second headline competing
-     with the H1. */
-  --wh-sans-lede-size:         clamp(.86rem, .95vw, .92rem);
-  --wh-sans-lede-line:         1.32;
-  --wh-sans-lede-weight:       450;
+  /* Sans — lede tier (panel-level leading paragraph). Weight raised to
+     500 so the lede reads as a genuine introduction — clearly above
+     body (430) and support (460) — without competing with headings.
+     Line-height increased to 1.38 for more readable leading copy. */
+  --wh-sans-lede-size:         clamp(.88rem, .95vw, .94rem);
+  --wh-sans-lede-line:         1.38;
+  --wh-sans-lede-weight:       500;
 
-  /* Sans — support tier (panel-meta support copy: "Gate level: complete
-     the install…", "Use this when…"). Quieter than lede so the H1/H2
-     above it stays the visual lead. */
+  /* Sans — support tier (panel-meta hint copy). Weight raised to 460
+     so support copy sits clearly between lede (500) and bare body (430).
+     Previously identical to body weight; now a distinct intermediate step. */
   --wh-sans-support-size:      .86rem;
   --wh-sans-support-line:      1.32;
-  --wh-sans-support-weight:    430;
+  --wh-sans-support-weight:    460;
 
   /* Sans — value tier (seq-body, status-value, primary row values) */
   --wh-sans-value-size:        clamp(.94rem, 1.1vw, 1.0rem);
@@ -829,10 +828,12 @@ html[data-skin="signal"] strong {
 }
 
 /* Module note — micro sans for "what this module does" hints. Used on
-   custom.html under each section H2. Quieter than .lede, smaller than p. */
+   custom.html under each section H2. Quieter than .lede, smaller than p.
+   Color dropped to --wh-muted (.60 opacity) so it reads as genuinely
+   subordinate to body copy rather than near-identical to it. */
 html[data-skin="signal"] .module-note {
   margin: 0 0 12px;
-  color: var(--wh-copy);
+  color: var(--wh-muted);
   font-family: var(--font-body);
   font-size: var(--wh-sans-micro-size);
   font-weight: var(--wh-sans-micro-weight);
@@ -1098,14 +1099,13 @@ html[data-skin="signal"] .standing-decree-list > :last-child {
 
 /* Row keys — content terms that pair with their value (OPERATE / Operate
    as the version of yourself…). They are content peers to the value but
-   subordinate to the H3 / subsection heading sitting above them. Earlier
-   the swing to full-ivory + .76/800 made these louder than H3, which
-   crushed documentation hierarchy. Now warm-bronze label color and the
-   row-key tier sizing — readable, quietly subordinate to H3. */
+   subordinate to the H3 / subsection heading sitting above them.
+   Note: .status-label is intentionally NOT in this group — it is system
+   metadata (STATUS / LEVEL / ARCHITECTURE), not a content term, and gets
+   its own quieter treatment below. */
 html[data-skin="signal"] .seq-label,
 html[data-skin="signal"] .state-label,
 html[data-skin="signal"] .reference-key,
-html[data-skin="signal"] .status-label,
 html[data-skin="signal"] .flat-row > strong,
 html[data-skin="signal"] .ledger-item__meta {
   color: var(--wh-label);
@@ -1113,6 +1113,20 @@ html[data-skin="signal"] .ledger-item__meta {
   font-size: var(--wh-mono-rowkey-size);
   font-weight: var(--wh-mono-rowkey-weight);
   letter-spacing: var(--wh-mono-rowkey-track);
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+/* Status label — system metadata tier. Smaller and quieter than content
+   row-keys: STATUS / LEVEL / ARCHITECTURE are annotations on the system
+   state, not operational commands. Eyebrow size + muted color keeps them
+   clearly below seq-label in visual weight while remaining legible. */
+html[data-skin="signal"] .status-label {
+  color: var(--wh-muted);
+  font-family: var(--font-mono);
+  font-size: var(--wh-mono-eyebrow-size);
+  font-weight: var(--wh-mono-eyebrow-weight);
+  letter-spacing: var(--wh-mono-eyebrow-track);
   line-height: 1.2;
   text-transform: uppercase;
 }
@@ -1447,17 +1461,13 @@ html[data-skin="signal"] .status-strip .state-row > .state-value {
   text-align: left;
 }
 
-/* Status-strip label — promoted to rowkey-size so it reads in the same
-   register as reference-table keys and other row labels across the
-   page. The eyebrow-sm tier was rendering as whisper text against
-   the value beside it. */
+/* Status-strip label — the base .status-label rule sets eyebrow tier +
+   muted color. These scoped selectors confirm that context-specific
+   inheritance doesn't override color back to label-bronze. */
 html[data-skin="signal"] .status-strip .status-label,
 html[data-skin="signal"] .operation-card .status-label,
 html[data-skin="signal"] .panel:has(.sequence) .status-label {
   color: var(--wh-muted);
-  font-size: var(--wh-mono-rowkey-size);
-  font-weight: var(--wh-mono-rowkey-weight);
-  letter-spacing: var(--wh-mono-rowkey-track);
   line-height: 1.2;
 }
 
@@ -2598,7 +2608,7 @@ html[data-skin="signal"] .footer {
   }
 
   html[data-skin="signal"] h3 {
-    font-size: clamp(1.16rem, 5.2vw, 1.42rem);
+    font-size: clamp(1.28rem, 5.2vw, 1.42rem);
     margin-top: 30px;
     margin-bottom: 6px;
   }
@@ -2639,20 +2649,26 @@ html[data-skin="signal"] .footer {
   }
 
   /* Phone-tier mono labels — lifted to .68rem with stronger color so
-     they read as labels, not as decoration. One declaration set for
-     every mono-label selector at this breakpoint. */
+     they read as labels, not as decoration. status-label excluded:
+     it stays muted/small so system metadata doesn't compete with
+     content row-keys at the phone scale. */
   html[data-skin="signal"] .operation-card .seq-label,
   html[data-skin="signal"] .panel:has(.sequence) .seq-label,
   html[data-skin="signal"] .seq-label,
   html[data-skin="signal"] .state-label,
   html[data-skin="signal"] .reference-key,
-  html[data-skin="signal"] .status-label,
   html[data-skin="signal"] .flat-row > strong,
   html[data-skin="signal"] .ledger-item__meta {
     font-size: .68rem;
     font-weight: 850;
     letter-spacing: .1em;
     color: var(--wh-accent);
+  }
+
+  /* Phone-tier status label — remains at muted metadata tier. */
+  html[data-skin="signal"] .status-label {
+    font-size: var(--wh-mono-eyebrow-sm-size);
+    color: var(--wh-muted);
   }
 
   /* Phone-tier kickers — slightly larger and tinted with the accent
