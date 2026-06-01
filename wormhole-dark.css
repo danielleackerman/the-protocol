@@ -2741,10 +2741,12 @@ html[data-skin="signal"] .footer {
     padding: 13px 0 7px;
   }
 
-  /* Phone-tier mono labels — Phase 2B.6: base rowkey is now .76rem so
-     phone-tier must hold at .74rem minimum to remain readable while
-     still fitting a tighter grid. Accent color and heavier weight kept
-     for phone-contrast benefit. */
+  /* Phone-tier mono labels — size and weight bumped for small-screen
+     readability. Color stays --wh-label (same as desktop base) so row
+     labels do not switch visual role at mobile. Accent color was here
+     previously but caused label/kicker confusion: kickers use --wh-accent
+     as navigation anchors; row labels are content identifiers and must
+     stay in the --wh-label tier at every breakpoint. */
   html[data-skin="signal"] .operation-card .seq-label,
   html[data-skin="signal"] .panel:has(.sequence) .seq-label,
   html[data-skin="signal"] .seq-label,
@@ -2755,7 +2757,7 @@ html[data-skin="signal"] .footer {
     font-size: .74rem;
     font-weight: 850;
     letter-spacing: .07em;
-    color: var(--wh-accent);
+    color: var(--wh-label);
   }
 
   /* Phone-tier status label — holds readable at .68rem; color uses
@@ -3080,7 +3082,7 @@ html[data-skin="signal"] .footer {
 
   html[data-skin="signal"] .operation-card .seq-label,
   html[data-skin="signal"] .panel:has(.sequence) .seq-label {
-    color: var(--wh-accent);
+    color: var(--wh-label);
     font-weight: 850;
   }
 
