@@ -2286,7 +2286,7 @@ html[data-skin="signal"] .transmission-details > summary {
   list-style: none;
   cursor: pointer;
   font-family: var(--font-mono);
-  font-size: var(--wh-mono-eyebrow-size);
+  font-size: var(--wh-mono-rowkey-size);
   font-weight: var(--wh-mono-eyebrow-weight);
   letter-spacing: var(--wh-mono-eyebrow-track);
   text-transform: uppercase;
@@ -2296,6 +2296,7 @@ html[data-skin="signal"] .transmission-details > summary {
   align-items: center;
   gap: var(--wh-space-2);
   user-select: none;
+  text-underline-offset: 3px;
 }
 html[data-skin="signal"] .transmission-details > summary::-webkit-details-marker {
   display: none;
@@ -2304,7 +2305,9 @@ html[data-skin="signal"] .transmission-details > summary::before {
   content: "▸";
   display: inline-block;
   transition: transform 0.15s ease;
-  font-size: 0.9em;
+  font-size: 1.1em;
+  line-height: 1;
+  opacity: .85;
 }
 html[data-skin="signal"] .transmission-details[open] > summary::before {
   transform: rotate(90deg);
@@ -2321,6 +2324,24 @@ html[data-skin="signal"] .transmission {
   gap: var(--wh-space-3);
 }
 html[data-skin="signal"] .transmission > * { margin: 0; }
+/* Re-apply heading breathing room — the margin:0 reset above kills
+   h3.transmission-heading's explicit margin. These overrides restore
+   the section-entry gap so headings read as structural breaks, not
+   as another flex child at 12px gap. */
+html[data-skin="signal"] .transmission > h3.transmission-heading {
+  margin-top: 20px;
+  margin-bottom: 4px;
+}
+/* When heading is the first child OR immediately after a kicker,
+   remove the extra top margin — the kicker itself provides context. */
+html[data-skin="signal"] .transmission > h3.transmission-heading:first-child {
+  margin-top: 0;
+  margin-bottom: 4px;
+}
+html[data-skin="signal"] .transmission > .transmission-kicker + h3.transmission-heading {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
 html[data-skin="signal"] .transmission-kicker {
   /* Section tier: larger than body paragraphs (.82rem vs .92rem body),
      clearly distinct from row-key labels (.70rem) and eyebrow metadata
