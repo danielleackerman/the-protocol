@@ -2838,10 +2838,10 @@ html[data-skin="signal"] .footer {
     margin-bottom: 20px;
   }
 
-  /* Mobile row geometry — default rows stay two-column so short labels
-     remain beside their values. Long-label rows opt into stacking with
-     .row--mobile-stack in the HTML; CSS alone cannot infer intent from
-     text length without breaking short rows site-wide. */
+  /* Mobile inline row geometry — default label/value rows stay inline,
+     but they share one fixed label track so values begin on the same
+     vertical line instead of forming a jagged max-content edge. Longer
+     rows still opt into stacking with .row--mobile-stack. */
   html[data-skin="signal"] .reference-section .flat-row,
   html[data-skin="signal"] .reference-section .reference-row,
   html[data-skin="signal"] .reference-section .state-row,
@@ -2851,16 +2851,23 @@ html[data-skin="signal"] .footer {
   html[data-skin="signal"] .flat-row,
   html[data-skin="signal"] .reference-row,
   html[data-skin="signal"] .state-row {
-    grid-template-columns: max-content minmax(0, 1fr);
-    gap: 10px;
+    grid-template-columns: var(--wh-row-label-col) minmax(0, 1fr);
+    column-gap: 10px;
+    row-gap: 2px;
+    align-items: baseline;
   }
 
   html[data-skin="signal"] .flat-row > strong,
   html[data-skin="signal"] .reference-row > strong,
   html[data-skin="signal"] .reference-row > .reference-key,
   html[data-skin="signal"] .state-row > .state-label {
+    min-width: 0;
+    max-width: 100%;
     margin-bottom: 0;
-    white-space: nowrap;
+    white-space: normal;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
   }
 
   html[data-skin="signal"] .row--mobile-stack,
