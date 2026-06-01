@@ -2826,8 +2826,19 @@ html[data-skin="signal"] .footer {
   html[data-skin="signal"] .flat-row,
   html[data-skin="signal"] .reference-row,
   html[data-skin="signal"] .state-row {
-    grid-template-columns: minmax(7.5rem, .28fr) minmax(0, 1fr);
+    grid-template-columns: max-content minmax(0, 1fr);
     gap: 10px;
+  }
+
+  /* Cap the label column so very long labels don't consume the full row.
+     Short labels (The room / Reality / Signal) get their intrinsic width.
+     Long labels (The mirror is not reflection technology.) wrap within
+     the cap and the value column always has space to breathe. */
+  html[data-skin="signal"] .flat-row > strong,
+  html[data-skin="signal"] .reference-row > strong,
+  html[data-skin="signal"] .state-row > .state-label,
+  html[data-skin="signal"] .seq-label {
+    max-width: 11rem;
   }
 
   html[data-skin="signal"] .level-directory .state-row {
