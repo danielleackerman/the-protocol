@@ -2521,14 +2521,20 @@ html[data-skin="signal"] .footer {
     font-weight: 500;
   }
 
-  /* Mobile transmission summary — clearer disclosure control. */
+  /* Mobile transmission summary — clearer disclosure control.
+     Font-size raised to .76rem to match the desktop base (rowkey size).
+     Earlier the mobile summary was .72rem while desktop was .76rem —
+     an inversion. Mobile gets the button-style affordance for touch;
+     desktop gets the bare inline-flex — but both should use the same
+     font-role size. */
   html[data-skin="signal"] .transmission-details > summary {
     padding: 10px 12px;
     border: 1px solid var(--wh-button-border);
     border-radius: var(--wh-radius-sm);
     background: var(--wh-button-bg);
     min-height: 2.4rem;
-    font-size: .72rem;
+    font-size: var(--wh-mono-rowkey-size);
+    letter-spacing: var(--wh-mono-eyebrow-track);
   }
 
   html[data-skin="signal"] .media-block__caption {
@@ -2845,15 +2851,17 @@ html[data-skin="signal"] .footer {
     width: 100%;
   }
 
-  /* Phone-tier transmission disclosure. */
+  /* Phone-tier transmission disclosure — font-size matches desktop base
+     (.76rem rowkey) so the same font-role reads consistently at all
+     widths. Touch affordance (border, bg, min-height) is phone-only. */
   html[data-skin="signal"] .transmission-details > summary {
     padding: 11px 14px;
     border: 1px solid var(--wh-button-border);
     border-radius: var(--wh-radius-sm);
     background: var(--wh-button-bg);
     min-height: 2.5rem;
-    font-size: .74rem;
-    letter-spacing: .12em;
+    font-size: var(--wh-mono-rowkey-size);
+    letter-spacing: var(--wh-mono-eyebrow-track);
   }
 
   /* Phone-tier transmission section labels — hold section tier above row
