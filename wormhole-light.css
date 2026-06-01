@@ -27,12 +27,12 @@ html[data-skin="signal"][data-theme="light"] {
   --wh-text:        #14110d;
   --wh-brand:       #14110d;
   --wh-heading:     #14110d;
-  --wh-muted:       rgba(20, 17, 13, .58);
-  --wh-copy:        rgba(20, 17, 13, .74);
-  --wh-copy-strong: rgba(20, 17, 13, .92);
-  --wh-label:       rgba(111, 103, 90, .88);
-  --wh-kicker:      #6f675a;
-  --wh-lede:        rgba(20, 17, 13, .80);
+  --wh-muted:       rgba(20, 17, 13, .66);
+  --wh-copy:        rgba(20, 17, 13, .82);
+  --wh-copy-strong: rgba(20, 17, 13, .94);
+  --wh-label:       rgba(111, 103, 90, .92);
+  --wh-kicker:      #6b6353;
+  --wh-lede:        rgba(20, 17, 13, .86);
 
   --wh-page-bg:
     radial-gradient(ellipse at 50% -12%, rgba(198, 191, 177, .16), transparent 32rem),
@@ -84,7 +84,7 @@ html[data-skin="signal"][data-theme="light"] {
   --wh-input-border: rgba(20, 17, 13, .085);
   --wh-input-bg:     rgba(255, 255, 255, .70);
   --wh-input-text:   #14110d;
-  --wh-placeholder:  rgba(20, 17, 13, .50);
+  --wh-placeholder:  rgba(20, 17, 13, .56);
 
   --wh-row-divider:      rgba(20, 17, 13, .14);
   --wh-row-divider-soft: rgba(20, 17, 13, .09);

@@ -79,7 +79,7 @@ html[data-skin="signal"] {
   --wh-mono-rowkey-track:      .09em;
 
   /* Mono — data tier (numbers, code-as-data, sequence index) */
-  --wh-mono-data-size:         .66rem;
+  --wh-mono-data-size:         .68rem;
   --wh-mono-data-weight:       720;
   --wh-mono-data-track:        .04em;
 
@@ -98,19 +98,19 @@ html[data-skin="signal"] {
   --wh-mono-section-track:     .10em;
 
   /* Sans — micro tier (module notes, tight support copy) */
-  --wh-sans-micro-size:        .82rem;
-  --wh-sans-micro-line:        1.30;
-  --wh-sans-micro-weight:      420;
+  --wh-sans-micro-size:        .84rem;
+  --wh-sans-micro-line:        1.40;
+  --wh-sans-micro-weight:      440;
 
   /* Sans — body tier (default paragraphs, reference values) */
-  --wh-sans-body-size:         .92rem;
-  --wh-sans-body-line:         1.30;
-  --wh-sans-body-weight:       430;
+  --wh-sans-body-size:         .94rem;
+  --wh-sans-body-line:         1.38;
+  --wh-sans-body-weight:       450;
 
   /* Sans — prose tier (reference-section paragraphs; tighter than body) */
-  --wh-sans-prose-size:        .88rem;
-  --wh-sans-prose-line:        1.30;
-  --wh-sans-prose-weight:      420;
+  --wh-sans-prose-size:        .90rem;
+  --wh-sans-prose-line:        1.38;
+  --wh-sans-prose-weight:      440;
   --wh-sans-prose-measure:     42rem;
 
   /* Sans — lede tier (panel-level leading paragraph). Weight raised to
@@ -122,10 +122,10 @@ html[data-skin="signal"] {
   --wh-sans-lede-weight:       500;
 
   /* Sans — support tier (panel-meta hint copy). Weight raised to 460
-     so support copy sits clearly between lede (500) and bare body (430).
+     so support copy sits clearly between lede (500) and bare body (450).
      Previously identical to body weight; now a distinct intermediate step. */
-  --wh-sans-support-size:      .86rem;
-  --wh-sans-support-line:      1.32;
+  --wh-sans-support-size:      .88rem;
+  --wh-sans-support-line:      1.38;
   --wh-sans-support-weight:    460;
 
   /* Sans — value tier (seq-body, status-value, primary row values) */
@@ -177,12 +177,12 @@ html[data-skin="signal"][data-theme="dark"] {
   --wh-text:        #f7f1e7;
   --wh-brand:       #f7f1e7;
   --wh-heading:     #f7f1e7;
-  --wh-muted:       rgba(247, 241, 231, .60);
-  --wh-copy:        rgba(247, 241, 231, .76);
-  --wh-copy-strong: rgba(247, 241, 231, .92);
-  --wh-label:       rgba(199, 192, 178, .86);
-  --wh-kicker:      #c7c0b2;
-  --wh-lede:        rgba(247, 241, 231, .82);
+  --wh-muted:       rgba(247, 241, 231, .66);
+  --wh-copy:        rgba(247, 241, 231, .84);
+  --wh-copy-strong: rgba(247, 241, 231, .94);
+  --wh-label:       rgba(199, 192, 178, .90);
+  --wh-kicker:      #cec8bb;
+  --wh-lede:        rgba(247, 241, 231, .90);
 
   --wh-page-bg:
     radial-gradient(ellipse at 50% -10%, rgba(167, 160, 151, .075), transparent 32rem),
@@ -239,7 +239,7 @@ html[data-skin="signal"][data-theme="dark"] {
   --wh-input-border: rgba(214, 209, 198, .13);
   --wh-input-bg:     rgba(247, 241, 231, .045);
   --wh-input-text:   #f7f1e7;
-  --wh-placeholder:  rgba(247, 241, 231, .52);
+  --wh-placeholder:  rgba(247, 241, 231, .58);
 
   /* Flash-hardening: pin a solid theme-appropriate background on html
      so the first paint is correct even if variables haven't resolved
@@ -1120,11 +1120,13 @@ html[data-skin="signal"] .ledger-item__meta {
 /* Status label — system metadata tier. Smaller and quieter than content
    row-keys: STATUS / LEVEL / ARCHITECTURE are annotations on the system
    state, not operational commands. Eyebrow size + muted color keeps them
-   clearly below seq-label in visual weight while remaining legible. */
+   clearly below seq-label in visual weight while remaining legible.
+   Phase 2B.5: font-size nudged to .70rem so it clears the readability
+   floor; color stays --wh-muted (now .66 opacity, raised from .60). */
 html[data-skin="signal"] .status-label {
   color: var(--wh-muted);
   font-family: var(--font-mono);
-  font-size: var(--wh-mono-eyebrow-size);
+  font-size: .70rem;
   font-weight: var(--wh-mono-eyebrow-weight);
   letter-spacing: var(--wh-mono-eyebrow-track);
   line-height: 1.2;
@@ -2151,7 +2153,7 @@ html[data-skin="signal"] .bank-cat-count {
   font-weight: var(--wh-mono-eyebrow-weight);
   letter-spacing: var(--wh-mono-eyebrow-track);
   text-transform: uppercase;
-  color: var(--wh-muted);
+  color: var(--wh-label);
 }
 
 /* Drilldown: head + back link. */
