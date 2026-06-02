@@ -1757,10 +1757,10 @@ html[data-skin="signal"] .level-directory .state-label--link {
   color: var(--wh-copy-strong);
   font-family: var(--font-display);
   font-style: italic;
-  font-size: clamp(1.05rem, 2.2vw, 1.55rem);
+  font-size: clamp(1.28rem, 3vw, 1.85rem);
   font-weight: 600;
   letter-spacing: -.012em;
-  line-height: 1.12;
+  line-height: 1.08;
   text-transform: none;
   white-space: normal;
   overflow-wrap: normal;
