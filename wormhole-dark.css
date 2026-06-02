@@ -2424,6 +2424,16 @@ html[data-skin="signal"] .transmission-details[open] > summary::before {
 html[data-skin="signal"] .transmission-toggle-close { display: none; }
 html[data-skin="signal"] .transmission-details[open] .transmission-toggle-open { display: none; }
 html[data-skin="signal"] .transmission-details[open] .transmission-toggle-close { display: inline; }
+
+/* Dark mode disclosure buttons (EXAMPLES, WHAT COUNTS, etc.) — brighter
+   so they are not easy to overlook against the dark background. Light mode
+   is unaffected: --wh-accent in light mode maps to a different value. */
+html[data-skin="signal"][data-theme="dark"] .transmission-details > summary {
+  color: var(--wh-gold-hot);
+}
+html[data-skin="signal"][data-theme="dark"] .transmission-details > summary::before {
+  opacity: 1;
+}
 html[data-skin="signal"] .transmission {
   margin-top: var(--wh-space-4);
   padding-top: var(--wh-space-4);
