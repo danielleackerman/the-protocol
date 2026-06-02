@@ -1455,18 +1455,6 @@ code.command-token {
   white-space: normal;
 }
 
-.command-token-list {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: .3rem;
-  max-width: 100%;
-}
-
-.command-token-list > code.command-token {
-  display: inline-block;
-  max-width: 100%;
-}
 
 /* Status strip — secondary register beneath the sequence. */
 html[data-skin="signal"] .status-strip {
