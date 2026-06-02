@@ -30,10 +30,11 @@ html[data-skin="signal"][data-theme="light"] {
   --wh-muted:       rgba(20, 17, 13, .66);
   --wh-copy:        rgba(20, 17, 13, .82);
   --wh-copy-strong: rgba(20, 17, 13, .94);
-  /* Row structural labels use a distinct warm taupe/bronze-gray tier
-     from the gold panel kicker/accent system. */
-  --wh-label:       #6f6254;
-  --wh-kicker:      #6b6353;
+  /* Light-mode label system: OPERATION/category kickers and the small
+     structural row labels share a darker bronze-brown accent so they read
+     as one hierarchy tier without becoming command chips. */
+  --wh-label:       #7a4f16;
+  --wh-kicker:      #7a4f16;
   --wh-lede:        rgba(20, 17, 13, .86);
 
   --wh-page-bg:
