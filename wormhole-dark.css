@@ -233,8 +233,14 @@ html[data-skin="signal"][data-theme="dark"] {
   --wh-inner-border: rgba(214, 209, 198, .12);
   --wh-divider:      rgba(214, 209, 198, .12);
   --wh-chip-bg:      rgba(214, 209, 198, .075);
-  --wh-code-bg:      rgba(0, 0, 0, .22);
-  --wh-code-text:    #f7f1e7;
+
+  /* Protected command/code token palette. These are the eye-catching
+     mono command badges used by <code> tokens; they are separate from
+     interactive .command-chip buttons and must not be reset by row layout. */
+  --wh-code-bg:      linear-gradient(180deg, rgba(208, 148, 54, .22), rgba(116, 72, 18, .18));
+  --wh-code-text:    #f3c36d;
+  --wh-code-border:  rgba(232, 176, 86, .36);
+  --wh-code-shadow:  inset 0 1px 0 rgba(255, 230, 170, .12), 0 0 0 1px rgba(0, 0, 0, .12);
 
   --wh-button-border: rgba(214, 209, 198, .30);
   --wh-button-bg:     linear-gradient(180deg, rgba(214, 209, 198, .10), rgba(214, 209, 198, .035));
@@ -1438,6 +1444,8 @@ html[data-skin="signal"] .panel:has(.sequence) code {
   font-weight: 720;
   letter-spacing: .03em;
   background: var(--wh-code-bg);
+  border: 1px solid var(--wh-code-border);
+  box-shadow: var(--wh-code-shadow);
 }
 
 /* Status strip — secondary register beneath the sequence. */
@@ -1500,7 +1508,9 @@ html[data-skin="signal"] code {
   font-family: var(--font-mono);
   font-size: .88rem;
   background: var(--wh-code-bg);
+  border: 1px solid var(--wh-code-border);
   border-radius: 4px;
+  box-shadow: var(--wh-code-shadow);
 }
 
 /* Command payloads inside reference sections and flat-rows must render
@@ -1537,7 +1547,9 @@ html[data-skin="signal"] .reference-card .flat-row > strong code {
   letter-spacing: .03em;
   line-height: 1.25;
   background: var(--wh-code-bg);
+  border: 1px solid var(--wh-code-border);
   border-radius: 4px;
+  box-shadow: var(--wh-code-shadow);
 }
 
 /* Reference / documentation ------------------------------------------- */
@@ -2448,7 +2460,9 @@ html[data-skin="signal"] .transmission code {
   background: var(--wh-code-bg);
   color: var(--wh-code-text);
   padding: .12em .42em;
+  border: 1px solid var(--wh-code-border);
   border-radius: 4px;
+  box-shadow: var(--wh-code-shadow);
 }
 
 /* Footer -------------------------------------------------------------- */

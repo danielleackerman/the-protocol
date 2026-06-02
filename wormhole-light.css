@@ -73,8 +73,12 @@ html[data-skin="signal"][data-theme="light"] {
   --wh-inner-border: rgba(20, 17, 13, .085);
   --wh-divider:      rgba(20, 17, 13, .12);
   --wh-chip-bg:      rgba(198, 191, 177, .16);
-  --wh-code-bg:      rgba(20, 17, 13, .07);
-  --wh-code-text:    #14110d;
+
+  /* Light theme command/code tokens: warm command accent, not gray. */
+  --wh-code-bg:      linear-gradient(180deg, rgba(183, 120, 36, .16), rgba(255, 246, 224, .82));
+  --wh-code-text:    #5f3711;
+  --wh-code-border:  rgba(143, 82, 18, .28);
+  --wh-code-shadow:  inset 0 1px 0 rgba(255, 255, 255, .62), 0 0 0 1px rgba(143, 82, 18, .035);
 
   --wh-button-border: rgba(111, 103, 90, .24);
   --wh-button-bg:     linear-gradient(180deg, rgba(255, 255, 255, .78), rgba(198, 191, 177, .12));
