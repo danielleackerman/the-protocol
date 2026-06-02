@@ -2094,6 +2094,31 @@ html[data-skin="signal"] .flat-list--stack > .flat-row > span {
   margin-top: 2px;
 }
 
+/* Authorization command stack — Day 08 reference pattern. Each authorization
+   is a two-line command unit: structural label above the executable command
+   chip. This is intentionally stacked at every width so the five commands
+   read as five discrete authorizations, not a left/right table. */
+html[data-skin="signal"] .flat-list--auth > .flat-row {
+  grid-template-columns: 1fr;
+  row-gap: 6px;
+  align-items: start;
+  padding: 14px 0 12px;
+}
+
+html[data-skin="signal"] .flat-list--auth > .flat-row > strong {
+  margin-bottom: 0;
+  white-space: normal;
+}
+
+html[data-skin="signal"] .flat-list--auth > .flat-row > :last-child {
+  grid-column: 1;
+  justify-self: start;
+}
+
+html[data-skin="signal"] .flat-list--auth > .flat-row > :last-child code {
+  white-space: normal;
+}
+
 /* Accordion item list — used inside .transmission-details within
    .seq-body. Single-column, full-width divider rows. Body font,
    normal weight — subordinate to the surrounding op card copy.
@@ -2430,8 +2455,10 @@ html[data-skin="signal"] .transmission-details[open] .transmission-toggle-close 
    is unaffected: --wh-accent in light mode maps to a different value. */
 html[data-skin="signal"][data-theme="dark"] .transmission-details > summary {
   color: var(--wh-gold-hot);
+  text-shadow: 0 0 14px rgba(232, 176, 86, .16);
 }
 html[data-skin="signal"][data-theme="dark"] .transmission-details > summary::before {
+  color: var(--wh-gold-hot);
   opacity: 1;
 }
 html[data-skin="signal"] .transmission {
