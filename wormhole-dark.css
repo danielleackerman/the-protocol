@@ -1521,22 +1521,23 @@ html[data-skin="signal"] .ref-block code {
   font-size: var(--wh-sans-prose-size);
 }
 
-/* Row-label code reset — when a command appears inside the label side of
-   a flat row, it remains a row key, not a gray command chip. Command chips
-   still render inside row values and prose. */
+/* Row-label command code — when the label itself is a command token
+   (SIGNAL COHERENT., BROADCAST ON., CONTROL ROOM OPEN.), keep the same
+   gray mono chip treatment used for command payloads. Layout work must not
+   flatten these into ordinary row labels. */
 html[data-skin="signal"] .flat-row > strong code,
 html[data-skin="signal"] .reference-section .flat-row > strong code,
 html[data-skin="signal"] .reference-card .flat-row > strong code {
-  display: inline;
-  padding: 0;
-  color: inherit;
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: inherit;
-  letter-spacing: inherit;
-  line-height: inherit;
-  background: transparent;
-  border-radius: 0;
+  display: inline-block;
+  padding: .12em .45em;
+  color: var(--wh-code-text);
+  font-family: var(--font-mono);
+  font-size: var(--wh-sans-prose-size);
+  font-weight: 720;
+  letter-spacing: .03em;
+  line-height: 1.25;
+  background: var(--wh-code-bg);
+  border-radius: 4px;
 }
 
 /* Reference / documentation ------------------------------------------- */
@@ -2868,6 +2869,40 @@ html[data-skin="signal"] .footer {
     overflow-wrap: normal;
     word-break: normal;
     hyphens: none;
+  }
+
+  /* Mobile section stack utilities — section/container-level only.
+     If one row in a section needs stacked mobile formatting, the whole
+     row group uses the same mobile rhythm. This prevents line-by-line
+     formatting changes while leaving short inline sections untouched. */
+  html[data-skin="signal"] .flat-list--mobile-stack > .flat-row,
+  html[data-skin="signal"] .reference-table--mobile-stack > .reference-row,
+  html[data-skin="signal"] .state-table--mobile-stack > .state-row,
+  html[data-skin="signal"] .reference-section .flat-list--mobile-stack > .flat-row,
+  html[data-skin="signal"] .reference-section .reference-table--mobile-stack > .reference-row,
+  html[data-skin="signal"] .reference-section .state-table--mobile-stack > .state-row,
+  html[data-skin="signal"] .reference-card .flat-list--mobile-stack > .flat-row,
+  html[data-skin="signal"] .reference-card .reference-table--mobile-stack > .reference-row,
+  html[data-skin="signal"] .reference-card .state-table--mobile-stack > .state-row {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+    row-gap: 4px;
+    align-items: start;
+  }
+
+  html[data-skin="signal"] .flat-list--mobile-stack > .flat-row > :first-child,
+  html[data-skin="signal"] .flat-list--mobile-stack > .flat-row > strong,
+  html[data-skin="signal"] .reference-table--mobile-stack > .reference-row > .reference-key,
+  html[data-skin="signal"] .state-table--mobile-stack > .state-row > .state-label {
+    margin-bottom: 1px;
+    white-space: normal;
+  }
+
+  html[data-skin="signal"] .flat-list--mobile-stack > .flat-row > :last-child,
+  html[data-skin="signal"] .reference-table--mobile-stack > .reference-row > .reference-value,
+  html[data-skin="signal"] .state-table--mobile-stack > .state-row > .state-value {
+    grid-column: 1;
+    justify-self: start;
   }
 
   /* Mobile stack utility — intentionally opt-in. This selector repeats the
