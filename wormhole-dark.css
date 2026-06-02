@@ -2870,9 +2870,19 @@ html[data-skin="signal"] .footer {
     hyphens: none;
   }
 
-  html[data-skin="signal"] .row--mobile-stack,
-  html[data-skin="signal"] .reference-section .row--mobile-stack,
-  html[data-skin="signal"] .reference-card .row--mobile-stack {
+  /* Mobile stack utility — intentionally opt-in. This selector repeats the
+     row class so it outranks the default .flat-row / .reference-row /
+     .state-row mobile grid above. Without the compound selector, standalone
+     .flat-row.row--mobile-stack rows kept the inline two-column track. */
+  html[data-skin="signal"] .flat-row.row--mobile-stack,
+  html[data-skin="signal"] .reference-row.row--mobile-stack,
+  html[data-skin="signal"] .state-row.row--mobile-stack,
+  html[data-skin="signal"] .reference-section .flat-row.row--mobile-stack,
+  html[data-skin="signal"] .reference-section .reference-row.row--mobile-stack,
+  html[data-skin="signal"] .reference-section .state-row.row--mobile-stack,
+  html[data-skin="signal"] .reference-card .flat-row.row--mobile-stack,
+  html[data-skin="signal"] .reference-card .reference-row.row--mobile-stack,
+  html[data-skin="signal"] .reference-card .state-row.row--mobile-stack {
     grid-template-columns: 1fr;
     row-gap: 3px;
     align-items: start;
