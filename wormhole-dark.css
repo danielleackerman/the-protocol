@@ -1448,6 +1448,13 @@ html[data-skin="signal"] .panel:has(.sequence) code {
   box-shadow: var(--wh-code-shadow);
 }
 
+/* Command-token class — page-by-page semantic pass. This class marks
+   executable command phrases inside row bodies; seq-label remains only
+   the structural step name. No layout/stacking behavior belongs here. */
+html[data-skin="signal"] code.command-token {
+  white-space: normal;
+}
+
 /* Status strip — secondary register beneath the sequence. */
 html[data-skin="signal"] .status-strip {
   margin-top: 16px;
