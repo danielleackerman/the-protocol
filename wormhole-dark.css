@@ -2498,6 +2498,40 @@ html[data-skin="signal"] .footer {
     grid-column: 2;
   }
 
+  /* Section-level row stacks start at the narrow/tablet breakpoint, not
+     only at phone width. These opt-in containers are used when a whole
+     row group contains medium or long mono labels; the section must choose
+     one rhythm instead of mixing inline and stacked rows line by line. */
+  html[data-skin="signal"] .flat-list--mobile-stack > .flat-row,
+  html[data-skin="signal"] .reference-table--mobile-stack > .reference-row,
+  html[data-skin="signal"] .state-table--mobile-stack > .state-row,
+  html[data-skin="signal"] .reference-section .flat-list--mobile-stack > .flat-row,
+  html[data-skin="signal"] .reference-section .reference-table--mobile-stack > .reference-row,
+  html[data-skin="signal"] .reference-section .state-table--mobile-stack > .state-row,
+  html[data-skin="signal"] .reference-card .flat-list--mobile-stack > .flat-row,
+  html[data-skin="signal"] .reference-card .reference-table--mobile-stack > .reference-row,
+  html[data-skin="signal"] .reference-card .state-table--mobile-stack > .state-row {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+    row-gap: 4px;
+    align-items: start;
+  }
+
+  html[data-skin="signal"] .flat-list--mobile-stack > .flat-row > :first-child,
+  html[data-skin="signal"] .flat-list--mobile-stack > .flat-row > strong,
+  html[data-skin="signal"] .reference-table--mobile-stack > .reference-row > .reference-key,
+  html[data-skin="signal"] .state-table--mobile-stack > .state-row > .state-label {
+    margin-bottom: 1px;
+    white-space: normal;
+  }
+
+  html[data-skin="signal"] .flat-list--mobile-stack > .flat-row > :last-child,
+  html[data-skin="signal"] .reference-table--mobile-stack > .reference-row > .reference-value,
+  html[data-skin="signal"] .state-table--mobile-stack > .state-row > .state-value {
+    grid-column: 1;
+    justify-self: start;
+  }
+
   html[data-skin="signal"] .switch-add-row,
   html[data-skin="signal"] .command-input-row {
     grid-template-columns: 1fr;
