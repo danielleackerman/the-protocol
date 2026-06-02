@@ -1697,18 +1697,19 @@ html[data-skin="signal"] .reference-section .ref-block > .state-table + p {
    mid-paragraph bold lump. The colon is included via ::after so HTML
    stays clean: <span class="lead-term">Signals</span>. */
 html[data-skin="signal"] .lead-term {
-  font-family: var(--font-mono);
-  font-size: var(--wh-mono-eyebrow-sm-size);
-  font-weight: var(--wh-mono-eyebrow-sm-weight);
-  letter-spacing: var(--wh-mono-eyebrow-sm-track);
-  color: var(--wh-label);
-  text-transform: uppercase;
-  margin-right: .5em;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: normal;
+  color: inherit;
+  text-transform: none;
+  margin-right: .2em;
 }
 html[data-skin="signal"] .lead-term::after {
-  content: " /";
-  color: var(--wh-muted);
-  margin-left: .25em;
+  content: ":";
+  color: inherit;
+  margin-left: 0;
 }
 
 html[data-skin="signal"] .reference-section .ref-block {
