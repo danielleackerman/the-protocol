@@ -83,6 +83,12 @@ html[data-skin="signal"][data-theme="light"] {
   --wh-code-border:  rgba(143, 82, 18, .28);
   --wh-code-shadow:  inset 0 1px 0 rgba(255, 255, 255, .62), 0 0 0 1px rgba(143, 82, 18, .035);
 
+  /* ON-state command accents: distinct teal/green for switch/state ON only. */
+  --wh-on-bg:      linear-gradient(180deg, rgba(45, 212, 191, .18), rgba(240, 253, 250, .86));
+  --wh-on-text:    #0f766e;
+  --wh-on-border:  rgba(15, 118, 110, .30);
+  --wh-on-shadow:  inset 0 1px 0 rgba(255, 255, 255, .68), 0 0 0 1px rgba(15, 118, 110, .035);
+
   --wh-button-border: rgba(111, 103, 90, .24);
   --wh-button-bg:     linear-gradient(180deg, rgba(255, 255, 255, .78), rgba(198, 191, 177, .12));
   --wh-hot-button-bg: linear-gradient(180deg, rgba(154, 132, 122, .12), rgba(154, 132, 122, .040));
