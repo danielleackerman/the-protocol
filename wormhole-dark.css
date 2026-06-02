@@ -1521,22 +1521,24 @@ html[data-skin="signal"] .ref-block code {
   font-size: var(--wh-sans-prose-size);
 }
 
-/* Row-label code reset — when a command appears inside the label side of
-   a flat row, it remains a row key, not a gray command chip. Command chips
-   still render inside row values and prose. */
+/* Row-label command chips — command tokens placed in the label side
+   remain chips. This preserves rows like SIGNAL COHERENT. / CONTROL ROOM
+   OPEN. as gray mono command badges instead of flattening them into plain
+   row labels. */
 html[data-skin="signal"] .flat-row > strong code,
 html[data-skin="signal"] .reference-section .flat-row > strong code,
 html[data-skin="signal"] .reference-card .flat-row > strong code {
-  display: inline;
-  padding: 0;
-  color: inherit;
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: inherit;
-  letter-spacing: inherit;
-  line-height: inherit;
-  background: transparent;
-  border-radius: 0;
+  display: inline-block;
+  padding: .12em .45em;
+  color: var(--wh-copy-strong);
+  font-family: var(--font-mono);
+  font-size: var(--wh-mono-chip-size);
+  font-weight: var(--wh-mono-chip-weight);
+  letter-spacing: var(--wh-mono-chip-track);
+  line-height: 1.18;
+  text-transform: uppercase;
+  background: var(--wh-code-bg);
+  border-radius: 4px;
 }
 
 /* Reference / documentation ------------------------------------------- */
@@ -2870,10 +2872,14 @@ html[data-skin="signal"] .footer {
     hyphens: none;
   }
 
-  /* Mobile stack utility — intentionally opt-in. This selector repeats the
-     row class so it outranks the default .flat-row / .reference-row /
-     .state-row mobile grid above. Without the compound selector, standalone
-     .flat-row.row--mobile-stack rows kept the inline two-column track. */
+  /* Section-level mobile stack utility. If one row in a section needs the
+     stacked treatment, the entire row group uses it so the section does not
+     alternate line-by-line between unrelated formats. Inline row groups stay
+     inline by default; medium/long-label groups opt in at the container. */
+  html[data-skin="signal"] .flat-list--mobile-stack > .flat-row,
+  html[data-skin="signal"] .reference-table--mobile-stack > .reference-row,
+  html[data-skin="signal"] .state-table--mobile-stack > .state-row,
+  html[data-skin="signal"] .status-strip--mobile-stack > .status-row,
   html[data-skin="signal"] .flat-row.row--mobile-stack,
   html[data-skin="signal"] .reference-row.row--mobile-stack,
   html[data-skin="signal"] .state-row.row--mobile-stack,
@@ -2888,6 +2894,10 @@ html[data-skin="signal"] .footer {
     align-items: start;
   }
 
+  html[data-skin="signal"] .flat-list--mobile-stack > .flat-row > :first-child,
+  html[data-skin="signal"] .reference-table--mobile-stack > .reference-row > :first-child,
+  html[data-skin="signal"] .state-table--mobile-stack > .state-row > :first-child,
+  html[data-skin="signal"] .status-strip--mobile-stack > .status-row > :first-child,
   html[data-skin="signal"] .row--mobile-stack > :first-child,
   html[data-skin="signal"] .row--mobile-stack > strong,
   html[data-skin="signal"] .row--mobile-stack > .reference-key,
@@ -2896,6 +2906,10 @@ html[data-skin="signal"] .footer {
     white-space: normal;
   }
 
+  html[data-skin="signal"] .flat-list--mobile-stack > .flat-row > :last-child,
+  html[data-skin="signal"] .reference-table--mobile-stack > .reference-row > :last-child,
+  html[data-skin="signal"] .state-table--mobile-stack > .state-row > :last-child,
+  html[data-skin="signal"] .status-strip--mobile-stack > .status-row > :last-child,
   html[data-skin="signal"] .row--mobile-stack > :last-child {
     grid-column: 1;
     justify-self: start;
