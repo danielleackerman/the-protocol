@@ -1455,6 +1455,12 @@ html[data-skin="signal"] code.command-token {
   white-space: normal;
 }
 
+html[data-skin="signal"] .command-token-list {
+  display: grid;
+  gap: .3rem;
+  justify-items: start;
+}
+
 /* Status strip — secondary register beneath the sequence. */
 html[data-skin="signal"] .status-strip {
   margin-top: 16px;
