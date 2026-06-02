@@ -1500,7 +1500,15 @@ html[data-skin="signal"] .operation-card .seq-body.mini-state-list {
   width: min(100%, 28rem);
 }
 
-code.command-token--on {
+code.command-token--on,
+html[data-skin="signal"] code.command-token.command-token--on,
+html[data-skin="signal"] .operation-card code.command-token.command-token--on,
+html[data-skin="signal"] .panel:has(.sequence) code.command-token.command-token--on,
+html[data-skin="signal"] .reference-section code.command-token.command-token--on,
+html[data-skin="signal"] .reference-card code.command-token.command-token--on,
+html[data-skin="signal"] .flat-list code.command-token.command-token--on,
+html[data-skin="signal"] .flat-row code.command-token.command-token--on,
+html[data-skin="signal"] .ref-block code.command-token.command-token--on {
   color: var(--wh-on-text);
   background: var(--wh-on-bg);
   border-color: var(--wh-on-border);
@@ -2112,11 +2120,18 @@ html[data-skin="signal"] .flat-list--auth > .flat-row > strong {
 
 html[data-skin="signal"] .flat-list--auth > .flat-row > :last-child {
   grid-column: 1;
-  justify-self: start;
+  justify-self: stretch;
+  width: 100%;
+  max-width: 34rem;
 }
 
 html[data-skin="signal"] .flat-list--auth > .flat-row > :last-child code {
+  display: inline-block;
+  width: auto;
+  max-width: 100%;
   white-space: normal;
+  overflow-wrap: normal;
+  word-break: normal;
 }
 
 /* Accordion item list — used inside .transmission-details within
@@ -2450,12 +2465,15 @@ html[data-skin="signal"] .transmission-toggle-close { display: none; }
 html[data-skin="signal"] .transmission-details[open] .transmission-toggle-open { display: none; }
 html[data-skin="signal"] .transmission-details[open] .transmission-toggle-close { display: inline; }
 
-/* Dark mode disclosure buttons (EXAMPLES, WHAT COUNTS, etc.) — brighter
-   so they are not easy to overlook against the dark background. Light mode
-   is unaffected: --wh-accent in light mode maps to a different value. */
+/* Dark mode disclosure buttons (EXAMPLES, WHAT COUNTS, etc.) — warm
+   companion to the light-mode disclosure control. It stays a disclosure
+   button, not a command chip: same size/layout behavior, warmer surface. */
 html[data-skin="signal"][data-theme="dark"] .transmission-details > summary {
   color: var(--wh-gold-hot);
-  text-shadow: 0 0 14px rgba(232, 176, 86, .16);
+  border-color: rgba(232, 176, 86, .36);
+  background: linear-gradient(180deg, rgba(232, 176, 86, .14), rgba(116, 72, 18, .16));
+  box-shadow: inset 0 1px 0 rgba(255, 230, 170, .08);
+  text-shadow: none;
 }
 html[data-skin="signal"][data-theme="dark"] .transmission-details > summary::before {
   color: var(--wh-gold-hot);
