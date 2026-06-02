@@ -2102,33 +2102,41 @@ html[data-skin="signal"] .flat-list--stack > .flat-row > span {
   margin-top: 2px;
 }
 
-/* Authorization command stack — Day 08 reference pattern. Each authorization
-   is a two-line command unit: structural label above the executable command
-   chip. This is intentionally stacked at every width so the five commands
-   read as five discrete authorizations, not a left/right table. */
-html[data-skin="signal"] .flat-list--auth > .flat-row {
-  grid-template-columns: 1fr;
+/* Authorization command stack — Day 08 reference pattern. This deliberately
+   uses its own container instead of .flat-row so the authorization command
+   chip can sit under its label at normal readable width. */
+html[data-skin="signal"] .authorization-stack {
+  display: grid;
+  gap: 0;
+  margin-top: 2px;
+}
+
+html[data-skin="signal"] .authorization-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
   row-gap: 6px;
   align-items: start;
   padding: 14px 0 12px;
+  border-bottom: 1px solid var(--wh-row-divider-soft);
 }
 
-html[data-skin="signal"] .flat-list--auth > .flat-row > strong {
-  margin-bottom: 0;
-  white-space: normal;
+html[data-skin="signal"] .authorization-label {
+  justify-self: start;
+  color: var(--wh-label);
+  font-family: var(--font-mono);
+  font-size: var(--wh-mono-rowkey-size);
+  font-weight: var(--wh-mono-rowkey-weight);
+  letter-spacing: var(--wh-mono-rowkey-track);
+  line-height: 1.18;
+  text-transform: uppercase;
 }
 
-html[data-skin="signal"] .flat-list--auth > .flat-row > :last-child {
-  grid-column: 1;
-  justify-self: stretch;
-  width: 100%;
-  max-width: 34rem;
-}
-
-html[data-skin="signal"] .flat-list--auth > .flat-row > :last-child code {
-  display: inline-block;
-  width: auto;
-  max-width: 100%;
+html[data-skin="signal"] .authorization-command,
+html[data-skin="signal"] code.authorization-command {
+  display: block;
+  justify-self: start;
+  width: max-content;
+  max-width: min(100%, 34rem);
   white-space: normal;
   overflow-wrap: normal;
   word-break: normal;
