@@ -185,7 +185,10 @@ html[data-skin="signal"][data-theme="dark"] {
   --wh-muted:       rgba(247, 241, 231, .66);
   --wh-copy:        rgba(247, 241, 231, .84);
   --wh-copy-strong: rgba(247, 241, 231, .94);
-  --wh-label:       rgba(199, 192, 178, 1.0);
+  /* Row structural labels use a separate bronze-gray tier from panel
+     kickers/accent labels. OPERATION remains the card category marker;
+     SEAT / DEFAULTS / COMMAND etc. read as structural row labels. */
+  --wh-label:       #b39a74;
   --wh-kicker:      #cec8bb;
   --wh-lede:        rgba(247, 241, 231, .90);
 
