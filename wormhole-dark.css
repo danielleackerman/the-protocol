@@ -19,7 +19,6 @@
 /* Font tokens (theme-agnostic) ----------------------------------------- */
 :root {
   --font-display: "Cormorant Garamond", "Bodoni 72", "Didot", Georgia, serif;
-  --font-heading: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
   --font-body:    "Inter", "Avenir Next", "Helvetica Neue", Arial, sans-serif;
   --font-mono:    "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
 }
@@ -27,7 +26,6 @@
 /* Shared structural tokens (theme-agnostic) ---------------------------- */
 html[data-skin="signal"] {
   --font-display: "Cormorant Garamond", "Bodoni 72", "Didot", Georgia, serif;
-  --font-heading: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
   --font-body:    "Inter", "Avenir Next", "Helvetica Neue", Arial, sans-serif;
   --font-sans:    var(--font-body);
   --font-mono:    "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
@@ -45,7 +43,7 @@ html[data-skin="signal"] {
   --wh-space-6: 32px;
 
   --wh-row-index-col:    2.5ch;
-  --wh-row-label-col:    clamp(5.8rem, 12vw, 7rem);
+  --wh-row-label-col:    clamp(6.8rem, 13vw, 8.5rem);
   --wh-row-gap:          14px;
   --wh-row-divider:      rgba(214, 209, 198, .15);
   --wh-row-divider-soft: rgba(214, 209, 198, .10);
@@ -65,23 +63,27 @@ html[data-skin="signal"] {
   --wh-mono-eyebrow-sm-track:  .14em;
 
   /* Mono — row-eyebrow tier — for nav, primary metadata labels above
-     content. Bigger than -sm but still meta-level. */
-  --wh-mono-eyebrow-size:      .68rem;
-  --wh-mono-eyebrow-weight:    850;
-  --wh-mono-eyebrow-track:     .11em;
+     content. Phase 2B.6: raised from .68rem to .72rem; tracking reduced
+     to .09em so OPERATION / MORNING ACTIVATION kickers read as labels
+     and not as spaced-out texture. */
+  --wh-mono-eyebrow-size:      .72rem;
+  --wh-mono-eyebrow-weight:    860;
+  --wh-mono-eyebrow-track:     .09em;
 
   /* Mono — row-key tier — for terms that ARE the content (OPERATE, FLIP,
      EXECUTE, ABUNDANCE, DO NOT MANIFEST). Sits between eyebrow and value
      prose. Must read as legible terminal labels but must NOT outweigh
-     the H3 sitting above them. Earlier this was at .76rem/800/full-ivory
-     which crushed H3 hierarchy and made multi-word keys feel like
-     command badges. */
-  --wh-mono-rowkey-size:       .70rem;
-  --wh-mono-rowkey-weight:     760;
-  --wh-mono-rowkey-track:      .09em;
+     the H3 sitting above them. Phase 2B.6: raised from .70rem to .76rem
+     so short and long labels alike anchor their rows without competing
+     with H3; weight raised to 800 for dark-background legibility;
+     tracking reduced to .07em so multi-word labels don't spread into
+     unreadable gapped strings when wrapping. */
+  --wh-mono-rowkey-size:       .82rem;
+  --wh-mono-rowkey-weight:     860;
+  --wh-mono-rowkey-track:      .07em;
 
   /* Mono — data tier (numbers, code-as-data, sequence index) */
-  --wh-mono-data-size:         .66rem;
+  --wh-mono-data-size:         .68rem;
   --wh-mono-data-weight:       720;
   --wh-mono-data-track:        .04em;
 
@@ -90,35 +92,46 @@ html[data-skin="signal"] {
   --wh-mono-chip-weight:       850;
   --wh-mono-chip-track:        .10em;
 
+  /* Mono — section tier — for structural section labels inside long-form
+     content (transmission-kicker: INTRO, THE BRIEFING, THE CROSSING, etc.).
+     These are content-level anchors, not metadata; they must read larger
+     than surrounding body paragraphs, not smaller. Phase 2B.6: raised
+     from .82rem to .86rem; weight to 740 for stronger anchor presence;
+     tracking reduced to .08em (was .10em — less spread, more readable). */
+  --wh-mono-section-size:      .86rem;
+  --wh-mono-section-weight:    740;
+  --wh-mono-section-track:     .08em;
+
   /* Sans — micro tier (module notes, tight support copy) */
-  --wh-sans-micro-size:        .82rem;
-  --wh-sans-micro-line:        1.32;
-  --wh-sans-micro-weight:      450;
+  --wh-sans-micro-size:        .84rem;
+  --wh-sans-micro-line:        1.40;
+  --wh-sans-micro-weight:      440;
 
   /* Sans — body tier (default paragraphs, reference values) */
-  --wh-sans-body-size:         .92rem;
-  --wh-sans-body-line:         1.30;
-  --wh-sans-body-weight:       430;
+  --wh-sans-body-size:         .94rem;
+  --wh-sans-body-line:         1.38;
+  --wh-sans-body-weight:       450;
 
   /* Sans — prose tier (reference-section paragraphs; tighter than body) */
-  --wh-sans-prose-size:        .88rem;
-  --wh-sans-prose-line:        1.30;
-  --wh-sans-prose-weight:      420;
+  --wh-sans-prose-size:        .90rem;
+  --wh-sans-prose-line:        1.38;
+  --wh-sans-prose-weight:      440;
   --wh-sans-prose-measure:     42rem;
 
-  /* Sans — lede tier (panel-level support copy). Sized so the lede
-     reads as supporting copy rather than a second headline competing
-     with the H1. */
-  --wh-sans-lede-size:         clamp(.86rem, .95vw, .92rem);
-  --wh-sans-lede-line:         1.32;
-  --wh-sans-lede-weight:       450;
+  /* Sans — lede tier (panel-level leading paragraph). Weight raised to
+     500 so the lede reads as a genuine introduction — clearly above
+     body (430) and support (460) — without competing with headings.
+     Line-height increased to 1.38 for more readable leading copy. */
+  --wh-sans-lede-size:         clamp(.88rem, .95vw, .94rem);
+  --wh-sans-lede-line:         1.38;
+  --wh-sans-lede-weight:       500;
 
-  /* Sans — support tier (panel-meta support copy: "Gate level: complete
-     the install…", "Use this when…"). Quieter than lede so the H1/H2
-     above it stays the visual lead. */
-  --wh-sans-support-size:      .86rem;
-  --wh-sans-support-line:      1.32;
-  --wh-sans-support-weight:    430;
+  /* Sans — support tier (panel-meta hint copy). Weight raised to 460
+     so support copy sits clearly between lede (500) and bare body (450).
+     Previously identical to body weight; now a distinct intermediate step. */
+  --wh-sans-support-size:      .88rem;
+  --wh-sans-support-line:      1.38;
+  --wh-sans-support-weight:    460;
 
   /* Sans — value tier (seq-body, status-value, primary row values) */
   --wh-sans-value-size:        clamp(.94rem, 1.1vw, 1.0rem);
@@ -128,9 +141,11 @@ html[data-skin="signal"] {
   /* Sans — value-strong tier (active state values; weight emphasis) */
   --wh-sans-value-strong-weight: 600;
 
-  /* Strong — global emphasis weight. Lower than the original 620 so an
-     all-<strong> paragraph reads as emphasis without thickening the page. */
-  --wh-strong-weight: 560;
+  /* Strong — global emphasis weight. Raised from 560 to 600 so <strong>
+     lands as genuine emphasis inside the 430–460 body weight band. 560
+     was too close to the baseline; 600 creates a clear perceptual step
+     without turning emphasis text into a bold wall. */
+  --wh-strong-weight: 600;
 
   /* Accent token family — warm, Wormhole-compatible (not browser blue).
      Dark uses gold; light overrides this block in wormhole-light.css.
@@ -167,12 +182,15 @@ html[data-skin="signal"][data-theme="dark"] {
   --wh-text:        #f7f1e7;
   --wh-brand:       #f7f1e7;
   --wh-heading:     #f7f1e7;
-  --wh-muted:       rgba(247, 241, 231, .60);
-  --wh-copy:        rgba(247, 241, 231, .76);
-  --wh-copy-strong: rgba(247, 241, 231, .92);
-  --wh-label:       rgba(199, 192, 178, .86);
-  --wh-kicker:      #c7c0b2;
-  --wh-lede:        rgba(247, 241, 231, .82);
+  --wh-muted:       rgba(247, 241, 231, .66);
+  --wh-copy:        rgba(247, 241, 231, .84);
+  --wh-copy-strong: rgba(247, 241, 231, .94);
+  /* Row structural labels use a separate bronze-gray tier from panel
+     kickers/accent labels. OPERATION remains the card category marker;
+     SEAT / DEFAULTS / COMMAND etc. read as structural row labels. */
+  --wh-label:       #b39a74;
+  --wh-kicker:      #cec8bb;
+  --wh-lede:        rgba(247, 241, 231, .90);
 
   --wh-page-bg:
     radial-gradient(ellipse at 50% -10%, rgba(167, 160, 151, .075), transparent 32rem),
@@ -218,8 +236,20 @@ html[data-skin="signal"][data-theme="dark"] {
   --wh-inner-border: rgba(214, 209, 198, .12);
   --wh-divider:      rgba(214, 209, 198, .12);
   --wh-chip-bg:      rgba(214, 209, 198, .075);
-  --wh-code-bg:      rgba(0, 0, 0, .22);
-  --wh-code-text:    #f7f1e7;
+
+  /* Protected command/code token palette. These are the eye-catching
+     mono command badges used by <code> tokens; they are separate from
+     interactive .command-chip buttons and must not be reset by row layout. */
+  --wh-code-bg:      linear-gradient(180deg, rgba(208, 148, 54, .22), rgba(116, 72, 18, .18));
+  --wh-code-text:    #f3c36d;
+  --wh-code-border:  rgba(232, 176, 86, .36);
+  --wh-code-shadow:  inset 0 1px 0 rgba(255, 230, 170, .12), 0 0 0 1px rgba(0, 0, 0, .12);
+
+  /* ON-state command accents: flat green/teal switch signal, not a button. */
+  --wh-on-bg:      rgba(22, 101, 52, .18);
+  --wh-on-text:    #86efac;
+  --wh-on-border:  rgba(74, 222, 128, .38);
+  --wh-on-shadow:  none;
 
   --wh-button-border: rgba(214, 209, 198, .30);
   --wh-button-bg:     linear-gradient(180deg, rgba(214, 209, 198, .10), rgba(214, 209, 198, .035));
@@ -229,7 +259,7 @@ html[data-skin="signal"][data-theme="dark"] {
   --wh-input-border: rgba(214, 209, 198, .13);
   --wh-input-bg:     rgba(247, 241, 231, .045);
   --wh-input-text:   #f7f1e7;
-  --wh-placeholder:  rgba(247, 241, 231, .38);
+  --wh-placeholder:  rgba(247, 241, 231, .58);
 
   /* Flash-hardening: pin a solid theme-appropriate background on html
      so the first paint is correct even if variables haven't resolved
@@ -695,10 +725,10 @@ html[data-skin="signal"] h3 {
   color: var(--wh-heading);
   font-family: var(--font-display);
   font-style: italic;
-  font-size: clamp(1.28rem, 2.15vw, 1.65rem);
-  font-weight: 620;
-  letter-spacing: -.012em;
-  line-height: 1.08;
+  font-size: clamp(1.55rem, 2.8vw, 2.0rem);
+  font-weight: 680;
+  letter-spacing: -.014em;
+  line-height: 1.06;
   text-transform: none;
 }
 
@@ -818,10 +848,12 @@ html[data-skin="signal"] strong {
 }
 
 /* Module note — micro sans for "what this module does" hints. Used on
-   custom.html under each section H2. Quieter than .lede, smaller than p. */
+   custom.html under each section H2. Quieter than .lede, smaller than p.
+   Color dropped to --wh-muted (.60 opacity) so it reads as genuinely
+   subordinate to body copy rather than near-identical to it. */
 html[data-skin="signal"] .module-note {
   margin: 0 0 12px;
-  color: var(--wh-copy);
+  color: var(--wh-muted);
   font-family: var(--font-body);
   font-size: var(--wh-sans-micro-size);
   font-weight: var(--wh-sans-micro-weight);
@@ -1087,14 +1119,13 @@ html[data-skin="signal"] .standing-decree-list > :last-child {
 
 /* Row keys — content terms that pair with their value (OPERATE / Operate
    as the version of yourself…). They are content peers to the value but
-   subordinate to the H3 / subsection heading sitting above them. Earlier
-   the swing to full-ivory + .76/800 made these louder than H3, which
-   crushed documentation hierarchy. Now warm-bronze label color and the
-   row-key tier sizing — readable, quietly subordinate to H3. */
+   subordinate to the H3 / subsection heading sitting above them.
+   Note: .status-label is intentionally NOT in this group — it is system
+   metadata (STATUS / LEVEL / ARCHITECTURE), not a content term, and gets
+   its own quieter treatment below. */
 html[data-skin="signal"] .seq-label,
 html[data-skin="signal"] .state-label,
 html[data-skin="signal"] .reference-key,
-html[data-skin="signal"] .status-label,
 html[data-skin="signal"] .flat-row > strong,
 html[data-skin="signal"] .ledger-item__meta {
   color: var(--wh-label);
@@ -1102,6 +1133,21 @@ html[data-skin="signal"] .ledger-item__meta {
   font-size: var(--wh-mono-rowkey-size);
   font-weight: var(--wh-mono-rowkey-weight);
   letter-spacing: var(--wh-mono-rowkey-track);
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+/* Status label — system metadata tier. Quieter than content row-keys
+   via smaller size, but functional — STATUS / LEVEL / ARCHITECTURE must
+   be readable, not faint. Phase 2B.6: color moved from --wh-muted to
+   --wh-label; hierarchy is maintained by size differential (.76rem
+   rowkey vs .70rem status) not by opacity starvation. */
+html[data-skin="signal"] .status-label {
+  color: var(--wh-label);
+  font-family: var(--font-mono);
+  font-size: .70rem;
+  font-weight: var(--wh-mono-eyebrow-weight);
+  letter-spacing: var(--wh-mono-eyebrow-track);
   line-height: 1.2;
   text-transform: uppercase;
 }
@@ -1206,11 +1252,9 @@ html[data-skin="signal"] .seq-body strong {
   font-weight: var(--wh-strong-weight);
 }
 
-/* Semantic state — active states. Weight + full-opacity color promote the
-   ON value into the operative payload of the row. Palette stays locked
-   (no green/red); the differentiation is weight + ivory text against
-   muted-ivory baseline values. */
-html[data-skin="signal"] .state-on,
+/* Semantic state — active states. Status values stay neutral; ON state
+   values get a distinct teal command accent so switch activation reads
+   as an operative state at a glance. */
 html[data-skin="signal"] .status-active,
 html[data-skin="signal"] .status-complete,
 html[data-skin="signal"] .status-ready,
@@ -1218,6 +1262,25 @@ html[data-skin="signal"] [aria-pressed="true"] {
   color: var(--wh-text);
   font-weight: var(--wh-sans-value-strong-weight);
   letter-spacing: .005em;
+}
+
+html[data-skin="signal"] .state-on,
+html[data-skin="signal"] .command-token--on {
+  display: inline-block;
+  width: max-content;
+  max-width: 100%;
+  border-radius: 2px;
+  padding: .08rem .26rem;
+  color: var(--wh-on-text);
+  font-family: var(--font-mono);
+  font-size: .74rem;
+  font-weight: 850;
+  letter-spacing: .05em;
+  line-height: 1.15;
+  text-transform: uppercase;
+  background: var(--wh-on-bg);
+  border: 1px solid var(--wh-on-border);
+  box-shadow: none;
 }
 
 /* When the active state lives in a row that has its own row-key column,
@@ -1407,7 +1470,51 @@ html[data-skin="signal"] .panel:has(.sequence) code {
   font-weight: 720;
   letter-spacing: .03em;
   background: var(--wh-code-bg);
+  border: 1px solid var(--wh-code-border);
+  box-shadow: var(--wh-code-shadow);
 }
+
+/* Command-token class — page-by-page semantic pass. This class marks
+   executable command phrases inside row bodies; seq-label remains only
+   the structural step name. No layout/stacking behavior belongs here. */
+code.command-token {
+  white-space: normal;
+}
+
+html[data-skin="signal"] code.command-token:not(.command-token--on) {
+  display: inline-block;
+  padding: .14rem .42rem;
+  color: var(--wh-code-text);
+  font-family: var(--font-mono);
+  font-size: var(--wh-sans-prose-size);
+  font-weight: 720;
+  letter-spacing: .03em;
+  line-height: 1.25;
+  background: var(--wh-code-bg);
+  border: 1px solid var(--wh-code-border);
+  border-radius: 4px;
+  box-shadow: var(--wh-code-shadow);
+}
+
+html[data-skin="signal"] .operation-card .seq-body.mini-state-list {
+  width: min(100%, 28rem);
+}
+
+code.command-token--on,
+html[data-skin="signal"] code.command-token.command-token--on,
+html[data-skin="signal"] .operation-card code.command-token.command-token--on,
+html[data-skin="signal"] .panel:has(.sequence) code.command-token.command-token--on,
+html[data-skin="signal"] .reference-section code.command-token.command-token--on,
+html[data-skin="signal"] .reference-card code.command-token.command-token--on,
+html[data-skin="signal"] .flat-list code.command-token.command-token--on,
+html[data-skin="signal"] .flat-row code.command-token.command-token--on,
+html[data-skin="signal"] .ref-block code.command-token.command-token--on {
+  color: var(--wh-on-text);
+  background: var(--wh-on-bg);
+  border-color: var(--wh-on-border);
+  box-shadow: var(--wh-on-shadow);
+}
+
 
 /* Status strip — secondary register beneath the sequence. */
 html[data-skin="signal"] .status-strip {
@@ -1436,17 +1543,14 @@ html[data-skin="signal"] .status-strip .state-row > .state-value {
   text-align: left;
 }
 
-/* Status-strip label — promoted to rowkey-size so it reads in the same
-   register as reference-table keys and other row labels across the
-   page. The eyebrow-sm tier was rendering as whisper text against
-   the value beside it. */
+/* Status-strip label — Phase 2B.6: color moved from --wh-muted to
+   --wh-label to match the base .status-label rule. STATUS / MODE labels
+   inside operation cards must be readable, not faint. Size differential
+   (.70rem vs .76rem rowkey) preserves the hierarchy. */
 html[data-skin="signal"] .status-strip .status-label,
 html[data-skin="signal"] .operation-card .status-label,
 html[data-skin="signal"] .panel:has(.sequence) .status-label {
-  color: var(--wh-muted);
-  font-size: var(--wh-mono-rowkey-size);
-  font-weight: var(--wh-mono-rowkey-weight);
-  letter-spacing: var(--wh-mono-rowkey-track);
+  color: var(--wh-label);
   line-height: 1.2;
 }
 
@@ -1470,9 +1574,50 @@ html[data-skin="signal"] code {
   padding: .12em .45em;
   color: var(--wh-code-text);
   font-family: var(--font-mono);
-  font-size: .88em;
+  font-size: .88rem;
   background: var(--wh-code-bg);
+  border: 1px solid var(--wh-code-border);
   border-radius: 4px;
+  box-shadow: var(--wh-code-shadow);
+}
+
+/* Command payloads inside reference sections and flat-rows must render
+   with the same weight and chip treatment as operation-card and transmission
+   code. Without this, FORCE QUIT PUSHING. / EXECUTE: I am the source. /
+   I CROSS. / AT APEX. / SIGNAL COHERENT. etc fall through to the base
+   code rule and render as plain lightweight mono — indistinguishable from
+   row labels and weaker than comparable payloads in operation cards.
+   Row label = identifies the field (flat-row > strong, --wh-label bronze).
+   Command payload = executed content (code chip, weight 720, code-bg). */
+html[data-skin="signal"] .reference-section code,
+html[data-skin="signal"] .reference-card code,
+html[data-skin="signal"] .flat-list code,
+html[data-skin="signal"] .flat-row code,
+html[data-skin="signal"] .ref-block code {
+  font-weight: 720;
+  letter-spacing: .03em;
+  font-size: var(--wh-sans-prose-size);
+}
+
+/* Row-label command code — when the label itself is a command token
+   (SIGNAL COHERENT., BROADCAST ON., CONTROL ROOM OPEN.), keep the same
+   gray mono chip treatment used for command payloads. Layout work must not
+   flatten these into ordinary row labels. */
+html[data-skin="signal"] .flat-row > strong code,
+html[data-skin="signal"] .reference-section .flat-row > strong code,
+html[data-skin="signal"] .reference-card .flat-row > strong code {
+  display: inline-block;
+  padding: .12em .45em;
+  color: var(--wh-code-text);
+  font-family: var(--font-mono);
+  font-size: var(--wh-sans-prose-size);
+  font-weight: 720;
+  letter-spacing: .03em;
+  line-height: 1.25;
+  background: var(--wh-code-bg);
+  border: 1px solid var(--wh-code-border);
+  border-radius: 4px;
+  box-shadow: var(--wh-code-shadow);
 }
 
 /* Reference / documentation ------------------------------------------- */
@@ -1606,24 +1751,24 @@ html[data-skin="signal"] .reference-section .ref-block > .state-table + p {
   color: var(--wh-copy-strong);
 }
 
-/* Lead term — inline enumeration prefix. Reusable pattern for prose
-   that opens with a labelled list ("Signals: a, b, c, …"). Quieter
-   than <strong>, reads as a category prefix without becoming a
-   mid-paragraph bold lump. The colon is included via ::after so HTML
-   stays clean: <span class="lead-term">Signals</span>. */
+/* Lead term — structural mono prefix inside prose-like reference copy.
+   Used for single-line category labels such as "Signals" that should read
+   with the same grey/bronze mono hierarchy as section labels, not as body copy. */
 html[data-skin="signal"] .lead-term {
+  display: inline-block;
   font-family: var(--font-mono);
-  font-size: var(--wh-mono-eyebrow-sm-size);
-  font-weight: var(--wh-mono-eyebrow-sm-weight);
-  letter-spacing: var(--wh-mono-eyebrow-sm-track);
+  font-size: var(--wh-mono-rowkey-size);
+  font-weight: var(--wh-mono-rowkey-weight);
+  line-height: 1.1;
+  letter-spacing: var(--wh-mono-rowkey-track);
   color: var(--wh-label);
   text-transform: uppercase;
-  margin-right: .5em;
+  margin-right: .55em;
 }
 html[data-skin="signal"] .lead-term::after {
   content: " /";
-  color: var(--wh-muted);
-  margin-left: .25em;
+  color: var(--wh-label);
+  margin-left: .18em;
 }
 
 html[data-skin="signal"] .reference-section .ref-block {
@@ -1672,10 +1817,10 @@ html[data-skin="signal"] .level-directory .state-label--link {
   color: var(--wh-copy-strong);
   font-family: var(--font-display);
   font-style: italic;
-  font-size: clamp(1.05rem, 2.2vw, 1.55rem);
+  font-size: clamp(1.28rem, 3vw, 1.85rem);
   font-weight: 600;
   letter-spacing: -.012em;
-  line-height: 1.12;
+  line-height: 1.08;
   text-transform: none;
   white-space: normal;
   overflow-wrap: normal;
@@ -1957,6 +2102,46 @@ html[data-skin="signal"] .flat-list--stack > .flat-row > span {
   margin-top: 2px;
 }
 
+/* Authorization command stack — Day 08 reference pattern. This deliberately
+   uses its own container instead of .flat-row so the authorization command
+   chip can sit under its label at normal readable width. */
+html[data-skin="signal"] .authorization-stack {
+  display: grid;
+  gap: 0;
+  margin-top: 2px;
+}
+
+html[data-skin="signal"] .authorization-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: 6px;
+  align-items: start;
+  padding: 14px 0 12px;
+  border-bottom: 1px solid var(--wh-row-divider-soft);
+}
+
+html[data-skin="signal"] .authorization-label {
+  justify-self: start;
+  color: var(--wh-label);
+  font-family: var(--font-mono);
+  font-size: var(--wh-mono-rowkey-size);
+  font-weight: var(--wh-mono-rowkey-weight);
+  letter-spacing: var(--wh-mono-rowkey-track);
+  line-height: 1.18;
+  text-transform: uppercase;
+}
+
+html[data-skin="signal"] .authorization-command,
+html[data-skin="signal"] code.authorization-command {
+  display: block;
+  justify-self: start;
+  width: max-content;
+  max-width: min(100%, 34rem);
+  white-space: normal;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
 /* Accordion item list — used inside .transmission-details within
    .seq-body. Single-column, full-width divider rows. Body font,
    normal weight — subordinate to the surrounding op card copy.
@@ -2130,7 +2315,7 @@ html[data-skin="signal"] .bank-cat-count {
   font-weight: var(--wh-mono-eyebrow-weight);
   letter-spacing: var(--wh-mono-eyebrow-track);
   text-transform: uppercase;
-  color: var(--wh-muted);
+  color: var(--wh-label);
 }
 
 /* Drilldown: head + back link. */
@@ -2258,7 +2443,7 @@ html[data-skin="signal"] .transmission-details > summary {
   list-style: none;
   cursor: pointer;
   font-family: var(--font-mono);
-  font-size: var(--wh-mono-eyebrow-size);
+  font-size: var(--wh-mono-rowkey-size);
   font-weight: var(--wh-mono-eyebrow-weight);
   letter-spacing: var(--wh-mono-eyebrow-track);
   text-transform: uppercase;
@@ -2268,6 +2453,7 @@ html[data-skin="signal"] .transmission-details > summary {
   align-items: center;
   gap: var(--wh-space-2);
   user-select: none;
+  text-underline-offset: 3px;
 }
 html[data-skin="signal"] .transmission-details > summary::-webkit-details-marker {
   display: none;
@@ -2276,7 +2462,9 @@ html[data-skin="signal"] .transmission-details > summary::before {
   content: "▸";
   display: inline-block;
   transition: transform 0.15s ease;
-  font-size: 0.9em;
+  font-size: 1.1em;
+  line-height: 1;
+  opacity: .85;
 }
 html[data-skin="signal"] .transmission-details[open] > summary::before {
   transform: rotate(90deg);
@@ -2284,6 +2472,21 @@ html[data-skin="signal"] .transmission-details[open] > summary::before {
 html[data-skin="signal"] .transmission-toggle-close { display: none; }
 html[data-skin="signal"] .transmission-details[open] .transmission-toggle-open { display: none; }
 html[data-skin="signal"] .transmission-details[open] .transmission-toggle-close { display: inline; }
+
+/* Dark mode disclosure buttons (EXAMPLES, WHAT COUNTS, etc.) — warm
+   companion to the light-mode disclosure control. It stays a disclosure
+   button, not a command chip: same size/layout behavior, warmer surface. */
+html[data-skin="signal"][data-theme="dark"] .transmission-details > summary {
+  color: var(--wh-gold-hot);
+  border-color: rgba(232, 176, 86, .36);
+  background: linear-gradient(180deg, rgba(232, 176, 86, .14), rgba(116, 72, 18, .16));
+  box-shadow: inset 0 1px 0 rgba(255, 230, 170, .08);
+  text-shadow: none;
+}
+html[data-skin="signal"][data-theme="dark"] .transmission-details > summary::before {
+  color: var(--wh-gold-hot);
+  opacity: 1;
+}
 html[data-skin="signal"] .transmission {
   margin-top: var(--wh-space-4);
   padding-top: var(--wh-space-4);
@@ -2293,15 +2496,77 @@ html[data-skin="signal"] .transmission {
   gap: var(--wh-space-3);
 }
 html[data-skin="signal"] .transmission > * { margin: 0; }
+/* Re-apply heading breathing room — the margin:0 reset above kills
+   h3.transmission-heading's explicit margin. These overrides restore
+   the section-entry gap so headings read as structural breaks, not
+   as another flex child at 12px gap. */
+html[data-skin="signal"] .transmission > h3.transmission-heading {
+  margin-top: 20px;
+  margin-bottom: 4px;
+}
+/* When heading is the first child OR immediately after a kicker,
+   remove the extra top margin — the kicker itself provides context. */
+html[data-skin="signal"] .transmission > h3.transmission-heading:first-child {
+  margin-top: 0;
+  margin-bottom: 4px;
+}
+html[data-skin="signal"] .transmission > .transmission-kicker + h3.transmission-heading {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
 html[data-skin="signal"] .transmission-kicker {
+  /* Section tier: larger than body paragraphs (.82rem vs .92rem body),
+     clearly distinct from row-key labels (.70rem) and eyebrow metadata
+     (.68rem). Gold accent color separates structural section anchors from
+     bronze row-level metadata labels. Wider margin-top creates a real
+     section breath rather than a tight metadata bump. */
   font-family: var(--font-mono);
-  font-size: var(--wh-mono-eyebrow-size);
-  font-weight: var(--wh-mono-eyebrow-weight);
-  letter-spacing: var(--wh-mono-eyebrow-track);
+  font-size: var(--wh-mono-section-size);
+  font-weight: var(--wh-mono-section-weight);
+  letter-spacing: var(--wh-mono-section-track);
   text-transform: uppercase;
   color: var(--wh-accent);
-  margin-top: var(--wh-space-3);
+  margin-top: var(--wh-space-5);
 }
+html[data-skin="signal"] .transmission-kicker:first-child {
+  margin-top: 0;
+}
+
+/* Transmission heading — serif structural heading inside transcript
+   accordions. Applied via h3.transmission-heading.
+
+   Matches the global h3 scale (1.28–1.65rem clamp) so it reads
+   unambiguously as a heading above body copy. Same Cormorant italic
+   register as reference-section h3. Margin-top 24px (vs 36px for
+   page-level h3) so accordion sections breathe without full page gaps. */
+html[data-skin="signal"] h3.transmission-heading {
+  margin: 24px 0 6px;
+  color: var(--wh-heading);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.55rem, 2.8vw, 2.0rem);
+  font-weight: 680;
+  letter-spacing: -.014em;
+  line-height: 1.06;
+  text-transform: none;
+}
+
+/* First heading in a transmission — no extra top margin. */
+html[data-skin="signal"] h3.transmission-heading:first-child {
+  margin-top: 0;
+}
+
+/* Kicker immediately before heading — tighten gap so they read as a unit. */
+html[data-skin="signal"] .transmission-kicker + h3.transmission-heading {
+  margin-top: 6px;
+}
+
+/* Paragraph immediately following a transmission-heading should hug it. */
+html[data-skin="signal"] h3.transmission-heading + p,
+html[data-skin="signal"] h3.transmission-heading + .lede {
+  margin-top: 0;
+}
+
 html[data-skin="signal"] .transmission ul,
 html[data-skin="signal"] .transmission ol {
   padding-left: var(--wh-space-5);
@@ -2312,10 +2577,15 @@ html[data-skin="signal"] .transmission ol {
 html[data-skin="signal"] .transmission li { line-height: var(--wh-sans-body-line); }
 html[data-skin="signal"] .transmission code {
   font-family: var(--font-mono);
-  font-size: 0.92em;
-  background: var(--wh-row-divider-soft);
-  padding: 0.1em 0.4em;
-  border-radius: var(--wh-radius-sm);
+  font-size: var(--wh-sans-prose-size);
+  font-weight: 720;
+  letter-spacing: .03em;
+  background: var(--wh-code-bg);
+  color: var(--wh-code-text);
+  padding: .12em .42em;
+  border: 1px solid var(--wh-code-border);
+  border-radius: 4px;
+  box-shadow: var(--wh-code-shadow);
 }
 
 /* Footer -------------------------------------------------------------- */
@@ -2365,6 +2635,40 @@ html[data-skin="signal"] .footer {
     grid-column: 2;
   }
 
+  /* Section-level row stacks start at the narrow/tablet breakpoint, not
+     only at phone width. These opt-in containers are used when a whole
+     row group contains medium or long mono labels; the section must choose
+     one rhythm instead of mixing inline and stacked rows line by line. */
+  html[data-skin="signal"] .flat-list--mobile-stack > .flat-row,
+  html[data-skin="signal"] .reference-table--mobile-stack > .reference-row,
+  html[data-skin="signal"] .state-table--mobile-stack > .state-row,
+  html[data-skin="signal"] .reference-section .flat-list--mobile-stack > .flat-row,
+  html[data-skin="signal"] .reference-section .reference-table--mobile-stack > .reference-row,
+  html[data-skin="signal"] .reference-section .state-table--mobile-stack > .state-row,
+  html[data-skin="signal"] .reference-card .flat-list--mobile-stack > .flat-row,
+  html[data-skin="signal"] .reference-card .reference-table--mobile-stack > .reference-row,
+  html[data-skin="signal"] .reference-card .state-table--mobile-stack > .state-row {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+    row-gap: 4px;
+    align-items: start;
+  }
+
+  html[data-skin="signal"] .flat-list--mobile-stack > .flat-row > :first-child,
+  html[data-skin="signal"] .flat-list--mobile-stack > .flat-row > strong,
+  html[data-skin="signal"] .reference-table--mobile-stack > .reference-row > .reference-key,
+  html[data-skin="signal"] .state-table--mobile-stack > .state-row > .state-label {
+    margin-bottom: 1px;
+    white-space: normal;
+  }
+
+  html[data-skin="signal"] .flat-list--mobile-stack > .flat-row > :last-child,
+  html[data-skin="signal"] .reference-table--mobile-stack > .reference-row > .reference-value,
+  html[data-skin="signal"] .state-table--mobile-stack > .state-row > .state-value {
+    grid-column: 1;
+    justify-self: start;
+  }
+
   html[data-skin="signal"] .switch-add-row,
   html[data-skin="signal"] .command-input-row {
     grid-template-columns: 1fr;
@@ -2396,7 +2700,9 @@ html[data-skin="signal"] .footer {
     font-size: .92rem;
   }
 
-  /* Mobile panel markers — stronger section anchors without new colors. */
+  /* Mobile panel markers — stronger section anchors without new colors.
+     Phase 2B.6: letter-spacing reduced to .08em (was .11em — too wide
+     at the new .76rem rowkey size). */
   html[data-skin="signal"] .kicker,
   html[data-skin="signal"] .panel-kicker,
   html[data-skin="signal"] .panel > .kicker,
@@ -2410,7 +2716,7 @@ html[data-skin="signal"] .footer {
     color: var(--wh-accent);
     font-size: var(--wh-mono-rowkey-size);
     font-weight: var(--wh-mono-rowkey-weight);
-    letter-spacing: .11em;
+    letter-spacing: .08em;
     margin-bottom: 6px;
   }
 
@@ -2423,14 +2729,20 @@ html[data-skin="signal"] .footer {
     font-weight: 500;
   }
 
-  /* Mobile transmission summary — clearer disclosure control. */
+  /* Mobile transmission summary — clearer disclosure control.
+     Font-size raised to .76rem to match the desktop base (rowkey size).
+     Earlier the mobile summary was .72rem while desktop was .76rem —
+     an inversion. Mobile gets the button-style affordance for touch;
+     desktop gets the bare inline-flex — but both should use the same
+     font-role size. */
   html[data-skin="signal"] .transmission-details > summary {
     padding: 10px 12px;
     border: 1px solid var(--wh-button-border);
     border-radius: var(--wh-radius-sm);
     background: var(--wh-button-bg);
     min-height: 2.4rem;
-    font-size: .72rem;
+    font-size: var(--wh-mono-rowkey-size);
+    letter-spacing: var(--wh-mono-eyebrow-track);
   }
 
   html[data-skin="signal"] .media-block__caption {
@@ -2525,7 +2837,7 @@ html[data-skin="signal"] .footer {
     --wh-radius: 12px;
     --wh-radius-sm: 7px;
     --wh-row-index-col: 2.1ch;
-    --wh-row-label-col: minmax(4.9rem, 5.7rem);
+    --wh-row-label-col: minmax(5.8rem, 6.8rem);
     --wh-row-gap: 8px;
   }
 
@@ -2579,7 +2891,7 @@ html[data-skin="signal"] .footer {
   }
 
   html[data-skin="signal"] h3 {
-    font-size: clamp(1.16rem, 5.2vw, 1.42rem);
+    font-size: clamp(1.45rem, 5.8vw, 1.75rem);
     margin-top: 30px;
     margin-bottom: 6px;
   }
@@ -2619,29 +2931,38 @@ html[data-skin="signal"] .footer {
     padding: 13px 0 7px;
   }
 
-  /* Phone-tier mono labels — lifted to .68rem with stronger color so
-     they read as labels, not as decoration. One declaration set for
-     every mono-label selector at this breakpoint. */
+  /* Phone-tier mono labels — size and weight bumped for small-screen
+     readability. Color stays --wh-label (same as desktop base) so row
+     labels do not switch visual role at mobile. Accent color was here
+     previously but caused label/kicker confusion: kickers use --wh-accent
+     as navigation anchors; row labels are content identifiers and must
+     stay in the --wh-label tier at every breakpoint. */
   html[data-skin="signal"] .operation-card .seq-label,
   html[data-skin="signal"] .panel:has(.sequence) .seq-label,
   html[data-skin="signal"] .seq-label,
   html[data-skin="signal"] .state-label,
   html[data-skin="signal"] .reference-key,
-  html[data-skin="signal"] .status-label,
   html[data-skin="signal"] .flat-row > strong,
   html[data-skin="signal"] .ledger-item__meta {
-    font-size: .68rem;
+    font-size: .74rem;
     font-weight: 850;
-    letter-spacing: .1em;
-    color: var(--wh-accent);
+    letter-spacing: .07em;
+    color: var(--wh-label);
   }
 
-  /* Phone-tier kickers — slightly larger and tinted with the accent
-     so the section anchor reads at a glance. */
+  /* Phone-tier status label — holds readable at .68rem; color uses
+     --wh-label (not --wh-muted) consistent with the base rule change. */
+  html[data-skin="signal"] .status-label {
+    font-size: .68rem;
+    color: var(--wh-label);
+  }
+
+  /* Phone-tier kickers — Phase 2B.6: eyebrow base is now .72rem so
+     phone gets .74rem to maintain the phone-emphasis bump. */
   html[data-skin="signal"] .panel-kicker,
   html[data-skin="signal"] .kicker {
-    font-size: .72rem;
-    letter-spacing: .12em;
+    font-size: .74rem;
+    letter-spacing: .09em;
     color: var(--wh-accent);
   }
 
@@ -2689,11 +3010,101 @@ html[data-skin="signal"] .footer {
     margin-bottom: 20px;
   }
 
+  /* Mobile inline row geometry — default label/value rows stay inline,
+     but they share one fixed label track so values begin on the same
+     vertical line instead of forming a jagged max-content edge. Longer
+     rows still opt into stacking with .row--mobile-stack. */
   html[data-skin="signal"] .reference-section .flat-row,
   html[data-skin="signal"] .reference-section .reference-row,
-  html[data-skin="signal"] .reference-section .state-row {
-    grid-template-columns: minmax(6.8rem, .34fr) minmax(0, 1fr);
-    gap: 9px;
+  html[data-skin="signal"] .reference-section .state-row,
+  html[data-skin="signal"] .reference-card .flat-row,
+  html[data-skin="signal"] .reference-card .reference-row,
+  html[data-skin="signal"] .reference-card .state-row,
+  html[data-skin="signal"] .flat-row,
+  html[data-skin="signal"] .reference-row,
+  html[data-skin="signal"] .state-row {
+    grid-template-columns: var(--wh-row-label-col) minmax(0, 1fr);
+    column-gap: 10px;
+    row-gap: 2px;
+    align-items: baseline;
+  }
+
+  html[data-skin="signal"] .flat-row > strong,
+  html[data-skin="signal"] .reference-row > strong,
+  html[data-skin="signal"] .reference-row > .reference-key,
+  html[data-skin="signal"] .state-row > .state-label {
+    min-width: 0;
+    max-width: 100%;
+    margin-bottom: 0;
+    white-space: normal;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
+  }
+
+  /* Mobile section stack utilities — section/container-level only.
+     If one row in a section needs stacked mobile formatting, the whole
+     row group uses the same mobile rhythm. This prevents line-by-line
+     formatting changes while leaving short inline sections untouched. */
+  html[data-skin="signal"] .flat-list--mobile-stack > .flat-row,
+  html[data-skin="signal"] .reference-table--mobile-stack > .reference-row,
+  html[data-skin="signal"] .state-table--mobile-stack > .state-row,
+  html[data-skin="signal"] .reference-section .flat-list--mobile-stack > .flat-row,
+  html[data-skin="signal"] .reference-section .reference-table--mobile-stack > .reference-row,
+  html[data-skin="signal"] .reference-section .state-table--mobile-stack > .state-row,
+  html[data-skin="signal"] .reference-card .flat-list--mobile-stack > .flat-row,
+  html[data-skin="signal"] .reference-card .reference-table--mobile-stack > .reference-row,
+  html[data-skin="signal"] .reference-card .state-table--mobile-stack > .state-row {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+    row-gap: 4px;
+    align-items: start;
+  }
+
+  html[data-skin="signal"] .flat-list--mobile-stack > .flat-row > :first-child,
+  html[data-skin="signal"] .flat-list--mobile-stack > .flat-row > strong,
+  html[data-skin="signal"] .reference-table--mobile-stack > .reference-row > .reference-key,
+  html[data-skin="signal"] .state-table--mobile-stack > .state-row > .state-label {
+    margin-bottom: 1px;
+    white-space: normal;
+  }
+
+  html[data-skin="signal"] .flat-list--mobile-stack > .flat-row > :last-child,
+  html[data-skin="signal"] .reference-table--mobile-stack > .reference-row > .reference-value,
+  html[data-skin="signal"] .state-table--mobile-stack > .state-row > .state-value {
+    grid-column: 1;
+    justify-self: start;
+  }
+
+  /* Mobile stack utility — intentionally opt-in. This selector repeats the
+     row class so it outranks the default .flat-row / .reference-row /
+     .state-row mobile grid above. Without the compound selector, standalone
+     .flat-row.row--mobile-stack rows kept the inline two-column track. */
+  html[data-skin="signal"] .flat-row.row--mobile-stack,
+  html[data-skin="signal"] .reference-row.row--mobile-stack,
+  html[data-skin="signal"] .state-row.row--mobile-stack,
+  html[data-skin="signal"] .reference-section .flat-row.row--mobile-stack,
+  html[data-skin="signal"] .reference-section .reference-row.row--mobile-stack,
+  html[data-skin="signal"] .reference-section .state-row.row--mobile-stack,
+  html[data-skin="signal"] .reference-card .flat-row.row--mobile-stack,
+  html[data-skin="signal"] .reference-card .reference-row.row--mobile-stack,
+  html[data-skin="signal"] .reference-card .state-row.row--mobile-stack {
+    grid-template-columns: 1fr;
+    row-gap: 3px;
+    align-items: start;
+  }
+
+  html[data-skin="signal"] .row--mobile-stack > :first-child,
+  html[data-skin="signal"] .row--mobile-stack > strong,
+  html[data-skin="signal"] .row--mobile-stack > .reference-key,
+  html[data-skin="signal"] .row--mobile-stack > .state-label {
+    margin-bottom: 1px;
+    white-space: normal;
+  }
+
+  html[data-skin="signal"] .row--mobile-stack > :last-child {
+    grid-column: 1;
+    justify-self: start;
   }
 
   html[data-skin="signal"] .level-directory .state-row {
@@ -2740,19 +3151,54 @@ html[data-skin="signal"] .footer {
     width: 100%;
   }
 
-  /* Phone-tier transmission disclosure. */
+  /* Phone-tier transmission disclosure — font-size matches desktop base
+     (.76rem rowkey) so the same font-role reads consistently at all
+     widths. Touch affordance (border, bg, min-height) is phone-only. */
   html[data-skin="signal"] .transmission-details > summary {
     padding: 11px 14px;
     border: 1px solid var(--wh-button-border);
     border-radius: var(--wh-radius-sm);
     background: var(--wh-button-bg);
     min-height: 2.5rem;
-    font-size: .74rem;
-    letter-spacing: .12em;
+    font-size: var(--wh-mono-rowkey-size);
+    letter-spacing: var(--wh-mono-eyebrow-track);
+  }
+
+  /* Phone-tier transmission section labels — hold section tier above row
+     labels (.68rem at this breakpoint) while fitting phone reading scale.
+     margin-top preserved so sections still breathe on narrow viewports. */
+  html[data-skin="signal"] .transmission-kicker {
+    font-size: .78rem;
+    letter-spacing: .10em;
+    margin-top: var(--wh-space-4);
+  }
+  html[data-skin="signal"] .transmission-kicker:first-child {
+    margin-top: 0;
+  }
+
+  /* Phone-tier transmission heading — matches the 640px h3 scale. */
+  html[data-skin="signal"] h3.transmission-heading {
+    font-size: clamp(1.45rem, 5.8vw, 1.75rem);
+    margin-top: 20px;
+    margin-bottom: 4px;
+  }
+  html[data-skin="signal"] .transmission-kicker + h3.transmission-heading {
+    margin-top: 4px;
   }
 
   html[data-skin="signal"] .transmission-details[open] > summary {
     margin-bottom: var(--wh-space-3);
+  }
+
+  /* Accordion items — at 640px the surrounding seq-body gets
+     font-size: 1rem and --wh-copy-strong. Accordion items inherit
+     from the base rule (--wh-sans-value-size ≈ .94rem / --wh-copy)
+     which resolves smaller and quieter than the wrapping seq-body.
+     Lock to the same scale so "What counts" lists stay at parity
+     with the content that introduces them. */
+  html[data-skin="signal"] .accordion-list .accordion-item {
+    font-size: 1rem;
+    color: var(--wh-copy-strong);
   }
 
   html[data-skin="signal"] .media-block__caption {
@@ -2892,9 +3338,8 @@ html[data-skin="signal"] .footer {
     grid-column: 2;
   }
 
-  html[data-skin="signal"] .reference-section .flat-row,
-  html[data-skin="signal"] .reference-section .reference-row,
-  html[data-skin="signal"] .reference-section .state-row,
+  html[data-skin="signal"] .reference-section .row--mobile-stack,
+  html[data-skin="signal"] .reference-card .row--mobile-stack,
   html[data-skin="signal"] .level-directory .state-row {
     grid-template-columns: 1fr;
   }
@@ -2927,8 +3372,36 @@ html[data-skin="signal"] .footer {
 
   html[data-skin="signal"] .operation-card .seq-label,
   html[data-skin="signal"] .panel:has(.sequence) .seq-label {
-    color: var(--wh-accent);
+    color: var(--wh-label);
     font-weight: 850;
+  }
+
+  /* Smallest-phone stacked modifier spacing. Default short-label rows
+     remain two-column; only rows marked .row--mobile-stack collapse. */
+  html[data-skin="signal"] .row--mobile-stack > strong,
+  html[data-skin="signal"] .row--mobile-stack > .reference-key,
+  html[data-skin="signal"] .row--mobile-stack > .state-label {
+    margin-bottom: 3px;
+  }
+
+  /* Transmission heading floor — at 390px the clamp lower-bound
+     resolves to ~1.27rem which is only marginally above body 1rem.
+     Set a hard floor of 1.40rem so the heading always reads as a
+     distinct tier above body copy on the smallest phones. */
+  html[data-skin="signal"] h3.transmission-heading {
+    font-size: clamp(1.40rem, 5.8vw, 1.75rem);
+  }
+
+  /* Accordion items inside seq-body — at mobile the seq-body gets
+     font-size: 1rem and color: --wh-copy-strong. Accordion items
+     inherit from the base rule (--wh-sans-value-size / --wh-copy)
+     which at mobile resolves smaller and quieter than the surrounding
+     seq-body text. Lock accordion items to the same mobile scale so
+     the "What counts" list never reads as a subordinate tier to the
+     copy that introduces it. */
+  html[data-skin="signal"] .accordion-list .accordion-item {
+    font-size: 1rem;
+    color: var(--wh-copy-strong);
   }
 
   html[data-skin="signal"] .identity--hero {
