@@ -1691,25 +1691,24 @@ html[data-skin="signal"] .reference-section .ref-block > .state-table + p {
   color: var(--wh-copy-strong);
 }
 
-/* Lead term — inline enumeration prefix. Reusable pattern for prose
-   that opens with a labelled list ("Signals: a, b, c, …"). Quieter
-   than <strong>, reads as a category prefix without becoming a
-   mid-paragraph bold lump. The colon is included via ::after so HTML
-   stays clean: <span class="lead-term">Signals</span>. */
+/* Lead term — structural mono prefix inside prose-like reference copy.
+   Used for single-line category labels such as "Signals" that should read
+   with the same grey/bronze mono hierarchy as section labels, not as body copy. */
 html[data-skin="signal"] .lead-term {
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: inherit;
-  line-height: inherit;
-  letter-spacing: normal;
-  color: inherit;
-  text-transform: none;
-  margin-right: .2em;
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: var(--wh-mono-rowkey-size);
+  font-weight: var(--wh-mono-rowkey-weight);
+  line-height: 1.1;
+  letter-spacing: var(--wh-mono-rowkey-track);
+  color: var(--wh-label);
+  text-transform: uppercase;
+  margin-right: .55em;
 }
 html[data-skin="signal"] .lead-term::after {
-  content: ":";
-  color: inherit;
-  margin-left: 0;
+  content: " /";
+  color: var(--wh-label);
+  margin-left: .18em;
 }
 
 html[data-skin="signal"] .reference-section .ref-block {
