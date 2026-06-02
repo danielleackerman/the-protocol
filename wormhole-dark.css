@@ -245,11 +245,11 @@ html[data-skin="signal"][data-theme="dark"] {
   --wh-code-border:  rgba(232, 176, 86, .36);
   --wh-code-shadow:  inset 0 1px 0 rgba(255, 230, 170, .12), 0 0 0 1px rgba(0, 0, 0, .12);
 
-  /* ON-state command accents: distinct teal/green for switch/state ON only. */
-  --wh-on-bg:      linear-gradient(180deg, rgba(45, 212, 191, .22), rgba(20, 184, 166, .12));
-  --wh-on-text:    #5eead4;
-  --wh-on-border:  rgba(94, 234, 212, .36);
-  --wh-on-shadow:  inset 0 1px 0 rgba(204, 251, 241, .12), 0 0 0 1px rgba(0, 0, 0, .12);
+  /* ON-state command accents: flat green/teal switch signal, not a button. */
+  --wh-on-bg:      rgba(22, 101, 52, .18);
+  --wh-on-text:    #86efac;
+  --wh-on-border:  rgba(74, 222, 128, .38);
+  --wh-on-shadow:  none;
 
   --wh-button-border: rgba(214, 209, 198, .30);
   --wh-button-bg:     linear-gradient(180deg, rgba(214, 209, 198, .10), rgba(214, 209, 198, .035));
@@ -1269,18 +1269,18 @@ html[data-skin="signal"] .command-token--on {
   display: inline-block;
   width: max-content;
   max-width: 100%;
-  border-radius: 4px;
-  padding: .12rem .38rem;
+  border-radius: 2px;
+  padding: .08rem .26rem;
   color: var(--wh-on-text);
   font-family: var(--font-mono);
-  font-size: var(--wh-sans-prose-size);
-  font-weight: 820;
+  font-size: .74rem;
+  font-weight: 850;
   letter-spacing: .05em;
   line-height: 1.15;
   text-transform: uppercase;
   background: var(--wh-on-bg);
   border: 1px solid var(--wh-on-border);
-  box-shadow: var(--wh-on-shadow);
+  box-shadow: none;
 }
 
 /* When the active state lives in a row that has its own row-key column,
@@ -1479,6 +1479,25 @@ html[data-skin="signal"] .panel:has(.sequence) code {
    the structural step name. No layout/stacking behavior belongs here. */
 code.command-token {
   white-space: normal;
+}
+
+html[data-skin="signal"] code.command-token:not(.command-token--on) {
+  display: inline-block;
+  padding: .14rem .42rem;
+  color: var(--wh-code-text);
+  font-family: var(--font-mono);
+  font-size: var(--wh-sans-prose-size);
+  font-weight: 720;
+  letter-spacing: .03em;
+  line-height: 1.25;
+  background: var(--wh-code-bg);
+  border: 1px solid var(--wh-code-border);
+  border-radius: 4px;
+  box-shadow: var(--wh-code-shadow);
+}
+
+html[data-skin="signal"] .operation-card .seq-body.mini-state-list {
+  width: min(100%, 28rem);
 }
 
 code.command-token--on {
