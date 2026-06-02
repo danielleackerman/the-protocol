@@ -235,6 +235,10 @@ html[data-skin="signal"][data-theme="dark"] {
   --wh-chip-bg:      rgba(214, 209, 198, .075);
   --wh-code-bg:      rgba(0, 0, 0, .22);
   --wh-code-text:    #f7f1e7;
+  --wh-command-chip-bg:     linear-gradient(180deg, rgba(214, 185, 116, .18), rgba(138, 101, 39, .10));
+  --wh-command-chip-border: rgba(214, 185, 116, .34);
+  --wh-command-chip-text:   #f0d9a4;
+  --wh-command-chip-shadow: inset 0 1px 0 rgba(247, 241, 231, .08), 0 0 0 1px rgba(0, 0, 0, .10);
 
   --wh-button-border: rgba(214, 209, 198, .30);
   --wh-button-bg:     linear-gradient(180deg, rgba(214, 209, 198, .10), rgba(214, 209, 198, .035));
@@ -1496,11 +1500,13 @@ html[data-skin="signal"] .panel:has(.sequence) .status-value {
 html[data-skin="signal"] code {
   display: inline-block;
   padding: .12em .45em;
-  color: var(--wh-code-text);
+  color: var(--wh-command-chip-text);
   font-family: var(--font-mono);
   font-size: .88rem;
-  background: var(--wh-code-bg);
+  background: var(--wh-command-chip-bg);
+  border: 1px solid var(--wh-command-chip-border);
   border-radius: 4px;
+  box-shadow: var(--wh-command-chip-shadow);
 }
 
 /* Command payloads inside reference sections and flat-rows must render
@@ -1521,23 +1527,30 @@ html[data-skin="signal"] .ref-block code {
   font-size: var(--wh-sans-prose-size);
 }
 
-/* Row-label command code — when the label itself is a command token
-   (SIGNAL COHERENT., BROADCAST ON., CONTROL ROOM OPEN.), keep the same
-   gray mono chip treatment used for command payloads. Layout work must not
-   flatten these into ordinary row labels. */
+/* Protected command-token chip — when the label itself is executable
+   command text (SIGNAL COHERENT., BROADCAST ON., CONTROL ROOM OPEN.), it
+   must remain an eye-catching mono chip. Row layout work must not flatten
+   these into ordinary labels or reclassify them as buttons. */
+html[data-skin="signal"] .command-token,
 html[data-skin="signal"] .flat-row > strong code,
 html[data-skin="signal"] .reference-section .flat-row > strong code,
 html[data-skin="signal"] .reference-card .flat-row > strong code {
   display: inline-block;
-  padding: .12em .45em;
-  color: var(--wh-code-text);
+  width: fit-content;
+  max-width: 100%;
+  padding: .13em .48em;
+  color: var(--wh-command-chip-text);
   font-family: var(--font-mono);
   font-size: var(--wh-sans-prose-size);
-  font-weight: 720;
-  letter-spacing: .03em;
+  font-style: normal;
+  font-weight: 780;
+  letter-spacing: .045em;
   line-height: 1.25;
-  background: var(--wh-code-bg);
+  text-transform: uppercase;
+  background: var(--wh-command-chip-bg);
+  border: 1px solid var(--wh-command-chip-border);
   border-radius: 4px;
+  box-shadow: var(--wh-command-chip-shadow);
 }
 
 /* Reference / documentation ------------------------------------------- */
@@ -1737,10 +1750,10 @@ html[data-skin="signal"] .level-directory .state-label--link {
   color: var(--wh-copy-strong);
   font-family: var(--font-display);
   font-style: italic;
-  font-size: clamp(1.05rem, 2.2vw, 1.55rem);
-  font-weight: 600;
-  letter-spacing: -.012em;
-  line-height: 1.12;
+  font-size: clamp(1.18rem, 2.6vw, 1.72rem);
+  font-weight: 650;
+  letter-spacing: -.014em;
+  line-height: 1.10;
   text-transform: none;
   white-space: normal;
   overflow-wrap: normal;
@@ -1748,8 +1761,10 @@ html[data-skin="signal"] .level-directory .state-label--link {
 }
 
 html[data-skin="signal"] .level-directory .utility-link--open {
+  display: inline-flex;
   justify-self: end;
   min-width: 4.35rem;
+  white-space: nowrap;
 }
 
 html[data-skin="signal"] .level-directory .state-row:hover {
