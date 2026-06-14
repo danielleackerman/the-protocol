@@ -1,0 +1,1260 @@
+diff --git a/age-reversal.html b/age-reversal.html
+index 14bee8c..3982d0f 100644
+--- a/age-reversal.html
++++ b/age-reversal.html
+@@ -16,8 +16,7 @@
+       <a href="overview.html">Overview</a>
+       <a href="index.html">Daily Run</a>
+       <a href="levels.html">Levels</a>
+-      <a href="wormhole.html">Wormhole</a>
+-      <a href="age-reversal.html" class="is-active">Age Reversal</a>
++      <a href="sequences.html" class="is-active">Sequences</a>
+       <a href="custom.html">Custom</a>
+       <a href="bank.html">Bank</a>
+     </nav>
+@@ -30,8 +29,7 @@
+     <a href="overview.html">Overview</a>
+     <a href="index.html">Daily Run</a>
+     <a href="levels.html">Levels</a>
+-    <a href="wormhole.html">Wormhole</a>
+-    <a href="age-reversal.html" class="is-active">Age Reversal</a>
++    <a href="sequences.html" class="is-active">Sequences</a>
+     <a href="custom.html">Custom</a>
+     <a href="bank.html">Bank</a>
+   </nav>
+diff --git a/age-reversal/level-01.html b/age-reversal/level-01.html
+index f548cbb..ae39d9a 100644
+--- a/age-reversal/level-01.html
++++ b/age-reversal/level-01.html
+@@ -16,8 +16,7 @@
+       <a href="../overview.html">Overview</a>
+       <a href="../index.html">Daily Run</a>
+       <a href="../levels.html">Levels</a>
+-      <a href="../wormhole.html">Wormhole</a>
+-      <a href="../age-reversal.html" class="is-active">Age Reversal</a>
++      <a href="../sequences.html" class="is-active">Sequences</a>
+       <a href="../custom.html">Custom</a>
+       <a href="../bank.html">Bank</a>
+     </nav>
+@@ -30,8 +29,7 @@
+     <a href="../overview.html">Overview</a>
+     <a href="../index.html">Daily Run</a>
+     <a href="../levels.html">Levels</a>
+-    <a href="../wormhole.html">Wormhole</a>
+-    <a href="../age-reversal.html" class="is-active">Age Reversal</a>
++    <a href="../sequences.html" class="is-active">Sequences</a>
+     <a href="../custom.html">Custom</a>
+     <a href="../bank.html">Bank</a>
+   </nav>
+diff --git a/age-reversal/level-02.html b/age-reversal/level-02.html
+index 88fa476..ea3ca14 100644
+--- a/age-reversal/level-02.html
++++ b/age-reversal/level-02.html
+@@ -16,8 +16,7 @@
+       <a href="../overview.html">Overview</a>
+       <a href="../index.html">Daily Run</a>
+       <a href="../levels.html">Levels</a>
+-      <a href="../wormhole.html">Wormhole</a>
+-      <a href="../age-reversal.html" class="is-active">Age Reversal</a>
++      <a href="../sequences.html" class="is-active">Sequences</a>
+       <a href="../custom.html">Custom</a>
+       <a href="../bank.html">Bank</a>
+     </nav>
+@@ -30,8 +29,7 @@
+     <a href="../overview.html">Overview</a>
+     <a href="../index.html">Daily Run</a>
+     <a href="../levels.html">Levels</a>
+-    <a href="../wormhole.html">Wormhole</a>
+-    <a href="../age-reversal.html" class="is-active">Age Reversal</a>
++    <a href="../sequences.html" class="is-active">Sequences</a>
+     <a href="../custom.html">Custom</a>
+     <a href="../bank.html">Bank</a>
+   </nav>
+diff --git a/age-reversal/level-03.html b/age-reversal/level-03.html
+index 8637c64..573311c 100644
+--- a/age-reversal/level-03.html
++++ b/age-reversal/level-03.html
+@@ -16,8 +16,7 @@
+       <a href="../overview.html">Overview</a>
+       <a href="../index.html">Daily Run</a>
+       <a href="../levels.html">Levels</a>
+-      <a href="../wormhole.html">Wormhole</a>
+-      <a href="../age-reversal.html" class="is-active">Age Reversal</a>
++      <a href="../sequences.html" class="is-active">Sequences</a>
+       <a href="../custom.html">Custom</a>
+       <a href="../bank.html">Bank</a>
+     </nav>
+@@ -30,8 +29,7 @@
+     <a href="../overview.html">Overview</a>
+     <a href="../index.html">Daily Run</a>
+     <a href="../levels.html">Levels</a>
+-    <a href="../wormhole.html">Wormhole</a>
+-    <a href="../age-reversal.html" class="is-active">Age Reversal</a>
++    <a href="../sequences.html" class="is-active">Sequences</a>
+     <a href="../custom.html">Custom</a>
+     <a href="../bank.html">Bank</a>
+   </nav>
+diff --git a/age-reversal/level-04.html b/age-reversal/level-04.html
+index 85df52a..087e698 100644
+--- a/age-reversal/level-04.html
++++ b/age-reversal/level-04.html
+@@ -16,8 +16,7 @@
+       <a href="../overview.html">Overview</a>
+       <a href="../index.html">Daily Run</a>
+       <a href="../levels.html">Levels</a>
+-      <a href="../wormhole.html">Wormhole</a>
+-      <a href="../age-reversal.html" class="is-active">Age Reversal</a>
++      <a href="../sequences.html" class="is-active">Sequences</a>
+       <a href="../custom.html">Custom</a>
+       <a href="../bank.html">Bank</a>
+     </nav>
+@@ -30,8 +29,7 @@
+     <a href="../overview.html">Overview</a>
+     <a href="../index.html">Daily Run</a>
+     <a href="../levels.html">Levels</a>
+-    <a href="../wormhole.html">Wormhole</a>
+-    <a href="../age-reversal.html" class="is-active">Age Reversal</a>
++    <a href="../sequences.html" class="is-active">Sequences</a>
+     <a href="../custom.html">Custom</a>
+     <a href="../bank.html">Bank</a>
+   </nav>
+diff --git a/age-reversal/level-05.html b/age-reversal/level-05.html
+index 46ef728..a5e9279 100644
+--- a/age-reversal/level-05.html
++++ b/age-reversal/level-05.html
+@@ -16,8 +16,7 @@
+       <a href="../overview.html">Overview</a>
+       <a href="../index.html">Daily Run</a>
+       <a href="../levels.html">Levels</a>
+-      <a href="../wormhole.html">Wormhole</a>
+-      <a href="../age-reversal.html" class="is-active">Age Reversal</a>
++      <a href="../sequences.html" class="is-active">Sequences</a>
+       <a href="../custom.html">Custom</a>
+       <a href="../bank.html">Bank</a>
+     </nav>
+@@ -30,8 +29,7 @@
+     <a href="../overview.html">Overview</a>
+     <a href="../index.html">Daily Run</a>
+     <a href="../levels.html">Levels</a>
+-    <a href="../wormhole.html">Wormhole</a>
+-    <a href="../age-reversal.html" class="is-active">Age Reversal</a>
++    <a href="../sequences.html" class="is-active">Sequences</a>
+     <a href="../custom.html">Custom</a>
+     <a href="../bank.html">Bank</a>
+   </nav>
+diff --git a/avatar-override.html b/avatar-override.html
+new file mode 100644
+index 0000000..6a68549
+--- /dev/null
++++ b/avatar-override.html
+@@ -0,0 +1,205 @@
++<!doctype html>
++<html data-skin="signal" lang="en" data-theme="dark">
++<head>
++  <meta charset="utf-8" />
++  <meta name="viewport" content="width=device-width, initial-scale=1" />
++  <meta name="description" content="Avatar Override — deactivate the old file, install the new avatar, calibrate, enter the code, lock." />
++  <title>Avatar Override · The Protocol</title>
++  <link rel="stylesheet" href="wormhole-dark.css" />
++  <link rel="stylesheet" href="wormhole-light.css" />
++<script>(function(){try{var t=localStorage.getItem("the-protocol.theme");if(t==="dark"||t==="light"){document.documentElement.setAttribute("data-theme",t);}}catch(e){}})();</script></head>
++<body>
++<header class="site-header">
++  <div class="site-header__inner">
++    <a class="brand" href="index.html">The Protocol</a>
++    <nav class="site-nav" aria-label="Primary navigation">
++      <a href="overview.html">Overview</a>
++      <a href="index.html">Daily Run</a>
++      <a href="levels.html">Levels</a>
++      <a href="sequences.html" class="is-active">Sequences</a>
++      <a href="custom.html">Custom</a>
++      <a href="bank.html">Bank</a>
++    </nav>
++    <div class="header-actions">
++      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle theme">☼</button>
++      <button class="mobile-menu-toggle" type="button" data-mobile-menu-toggle aria-expanded="false" aria-label="Open menu">Menu</button>
++    </div>
++  </div>
++  <nav class="mobile-nav" data-mobile-nav aria-label="Mobile navigation">
++    <a href="overview.html">Overview</a>
++    <a href="index.html">Daily Run</a>
++    <a href="levels.html">Levels</a>
++    <a href="sequences.html" class="is-active">Sequences</a>
++    <a href="custom.html">Custom</a>
++    <a href="bank.html">Bank</a>
++  </nav>
++</header>
++<main class="shell">
++  <section class="identity">
++    <p class="kicker">Identity Override Sequence</p>
++    <h1>Avatar Override</h1>
++    <p class="lede">Bending reality does not take time. The lag is not the work — it is the wrong avatar. This run goes into the back end, deactivates the old file, installs the new avatar, calibrates the channels, enters the code, and locks. One pass. Breathe as source.</p>
++    <div class="page-actions"><a href="sequences.html">Sequences</a><a href="index.html">Daily Run</a></div>
++  </section>
++
++  <section class="panel danger-card">
++    <p class="panel-kicker is-danger">Deactivation</p>
++    <h2>Clear the Old File</h2>
++    <p class="lede">Swipe once. Speak each line out loud or in your mind. Then shake your hands — the system is cleared.</p>
++    <div class="sequence" aria-label="Deactivation switches">
++      <div class="seq-row">
++        <span class="seq-index">01</span>
++        <span class="seq-label">Switches</span>
++        <span class="seq-body mini-state-list">
++          <span class="mini-state"><span>Scarcity</span><b class="state-off">OFF</b></span>
++          <span class="mini-state"><span>Delay</span><b class="state-off">OFF</b></span>
++          <span class="mini-state"><span>Waiting</span><b class="state-off">OFF</b></span>
++          <span class="mini-state"><span>Overthinking</span><b class="state-off">OFF</b></span>
++          <span class="mini-state"><span>Proof Seeking</span><b class="state-off">OFF</b></span>
++          <span class="mini-state"><span>Slow Linear Growth</span><b class="state-off">OFF</b></span>
++          <span class="mini-state"><span>Old Self</span><b class="state-off">DELETED</b></span>
++        </span>
++      </div>
++    </div>
++    <div class="status-strip">
++      <div class="status-row"><span class="status-label">Action</span><span class="status-value status-complete">Shake hands</span></div>
++      <div class="status-row"><span class="status-label">Status</span><span class="status-value status-complete">System cleared</span></div>
++    </div>
++  </section>
++
++  <section class="panel operation-card">
++    <p class="panel-kicker">Activation</p>
++    <h2>Install the New Avatar</h2>
++    <p class="lede">Swipe again. Speak each line ON. Then pull energy into your chest with your hand and issue the install command.</p>
++    <div class="sequence" aria-label="Activation switches">
++      <div class="seq-row">
++        <span class="seq-index">01</span>
++        <span class="seq-label">Switches</span>
++        <span class="seq-body mini-state-list">
++          <span class="mini-state"><span>Daily Abundance</span><b class="state-on">ON</b></span>
++          <span class="mini-state"><span>Beauty</span><b class="state-on">ON</b></span>
++          <span class="mini-state"><span>Magnetism</span><b class="state-on">ON</b></span>
++          <span class="mini-state"><span>Ease</span><b class="state-on">ON</b></span>
++          <span class="mini-state"><span>Speed</span><b class="state-on">ON</b></span>
++          <span class="mini-state"><span>Visibility</span><b class="state-on">ON</b></span>
++          <span class="mini-state"><span>Money Overflow</span><b class="state-on">ON</b></span>
++          <span class="mini-state"><span>Receiving</span><b class="state-on">ON</b></span>
++          <span class="mini-state"><span>Source Code</span><b class="state-on">ON</b></span>
++          <span class="mini-state"><span>Field Code</span><b class="state-on">ON</b></span>
++        </span>
++      </div>
++      <div class="seq-row">
++        <span class="seq-index">02</span>
++        <span class="seq-label">Law</span>
++        <span class="seq-body"><span><code class="command-token command-token--on state-on">Everything always escalates quickly in my favor.</code></span></span>
++      </div>
++      <div class="seq-row">
++        <span class="seq-index">03</span>
++        <span class="seq-label">Install</span>
++        <span class="seq-body"><span>Pull energy into your chest with your hand.</span><span><code class="command-token command-token--on state-on">INSTALL · INSTALL · INSTALL</code></span></span>
++      </div>
++    </div>
++    <div class="status-strip">
++      <div class="status-row"><span class="status-label">Status</span><span class="status-value status-active">New avatar installing</span></div>
++    </div>
++  </section>
++
++  <section class="panel operation-card">
++    <p class="panel-kicker">Calibration</p>
++    <h2>Two-Finger Calibration</h2>
++    <p class="lede">Two fingers. Touch each point and confirm the channel. Then breathe as source.</p>
++    <div class="sequence" aria-label="Calibration points">
++      <div class="seq-row">
++        <span class="seq-index">01</span>
++        <span class="seq-label">Forehead</span>
++        <span class="seq-body"><span><code class="command-token command-token--on state-on">Identity selected</code></span></span>
++      </div>
++      <div class="seq-row">
++        <span class="seq-index">02</span>
++        <span class="seq-label">Throat</span>
++        <span class="seq-body"><span><code class="command-token command-token--on state-on">Expression selected</code></span></span>
++      </div>
++      <div class="seq-row">
++        <span class="seq-index">03</span>
++        <span class="seq-label">Heart</span>
++        <span class="seq-body"><span><code class="command-token command-token--on state-on">Reality selected</code></span></span>
++      </div>
++      <div class="seq-row">
++        <span class="seq-index">04</span>
++        <span class="seq-label">Stomach</span>
++        <span class="seq-body"><span><code class="command-token command-token--on state-on">Embodiment selected</code></span></span>
++      </div>
++      <div class="seq-row">
++        <span class="seq-index">05</span>
++        <span class="seq-label">Shoulders</span>
++        <span class="seq-body"><span><code class="command-token command-token--on state-on">Support selected</code></span></span>
++      </div>
++      <div class="seq-row">
++        <span class="seq-index">06</span>
++        <span class="seq-label">Hips</span>
++        <span class="seq-body"><span><code class="command-token command-token--on state-on">Movement selected</code></span></span>
++      </div>
++      <div class="seq-row">
++        <span class="seq-index">07</span>
++        <span class="seq-label">Knees</span>
++        <span class="seq-body"><span><code class="command-token command-token--on state-on">Timeline selected</code></span></span>
++      </div>
++    </div>
++  </section>
++
++  <section class="panel operation-card">
++    <p class="panel-kicker">Code Entry</p>
++    <h2>Enter 739</h2>
++    <p class="lede">With your fingers, write <code class="command-token">739</code> in the air. Speak the meaning of each digit as you draw it.</p>
++    <div class="sequence" aria-label="Code 739">
++      <div class="seq-row">
++        <span class="seq-index">7</span>
++        <span class="seq-label">Expansion</span>
++        <span class="seq-body"><span><code class="command-token">I allow expansion.</code></span></span>
++      </div>
++      <div class="seq-row">
++        <span class="seq-index">3</span>
++        <span class="seq-label">Multiply</span>
++        <span class="seq-body"><span><code class="command-token">I multiply.</code></span></span>
++      </div>
++      <div class="seq-row">
++        <span class="seq-index">9</span>
++        <span class="seq-label">Normalize</span>
++        <span class="seq-body"><span><code class="command-token">I normalize impossible outcomes.</code></span></span>
++      </div>
++    </div>
++  </section>
++
++  <section class="panel">
++    <p class="panel-kicker">The Lock</p>
++    <h2>Lock the Avatar</h2>
++    <p class="lede">Final lock. Take your hand and turn an invisible key — like you are locking something in place.</p>
++    <div class="page-actions"><span><code class="command-token command-token--on state-on">LOCK · LOCK · LOCK</code></span></div>
++    <div class="status-strip">
++      <div class="status-row"><span class="status-label">Status</span><span class="status-value status-complete">Avatar locked</span></div>
++      <div class="status-row"><span class="status-label">Operator</span><span class="status-value status-active">Running the new file</span></div>
++    </div>
++  </section>
++
++  <section class="reference-section">
++    <p class="panel-kicker">Structure</p>
++    <h2>How the Override Runs</h2>
++    <div class="ref-block">
++      <p>Avatar Override treats the lag between command and result as a sign that the wrong avatar is running — not as proof the result is far away. The run does not add effort. It deactivates the old file at the source, installs the new one, calibrates the channels that carry it, enters the code that normalizes the impossible, and locks. One pass, in order.</p>
++    </div>
++    <div class="ref-block">
++      <h3>Movements</h3>
++      <div class="flat-list">
++        <div class="flat-row"><strong>Deactivation</strong><span>Switch off scarcity, delay, waiting, overthinking, proof seeking, slow growth. Delete the old self.</span></div>
++        <div class="flat-row"><strong>Activation</strong><span>Switch on the new defaults and issue the install command into the chest.</span></div>
++        <div class="flat-row"><strong>Calibration</strong><span>Touch each point and confirm the channel it carries.</span></div>
++        <div class="flat-row"><strong>Code Entry</strong><span>Write 739 — allow expansion, multiply, normalize impossible outcomes.</span></div>
++        <div class="flat-row"><strong>The Lock</strong><span>Turn the key. The new avatar is sealed and running.</span></div>
++      </div>
++    </div>
++  </section>
++</main>
++<footer class="footer">The Protocol</footer>
++<script src="wormhole-lab.js"></script>
++</body>
++</html>
+diff --git a/bank.html b/bank.html
+index e094fca..105aff5 100644
+--- a/bank.html
++++ b/bank.html
+@@ -10,8 +10,7 @@
+       <a href="overview.html">Overview</a>
+       <a href="index.html">Daily Run</a>
+       <a href="levels.html">Levels</a>
+-      <a href="wormhole.html">Wormhole</a>
+-      <a href="age-reversal.html">Age Reversal</a>
++      <a href="sequences.html">Sequences</a>
+       <a href="custom.html">Custom</a>
+       <a href="bank.html" class="is-active">Bank</a>
+     </nav>
+@@ -24,8 +23,7 @@
+     <a href="overview.html">Overview</a>
+     <a href="index.html">Daily Run</a>
+     <a href="levels.html">Levels</a>
+-    <a href="wormhole.html">Wormhole</a>
+-    <a href="age-reversal.html">Age Reversal</a>
++    <a href="sequences.html">Sequences</a>
+     <a href="custom.html">Custom</a>
+     <a href="bank.html" class="is-active">Bank</a>
+   </nav>
+diff --git a/custom.html b/custom.html
+index c6ac903..9564256 100644
+--- a/custom.html
++++ b/custom.html
+@@ -10,8 +10,7 @@
+       <a href="overview.html">Overview</a>
+       <a href="index.html">Daily Run</a>
+       <a href="levels.html">Levels</a>
+-      <a href="wormhole.html">Wormhole</a>
+-      <a href="age-reversal.html">Age Reversal</a>
++      <a href="sequences.html">Sequences</a>
+       <a href="custom.html" class="is-active">Custom</a>
+       <a href="bank.html">Bank</a>
+     </nav>
+@@ -24,8 +23,7 @@
+     <a href="overview.html">Overview</a>
+     <a href="index.html">Daily Run</a>
+     <a href="levels.html">Levels</a>
+-    <a href="wormhole.html">Wormhole</a>
+-    <a href="age-reversal.html">Age Reversal</a>
++    <a href="sequences.html">Sequences</a>
+     <a href="custom.html" class="is-active">Custom</a>
+     <a href="bank.html">Bank</a>
+   </nav>
+diff --git a/index.html b/index.html
+index 5cf9a9c..57f1d40 100644
+--- a/index.html
++++ b/index.html
+@@ -16,8 +16,7 @@
+       <a href="overview.html">Overview</a>
+       <a href="index.html" class="is-active">Daily Run</a>
+       <a href="levels.html">Levels</a>
+-      <a href="wormhole.html">Wormhole</a>
+-      <a href="age-reversal.html">Age Reversal</a>
++      <a href="sequences.html">Sequences</a>
+       <a href="custom.html">Custom</a>
+       <a href="bank.html">Bank</a>
+     </nav>
+@@ -30,8 +29,7 @@
+     <a href="overview.html">Overview</a>
+     <a href="index.html" class="is-active">Daily Run</a>
+     <a href="levels.html">Levels</a>
+-    <a href="wormhole.html">Wormhole</a>
+-    <a href="age-reversal.html">Age Reversal</a>
++    <a href="sequences.html">Sequences</a>
+     <a href="custom.html">Custom</a>
+     <a href="bank.html">Bank</a>
+   </nav>
+@@ -45,6 +43,7 @@
+       <button id="copyQuickStart" class="button" type="button">Copy Run</button>
+       <a class="button button--hot" href="levels/level-03-firewall.html">Breach</a>
+       <a class="button" href="levels.html">Levels</a>
++      <a class="button" href="wormhole.html">Wormhole</a>
+     </div>
+   </section>
+ 
+@@ -122,6 +121,7 @@
+       <div class="page-actions">
+         <a href="overview.html">Overview</a>
+         <a href="levels.html">Levels</a>
++        <a href="sequences.html">Sequences</a>
+         <a href="custom.html">Custom</a>
+         <a href="levels/level-10-seal.html">Seal</a>
+       </div>
+diff --git a/levels.html b/levels.html
+index 7fed5ce..71b8adb 100644
+--- a/levels.html
++++ b/levels.html
+@@ -8,8 +8,7 @@
+       <a href="overview.html">Overview</a>
+       <a href="index.html">Daily Run</a>
+       <a href="levels.html" class="is-active">Levels</a>
+-      <a href="wormhole.html">Wormhole</a>
+-      <a href="age-reversal.html">Age Reversal</a>
++      <a href="sequences.html">Sequences</a>
+       <a href="custom.html">Custom</a>
+       <a href="bank.html">Bank</a>
+     </nav>
+@@ -22,8 +21,7 @@
+     <a href="overview.html">Overview</a>
+     <a href="index.html">Daily Run</a>
+     <a href="levels.html" class="is-active">Levels</a>
+-    <a href="wormhole.html">Wormhole</a>
+-    <a href="age-reversal.html">Age Reversal</a>
++    <a href="sequences.html">Sequences</a>
+     <a href="custom.html">Custom</a>
+     <a href="bank.html">Bank</a>
+   </nav>
+diff --git a/levels/level-01-gateway.html b/levels/level-01-gateway.html
+index 0f5f008..d2dc962 100644
+--- a/levels/level-01-gateway.html
++++ b/levels/level-01-gateway.html
+@@ -16,8 +16,7 @@
+       <a href="../overview.html">Overview</a>
+       <a href="../index.html">Daily Run</a>
+       <a href="../levels.html" class="is-active">Levels</a>
+-      <a href="../wormhole.html">Wormhole</a>
+-      <a href="../age-reversal.html">Age Reversal</a>
++      <a href="../sequences.html">Sequences</a>
+       <a href="../custom.html">Custom</a>
+       <a href="../bank.html">Bank</a>
+     </nav>
+@@ -30,8 +29,7 @@
+     <a href="../overview.html">Overview</a>
+     <a href="../index.html">Daily Run</a>
+     <a href="../levels.html" class="is-active">Levels</a>
+-    <a href="../wormhole.html">Wormhole</a>
+-    <a href="../age-reversal.html">Age Reversal</a>
++    <a href="../sequences.html">Sequences</a>
+     <a href="../custom.html">Custom</a>
+     <a href="../bank.html">Bank</a>
+   </nav>
+diff --git a/levels/level-02-daily-operation.html b/levels/level-02-daily-operation.html
+index cb0dc6c..f14188a 100644
+--- a/levels/level-02-daily-operation.html
++++ b/levels/level-02-daily-operation.html
+@@ -16,8 +16,7 @@
+       <a href="../overview.html">Overview</a>
+       <a href="../index.html">Daily Run</a>
+       <a href="../levels.html" class="is-active">Levels</a>
+-      <a href="../wormhole.html">Wormhole</a>
+-      <a href="../age-reversal.html">Age Reversal</a>
++      <a href="../sequences.html">Sequences</a>
+       <a href="../custom.html">Custom</a>
+       <a href="../bank.html">Bank</a>
+     </nav>
+@@ -30,8 +29,7 @@
+     <a href="../overview.html">Overview</a>
+     <a href="../index.html">Daily Run</a>
+     <a href="../levels.html" class="is-active">Levels</a>
+-    <a href="../wormhole.html">Wormhole</a>
+-    <a href="../age-reversal.html">Age Reversal</a>
++    <a href="../sequences.html">Sequences</a>
+     <a href="../custom.html">Custom</a>
+     <a href="../bank.html">Bank</a>
+   </nav>
+diff --git a/levels/level-03-firewall.html b/levels/level-03-firewall.html
+index 3be0978..13f1c0b 100644
+--- a/levels/level-03-firewall.html
++++ b/levels/level-03-firewall.html
+@@ -16,8 +16,7 @@
+       <a href="../overview.html">Overview</a>
+       <a href="../index.html">Daily Run</a>
+       <a href="../levels.html" class="is-active">Levels</a>
+-      <a href="../wormhole.html">Wormhole</a>
+-      <a href="../age-reversal.html">Age Reversal</a>
++      <a href="../sequences.html">Sequences</a>
+       <a href="../custom.html">Custom</a>
+       <a href="../bank.html">Bank</a>
+     </nav>
+@@ -30,8 +29,7 @@
+     <a href="../overview.html">Overview</a>
+     <a href="../index.html">Daily Run</a>
+     <a href="../levels.html" class="is-active">Levels</a>
+-    <a href="../wormhole.html">Wormhole</a>
+-    <a href="../age-reversal.html">Age Reversal</a>
++    <a href="../sequences.html">Sequences</a>
+     <a href="../custom.html">Custom</a>
+     <a href="../bank.html">Bank</a>
+   </nav>
+diff --git a/levels/level-04-switchboard.html b/levels/level-04-switchboard.html
+index 5785bd9..652a4c7 100644
+--- a/levels/level-04-switchboard.html
++++ b/levels/level-04-switchboard.html
+@@ -16,8 +16,7 @@
+       <a href="../overview.html">Overview</a>
+       <a href="../index.html">Daily Run</a>
+       <a href="../levels.html" class="is-active">Levels</a>
+-      <a href="../wormhole.html">Wormhole</a>
+-      <a href="../age-reversal.html">Age Reversal</a>
++      <a href="../sequences.html">Sequences</a>
+       <a href="../custom.html">Custom</a>
+       <a href="../bank.html">Bank</a>
+     </nav>
+@@ -30,8 +29,7 @@
+     <a href="../overview.html">Overview</a>
+     <a href="../index.html">Daily Run</a>
+     <a href="../levels.html" class="is-active">Levels</a>
+-    <a href="../wormhole.html">Wormhole</a>
+-    <a href="../age-reversal.html">Age Reversal</a>
++    <a href="../sequences.html">Sequences</a>
+     <a href="../custom.html">Custom</a>
+     <a href="../bank.html">Bank</a>
+   </nav>
+diff --git a/levels/level-05-command-line.html b/levels/level-05-command-line.html
+index 9c7e8a8..0255947 100644
+--- a/levels/level-05-command-line.html
++++ b/levels/level-05-command-line.html
+@@ -16,8 +16,7 @@
+       <a href="../overview.html">Overview</a>
+       <a href="../index.html">Daily Run</a>
+       <a href="../levels.html" class="is-active">Levels</a>
+-      <a href="../wormhole.html">Wormhole</a>
+-      <a href="../age-reversal.html">Age Reversal</a>
++      <a href="../sequences.html">Sequences</a>
+       <a href="../custom.html">Custom</a>
+       <a href="../bank.html">Bank</a>
+     </nav>
+@@ -30,8 +29,7 @@
+     <a href="../overview.html">Overview</a>
+     <a href="../index.html">Daily Run</a>
+     <a href="../levels.html" class="is-active">Levels</a>
+-    <a href="../wormhole.html">Wormhole</a>
+-    <a href="../age-reversal.html">Age Reversal</a>
++    <a href="../sequences.html">Sequences</a>
+     <a href="../custom.html">Custom</a>
+     <a href="../bank.html">Bank</a>
+   </nav>
+diff --git a/levels/level-06-save-state.html b/levels/level-06-save-state.html
+index 4bef42e..496dfb4 100644
+--- a/levels/level-06-save-state.html
++++ b/levels/level-06-save-state.html
+@@ -16,8 +16,7 @@
+       <a href="../overview.html">Overview</a>
+       <a href="../index.html">Daily Run</a>
+       <a href="../levels.html" class="is-active">Levels</a>
+-      <a href="../wormhole.html">Wormhole</a>
+-      <a href="../age-reversal.html">Age Reversal</a>
++      <a href="../sequences.html">Sequences</a>
+       <a href="../custom.html">Custom</a>
+       <a href="../bank.html">Bank</a>
+     </nav>
+@@ -30,8 +29,7 @@
+     <a href="../overview.html">Overview</a>
+     <a href="../index.html">Daily Run</a>
+     <a href="../levels.html" class="is-active">Levels</a>
+-    <a href="../wormhole.html">Wormhole</a>
+-    <a href="../age-reversal.html">Age Reversal</a>
++    <a href="../sequences.html">Sequences</a>
+     <a href="../custom.html">Custom</a>
+     <a href="../bank.html">Bank</a>
+   </nav>
+diff --git a/levels/level-07-location.html b/levels/level-07-location.html
+index 4687ac3..5fc73e0 100644
+--- a/levels/level-07-location.html
++++ b/levels/level-07-location.html
+@@ -16,8 +16,7 @@
+       <a href="../overview.html">Overview</a>
+       <a href="../index.html">Daily Run</a>
+       <a href="../levels.html" class="is-active">Levels</a>
+-      <a href="../wormhole.html">Wormhole</a>
+-      <a href="../age-reversal.html">Age Reversal</a>
++      <a href="../sequences.html">Sequences</a>
+       <a href="../custom.html">Custom</a>
+       <a href="../bank.html">Bank</a>
+     </nav>
+@@ -30,8 +29,7 @@
+     <a href="../overview.html">Overview</a>
+     <a href="../index.html">Daily Run</a>
+     <a href="../levels.html" class="is-active">Levels</a>
+-    <a href="../wormhole.html">Wormhole</a>
+-    <a href="../age-reversal.html">Age Reversal</a>
++    <a href="../sequences.html">Sequences</a>
+     <a href="../custom.html">Custom</a>
+     <a href="../bank.html">Bank</a>
+   </nav>
+diff --git a/levels/level-08-sovereign-codex.html b/levels/level-08-sovereign-codex.html
+index 3d120c3..95748e9 100644
+--- a/levels/level-08-sovereign-codex.html
++++ b/levels/level-08-sovereign-codex.html
+@@ -16,8 +16,7 @@
+       <a href="../overview.html">Overview</a>
+       <a href="../index.html">Daily Run</a>
+       <a href="../levels.html" class="is-active">Levels</a>
+-      <a href="../wormhole.html">Wormhole</a>
+-      <a href="../age-reversal.html">Age Reversal</a>
++      <a href="../sequences.html">Sequences</a>
+       <a href="../custom.html">Custom</a>
+       <a href="../bank.html">Bank</a>
+     </nav>
+@@ -30,8 +29,7 @@
+     <a href="../overview.html">Overview</a>
+     <a href="../index.html">Daily Run</a>
+     <a href="../levels.html" class="is-active">Levels</a>
+-    <a href="../wormhole.html">Wormhole</a>
+-    <a href="../age-reversal.html">Age Reversal</a>
++    <a href="../sequences.html">Sequences</a>
+     <a href="../custom.html">Custom</a>
+     <a href="../bank.html">Bank</a>
+   </nav>
+diff --git a/levels/level-09-render-confirmation.html b/levels/level-09-render-confirmation.html
+index 21c76f9..e43c838 100644
+--- a/levels/level-09-render-confirmation.html
++++ b/levels/level-09-render-confirmation.html
+@@ -16,8 +16,7 @@
+       <a href="../overview.html">Overview</a>
+       <a href="../index.html">Daily Run</a>
+       <a href="../levels.html" class="is-active">Levels</a>
+-      <a href="../wormhole.html">Wormhole</a>
+-      <a href="../age-reversal.html">Age Reversal</a>
++      <a href="../sequences.html">Sequences</a>
+       <a href="../custom.html">Custom</a>
+       <a href="../bank.html">Bank</a>
+     </nav>
+@@ -30,8 +29,7 @@
+     <a href="../overview.html">Overview</a>
+     <a href="../index.html">Daily Run</a>
+     <a href="../levels.html" class="is-active">Levels</a>
+-    <a href="../wormhole.html">Wormhole</a>
+-    <a href="../age-reversal.html">Age Reversal</a>
++    <a href="../sequences.html">Sequences</a>
+     <a href="../custom.html">Custom</a>
+     <a href="../bank.html">Bank</a>
+   </nav>
+diff --git a/levels/level-10-seal.html b/levels/level-10-seal.html
+index 4fd30b0..a624ea3 100644
+--- a/levels/level-10-seal.html
++++ b/levels/level-10-seal.html
+@@ -16,8 +16,7 @@
+       <a href="../overview.html">Overview</a>
+       <a href="../index.html">Daily Run</a>
+       <a href="../levels.html" class="is-active">Levels</a>
+-      <a href="../wormhole.html">Wormhole</a>
+-      <a href="../age-reversal.html">Age Reversal</a>
++      <a href="../sequences.html">Sequences</a>
+       <a href="../custom.html">Custom</a>
+       <a href="../bank.html">Bank</a>
+     </nav>
+@@ -30,8 +29,7 @@
+     <a href="../overview.html">Overview</a>
+     <a href="../index.html">Daily Run</a>
+     <a href="../levels.html" class="is-active">Levels</a>
+-    <a href="../wormhole.html">Wormhole</a>
+-    <a href="../age-reversal.html">Age Reversal</a>
++    <a href="../sequences.html">Sequences</a>
+     <a href="../custom.html">Custom</a>
+     <a href="../bank.html">Bank</a>
+   </nav>
+diff --git a/overview.html b/overview.html
+index e6925fd..130e971 100644
+--- a/overview.html
++++ b/overview.html
+@@ -10,8 +10,7 @@
+       <a href="overview.html" class="is-active">Overview</a>
+       <a href="index.html">Daily Run</a>
+       <a href="levels.html">Levels</a>
+-      <a href="wormhole.html">Wormhole</a>
+-      <a href="age-reversal.html">Age Reversal</a>
++      <a href="sequences.html">Sequences</a>
+       <a href="custom.html">Custom</a>
+       <a href="bank.html">Bank</a>
+     </nav>
+@@ -24,8 +23,7 @@
+     <a href="overview.html" class="is-active">Overview</a>
+     <a href="index.html">Daily Run</a>
+     <a href="levels.html">Levels</a>
+-    <a href="wormhole.html">Wormhole</a>
+-    <a href="age-reversal.html">Age Reversal</a>
++    <a href="sequences.html">Sequences</a>
+     <a href="custom.html">Custom</a>
+     <a href="bank.html">Bank</a>
+   </nav>
+diff --git a/sequences.html b/sequences.html
+new file mode 100644
+index 0000000..0747d21
+--- /dev/null
++++ b/sequences.html
+@@ -0,0 +1,74 @@
++<!doctype html>
++<html data-skin="signal" lang="en" data-theme="dark">
++<head>
++  <meta charset="utf-8" />
++  <meta name="viewport" content="width=device-width, initial-scale=1" />
++  <meta name="description" content="Sequences — standalone runs and multi-day installs. Each one installs a specific file." />
++  <title>Sequences · The Protocol</title>
++  <link rel="stylesheet" href="wormhole-dark.css" />
++  <link rel="stylesheet" href="wormhole-light.css" />
++<script>(function(){try{var t=localStorage.getItem("the-protocol.theme");if(t==="dark"||t==="light"){document.documentElement.setAttribute("data-theme",t);}}catch(e){}})();</script></head>
++<body>
++<header class="site-header">
++  <div class="site-header__inner">
++    <a class="brand" href="index.html">The Protocol</a>
++    <nav class="site-nav" aria-label="Primary navigation">
++      <a href="overview.html">Overview</a>
++      <a href="index.html">Daily Run</a>
++      <a href="levels.html">Levels</a>
++      <a href="sequences.html" class="is-active">Sequences</a>
++      <a href="custom.html">Custom</a>
++      <a href="bank.html">Bank</a>
++    </nav>
++    <div class="header-actions">
++      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle theme">☼</button>
++      <button class="mobile-menu-toggle" type="button" data-mobile-menu-toggle aria-expanded="false" aria-label="Open menu">Menu</button>
++    </div>
++  </div>
++  <nav class="mobile-nav" data-mobile-nav aria-label="Mobile navigation">
++    <a href="overview.html">Overview</a>
++    <a href="index.html">Daily Run</a>
++    <a href="levels.html">Levels</a>
++    <a href="sequences.html" class="is-active">Sequences</a>
++    <a href="custom.html">Custom</a>
++    <a href="bank.html">Bank</a>
++  </nav>
++</header>
++<main class="shell">
++  <section class="identity">
++    <p class="kicker">Index</p>
++    <h1>Sequences</h1>
++    <p class="lede">Standalone runs and multi-day installs. The Daily Run holds the system; each sequence installs one specific file. Run any of them on its own.</p>
++    <div class="page-actions"><a href="index.html">Daily Run</a></div>
++  </section>
++
++  <section class="panel state-card">
++    <p class="panel-kicker">Sequence Map</p>
++    <h2>Sequences</h2>
++    <div class="state-table level-directory">
++      <div class="state-row"><a class="state-label state-label--link" href="avatar-override.html">Avatar Override / Identity Reinstall</a><a class="utility-link utility-link--open" href="avatar-override.html" aria-label="Open Avatar Override">Open</a></div>
++      <div class="state-row"><a class="state-label state-label--link" href="wormhole.html">Wormhole / 14-Day Identity Install</a><a class="utility-link utility-link--open" href="wormhole.html" aria-label="Open Wormhole">Open</a></div>
++      <div class="state-row"><a class="state-label state-label--link" href="age-reversal.html">Age Reversal / Five-Level Reversal</a><a class="utility-link utility-link--open" href="age-reversal.html" aria-label="Open Age Reversal">Open</a></div>
++    </div>
++  </section>
++
++  <section class="reference-section">
++    <p class="panel-kicker">How these run</p>
++    <h2>Standalone Installs</h2>
++    <div class="ref-block">
++      <p>A sequence is a self-contained run that installs one file and seals it. Some are a single pass; some run over days or levels. Run them apart from the Daily Run, or fold one in when the moment calls for it. New sequences are added here one at a time.</p>
++    </div>
++    <div class="ref-block">
++      <h3>Current Sequences</h3>
++      <div class="flat-list">
++        <div class="flat-row"><strong>Avatar Override</strong><span>One-pass identity reinstall — deactivate, install, calibrate, code, lock.</span></div>
++        <div class="flat-row"><strong>Wormhole</strong><span>Fourteen days. Synchronized identity install, entry to seal.</span></div>
++        <div class="flat-row"><strong>Age Reversal</strong><span>Five levels. Identity-layer reversal, run in order.</span></div>
++      </div>
++    </div>
++  </section>
++</main>
++<footer class="footer">The Protocol</footer>
++<script src="wormhole-lab.js"></script>
++</body>
++</html>
+diff --git a/wormhole-dark.css b/wormhole-dark.css
+index b64f37d..ecaa919 100644
+--- a/wormhole-dark.css
++++ b/wormhole-dark.css
+@@ -251,6 +251,13 @@ html[data-skin="signal"][data-theme="dark"] {
+   --wh-on-border:  rgba(74, 222, 128, .38);
+   --wh-on-shadow:  none;
+ 
++  /* OFF-state command accents: deactivated/clay switch signal — the
++     inverse of the ON tokens, for switches being turned off or deleted. */
++  --wh-off-bg:     rgba(126, 110, 104, .16);
++  --wh-off-text:   #b9aaa4;
++  --wh-off-border: rgba(126, 110, 104, .40);
++  --wh-off-shadow: none;
++
+   --wh-button-border: rgba(214, 209, 198, .30);
+   --wh-button-bg:     linear-gradient(180deg, rgba(214, 209, 198, .10), rgba(214, 209, 198, .035));
+   --wh-hot-button-bg: linear-gradient(180deg, rgba(126, 110, 104, .11), rgba(126, 110, 104, .035));
+@@ -1283,6 +1290,28 @@ html[data-skin="signal"] .command-token--on {
+   box-shadow: none;
+ }
+ 
++/* Semantic state — deactivated states. The OFF/DELETED analogue of
++   .state-on: a flat clay chip so a switch turned off reads as off at a
++   glance, without competing with the teal ON signal. */
++html[data-skin="signal"] .state-off,
++html[data-skin="signal"] .command-token--off {
++  display: inline-block;
++  width: max-content;
++  max-width: 100%;
++  border-radius: 2px;
++  padding: .08rem .26rem;
++  color: var(--wh-off-text);
++  font-family: var(--font-mono);
++  font-size: .74rem;
++  font-weight: 850;
++  letter-spacing: .05em;
++  line-height: 1.15;
++  text-transform: uppercase;
++  background: var(--wh-off-bg);
++  border: 1px solid var(--wh-off-border);
++  box-shadow: var(--wh-off-shadow);
++}
++
+ /* When the active state lives in a row that has its own row-key column,
+    give the ROW a hairline left-accent so a live row reads as live at a
+    glance — without color hue. This signal is only meaningful where state
+diff --git a/wormhole-light.css b/wormhole-light.css
+index f743caf..a944bb5 100644
+--- a/wormhole-light.css
++++ b/wormhole-light.css
+@@ -89,6 +89,13 @@ html[data-skin="signal"][data-theme="light"] {
+   --wh-on-border:  rgba(21, 128, 61, .34);
+   --wh-on-shadow:  none;
+ 
++  /* OFF-state command accents: deactivated/clay switch signal — the
++     inverse of the ON tokens, for switches being turned off or deleted. */
++  --wh-off-bg:     rgba(154, 132, 122, .12);
++  --wh-off-text:   #6b5750;
++  --wh-off-border: rgba(154, 132, 122, .42);
++  --wh-off-shadow: none;
++
+   --wh-button-border: rgba(111, 103, 90, .24);
+   --wh-button-bg:     linear-gradient(180deg, rgba(255, 255, 255, .78), rgba(198, 191, 177, .12));
+   --wh-hot-button-bg: linear-gradient(180deg, rgba(154, 132, 122, .12), rgba(154, 132, 122, .040));
+diff --git a/wormhole.html b/wormhole.html
+index aab1cbd..fce38ce 100644
+--- a/wormhole.html
++++ b/wormhole.html
+@@ -16,8 +16,7 @@
+       <a href="overview.html">Overview</a>
+       <a href="index.html">Daily Run</a>
+       <a href="levels.html">Levels</a>
+-      <a href="wormhole.html" class="is-active">Wormhole</a>
+-      <a href="age-reversal.html">Age Reversal</a>
++      <a href="sequences.html" class="is-active">Sequences</a>
+       <a href="custom.html">Custom</a>
+       <a href="bank.html">Bank</a>
+     </nav>
+@@ -30,8 +29,7 @@
+     <a href="overview.html">Overview</a>
+     <a href="index.html">Daily Run</a>
+     <a href="levels.html">Levels</a>
+-    <a href="wormhole.html" class="is-active">Wormhole</a>
+-    <a href="age-reversal.html">Age Reversal</a>
++    <a href="sequences.html" class="is-active">Sequences</a>
+     <a href="custom.html">Custom</a>
+     <a href="bank.html">Bank</a>
+   </nav>
+diff --git a/wormhole/day-01.html b/wormhole/day-01.html
+index f79253c..e0c3c9f 100644
+--- a/wormhole/day-01.html
++++ b/wormhole/day-01.html
+@@ -16,8 +16,7 @@
+       <a href="../overview.html">Overview</a>
+       <a href="../index.html">Daily Run</a>
+       <a href="../levels.html">Levels</a>
+-      <a href="../wormhole.html" class="is-active">Wormhole</a>
+-      <a href="../age-reversal.html">Age Reversal</a>
++      <a href="../sequences.html" class="is-active">Sequences</a>
+       <a href="../custom.html">Custom</a>
+       <a href="../bank.html">Bank</a>
+     </nav>
+@@ -30,8 +29,7 @@
+     <a href="../overview.html">Overview</a>
+     <a href="../index.html">Daily Run</a>
+     <a href="../levels.html">Levels</a>
+-    <a href="../wormhole.html" class="is-active">Wormhole</a>
+-    <a href="../age-reversal.html">Age Reversal</a>
++    <a href="../sequences.html" class="is-active">Sequences</a>
+     <a href="../custom.html">Custom</a>
+     <a href="../bank.html">Bank</a>
+   </nav>
+diff --git a/wormhole/day-02.html b/wormhole/day-02.html
+index 8a569ff..4651df7 100644
+--- a/wormhole/day-02.html
++++ b/wormhole/day-02.html
+@@ -16,8 +16,7 @@
+       <a href="../overview.html">Overview</a>
+       <a href="../index.html">Daily Run</a>
+       <a href="../levels.html">Levels</a>
+-      <a href="../wormhole.html" class="is-active">Wormhole</a>
+-      <a href="../age-reversal.html">Age Reversal</a>
++      <a href="../sequences.html" class="is-active">Sequences</a>
+       <a href="../custom.html">Custom</a>
+       <a href="../bank.html">Bank</a>
+     </nav>
+@@ -30,8 +29,7 @@
+     <a href="../overview.html">Overview</a>
+     <a href="../index.html">Daily Run</a>
+     <a href="../levels.html">Levels</a>
+-    <a href="../wormhole.html" class="is-active">Wormhole</a>
+-    <a href="../age-reversal.html">Age Reversal</a>
++    <a href="../sequences.html" class="is-active">Sequences</a>
+     <a href="../custom.html">Custom</a>
+     <a href="../bank.html">Bank</a>
+   </nav>
+diff --git a/wormhole/day-03.html b/wormhole/day-03.html
+index 53c303b..9e6d637 100644
+--- a/wormhole/day-03.html
++++ b/wormhole/day-03.html
+@@ -16,8 +16,7 @@
+       <a href="../overview.html">Overview</a>
+       <a href="../index.html">Daily Run</a>
+       <a href="../levels.html">Levels</a>
+-      <a href="../wormhole.html" class="is-active">Wormhole</a>
+-      <a href="../age-reversal.html">Age Reversal</a>
++      <a href="../sequences.html" class="is-active">Sequences</a>
+       <a href="../custom.html">Custom</a>
+       <a href="../bank.html">Bank</a>
+     </nav>
+@@ -30,8 +29,7 @@
+     <a href="../overview.html">Overview</a>
+     <a href="../index.html">Daily Run</a>
+     <a href="../levels.html">Levels</a>
+-    <a href="../wormhole.html" class="is-active">Wormhole</a>
+-    <a href="../age-reversal.html">Age Reversal</a>
++    <a href="../sequences.html" class="is-active">Sequences</a>
+     <a href="../custom.html">Custom</a>
+     <a href="../bank.html">Bank</a>
+   </nav>
+diff --git a/wormhole/day-04.html b/wormhole/day-04.html
+index bb255d1..9454478 100644
+--- a/wormhole/day-04.html
++++ b/wormhole/day-04.html
+@@ -16,8 +16,7 @@
+       <a href="../overview.html">Overview</a>
+       <a href="../index.html">Daily Run</a>
+       <a href="../levels.html">Levels</a>
+-      <a href="../wormhole.html" class="is-active">Wormhole</a>
+-      <a href="../age-reversal.html">Age Reversal</a>
++      <a href="../sequences.html" class="is-active">Sequences</a>
+       <a href="../custom.html">Custom</a>
+       <a href="../bank.html">Bank</a>
+     </nav>
+@@ -30,8 +29,7 @@
+     <a href="../overview.html">Overview</a>
+     <a href="../index.html">Daily Run</a>
+     <a href="../levels.html">Levels</a>
+-    <a href="../wormhole.html" class="is-active">Wormhole</a>
+-    <a href="../age-reversal.html">Age Reversal</a>
++    <a href="../sequences.html" class="is-active">Sequences</a>
+     <a href="../custom.html">Custom</a>
+     <a href="../bank.html">Bank</a>
+   </nav>
+diff --git a/wormhole/day-05.html b/wormhole/day-05.html
+index f9b5232..94a40f2 100644
+--- a/wormhole/day-05.html
++++ b/wormhole/day-05.html
+@@ -16,8 +16,7 @@
+       <a href="../overview.html">Overview</a>
+       <a href="../index.html">Daily Run</a>
+       <a href="../levels.html">Levels</a>
+-      <a href="../wormhole.html" class="is-active">Wormhole</a>
+-      <a href="../age-reversal.html">Age Reversal</a>
++      <a href="../sequences.html" class="is-active">Sequences</a>
+       <a href="../custom.html">Custom</a>
+       <a href="../bank.html">Bank</a>
+     </nav>
+@@ -30,8 +29,7 @@
+     <a href="../overview.html">Overview</a>
+     <a href="../index.html">Daily Run</a>
+     <a href="../levels.html">Levels</a>
+-    <a href="../wormhole.html" class="is-active">Wormhole</a>
+-    <a href="../age-reversal.html">Age Reversal</a>
++    <a href="../sequences.html" class="is-active">Sequences</a>
+     <a href="../custom.html">Custom</a>
+     <a href="../bank.html">Bank</a>
+   </nav>
+diff --git a/wormhole/day-06.html b/wormhole/day-06.html
+index 64950ae..0f7a6f9 100644
+--- a/wormhole/day-06.html
++++ b/wormhole/day-06.html
+@@ -16,8 +16,7 @@
+       <a href="../overview.html">Overview</a>
+       <a href="../index.html">Daily Run</a>
+       <a href="../levels.html">Levels</a>
+-      <a href="../wormhole.html" class="is-active">Wormhole</a>
+-      <a href="../age-reversal.html">Age Reversal</a>
++      <a href="../sequences.html" class="is-active">Sequences</a>
+       <a href="../custom.html">Custom</a>
+       <a href="../bank.html">Bank</a>
+     </nav>
+@@ -30,8 +29,7 @@
+     <a href="../overview.html">Overview</a>
+     <a href="../index.html">Daily Run</a>
+     <a href="../levels.html">Levels</a>
+-    <a href="../wormhole.html" class="is-active">Wormhole</a>
+-    <a href="../age-reversal.html">Age Reversal</a>
++    <a href="../sequences.html" class="is-active">Sequences</a>
+     <a href="../custom.html">Custom</a>
+     <a href="../bank.html">Bank</a>
+   </nav>
+diff --git a/wormhole/day-07.html b/wormhole/day-07.html
+index 92535e1..173fd67 100644
+--- a/wormhole/day-07.html
++++ b/wormhole/day-07.html
+@@ -16,8 +16,7 @@
+       <a href="../overview.html">Overview</a>
+       <a href="../index.html">Daily Run</a>
+       <a href="../levels.html">Levels</a>
+-      <a href="../wormhole.html" class="is-active">Wormhole</a>
+-      <a href="../age-reversal.html">Age Reversal</a>
++      <a href="../sequences.html" class="is-active">Sequences</a>
+       <a href="../custom.html">Custom</a>
+       <a href="../bank.html">Bank</a>
+     </nav>
+@@ -30,8 +29,7 @@
+     <a href="../overview.html">Overview</a>
+     <a href="../index.html">Daily Run</a>
+     <a href="../levels.html">Levels</a>
+-    <a href="../wormhole.html" class="is-active">Wormhole</a>
+-    <a href="../age-reversal.html">Age Reversal</a>
++    <a href="../sequences.html" class="is-active">Sequences</a>
+     <a href="../custom.html">Custom</a>
+     <a href="../bank.html">Bank</a>
+   </nav>
+diff --git a/wormhole/day-08.html b/wormhole/day-08.html
+index 8ff9ba0..0ba2fe1 100644
+--- a/wormhole/day-08.html
++++ b/wormhole/day-08.html
+@@ -16,8 +16,7 @@
+       <a href="../overview.html">Overview</a>
+       <a href="../index.html">Daily Run</a>
+       <a href="../levels.html">Levels</a>
+-      <a href="../wormhole.html" class="is-active">Wormhole</a>
+-      <a href="../age-reversal.html">Age Reversal</a>
++      <a href="../sequences.html" class="is-active">Sequences</a>
+       <a href="../custom.html">Custom</a>
+       <a href="../bank.html">Bank</a>
+     </nav>
+@@ -30,8 +29,7 @@
+     <a href="../overview.html">Overview</a>
+     <a href="../index.html">Daily Run</a>
+     <a href="../levels.html">Levels</a>
+-    <a href="../wormhole.html" class="is-active">Wormhole</a>
+-    <a href="../age-reversal.html">Age Reversal</a>
++    <a href="../sequences.html" class="is-active">Sequences</a>
+     <a href="../custom.html">Custom</a>
+     <a href="../bank.html">Bank</a>
+   </nav>
+diff --git a/wormhole/day-09.html b/wormhole/day-09.html
+index 8387040..a903e17 100644
+--- a/wormhole/day-09.html
++++ b/wormhole/day-09.html
+@@ -16,8 +16,7 @@
+       <a href="../overview.html">Overview</a>
+       <a href="../index.html">Daily Run</a>
+       <a href="../levels.html">Levels</a>
+-      <a href="../wormhole.html" class="is-active">Wormhole</a>
+-      <a href="../age-reversal.html">Age Reversal</a>
++      <a href="../sequences.html" class="is-active">Sequences</a>
+       <a href="../custom.html">Custom</a>
+       <a href="../bank.html">Bank</a>
+     </nav>
+@@ -30,8 +29,7 @@
+     <a href="../overview.html">Overview</a>
+     <a href="../index.html">Daily Run</a>
+     <a href="../levels.html">Levels</a>
+-    <a href="../wormhole.html" class="is-active">Wormhole</a>
+-    <a href="../age-reversal.html">Age Reversal</a>
++    <a href="../sequences.html" class="is-active">Sequences</a>
+     <a href="../custom.html">Custom</a>
+     <a href="../bank.html">Bank</a>
+   </nav>
+diff --git a/wormhole/day-10.html b/wormhole/day-10.html
+index 58524c0..64ed357 100644
+--- a/wormhole/day-10.html
++++ b/wormhole/day-10.html
+@@ -16,8 +16,7 @@
+       <a href="../overview.html">Overview</a>
+       <a href="../index.html">Daily Run</a>
+       <a href="../levels.html">Levels</a>
+-      <a href="../wormhole.html" class="is-active">Wormhole</a>
+-      <a href="../age-reversal.html">Age Reversal</a>
++      <a href="../sequences.html" class="is-active">Sequences</a>
+       <a href="../custom.html">Custom</a>
+       <a href="../bank.html">Bank</a>
+     </nav>
+@@ -30,8 +29,7 @@
+     <a href="../overview.html">Overview</a>
+     <a href="../index.html">Daily Run</a>
+     <a href="../levels.html">Levels</a>
+-    <a href="../wormhole.html" class="is-active">Wormhole</a>
+-    <a href="../age-reversal.html">Age Reversal</a>
++    <a href="../sequences.html" class="is-active">Sequences</a>
+     <a href="../custom.html">Custom</a>
+     <a href="../bank.html">Bank</a>
+   </nav>
+diff --git a/wormhole/day-11.html b/wormhole/day-11.html
+index 41db0fa..150ebbd 100644
+--- a/wormhole/day-11.html
++++ b/wormhole/day-11.html
+@@ -16,8 +16,7 @@
+       <a href="../overview.html">Overview</a>
+       <a href="../index.html">Daily Run</a>
+       <a href="../levels.html">Levels</a>
+-      <a href="../wormhole.html" class="is-active">Wormhole</a>
+-      <a href="../age-reversal.html">Age Reversal</a>
++      <a href="../sequences.html" class="is-active">Sequences</a>
+       <a href="../custom.html">Custom</a>
+       <a href="../bank.html">Bank</a>
+     </nav>
+@@ -30,8 +29,7 @@
+     <a href="../overview.html">Overview</a>
+     <a href="../index.html">Daily Run</a>
+     <a href="../levels.html">Levels</a>
+-    <a href="../wormhole.html" class="is-active">Wormhole</a>
+-    <a href="../age-reversal.html">Age Reversal</a>
++    <a href="../sequences.html" class="is-active">Sequences</a>
+     <a href="../custom.html">Custom</a>
+     <a href="../bank.html">Bank</a>
+   </nav>
+diff --git a/wormhole/day-12.html b/wormhole/day-12.html
+index 97b891f..b3c500c 100644
+--- a/wormhole/day-12.html
++++ b/wormhole/day-12.html
+@@ -16,8 +16,7 @@
+       <a href="../overview.html">Overview</a>
+       <a href="../index.html">Daily Run</a>
+       <a href="../levels.html">Levels</a>
+-      <a href="../wormhole.html" class="is-active">Wormhole</a>
+-      <a href="../age-reversal.html">Age Reversal</a>
++      <a href="../sequences.html" class="is-active">Sequences</a>
+       <a href="../custom.html">Custom</a>
+       <a href="../bank.html">Bank</a>
+     </nav>
+@@ -30,8 +29,7 @@
+     <a href="../overview.html">Overview</a>
+     <a href="../index.html">Daily Run</a>
+     <a href="../levels.html">Levels</a>
+-    <a href="../wormhole.html" class="is-active">Wormhole</a>
+-    <a href="../age-reversal.html">Age Reversal</a>
++    <a href="../sequences.html" class="is-active">Sequences</a>
+     <a href="../custom.html">Custom</a>
+     <a href="../bank.html">Bank</a>
+   </nav>
+diff --git a/wormhole/day-13.html b/wormhole/day-13.html
+index b4ad4d0..31926a4 100644
+--- a/wormhole/day-13.html
++++ b/wormhole/day-13.html
+@@ -16,8 +16,7 @@
+       <a href="../overview.html">Overview</a>
+       <a href="../index.html">Daily Run</a>
+       <a href="../levels.html">Levels</a>
+-      <a href="../wormhole.html" class="is-active">Wormhole</a>
+-      <a href="../age-reversal.html">Age Reversal</a>
++      <a href="../sequences.html" class="is-active">Sequences</a>
+       <a href="../custom.html">Custom</a>
+       <a href="../bank.html">Bank</a>
+     </nav>
+@@ -30,8 +29,7 @@
+     <a href="../overview.html">Overview</a>
+     <a href="../index.html">Daily Run</a>
+     <a href="../levels.html">Levels</a>
+-    <a href="../wormhole.html" class="is-active">Wormhole</a>
+-    <a href="../age-reversal.html">Age Reversal</a>
++    <a href="../sequences.html" class="is-active">Sequences</a>
+     <a href="../custom.html">Custom</a>
+     <a href="../bank.html">Bank</a>
+   </nav>
+diff --git a/wormhole/day-14.html b/wormhole/day-14.html
+index 864313f..177985d 100644
+--- a/wormhole/day-14.html
++++ b/wormhole/day-14.html
+@@ -16,8 +16,7 @@
+       <a href="../overview.html">Overview</a>
+       <a href="../index.html">Daily Run</a>
+       <a href="../levels.html">Levels</a>
+-      <a href="../wormhole.html" class="is-active">Wormhole</a>
+-      <a href="../age-reversal.html">Age Reversal</a>
++      <a href="../sequences.html" class="is-active">Sequences</a>
+       <a href="../custom.html">Custom</a>
+       <a href="../bank.html">Bank</a>
+     </nav>
+@@ -30,8 +29,7 @@
+     <a href="../overview.html">Overview</a>
+     <a href="../index.html">Daily Run</a>
+     <a href="../levels.html">Levels</a>
+-    <a href="../wormhole.html" class="is-active">Wormhole</a>
+-    <a href="../age-reversal.html">Age Reversal</a>
++    <a href="../sequences.html" class="is-active">Sequences</a>
+     <a href="../custom.html">Custom</a>
+     <a href="../bank.html">Bank</a>
+   </nav>
+diff --git a/wormhole/quick-reference.html b/wormhole/quick-reference.html
+index 00e6fc4..a65adde 100644
+--- a/wormhole/quick-reference.html
++++ b/wormhole/quick-reference.html
+@@ -16,8 +16,7 @@
+       <a href="../overview.html">Overview</a>
+       <a href="../index.html">Daily Run</a>
+       <a href="../levels.html">Levels</a>
+-      <a href="../wormhole.html" class="is-active">Wormhole</a>
+-      <a href="../age-reversal.html">Age Reversal</a>
++      <a href="../sequences.html" class="is-active">Sequences</a>
+       <a href="../custom.html">Custom</a>
+       <a href="../bank.html">Bank</a>
+     </nav>
+@@ -30,8 +29,7 @@
+     <a href="../overview.html">Overview</a>
+     <a href="../index.html">Daily Run</a>
+     <a href="../levels.html">Levels</a>
+-    <a href="../wormhole.html" class="is-active">Wormhole</a>
+-    <a href="../age-reversal.html">Age Reversal</a>
++    <a href="../sequences.html" class="is-active">Sequences</a>
+     <a href="../custom.html">Custom</a>
+     <a href="../bank.html">Bank</a>
+   </nav>

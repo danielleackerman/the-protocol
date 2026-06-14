@@ -89,6 +89,13 @@ html[data-skin="signal"][data-theme="light"] {
   --wh-on-border:  rgba(21, 128, 61, .34);
   --wh-on-shadow:  none;
 
+  /* OFF-state command accents: deactivated/clay switch signal — the
+     inverse of the ON tokens, for switches being turned off or deleted. */
+  --wh-off-bg:     rgba(154, 132, 122, .12);
+  --wh-off-text:   #6b5750;
+  --wh-off-border: rgba(154, 132, 122, .42);
+  --wh-off-shadow: none;
+
   --wh-button-border: rgba(111, 103, 90, .24);
   --wh-button-bg:     linear-gradient(180deg, rgba(255, 255, 255, .78), rgba(198, 191, 177, .12));
   --wh-hot-button-bg: linear-gradient(180deg, rgba(154, 132, 122, .12), rgba(154, 132, 122, .040));

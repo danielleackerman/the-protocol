@@ -251,6 +251,13 @@ html[data-skin="signal"][data-theme="dark"] {
   --wh-on-border:  rgba(74, 222, 128, .38);
   --wh-on-shadow:  none;
 
+  /* OFF-state command accents: deactivated/clay switch signal — the
+     inverse of the ON tokens, for switches being turned off or deleted. */
+  --wh-off-bg:     rgba(126, 110, 104, .16);
+  --wh-off-text:   #b9aaa4;
+  --wh-off-border: rgba(126, 110, 104, .40);
+  --wh-off-shadow: none;
+
   --wh-button-border: rgba(214, 209, 198, .30);
   --wh-button-bg:     linear-gradient(180deg, rgba(214, 209, 198, .10), rgba(214, 209, 198, .035));
   --wh-hot-button-bg: linear-gradient(180deg, rgba(126, 110, 104, .11), rgba(126, 110, 104, .035));
@@ -1281,6 +1288,28 @@ html[data-skin="signal"] .command-token--on {
   background: var(--wh-on-bg);
   border: 1px solid var(--wh-on-border);
   box-shadow: none;
+}
+
+/* Semantic state — deactivated states. The OFF/DELETED analogue of
+   .state-on: a flat clay chip so a switch turned off reads as off at a
+   glance, without competing with the teal ON signal. */
+html[data-skin="signal"] .state-off,
+html[data-skin="signal"] .command-token--off {
+  display: inline-block;
+  width: max-content;
+  max-width: 100%;
+  border-radius: 2px;
+  padding: .08rem .26rem;
+  color: var(--wh-off-text);
+  font-family: var(--font-mono);
+  font-size: .74rem;
+  font-weight: 850;
+  letter-spacing: .05em;
+  line-height: 1.15;
+  text-transform: uppercase;
+  background: var(--wh-off-bg);
+  border: 1px solid var(--wh-off-border);
+  box-shadow: var(--wh-off-shadow);
 }
 
 /* When the active state lives in a row that has its own row-key column,
