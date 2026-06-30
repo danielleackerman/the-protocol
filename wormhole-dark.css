@@ -1207,20 +1207,22 @@ html[data-skin="signal"] .mini-state-list > .mini-state {
 }
 
 html[data-skin="signal"] .mini-state > span {
-  padding: 8px 0 4px;
+  padding: 9px 0 6px;
   border-bottom: 1px solid var(--wh-row-divider-soft);
   justify-self: start;
 }
 
+/* The <b> in a mini-state row is a state chip (.state-on / .state-off),
+   so it must keep the canonical chip box padding rather than the grid
+   cell's vertical padding — otherwise the override zeroes its horizontal
+   padding and the ON/OFF text crushes against its own border. Row rhythm
+   is carried by outer margin, and the divider lives on the name cell so
+   it no longer cuts through the chip box. The chip centers in the row. */
 html[data-skin="signal"] .mini-state > b {
-  padding: 8px 0 4px;
-  border-bottom: 1px solid var(--wh-row-divider-soft);
+  margin: 6px 0 2px;
   justify-self: end;
+  align-self: center;
   text-align: right;
-  font-family: var(--font-mono);
-  font-size: .78rem;
-  font-weight: var(--wh-sans-value-strong-weight);
-  letter-spacing: .04em;
 }
 
 /* Strip the bottom-border from the last row's cells. Because we use
