@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://danielleackerman.github.io/the-protocol/index.html" title="Enter The Protocol — live">
-    <img src="assets/readme/protocol-hero.svg" alt="The Protocol — Reality Control Panel. Identity change, made executable." width="100%">
+    <img src="assets/readme/protocol-hero-site.svg" alt="The Protocol — Reality Control Panel. Identity change, made executable." width="100%">
   </a>
 </p>
 
