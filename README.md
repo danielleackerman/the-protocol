@@ -5,8 +5,10 @@
 </p>
 
 <p align="center">
-  <em>Identity change, made executable.</em><br>
-  <sub>Tap the panel to enter the live Protocol.</sub>
+  <strong>Reality Control Panel</strong><br>
+  <em>Identity change, made executable.</em><br><br>
+  <a href="https://danielleackerman.github.io/the-protocol/index.html"><strong>☼ Enter the live Protocol</strong></a><br>
+  <code>CHANGE THE FILE · AUTHORIZE THE STATE · RUN THE COMMAND</code>
 </p>
 
 ---
