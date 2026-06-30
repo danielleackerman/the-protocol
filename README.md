@@ -1,88 +1,100 @@
-# The Protocol — Pass 01 Deliverable
+<p align="center">
+  <strong>THE PROTOCOL</strong><br>
+  <em>Reality Control Panel</em><br>
+  Identity change, made executable.<br><br>
+  <a href="https://danielleackerman.github.io/the-protocol/index.html"><strong>☼ Enter the live Protocol</strong></a><br>
+  <code>STATUS: OPERATOR SEATED · SWITCHBOARD READY · COMMAND LINE OPEN</code>
+</p>
 
-Content integration pass: Wormhole (6-day sequence) + Age Reversal (5-level protocol).
+---
 
-## What's in this bundle
+## ☼ What is The Protocol?
 
-51 files matching the diff exactly:
+The Protocol turns identity change into an executable interface.
 
-- **2 new top-level pages:** `wormhole.html`, `age-reversal.html`
-- **11 new subpages:** `wormhole/day-01.html` … `day-06.html`, `age-reversal/level-01.html` … `level-05.html`
-- **1 modified CSS:** `wormhole-dark.css` (+36 lines, in-place `.media-block` component)
-- **15 modified existing pages:** all 5 top-level pages + all 10 level pages (each +4 lines: 2 new nav items × 2 nav blocks)
-- **22 media assets:** 11 MP3s, 6 PDFs, 5 MP4s in `assets/audio/wormhole/`, `assets/docs/wormhole/`, `assets/video/age-reversal/`
+The Protocol is a reality-control interface for changing the file you are running — from reaction to command, from old defaults to chosen operating state.
 
-## How to apply to your repo
+It is the panel, the sequence, and the seal: a way to sit in the operator seat, restore defaults, flip switches ON, issue command, and keep the receipt.
 
-This bundle mirrors the repo's directory structure. To apply:
+---
 
-```bash
-# From your active repo root:
-cp -r /path/to/the-protocol-pass-01/* .
+## ∴ Why change the file?
+
+The Protocol exists because identity is not just who you are. It is the file reality keeps reading from. Change the file, change your life, and the operating state changes with it.
+
+The Protocol exists to replace inherited operating code with chosen command — so you can stop reacting from the old file and start running the state you actually authorize.
+
+| Inherited operating code | Chosen command |
+|---|---|
+| Wait | I am the operator. |
+| Prove | Defaults restored. |
+| Brace | Switches ON. |
+| Shrink | Command issued. |
+| Chase | Confirmation received. |
+| Expect delay | Breach sealed. |
+| Ask permission | Continue. |
+
+---
+
+## ⟡ What is the point of authorizing a new state?
+
+The point of authorizing a new state is to choose the condition reality responds to before the old file chooses it for you.
+
+The Protocol gives the operator a way to revoke the undesired inherited file and install the state they choose to live from.
+
+Authorization is the moment the old default loses permission. The new state becomes the command.
+
+---
+
+## ◐ Daily Run / The operating sequence
+
+The Daily Run is the front panel: short enough to repeat, complete enough to restore the whole operating state.
+
+| Step | Operation | Command |
+|:---:|---|---|
+| 01 | Seat | `I am the operator.` |
+| 02 | Defaults | `My default is overflow.` · `My default is magnetism.` · `My default is sovereign pace.` |
+| 03 | Switchboard | Abundance `ON` · Magnetism `ON` · Overflow `ON` · Recognition `ON` · Love `ON` |
+| 04 | Command | `EXECUTE: [specific outcome as already done]` |
+| 05 | Receipt | `Confirmation received.` · `Notice. Acknowledge. Continue.` |
+
+If breached:
+
+```text
+Access denied. This is not authorized code.
+I am the operator. The Protocol holds.
+Breach sealed. Render protected.
 ```
 
-That copies the new files into place and overwrites the 16 modified files
-(15 HTML pages + `wormhole-dark.css`) with the new versions.
+---
 
-After copy, verify:
+## ✦ Enter
+
+<p align="center">
+  <a href="https://danielleackerman.github.io/the-protocol/index.html"><strong>⟶ Open The Protocol ⟵</strong></a><br>
+  <code>OPEN PANEL · RUN SEQUENCE · CONFIRM RECEIPT · CONTINUE</code>
+</p>
+
+---
+
+<details>
+<summary><strong>⌁ Technical / source notes</strong></summary>
+
+<br>
+
+The Protocol is a static HTML/CSS/JS site. No build step is required.
+
+Local preview:
 
 ```bash
-git status --short
-git diff --stat
-```
-
-You should see 51 changes matching `pass-01-diffstat.txt`.
-
-## How to preview locally before applying
-
-```bash
-cd /path/to/the-protocol-pass-01
 python3 -m http.server 8080
-
-# Then open:
-# http://localhost:8080/
-# http://localhost:8080/wormhole.html
-# http://localhost:8080/age-reversal.html
-# http://localhost:8080/wormhole/day-01.html
-# http://localhost:8080/age-reversal/level-01.html
+open http://localhost:8080/index.html
 ```
 
-The bundle is self-contained — all media is included, so you can preview
-the full site behavior identically to how it will run in the repo.
+Live entry:
 
-## What changed in the modified files
-
-Each of the 15 existing HTML files received exactly the same edit:
-2 new anchor tags inserted between `Levels` and `Custom` in both
-`site-nav` and `mobile-nav`. The is-active state was preserved correctly
-per page.
-
-`wormhole-dark.css` received one in-place addition (the `.media-block`
-component) just before the existing "Run Sequence cards" comment.
-No tokens, colors, or existing rules were modified.
-
-## Files in this folder
-
-- `pass-01.patch` — full unified diff (2,062 lines, applies cleanly with `git apply`)
-- `pass-01-diffstat.txt` — file-by-file insertion count
-- `pass-01-status.txt` — git status short output
-
-## Alternate apply path: using the patch
-
-If you'd rather apply the diff than copy files:
-
-```bash
-cd /path/to/your/repo
-git apply /path/to/pass-01.patch
+```text
+https://danielleackerman.github.io/the-protocol/index.html
 ```
 
-Note: the patch contains only text files (HTML + CSS). It does **not**
-include the 22 binary media assets — those must be copied from
-`assets/` in this bundle.
-
-## Defer to Pass 2
-
-Top nav now has 7 buttons (Overview · Daily Run · Levels · Wormhole ·
-Age Reversal · Custom · Bank). It functions correctly but may feel
-tight on narrower viewports. The drawer / pop-out redesign is the
-intended Pass 2.
+</details>
