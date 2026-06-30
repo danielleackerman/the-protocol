@@ -5,8 +5,8 @@
 </p>
 
 <p align="center">
-  <a href="https://danielleackerman.github.io/the-protocol/index.html"><strong>☼ Enter the live Protocol</strong></a><br>
-  <code>CHANGE THE FILE · AUTHORIZE THE STATE · RUN THE COMMAND</code>
+  <em>Identity change, made executable.</em><br>
+  <sub>Tap the panel to enter the live Protocol.</sub>
 </p>
 
 ---
