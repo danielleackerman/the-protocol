@@ -38,11 +38,7 @@ The Protocol exists to replace inherited operating code with chosen command — 
 
 ## ⟡ What is the point of authorizing a new state?
 
-The point of authorizing a new state is to choose the condition reality responds to before the old file chooses it for you.
-
-The Protocol gives the operator a way to revoke the undesired inherited file and install the state they choose to live from.
-
-Authorization is the moment the old default loses permission. The new state becomes the command.
+The point of authorizing a new state is to choose the condition reality responds to before the old file chooses it for you. The Protocol gives the operator a way to revoke the undesired inherited file and install the state they choose to live from. Authorization is the moment the old default loses permission; the new state becomes the command.
 
 ---
 
