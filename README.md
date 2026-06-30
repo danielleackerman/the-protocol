@@ -1,9 +1,12 @@
 <p align="center">
-  <strong>THE PROTOCOL</strong><br>
-  <em>Reality Control Panel</em><br>
-  Identity change, made executable.<br><br>
+  <a href="https://danielleackerman.github.io/the-protocol/index.html" title="Enter The Protocol — live">
+    <img src="assets/readme/protocol-hero.svg" alt="The Protocol — Reality Control Panel. Identity change, made executable." width="100%">
+  </a>
+</p>
+
+<p align="center">
   <a href="https://danielleackerman.github.io/the-protocol/index.html"><strong>☼ Enter the live Protocol</strong></a><br>
-  <code>STATUS: OPERATOR SEATED · SWITCHBOARD READY · COMMAND LINE OPEN</code>
+  <code>CHANGE THE FILE · AUTHORIZE THE STATE · RUN THE COMMAND</code>
 </p>
 
 ---
